@@ -31,6 +31,9 @@ models/*.pt
 models/*.mlpackage
 models/*.mlmodel
 
+# Vendor (cloned repos - too large for git)
+vendor/
+
 # Logs
 *.log
 logs/
