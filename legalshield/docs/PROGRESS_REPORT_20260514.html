@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LegalShield — 2026年5月14日 開発進捗レポート / Progress Report / 進度報告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Noto Sans TC','Hiragino Sans','Microsoft JhengHei',sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.7;font-size:14px}
+a{color:#38bdf8;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1200px;margin:0 auto;padding:24px}
+.header{text-align:center;padding:40px 0;border-bottom:2px solid #1e293b;margin-bottom:32px}
+.logo{font-size:42px;font-weight:800;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.tagline{font-size:16px;color:#94a3b8;margin-top:12px}
+.date-badge{display:inline-block;background:#1e293b;border:1px solid #334155;padding:6px 16px;border-radius:20px;font-size:13px;color:#64748b;margin-top:16px}
+
+.section{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:28px;margin-bottom:24px}
+.section-title{font-size:20px;font-weight:700;color:#38bdf8;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-title .icon{font-size:24px}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+@media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+.card{background:#0f172a;border:1px solid #334155;border-radius:10px;padding:18px}
+.card-title{font-size:15px;font-weight:700;color:#e2e8f0;margin-bottom:8px}
+.card-body{font-size:13.5px;color:#94a3b8;line-height:1.7}
+.card-body code{background:#1e293b;padding:2px 6px;border-radius:4px;font-size:12px;color:#fbbf24}
+
+.status-bar{display:flex;gap:8px;margin:8px 0}
+.status-item{flex:1;background:#0f172a;border-radius:6px;padding:10px;text-align:center;font-size:12px}
+.status-item .label{color:#64748b;display:block;margin-bottom:4px}
+.status-item .value{color:#38bdf8;font-weight:700;font-size:16px}
+.status-item .value.warn{color:#fbbf24}
+.status-item .value.danger{color:#f87171}
+.status-item .value.ok{color:#4ade80}
+
+progress{width:100%;height:8px;border-radius:4px;overflow:hidden;background:#0f172a;border:1px solid #334155}
+progress::-webkit-progress-bar{background:#0f172a}
+progress::-webkit-progress-value{background:linear-gradient(90deg,#38bdf8,#818cf8)}
+
+.tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600;margin:2px}
+.tag-green{background:#064e3b;color:#4ade80;border:1px solid #065f46}
+.tag-yellow{background:#422006;color:#fbbf24;border:1px solid #713f12}
+.tag-red{background:#450a0a;color:#f87171;border:1px solid #7f1d1d}
+.tag-blue{background:#0c4a6e;color:#38bdf8;border:1px solid #075985}
+.tag-purple{background:#3b0764;color:#c084fc;border:1px solid #6b21a8}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+th{background:#0f172a;color:#38bdf8;padding:10px 12px;text-align:left;font-weight:600;border-bottom:2px solid #334155}
+td{padding:10px 12px;border-bottom:1px solid #334155;color:#cbd5e1}
+tr:hover td{background:#1e293b}
+
+.highlight-box{background:linear-gradient(135deg,#1e3a5f,#0f172a);border:1px solid #334155;border-radius:10px;padding:18px;margin:12px 0}
+.highlight-box .title{font-weight:700;color:#fbbf24;margin-bottom:8px}
+.highlight-box .body{color:#94a3b8;font-size:13px;line-height:1.7}
+
+.option-box{background:#0f172a;border-left:4px solid #38bdf8;border-radius:0 8px 8px 0;padding:14px 18px;margin:10px 0;cursor:pointer;transition:background .2s}
+.option-box:hover{background:#1e293b}
+.option-box .title{font-weight:700;color:#e2e8f0;font-size:14px}
+.option-box .desc{color:#94a3b8;font-size:12.5px;margin-top:4px}
+
+.db-schema{background:#0f172a;border:1px solid #334155;border-radius:8px;padding:14px;font-family:'Consolas','Courier New',monospace;font-size:12.5px;line-height:1.6;color:#94a3b8;overflow-x:auto}
+.db-schema .comment{color:#64748b}
+.db-schema .key{color:#fbbf24}
+.db-schema .type{color:#38bdf8}
+
+.footer{text-align:center;padding:32px 0;color:#64748b;font-size:12px;border-top:1px solid #1e293b;margin-top:32px}
+
+.lang-switch{text-align:center;padding:12px 0;background:#0f172a;border-bottom:1px solid #1e293b;margin-bottom:24px;font-size:13px}
+.lang-switch a{margin:0 16px;color:#64748b}
+.lang-switch a.active{color:#38bdf8;font-weight:700}
+</style>
+</head>
+<body>
+<div class="lang-switch">
+  <a href="#jp" onclick="switchLang('jp')">🇯🇵 日本語</a>
+  <a href="#zh" onclick="switchLang('zh')" class="active">🇹🇼 繁體中文</a>
+  <a href="#en" onclick="switchLang('en')">🇺🇸 English</a>
+</div>
+
+<div class="container">
+
+<div class="header">
+  <div class="logo">LegalShield 開発進捗レポート</div>
+  <div class="tagline">Progress Report / 進度報告</div>
+  <div class="date-badge">📅 2026年5月14日（木）| 開発開始から 9日目</div>
+</div>
+
+<!-- === エグゼクティブサマリー === -->
+<div class="section">
+  <div class="section-title"><span class="icon">📊</span>エグゼクティブサマリー / Executive Summary / 執行摘要</div>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">🎯 プロジェクト状態</div>
+      <div class="card-body">
+        <span class="tag tag-green">PoC v4 完了</span>
+        <span class="tag tag-yellow">Toyota Foundation 申請準備中</span>
+        <span class="tag tag-blue">Flutter プロトタイプ未着手</span>
+        <p style="margin-top:10px">RAG 検索パイプライン稼働。71,054 件判例ベクトル化完了。三語紹介ページ公開。</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">💰 助成金申請状況</div>
+      <div class="card-body">
+        <div class="status-bar">
+          <div class="status-item">
+            <span class="label">Toyota 財団</span>
+            <span class="value warn">事前相談待ち</span>
+          </div>
+        </div>
+        <p>共同研究助成：¥800万 / 2年（2026/11/1〜2028/10/31）。コンセプトノート送付期限：<b>5月15日</b>。</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🔧 技術的到達点</div>
+      <div class="card-body">
+        <div class="status-bar">
+          <div class="status-item"><span class="label">SLM</span><span class="value ok">稼働中</span></div>
+          <div class="status-item"><span class="label">RAG</span><span class="value ok">稼働中</span></div>
+          <div class="status-item"><span class="label">LLM</span><span class="value ok">稼働中</span></div>
+        </div>
+        <p>phi4:14b / gemma3:27b / llama3.3:70b / qwen2.5:14b 稼働。LanceDB + Ollama 完全連携。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- === データベース構造 === -->
+<div class="section">
+  <div class="section-title"><span class="icon">🗄️</span>データベース構造 / Database Structure / 資料庫結構</div>
+
+  <div class="highlight-box">
+    <div class="title">📦 現在のデータ資産総覧</div>
+    <div class="body">
+      <table>
+        <tr><th>データ層</th><th>技術</th><th>件数/サイズ</th><th>状態</th><th>再生成方法</th></tr>
+        <tr><td><b>日本国法</b></td><td>LanceDB (elaws_v2.lance)</td><td>623,000 件 / ~1.5GB</td><td><span class="tag tag-green">完了</span></td><td><code>elaws_bulk_parallel.py → elaws_embed_full.py</code></td></tr>
+        <tr><td><b>判例</b></td><td>LanceDB (precedents.lance)</td><td>724,443 チャンク / ~0.5GB</td><td><span class="tag tag-green">完了</span></td><td><code>batch_fetch.py → unified_vectorize.py</code></td></tr>
+        <tr><td><b>市区町村統計</b></td><td>Parquet (unified_knowledge_v3)</td><td>885 テーブル / ~20MB</td><td><span class="tag tag-green">完了</span></td><td><code>batch_municipal.py + batch_socio.py</code></td></tr>
+        <tr><td><b>支援センター</b></td><td>Parquet + CSV seeds</td><td>全国 2,000+ 施設</td><td><span class="tag tag-green">完了</span></td><td><code>support_centers.py + support_deep.py</code></td></tr>
+        <tr><td><b>日弁連弁護士</b></td><td>CSV seeds</td><td>約 40,000 名</td><td><span class="tag tag-yellow">部分完了</span></td><td><code>nichibenren_lawyers.py + lawyers_deep.py</code></td></tr>
+        <tr><td><b>JSTAGE 学術論文</b></td><td>未ベクトル化</td><td>未実装</td><td><span class="tag tag-red">未着手</span></td><td><code>jstage_analyzer.py</code>（検索のみ、DB化未完了）</td></tr>
+        <tr><td><b>NITE 製品リコール</b></td><td>未ダウンロード</td><td>—</td><td><span class="tag tag-red">未着手</span></td><td><code>nite_recall.py</code></td></tr>
+        <tr><td><b>e-Stat 統計データ</b></td><td>未ダウンロード</td><td>—</td><td><span class="tag tag-red">未着手</span></td><td><code>estat_api.py</code></td></tr>
+        <tr><td><b>DataGo.jp オープンデータ</b></td><td>未ダウンロード</td><td>—</td><td><span class="tag tag-red">未着手</span></td><td><code>datagojp_ckan.py</code></td></tr>
+        <tr><td><b>法テラス・自治体条例</b></td><td>CSV seeds + 部分</td><td>47 都道府県</td><td><span class="tag tag-yellow">部分完了</span></td><td><code>pref_ordinance_v2.py</code></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🗂️ LanceDB スキーマ（判例）</div>
+      <div class="db-schema">
+<span class="key">precedents.lance</span> (
+  <span class="key">id</span> <span class="type">STRING</span>,           <span class="comment">-- 判例ID (e.g., "2023年(行ツ)第123号")</span>
+  <span class="key">case_name</span> <span class="type">STRING</span>,      <span class="comment">-- 事件名</span>
+  <span class="key">court</span> <span class="type">STRING</span>,          <span class="comment">-- 裁判所名</span>
+  <span class="key">date</span> <span class="type">DATE</span>,            <span class="comment">-- 判決日</span>
+  <span class="key">case_type</span> <span class="type">STRING</span>,      <span class="comment">-- 事件種別 (民事/刑事/行政/家事)</span>
+  <span class="key">gist</span> <span class="type">STRING</span>,          <span class="comment">-- 判例要旨</span>
+  <span class="key">full_text</span> <span class="type">STRING</span>,      <span class="comment">-- 判決全文（存在する場合）</span>
+  <span class="key">ref_law</span> <span class="type">LIST&lt;STRING&gt;</span>, <span class="comment">-- 引用法条リスト</span>
+  <span class="key">vector</span> <span class="type">VECTOR(768)</span>,    <span class="comment">-- 埋め込みベクトル</span>
+  <span class="key">tier</span> <span class="type">STRING</span>            <span class="comment">-- A:全文 / B:要旨 / C:メタデータ</span>
+)
+PRIMARY INDEX: <span class="key">ivf_pq</span> ON vector
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🗂️ LanceDB スキーマ（国法）</div>
+      <div class="db-schema">
+<span class="key">elaws_v2.lance</span> (
+  <span class="key">law_id</span> <span class="type">STRING</span>,        <span class="comment">-- 法令ID (e.g., "129AC0000000100")</span>
+  <span class="key">title</span> <span class="type">STRING</span>,         <span class="comment">-- 法令名</span>
+  <span class="key">article_num</span> <span class="type">STRING</span>,     <span class="comment">-- 条番号</span>
+  <span class="key">article_title</span> <span class="type">STRING</span>, <span class="comment">-- 条タイトル</span>
+  <span class="key">content</span> <span class="type">STRING</span>,       <span class="comment">-- 条文内容</span>
+  <span class="key">enact_date</span> <span class="type">DATE</span>,      <span class="comment">-- 公布日</span>
+  <span class="key">category</span> <span class="type">STRING</span>,      <span class="comment">-- 種別 (憲法/法律/政令/勅令...)</span>
+  <span class="key">vector</span> <span class="type">VECTOR(768)</span>     <span class="comment">-- 埋め込みベクトル</span>
+)
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="border-color:#fbbf24">
+    <div class="title">⚠️ まだダウンロードされていないデータベース</div>
+    <div class="body">
+      <ul style="margin-left:20px;margin-top:8px">
+        <li><b>NITE（製品評価技術基盤機構）製品リコール情報</b> — 製品事故・リコールデータ。消費者被害対策に必須。</li>
+        <li><b>e-Stat（政府統計の総合窓口）</b> — 人口動態、犯罪統計、裁判統計等の公的統計データベース。</li>
+        <li><b>DataGo.jp（政府オープンデータ）</b> — 全国の公的データ統合プラットフォーム。</li>
+        <li><b>J-STAGE（学術論文）</b> — 判例評論、法学論文、AI倫理論文等。検索スクリプトは存在するがベクトル化・DB統合未完了。</li>
+        <li><b>裁判所 家事审判統計</b> — DV・親権・財産分与等の統計データ。</li>
+        <li><b>内閣府 消費者被害統計</b> — 特定商取引法違反、訪問販売等の被害データ。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- === 機能拡張ロードマップ === -->
+<div class="section">
+  <div class="section-title"><span class="icon">🚀</span>機能拡張ロードマップ / Feature Roadmap / 功能擴張路線圖</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">✅ 現在稼働中（Phase 1: PoC）</div>
+      <div class="card-body">
+        <ul style="margin-left:18px">
+          <li>CLI RAG 検索（<code>rag_query.py</code>）</li>
+          <li>証拠金庫（SHA256 + NTP タイムスタンプ）</li>
+          <li>犯罪分類 17 類型 + 加害者側写</li>
+          <li>ヒートマップ（全国被害リスク可視化）</li>
+          <li>Streamlit デモ</li>
+          <li>三語紹介ページ</li>
+        </ul>
+        <div style="margin-top:10px">進捗：<progress value="100" max="100"></progress> 100%</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🔜 次フェーズ（Phase 2: Pilot）</div>
+      <div class="card-body">
+        <ul style="margin-left:18px">
+          <li><b>Flutter プロトタイプ</b> — iOS/Android 実機テスト</li>
+          <li><b>オンデバイス SLM</b> — Phi-3 / Qwen2.5 / Gemma 量子化モデル</li>
+          <li><b>被害届不受理防止</b> — AI 自動生成法的根拠レポート</li>
+          <li><b>専家マッチング</b> — GPS連動 + 予約自動化</li>
+          <li><b>匿名フィードバック収集</b> — 実証研究データ蓄積</li>
+        </ul>
+        <div style="margin-top:10px">進捗：<progress value="5" max="100"></progress> 5%</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📅 将来フェーズ（Phase 3: Scale）</div>
+      <div class="card-body">
+        <ul style="margin-left:18px">
+          <li><b>GovTech SaaS</b> — 自治体・企業向けダッシュボード</li>
+          <li><b>多言語展開</b> — 繁體中文・英語完全対応</li>
+          <li><b>ADR 自動化支援</b> — 申立書自動生成</li>
+          <li><b>ISO27001 認証</b> — 資安管理体制確立</li>
+          <li><b>PocketMidwife 統合</b> — 婦幼医療モジュール</li>
+        </ul>
+        <div style="margin-top:10px">進捗：<progress value="0" max="100"></progress> 0%</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🔮 夢想フェーズ（Phase 4: Vision）</div>
+      <div class="card-body">
+        <ul style="margin-left:18px">
+          <li><b>日台連携</b> — TEAMS 5 パートナーシップ</li>
+          <li><b>東南アジア展開</b> — 類似法制度国への適用</li>
+          <li><b>AI 裁判予測</b> — 過去判例から勝率・賠償額予測</li>
+          <li><b>ブロックチェーン証拠</b> — 改ざん不可能な証拠保全</li>
+        </ul>
+        <div style="margin-top:10px">進捗：<progress value="0" max="100"></progress> 概念段階</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- === 使用シナリオ === -->
+<div class="section">
+  <div class="section-title"><span class="icon">🎭</span>使用シナリオ仮定 / Usage Scenarios / 使用情境假設</div>
+
+  <div class="option-box" onclick="toggleDetail('scenario1')">
+    <div class="title">シナリオ A：痴漢被害（電車内・即時対応）</div>
+    <div class="desc">ゴールデンタイム内の証拠保全・法的根拠提示・警察交渉支援</div>
+    <div id="scenario1" style="display:none;margin-top:12px;padding:12px;background:#0f172a;border-radius:8px">
+      <b>発生：</b>通勤電車内で痴漢被害。<br>
+      <b>対応フロー：</b><br>
+      ① 被害者はスマホで <b>緊急モード</b> 起動 → 自動録音・位置記録・NTPタイムスタンプ<br>
+      ② AI が「痴漢罪（刑法176条）」の成立要件を確認 → <b>被害届不受理防止レポート</b> 自動生成<br>
+      ③ 最寄りの <b>女性相談室・警察署・弁護士</b> を GPS マッチング<br>
+      ④ 被害届提出時、AI 生成の法的根拠レポートを持参 → 警察の受理率向上<br>
+      ⑤ 証拠は端末内暗号化保存、裁判・ADR まで持続可能
+    </div>
+  </div>
+
+  <div class="option-box" onclick="toggleDetail('scenario2')">
+    <div class="title">シナリオ B：ドローン製品事故（企業不正・消費者被害）</div>
+    <div class="desc">¥6,800万規模の製品安全欠陥事件 — 実際のケーススタディ</div>
+    <div id="scenario2" style="display:none;margin-top:12px;padding:12px;background:#0f172a;border-radius:8px">
+      <b>発生：</b>Mapry M4-0 ドローン、製品安全欠陥による墜落事故。<br>
+      <b>対応フロー：</b><br>
+      ① <b>証拠金庫</b> に 57GB システムログ・飛行記録・メール一括保存<br>
+      ② AI が <b>製造物責任法</b>・<b>民法415条（債務不履行）</b>・<b>刑法96条の2（製品安全犯罪）</b> を自動検索<br>
+      ③ <b>34項目の安全欠陥リスト</b> を AI 自動生成（製造物責任の「欠缺」を構成）<br>
+      ④ ADR 申立書・内容証明・告訴状の <b>ドラフト自動生成</b><br>
+      ⑤ 専家（製品安全法専門弁護士・技術鑑定人）マッチング<br>
+      <b>現在：</b>ADR 申立済み、次は行政通報・告訴検討
+    </div>
+  </div>
+
+  <div class="option-box" onclick="toggleDetail('scenario3')">
+    <div class="title">シナリオ C：DV（ドメスティック・バイオレンス）・避難支援</div>
+    <div class="desc">深夜・危機的状況での即時シェルター紹介・保護命令申請支援</div>
+    <div id="scenario3" style="display:none;margin-top:12px;padding:12px;background:#0f172a;border-radius:8px">
+      <b>発生：</b>深夜、DV 加害者が帰宅。被害者は避難を判断する時間がない。<br>
+      <b>対応フロー：</b><br>
+      ① <b>緊急ボタン</b> 押下 → GPS 位置を周囲の <b>シェルター・24時間対応施設</b> に即時通知<br>
+      ② AI が <b>保護命令の申請手続き</b> を音声ガイド（暗い部屋・携帯画面操作困難時に対応）<br>
+      ③ 最寄りの <b>DV 支援センター・弁護士</b> を自動通報・予約<br>
+      ④ 証拠（写真・録音・傷の記録）は <b>オンデバイス暗号化</b>、クラウドには一切送信しない<br>
+      ⑤ 翌日、支援センター到着時に <b>被害状況レポート</b> を自動生成・印刷可能
+    </div>
+  </div>
+
+  <div class="option-box" onclick="toggleDetail('scenario4')">
+    <div class="title">シナリオ D：行政不服申立て（被害届不受理・職権不行使）</div>
+    <div class="desc">警察・行政機関の不作為に対する法的対抗手段</div>
+    <div id="scenario4" style="display:none;margin-top:12px;padding:12px;background:#0f172a;border-radius:8px">
+      <b>発生：</b>警察が被害届を不受理。または、行政機関が法に基づく義務を履行しない。<br>
+      <b>対応フロー：</b><br>
+      ① AI が <b>「被害届不受理」の違法性</b> を判断（刑事訴訟法239条・警察法）<br>
+      ② <b>行政不服申立て（審査請求・異議申立）</b> 書類を自動生成<br>
+      ③ 警察本部・公安委員会・検察庁への <b>告発・告訴・情報公開請求</b> 文書を自動生成<br>
+      ④ <b>記者会見資料・議員陳情書</b> を自動生成（メディア・政治ルート並行）<br>
+      ⑤ 全プロセスは <b>audit log</b> で記録、行政の不作為を証明する証拠として蓄積
+    </div>
+  </div>
+
+  <div class="option-box" onclick="toggleDetail('scenario5')">
+    <div class="title">シナリオ E：偏郷・夜間小児救急（PocketMidwife 連携）</div>
+    <div class="desc">医療アクセス格差の解消 — 将来展開</div>
+    <div id="scenario5" style="display:none;margin-top:12px;padding:12px;background:#0f172a;border-radius:8px">
+      <b>発生：</b>高知県幡多郡、深夜2時、3歳児が39.5℃発熱。最寄りの救急病院は車で90分。<br>
+      <b>対応フロー：</b><br>
+      ① 親が <b>症状問診（Triage）</b> を入力 → Edge AI が緊急度を判定<br>
+      ② <b>小児救急マニュアル</b>（日本小児科学会基準）を参照し、対処法を提示<br>
+      ③ 緊急度「高」の場合、<b>最寄りのオンライン診療・夜間救急</b> を GPS マッチング<br>
+      ④ 症状記録は <b>診察時の医療情報として共有</b>（時間短縮・医療ミス防止）<br>
+      ⑤ 軽症と判断された場合、<b>経過観察スケジュール</b> を自動生成・リマインド
+    </div>
+  </div>
+</div>
+
+<!-- === JSTAGE 研究 === -->
+<div class="section">
+  <div class="section-title"><span class="icon">📚</span>JSTAGE 研究統合 / JSTAGE Research Integration / JSTAGE 研究整合</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🔬 現在の学術リソース</div>
+      <div class="card-body">
+        <ul style="margin-left:18px">
+          <li><b>jstage_analyzer.py</b> — J-STAGE 論文検索・スクレイピングスクリプト</li>
+          <li><b>jstage_search.py</b> — キーワード検索・メタデータ抽出</li>
+          <li><b>検索対象</b>：法学論文、判例評論、AI倫理論文、被害者学</li>
+          <li><b>現状</b>：検索・ダウンロード可能。ただし<b>ベクトル化・DB統合未完了</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📋 将来の学術統合計画</div>
+      <div class="card-body">
+        <ul style="margin-left:18px">
+          <li><b>Phase 1</b>：J-STAGE 論文メタデータベース構築（タイトル・著者・抄録・キーワード）</li>
+          <li><b>Phase 2</b>：抄録ベクトル化（判例・法令との横断検索可能に）</li>
+          <li><b>Phase 3</b>：判例評論との関連付け（「この判例について書かれた論文」表示）</li>
+          <li><b>Phase 4</b>：AI 法推論の学術的検証（論文引用自動推奨）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="title">🎯 JSTAGE 統合の価値</div>
+    <div class="body">
+      <p>LegalShield の AI が判例を提示する際、「この判例について専門家が書いた論文」も同時に提示することで、<b>「法廷で使えるエビデンス」→「学術的裏付け」</b> の二重構造を提供する。</p>
+      <p>例：被害者が「痴漢罪の成立要件」を調べる → AI が判例を提示 + 同時に「性犯罪における同意の法学」論文を推奨 → 被害者は<b>専門知識を獲得し、警察・検察との交渉力を向上</b>。</p>
+    </div>
+  </div>
+</div>
+
+<!-- === 助成金詳細 === -->
+<div class="section">
+  <div class="section-title"><span class="icon">💴</span>助成金詳細 / Grant Details / 補助金詳情</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🎯 Toyota Foundation 共同研究助成</div>
+      <div class="card-body">
+        <table>
+          <tr><td>申請期限</td><td><b>2026年6月5日 15:00</b></td></tr>
+          <tr><td>助成期間</td><td>2026年11月1日 〜 2028年10月31日（24ヶ月）</td></tr>
+          <tr><td>助成額</td><td><b>¥8,000,000</b>（上限）</td></tr>
+          <tr><td>代表者年齢制限</td><td>45歳以下（対象：37歳）</td></tr>
+          <tr><td>事前相談期限</td><td><b>2026年5月15日</b>（メール送付）</td></tr>
+          <tr><td>連絡先</td><td>kenj@toyotafound.or.jp（加藤、寺崎、加賀）</td></tr>
+        </table>
+        <p style="margin-top:10px"><span class="tag tag-yellow">現在：事前相談メール未送付</span></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 予算内訳（800万円）</div>
+      <div class="card-body">
+        <table>
+          <tr><td>謝金（代表者・専門家）</td><td>¥350万（43.8%）</td></tr>
+          <tr><td>委託費（AI研究・UI/UX）</td><td>¥150万（18.8%）</td></tr>
+          <tr><td>旅費（全国調査・台湾）</td><td>¥80万（10.0%）</td></tr>
+          <tr><td>機械・器具（GPU・NAS・端末）</td><td>¥65万（8.1%）</td></tr>
+          <tr><td>プラットフォーム運用・検証</td><td>¥40万（5.0%）</td></tr>
+          <tr><td>通信・運搬・資料・その他</td><td>¥115万（14.3%）</td></tr>
+        </table>
+        <p style="margin-top:10px"><b>注意</b>：本申請は「実証研究（Empirical Research）」として位置づけ。最終成果物は「研究報告書」+「社会影響力実際報告書」。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="title">⚡ 今週の緊急タスク</div>
+    <div class="body">
+      <ol style="margin-left:20px">
+        <li><b>5月14日（今日）〜 5月15日（明日）</b>：事前相談メール送付（コンセプトノート添付）</li>
+        <li><b>5月15日〜6月5日</b>：正式申請書作成・専門家調整・協力覚書締結</li>
+        <li><b>6月5日 15:00</b>：Web申請システムから提出</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- === 未来の使用方式 === -->
+<div class="section">
+  <div class="section-title"><span class="icon">🔮</span>未来の使用方式 / Future Usage Model / 未來使用方式</div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title">📱 被害者側（C2G / Civic Tech）</div>
+      <div class="card-body">
+        <b>無料・匿名・24時間</b><br>
+        スマホ 1 台で証拠保全 → 法律検索 → 戦略シミュレーション → 専家紹介まで完結。<br><br>
+        <span class="tag tag-blue">直接被害者支援</span>
+        <span class="tag tag-green">プライバシー最優先</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🏛️ 自治体・NPO側（B2G）</div>
+      <div class="card-body">
+        <b>ダッシュボード（月額¥5万〜）</b><br>
+        匿名化統計データ可視化。被害パターン分析・地域リスクマップ・資源配分最適化。<br><br>
+        <span class="tag tag-purple">地方創生予算から捻出</span>
+        <span class="tag tag-yellow">政策エビデンス基盤</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">🏢 企業側（B2B）</div>
+      <div class="card-body">
+        <b>コンプライアンスツール（月額¥10万〜）</b><br>
+        企業内ハラスメント通報・不正告発システム。証拠保全 + 内部調査支援 + 外部弁護士連携。<br><br>
+        <span class="tag tag-blue">内部統制強化</span>
+        <span class="tag tag-green">ISO27001 対応</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="title">🔄 「逆転研究」モデル（Reverse Research）</div>
+    <div class="body">
+      <p>本プロジェクトの核心は「APP を作る」ことではなく、<b>「APP を研究方法論として使う」</b>ことである。</p>
+      <p><b>2年間のサイクル：</b></p>
+      <ol style="margin-left:20px">
+        <li><b>仮説</b>：「被害者の70%は誰に相談すればいいか分からない」</li>
+        <li><b>構築</b>：APP プラットフォームを開発・公開</li>
+        <li><b>収集</b>：ユーザーのフィードバック・使用データ・専家評価を継続収集</li>
+        <li><b>検証</b>：データ分析で仮説の検証・修正</li>
+        <li><b>報告</b>：「研究報告書」+「社会影響力実際報告書」として公開</li>
+      </ol>
+      <p>このモデルにより、助成期間中は「研究」として位置づけられ、収益化は助成終了後のフェーズに延期できる。</p>
+    </div>
+  </div>
+</div>
+
+<!-- === 開発オプション === -->
+<div class="section">
+  <div class="section-title"><span class="icon">🎛️</span>次の開発オプション / Next Development Options / 下一步開發選項</div>
+
+  <div class="option-box">
+    <div class="title">A. Flutter プロトタイプ開発（優先度：高）</div>
+    <div class="desc">iOS/Android 実機テスト開始。緊急モード UI・証拠保全フロー・GPS マッチング画面。</div>
+  </div>
+
+  <div class="option-box">
+    <div class="title">B. データベース追加ダウンロード（優先度：中〜高）</div>
+    <div class="desc">NITE リコール・e-Stat 統計・DataGo.jp をダウンロードし、unified_knowledge に統合。</div>
+  </div>
+
+  <div class="option-box">
+    <div class="title">C. J-STAGE ベクトル化（優先度：中）</div>
+    <div class="desc">法学論文の抄録をベクトル化。判例・法令との横断検索を実現。</div>
+  </div>
+
+  <div class="option-box">
+    <div class="title">D. 被害届不受理防止機能（優先度：高）</div>
+    <div class="desc">AI 自動生成「法的根拠レポート + 警察交渉スクリプト」。日本初の機能。</div>
+  </div>
+
+  <div class="option-box">
+    <div class="title">E. Toyota Foundation 事前相談メール送付（優先度：緊急）</div>
+    <div class="desc">5月15日締切。コンセプトノート（A4 1-2ページ）を作成・送付。</div>
+  </div>
+
+  <div class="option-box">
+    <div class="title">F. SLM 量子化・最適化（優先度：中）</div>
+    <div class="desc">Phi-3 / Qwen2.5 / Gemma を ONNX / GGUF 形式で最適化。端末内実行速度向上。</div>
+  </div>
+
+  <div class="option-box">
+    <div class="title">G. ユーザーフィードバック収集システム（優先度：中）</div>
+    <div class="desc">匿名アンケート・使用ログ・NPS スコア収集。実証研究のデータ基盤。</div>
+  </div>
+
+  <div class="option-box">
+    <div class="title">H. Oracle Cloud / AWS 検討（優先度：低〜中）</div>
+    <div class="desc">PoC 後のクラウド移行計画。現在はローカル + Tailscale で十分。</div>
+  </div>
+</div>
+
+<!-- === フッター === -->
+<div class="footer">
+  <p>LegalShield Project | 代表：劉建志（Kenji Liu）| 高知大学 森林工学研究室 / 光伊フォレスト</p>
+  <p>最終更新：2026年5月14日 | 次回更新予定：Toyota Foundation 事前相談後</p>
+  <p style="margin-top:8px">
+    <a href="https://github.com/Fuilko/lawandbabysupport">GitHub Repository</a> |
+    <a href="PROJECT_TIMELINE.md">Project Timeline</a> |
+    <a href="DEPLOYMENT_GUIDE.md">Deployment Guide</a>
+  </p>
+</div>
+
+</div>
+
+<script>
+function toggleDetail(id) {
+  var el = document.getElementById(id);
+  if (el.style.display === 'none') {
+    el.style.display = 'block';
+  } else {
+    el.style.display = 'none';
+  }
+}
+function switchLang(lang) {
+  // Placeholder for language switching logic
+  document.querySelectorAll('.lang-switch a').forEach(a => a.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
