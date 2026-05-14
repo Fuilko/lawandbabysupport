@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LegalShield — Project Introduction, Features & Application Guide</title>
+<style>
+@page { size: A4; margin: 15mm; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Hiragino Sans','Yu Gothic UI','Noto Sans JP',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.8;font-size:14px}
+.page{width:210mm;min-height:297mm;background:#fff;margin:20px auto;padding:32px 36px;box-shadow:0 4px 24px rgba(0,0,0,0.08);page-break-after:always;position:relative}
+.page:last-child{page-break-after:auto}
+.header{text-align:center;padding-bottom:20px;border-bottom:3px solid #1a2a6c;margin-bottom:24px}
+.logo{font-size:36px;font-weight:800;color:#1a2a6c;letter-spacing:-1px}
+.tagline{font-size:16px;color:#7cf0c2;background:#0b1020;display:inline-block;padding:4px 16px;border-radius:20px;margin-top:8px}
+.subtitle{font-size:13px;color:#6a7ab0;margin-top:6px}
+.section{margin-bottom:28px}
+.section-title{font-size:18px;font-weight:700;color:#1a2a6c;border-left:5px solid #7cf0c2;padding-left:12px;margin-bottom:14px}
+.section-body{font-size:13.5px;color:#333}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#f8f9ff;border:1px solid #e0e3f0;border-radius:10px;padding:14px}
+.card .icon{font-size:28px;margin-bottom:6px}
+.card .title{font-size:14px;font-weight:700;color:#1a2a6c;margin-bottom:4px}
+.card .desc{font-size:12px;color:#555;line-height:1.6}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+th{background:#1a2a6c;color:#fff;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #e0e3f0;color:#333}
+tr:hover td{background:#f8f9ff}
+.contact-box{background:linear-gradient(135deg,#1a2a6c,#0b1020);color:#fff;border-radius:12px;padding:20px}
+.contact-box .title{font-size:16px;font-weight:700;color:#7cf0c2;margin-bottom:10px}
+.contact-box .item{font-size:13px;margin-bottom:6px;color:#e6ecff}
+.contact-box .label{color:#ffd166;font-weight:600}
+.highlight{background:#fff8e6;border-left:4px solid #ffd166;padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0}
+.highlight-title{font-weight:700;color:#856404;font-size:13px}
+.highlight-body{color:#856404;font-size:12.5px}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600}
+.badge-red{background:#ffebee;color:#c0392b}
+.badge-green{background:#e8f5e9;color:#2e7d32}
+.badge-blue{background:#e3f2fd;color:#1565c0}
+.toc{background:#f8f9ff;border:1px solid #e0e3f0;border-radius:10px;padding:16px;margin-bottom:20px}
+.toc-title{font-weight:700;color:#1a2a6c;margin-bottom:8px;font-size:14px}
+.toc a{color:#1a2a6c;text-decoration:none;font-size:13px;display:block;padding:3px 0}
+@media print{body{background:#fff}.page{box-shadow:none;margin:0;padding:20px 24px}}
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE SWITCH -->
+<div style="text-align:center;padding:8px 0;background:#f0f2f5;border-bottom:1px solid #e0e3f0;font-size:13px;">
+  <a href="LEGALSHIELD_INTRO_JP.html" style="margin:0 12px;text-decoration:none;color:#6a7ab0;">🇯🇵 日本語</a>
+  <a href="LEGALSHIELD_INTRO_ZH.html" style="margin:0 12px;text-decoration:none;color:#6a7ab0;">🇹🇼 繁體中文</a>
+  <a href="LEGALSHIELD_INTRO_EN.html" style="margin:0 12px;text-decoration:none;font-weight:700;color:#1a1a2e;">🇺🇸 English</a>
+</div>
+
+<!-- PAGE 1: Cover + Self-Introduction -->
+<div class="page">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">"No One Should Face It Alone"</div>
+    <div class="subtitle">AI Victim Support System | Civic Tech Project | Social Good × Technology</div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <a href="#p1">1. Self-Introduction</a>
+    <a href="#p2">2. Features (17 Crime Types + AI 5-Role System)</a>
+    <a href="#p3">3. Development Story</a>
+    <a href="#p4">4. Grant Application & Partnership Pipeline</a>
+    <a href="#p5">5. Tech Architecture & Database APP Guide</a>
+    <a href="#p6">6. Mobile Integration (GPS, Camera, Mic, SMS)</a>
+  </div>
+
+  <div class="section" id="p1">
+    <div class="section-title">1. Self-Introduction — What is LegalShield?</div>
+    <div class="section-body">
+      <p><b>LegalShield</b> is a FREE AI-powered support system for <strong>crime victims and rights violation victims</strong>.</p>
+      <p style="margin-top:8px">In Japan, over <b>2 million people</b> fall victim to crimes or rights violations annually, but <b>70%</b> say "I don't know who to talk to," "I don't have time to save evidence," or "I'm afraid the police will refuse to file my report"— they suffer alone. LegalShield was born to break that invisible wall.</p>
+
+      <div class="highlight">
+        <div class="highlight-title">Core Mission</div>
+        <div class="highlight-body">
+          Victims do not need to become legal experts.<br>
+          AI organizes the situation, preserves evidence, analyzes law, simulates strategy, and refers experts — <br>
+          so every victim can take the right next step within the "golden hours" after an incident.
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top:14px">
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <div class="title">24/7 · Free · Anonymous</div>
+          <div class="desc">No real name or address required. Open your phone and use it instantly.</div>
+        </div>
+        <div class="card">
+          <div class="icon">🤖</div>
+          <div class="title">AI 5-Role System</div>
+          <div class="desc">Emergency response, evidence preservation, legal analysis, strategy simulation, and expert referral — all in one.</div>
+        </div>
+        <div class="card">
+          <div class="icon">🔥</div>
+          <div class="title">Anti-Grafting Feature</div>
+          <div class="desc">AI auto-generates legal-basis reports and police negotiation scripts to prevent case dismissal.</div>
+        </div>
+        <div class="card">
+          <div class="icon">📊</div>
+          <div class="title">Japan's Largest Legal Database</div>
+          <div class="desc">623K national laws, 724K precedents, 885 e-Stat tables — instant RAG search.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Basic Information</div>
+    <table>
+      <tr><th>Item</th><th>Details</th></tr>
+      <tr><td>Project Name</td><td>LegalShield Civic Tech Project</td></tr>
+      <tr><td>Contact</td><td><b>kenji@hiiforest.com</b></td></tr>
+      <tr><td>GitHub</td><td>github.com/Fuilko/lawandbabysupport</td></tr>
+      <tr><td>Languages</td><td>Japanese (Traditional Chinese & English in development)</td></tr>
+      <tr><td>Coverage</td><td>All 47 prefectures of Japan (GPS-linked)</td></tr>
+      <tr><td>Cost</td><td><span class="badge badge-green">100% FREE for Victims</span></td></tr>
+      <tr><td>Data Processing</td><td><span class="badge badge-blue">On-device AI · Minimal Server Upload</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PAGE 2: Features -->
+<div class="page" id="p2">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">Feature Overview</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">2. AI 5-Role System</div>
+    <div class="section-body">
+      <p>LegalShield's AI simultaneously performs <b>5 expert roles</b>, supporting victims from incident occurrence through expert matching.</p>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Role</th><th>Function</th><th>Help for Victims</th></tr>
+    <tr>
+      <td><b>🚨 Emergency Responder</b></td>
+      <td>One-touch dial 110 / #8898 / #7119, GPS sharing, silent mode, 10-sec countdown auto-alert</td>
+      <td>In life-threatening moments, just press — no thinking required</td>
+    </tr>
+    <tr>
+      <td><b>📁 Evidence Collector</b></td>
+      <td>Auto-organize photos, recordings, documents. SHA-256 hash, timestamp, GPS tag, AES-256 encryption, auto preservation certificate</td>
+      <td>Evidence never lost, never tampered, court-admissible</td>
+    </tr>
+    <tr>
+      <td><b>⚖️ Legal Analyst</b></td>
+      <td>RAG search 623K laws + 724K precedents, instant relevant article suggestion, auto crime classification</td>
+      <td>"What is my situation called in law?"</td>
+    </tr>
+    <tr>
+      <td><b>🧭 Strategy Simulator</b></td>
+      <td>Criminal complaint, civil suit, ADR mediation, administrative appeal, protection order — compare 5 paths by time, cost, success rate</td>
+      <td>"Which path is best for my current situation?"</td>
+    </tr>
+    <tr>
+      <td><b>🗺️ Expert Referral Navigator</b></td>
+      <td>GPS-linked matching to nearest support (bar associations, NPOs, legal aid, shelters), booking scripts, document checklist, fee waiver verification</td>
+      <td>"Who near me can help?"</td>
+    </tr>
+  </table>
+
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">17 Crime Types Covered</div>
+    <div class="section-body">
+      <p>LegalShield covers the <b>17 most common</b> crime and rights violation types in Japan. Each type includes golden hours, evidence checklists, perpetrator profiles, counter-argument manuals, and AI dialogue scripts.</p>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>#</th><th>Type</th><th>Japanese Law</th><th>Golden Hours</th></tr>
+    <tr><td>1</td><td>Domestic Violence (DV)</td><td>Penal Code Art.204 · DV Prevention Act</td><td>Immediately</td></tr>
+    <tr><td>2</td><td>Sexual Violence</td><td>Penal Code Arts.176-178-2</td><td>Immediately</td></tr>
+    <tr><td>3</td><td>Consumer Fraud / Scam</td><td>Penal Code Art.246 · Organized Crime Punishment Act</td><td>72 hours</td></tr>
+    <tr><td>4</td><td>Workplace Power Harassment</td><td>Labor Standards Act Art.99 · Power Harassment Prevention Act</td><td>Ongoing</td></tr>
+    <tr><td>5</td><td>Child Abuse</td><td>Child Abuse Prevention Act · Child Welfare Act</td><td>Immediately</td></tr>
+    <tr><td>6</td><td>Cybercrime / Online Bullying</td><td>Penal Code Arts.230 · 231</td><td>24 hours</td></tr>
+    <tr><td>7</td><td>Stalking</td><td>Stalker Regulation Act · Penal Code Art.222</td><td>Immediately</td></tr>
+    <tr><td>8</td><td>Drug Victimization / Addiction</td><td>Stimulants Control Act, etc.</td><td>Ongoing</td></tr>
+    <tr><td>9</td><td>Hate Crime / Discrimination</td><td>Hate Speech Regulation Act</td><td>24 hours</td></tr>
+    <tr><td>10</td><td>Human Trafficking</td><td>Prostitution Prevention Act · Penal Code Art.226-2</td><td>Immediately</td></tr>
+    <tr><td>11</td><td>Illegal Confinement / Surveillance</td><td>Penal Code Art.220</td><td>Immediately</td></tr>
+    <tr><td>12</td><td>Property Damage</td><td>Penal Code Art.261</td><td>Immediately</td></tr>
+    <tr><td>13</td><td>Threats / Extortion</td><td>Penal Code Art.222</td><td>Immediately</td></tr>
+    <tr><td>14</td><td>Unauthorized Access / Data Breach</td><td>Unauthorized Access Prohibition Act</td><td>72 hours</td></tr>
+    <tr><td>15</td><td>Deepfake / AI Misuse</td><td>Penal Code Art.175 · Portrait Rights</td><td>24 hours</td></tr>
+    <tr><td style="color:#c0392b;font-weight:700">16</td><td style="color:#c0392b;font-weight:700">Molestation / Transit Sexual Crime</td><td>Penal Code Art.176 · Nuisance Prevention Ordinances</td><td>Immediately</td></tr>
+    <tr><td style="color:#c0392b;font-weight:700">17</td><td style="color:#c0392b;font-weight:700">Indecent Exposure</td><td>Penal Code Art.174 · Nuisance Prevention Ordinances</td><td>Immediately</td></tr>
+  </table>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">📋 Future Expansion: Civil & Administrative Law (H2 2026~)</div>
+    <div class="highlight-body">
+      In addition to <b>criminal law</b>, we plan to cover <b>Product Liability (PL)</b>, <b>Labor Law Violations</b>, <b>Breach of Sales Contract</b>, <b>Breach of Trust</b>, <b>Environmental Law</b>, and <b>Administrative Appeals</b>.<br>
+      The developer (Kochi Univ. Master's, PhD candidate) leverages Japan's research database access to deepen precedent analysis, covering all "victimizations" across Criminal, Civil, and Administrative law.
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:16px">
+    <div class="highlight-title">🛡️ Unique Feature: Anti-Grafting (Prevent Case Dismissal)</div>
+    <div class="highlight-body">
+      Before the victim goes to the police station, AI auto-generates a "Legal Basis Report" and "Police Negotiation Script":<br>
+      • Police: "This is civil." → You counter with the applicable Penal Code article.<br>
+      • Police: "Insufficient evidence." → You explain that filing a report does NOT require complete evidence.<br>
+      • Police: "We'll record it as a consultation." → You demand a formal acceptance number.<br>
+      If still refused, AI auto-generates complaints to the Prefectural Public Safety Commission and the Prosecution Review Board.
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: Development Story -->
+<div class="page" id="p3">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">Development Story</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">3. Developer Profile — A ¥68M Lesson That Became a Weapon for the Weak</div>
+    <div class="section-body">
+      <p style="margin-top:10px; text-align:center; font-weight:600; color:#c0392b; font-size:15px">
+        This document is not just a project proposal.<br>
+        It is a declaration of uprising from someone who has faced the wall of justice alone.<br>
+      </p>
+
+      <p style="margin-top:10px">
+        <b>Who am I?</b> I am Kenji (Liu Chien-Chih) — a Master's student at Kochi University Forestry Engineering Lab, CEO of Hi-i Forest Co., Ltd., and a survivor of a ¥68 million corporate fraud.<br>
+        I studied <b>criminal neuroscience</b>, <b>criminal/civil/environmental law</b>, and once dreamed of becoming a prosecutor. I have managed factory safety at <b>Apple and NIKE</b>, and hold a technical partnership with Taiwan's <b>TEAMS 5</b> (cybersecurity).<br>
+        I am not a stranger to law, technology, or business. <b>Yet even I was powerless.</b>
+      </p>
+
+      <div class="highlight">
+        <div class="highlight-title" style="color:#c0392b">⚠️ The Catalyst: A ¥68 Million Corporate Fraud</div>
+        <div class="highlight-body">
+          On February 3, 2026, a drone I purchased for forestry surveying crashed in Taiwan due to a <b>design defect</b>.<br>
+          Investigation revealed the manufacturer had concealed <b>34 safety defects</b> — including disabled battery protections, a magnetometer 5x over safety limits, and a "0.0.0" development firmware shipped as production-ready.<br>
+          Administrative agencies and consumer protection bodies were <b>powerless</b> to act. The manufacturer threatened supply cutoff and dismissed all responsibility.<br>
+          I searched over a dozen law firms across Kochi, Osaka, and Tokyo. <b>None could help at a price I could afford.</b><br>
+          Currently litigating simultaneously in <b>Taiwan and Japan</b> (breach of trust / property damage).
+        </div>
+      </div>
+
+      <p style="margin-top:10px">
+        <b>This ¥68 million disaster was the catalyst.</b><br>
+        I personally <b>disassembled the drone's firmware line by line</b>, <b>analyzed Japanese civil and administrative law</b>, and <b>built a forensic evidence database</b> that grew to thousands of pages.<br>
+        Without this nightmare, I would never have understood how desperate ordinary people feel when they stand before the judicial wall with no money, no knowledge, and no ally.
+      </p>
+
+      <div class="highlight">
+        <div class="highlight-title">💡 The Equivalent Exchange</div>
+        <div class="highlight-body">
+          <b>A forestry project was destroyed.</b> But from its ashes rose something far more powerful:<br>
+          <b>LegalShield</b> — a system to fight the "locust effect" of corporate fraud, to empower those with no voice, and to ensure no one faces injustice alone.<br>
+          <span style="color:#c0392b; font-weight:600">One industry project lost. A social safety net born.</span>
+        </div>
+      </div>
+
+      <p style="margin-top:10px">
+        I raise <b>4 daughters</b> in Kochi Prefecture — the land of the Kuroshio Current, far from Tokyo's legal resources.<br>
+        I feel the <b>overwhelming resource gap</b> between urban and rural areas every single day. Regional revitalization is not just economics. <b>Law, healthcare, and justice</b> are distant dreams for rural families.<br>
+        Especially for <b>women, children, and the elderly</b>, proper legal support is orders of magnitude harder to access than in cities.
+      </p>
+
+      <p style="margin-top:10px; text-align:center; font-weight:600">
+        This is why LegalShield exists:<br>
+      </p>
+      <div class="highlight">
+        <div class="highlight-body" style="text-align:center;font-size:16px;font-weight:600; color:#1a2a6c">
+          "When public power fails to protect ordinary people,<br>technology must become a weapon in the hands of the weak."<br>
+          <span style="font-size:12px;font-weight:400; color:#555">— Kenji (Liu Chien-Chih), May 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">4 Core Observations</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">📉</div>
+        <div class="title">Observation 1: System Gaps</div>
+        <div class="desc">
+          Japan has 2M+ victims annually, but Legal Aid is weekdays 10-16 only, NPOs have regional gaps,
+          and police case dismissal is frequent. Victims receive almost no structured support within the 24-72 hour "golden time."
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">💻</div>
+        <div class="title">Observation 2: Tech Inequality</div>
+        <div class="desc">
+          Enterprise Legal Tech (e.g., Legalscape) is mature, but targets "companies that can hire lawyers."
+          Ordinary citizens, victims, and the vulnerable are the ones left behind by technology.
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">🧠</div>
+        <div class="title">Observation 3: AI Potential</div>
+        <div class="desc">
+          In 2025-2026, AI (LLM) became capable of high-quality legal document analysis, strategy simulation, and multilingual dialogue.
+          This capability should not belong only to large corporations — it must be open to everyone who needs help.
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">⚖️</div>
+        <div class="title">Observation 4: Urban-Rural Gap</div>
+        <div class="desc">
+          In rural areas like Kochi Prefecture, access to lawyers, NPOs, and support agencies is extremely limited.
+          For female victims, parents, and the elderly, resources in Tokyo and Osaka are distant, with overwhelming travel costs and time constraints.
+          Delivering the power of law to rural areas digitally is an urgent priority.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Development Timeline</div>
+    <table>
+      <tr><th>Date</th><th>Milestone</th></tr>
+      <tr><td>Feb 2026</td><td>Developer personally experienced a drone accident in Taiwan, discovered 34 safety defects. Began researching Japan's legal and victim support systems.</td></tr>
+      <tr><td>Mar 2026</td><td>LegalShield concept: AI × Victim Support × Anti-Grafting. Combined personal litigation/ADR preparation experience with mass evidence management expertise.</td></tr>
+      <tr><td>Apr 2026</td><td>Started crawling national laws (e-LAWS XML 623K items), precedents, and statistics. Leveraged Kochi University research database access.</td></tr>
+      <tr><td>Early May 2026</td><td>Completed vector database (LanceDB), RAG search system, and AI 5-role prototype.</td></tr>
+      <tr><td>Mid-May 2026</td><td>Completed emergency mode design, anti-grafting feature, 17-type crime taxonomy (criminal law focus), and perpetrator profile database.</td></tr>
+      <tr><td>Late May 2026</td><td>(Planned) Grant applications, partnership development, TEAMS 5 tech collaboration, and pilot operations.</td></tr>
+      <tr><td>H2 2026</td><td>(Planned) Expansion into civil/administrative law, deeper precedent research, PhD enrollment, and academic collaboration.</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Future Expansion — Beyond Criminal Law to Civil & Administrative Law</div>
+    <div class="section-body">
+      <p>LegalShield currently focuses on <b>17 crime types (criminal law)</b>, but will expand to the following areas:</p>
+      <ul style="margin-left:20px;margin-top:8px">
+        <li><b>Product Liability (PL) Law</b> — Product defect damage and recall response</li>
+        <li><b>Labor Law Violations</b> — Unfair dismissal, wage non-payment, labor accident concealment, power harassment</li>
+        <li><b>Breach of Sales Contract (Civil Law)</b> — Debt default and warranty liability</li>
+        <li><b>Breach of Trust / Trust Law Violations</b> — Director/officer breach of trust</li>
+        <li><b>Environmental Law Violations</b> — Soil/water pollution, illegal waste dumping</li>
+        <li><b>Administrative Law</b> — Administrative Appeals, State Compensation, Information Disclosure Requests</li>
+        <li><b>Deepened Precedent Research</b> — Leveraging Kochi University database access to integrate latest precedents in real time across all domains.</li>
+      </ul>
+      <p style="margin-top:10px">
+        <b>The developer is currently enrolled in a Master's program at Kochi University and plans to pursue a PhD.</b><br>
+        Aiming to integrate academic research and Civic Tech, leveraging full access to Japan's research databases to<br>
+        dramatically improve the accuracy and comprehensiveness of the legal AI.
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Social Mission First, Revenue Follows</div>
+    <div class="section-body">
+      <p>LegalShield's business model is <b>"permanently free for victims."</b> Revenue sources:</p>
+      <ul style="margin-left:20px;margin-top:8px">
+        <li>Premium case referral subscription for lawyers and NPOs</li>
+        <li>Municipal GovTech SaaS (consultation support system)</li>
+        <li>Anonymized data insight reports (for academia and policy)</li>
+        <li>Victim-oriented insurance and financial brokerage</li>
+      </ul>
+      <p style="margin-top:10px"><b>Social mission is paramount; revenue is a byproduct of that mission.</b></p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: Grant Application & Partnership -->
+<div class="page" id="p4">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">Application Guide, Email Templates & Pipeline</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">4. Grant & Subsidy Application Windows</div>
+    <div class="section-body">
+      <p>LegalShield is currently at the <strong>prototype-complete, pilot-ready</strong> stage. Seed funding for proof-of-concept is needed. Applications can be submitted to the following organizations:</p>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Priority</th><th>Organization</th><th>Amount</th><th>How to Apply</th><th>Fit</th></tr>
+    <tr>
+      <td><span class="badge badge-red">Highest</span></td>
+      <td><b>Toyota Foundation</b><br>General Grant</td>
+      <td>¥1M-5M</td>
+      <td>Web application<br>1-2 rounds/year</td>
+      <td>Social issue resolution, technology utilization, human rights support</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-red">Highest</span></td>
+      <td><b>ITO EN Holdings</b><br>Social Contribution Grant</td>
+      <td>¥500K-3M</td>
+      <td>Web application<br>1 round/year</td>
+      <td>Community, human rights, vulnerable group support</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-green">High</span></td>
+      <td><b>DBJ (Development Bank of Japan)</b><br>Innovation Grant</td>
+      <td>¥5M-20M</td>
+      <td>Web / Contact<br>Ongoing</td>
+      <td>Civic Tech, data utilization, social issues</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-green">High</span></td>
+      <td><b>Cabinet Office Regional Revitalization</b><br>Subsidy</td>
+      <td>¥1M-10M</td>
+      <td>Via municipality or direct<br>Ongoing</td>
+      <td>Regional revitalization, digitalization, victim support</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-blue">Medium</span></td>
+      <td><b>Google.org Impact Challenge</b></td>
+      <td>$100K-500K<br>(~¥15M-75M)</td>
+      <td>Web application<br>1 round/year</td>
+      <td>Technology × Social Impact</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-blue">Medium</span></td>
+      <td><b>Microsoft AI for Good</b></td>
+      <td>$50K-500K<br>(~¥7.5M-75M)</td>
+      <td>Web application<br>1 round/year</td>
+      <td>AI × Social Impact</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-blue">Medium</span></td>
+      <td><b>Meta Community Grants</b></td>
+      <td>$10K-100K<br>(~¥1.5M-15M)</td>
+      <td>Web application<br>1 round/year</td>
+      <td>Safety & Human Rights Tech</td>
+    </tr>
+  </table>
+
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">4.2 Partnership Development</div>
+    <div class="section-body">
+      <p>LegalShield is recruiting <strong>bar associations, NPOs, support facilities, municipalities, and universities</strong> as partners.</p>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>Target</th><th>Contact</th><th>Scope</th></tr>
+    <tr>
+      <td><b>Japan Federation of Bar Associations</b></td>
+      <td>Prefectural bar associations<br>Relevant dept.</td>
+      <td>Case referral agreements, legal content review, victim consultation referrals</td>
+    </tr>
+    <tr>
+      <td><b>Japan Legal Support Center</b></td>
+      <td>Local legal aid centers<br>General Affairs</td>
+      <td>Public aid coordination, GPS matching of free legal consultation windows</td>
+    </tr>
+    <tr>
+      <td><b>DV Support Centers</b><br>(~120 nationwide)</td>
+      <td>Prefectural DV counseling & support centers</td>
+      <td>Emergency referral linkage, shelter info API integration</td>
+    </tr>
+    <tr>
+      <td><b>Child Consultation Centers</b></td>
+      <td>Municipal child consultation centers</td>
+      <td>Child abuse reporting, #7119 linkage, child welfare data integration</td>
+    </tr>
+    <tr>
+      <td><b>Universities & Research Institutes</b></td>
+      <td>Law / Social Welfare faculties<br>Criminology research centers</td>
+      <td>Academic research collaboration, J-STAGE paper analysis, policy recommendations</td>
+    </tr>
+    <tr>
+      <td><b>Municipalities</b></td>
+      <td>Municipalities<br>ICT Promotion / Civic Collaboration depts.</td>
+      <td>GovTech SaaS sales, regional victim data visualization</td>
+    </tr>
+  </table>
+
+  <div class="contact-box" style="margin-top:24px">
+    <div class="title">📧 LegalShield Contact</div>
+    <div class="item"><span class="label">Project Email:</span> kenji@hiiforest.com</div>
+    <div class="item"><span class="label">GitHub：</span>github.com/Fuilko/lawandbabysupport</div>
+    <div class="item"><span class="label">Application Inquiry:</span> Send "Organization name / desired partnership / contact" to the email above</div>
+    <div class="item"><span class="label">Response:</span> Within 3 business days</div>
+  </div>
+
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">4.3 Detailed Organization Info, URLs & Application Advice</div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">🚗 Toyota Foundation (General Grant) — Highest Priority</div>
+    <div class="highlight-body">
+      <b>Official URL:</b><a href="https://www.toyotafound.or.jp/">https://www.toyotafound.or.jp/</a><br>
+      <b>Application Portal:</b>Web application (online) / 1-2 rounds per year (usually Mar & Sep)<br>
+      <b>Contact:</b>03-5405-6070 (Weekdays 9:30-17:30)<br>
+      <b>Application Advice:</b><br>
+      • Strength: "Social issue resolution × Technology × Human rights." Focus on "who will be saved" rather than technical details.<br>
+      • Include keywords: "victim support," "regional revitalization," "women & children support."<br>
+      • If no track record, cover with "concrete pilot plan." Emphasize proof-of-concept in Kochi Prefecture.<br>
+      • Realistic amount: ¥3-5M. Avoid overly large amounts.<br>
+      • Attachments: Project intro HTML (ONE_PAGER) + 3-min video + representative profile.
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">🍵 ITO EN Holdings (Social Contribution Grant) — Highest Priority</div>
+    <div class="highlight-body">
+      <b>Official URL:</b><a href="https://www.itoen-holdings.co.jp/sustainability/society/">https://www.itoen-holdings.co.jp/sustainability/society/</a><br>
+      <b>Application Portal:</b>Web application / 1 round per year (usually Apr-May)<br>
+      <b>Contact:</b>Sustainability Promotion Dept (via email inquiry form)<br>
+      <b>Application Advice:</b><br>
+      • Appeals connecting to corporate values: "coexistence with nature," "community development," "human rights respect."<br>
+      • Tie to regional revitalization in Kochi / Shikoku. Appeal to solving rural, not just urban, problems.<br>
+      • Depict concrete beneficiary personas: "parents raising children," "female victims."<br>
+      • Appropriate amount: ¥1-3M. Align with beverage industry social contribution image.
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">🏦 DBJ (Innovation Grant) — High Priority</div>
+    <div class="highlight-body">
+      <b>Official URL:</b><a href="https://www.dbj.jp/">https://www.dbj.jp/</a><br>
+      <b>Application Portal:</b>Contact officer (inquiry required) / Ongoing<br>
+      <b>Contact:</b>Branch "New Business / Innovation" contact or HQ Planning Dept.<br>
+      <b>Application Advice:</b><br>
+      • Emphasize "business viability" of Civic Tech × Data × Social Issue Resolution. Clearly show revenue model (B2B2G).<br>
+      • Explain how ¥500M/year revenue in 5 years coexists with "permanently free for victims."<br>
+      • Highlight team technical capability (incl. TEAMS 5 partnership) and academic background (Kochi University).<br>
+      • Realistic amount: ¥5-20M. Business plan quality determines success.<br>
+      • Creating face-to-face opportunities is crucial. First approach as a "business consultation."
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">🏛️ Cabinet Office Regional Revitalization (Subsidy) — High Priority</div>
+    <div class="highlight-body">
+      <b>Official URL:</b><a href="https://www.kantei.go.jp/jp/singi/tiiki_sousei/">https://www.kantei.go.jp/jp/singi/tiiki_sousei/</a><br>
+      <b>Application Portal:</b>Via municipality or direct / Multiple rounds per year (varies by subsidy)<br>
+      <b>Contact:</b>Cabinet Office Regional Revitalization Bureau 03-3581-4111<br>
+      <b>Application Advice:</b><br>
+      • Multiple subsidy frameworks exist: "Regional Revitalization Grants," "Digital Rural-Urban Concept," etc.<br>
+      • Most realistic route: apply via Kochi Prefecture. First consult Kochi Pref. ICT Promotion Dept.<br>
+      • Appeal: "Victim support within Kochi Prefecture" and "administrative efficiency through digitalization."<br>
+      • GovTech SaaS adoption track record by municipalities adds further persuasiveness.
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">� Google.org Impact Challenge — Medium Priority</div>
+    <div class="highlight-body">
+      <b>Official URL:</b><a href="https://www.google.org/impactchallenge/">https://www.google.org/impactchallenge/</a><br>
+      <b>Application Portal:</b>Web application (English mandatory) / 1 round per year (timing varies by region)<br>
+      <b>Contact:</b>Online form only (direct email not recommended)<br>
+      <b>Application Advice:</b><br>
+      • <b>English application mandatory.</b> Japanese not accepted. English project intro (ONE_PAGER_EN) required.<br>
+      • Clear connection of "Technology × Social Impact" required. Show concrete AI examples (on-device inference, RAG search).<br>
+      • Emphasize "scalability." Hint at Asia expansion potential, not just Japan.<br>
+      • Amount: $100K-500K (~¥15M-75M). Show impact KPIs in concrete numbers.<br>
+      • Video pitch (under 2 min) mandatory. Tell developer's personal victim experience as a story.
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">💻 Microsoft AI for Good — Medium Priority</div>
+    <div class="highlight-body">
+      <b>Official URL:</b><a href="https://www.microsoft.com/en-us/ai/ai-for-good">https://www.microsoft.com/en-us/ai/ai-for-good</a><br>
+      <b>Application Portal:</b>Web application (English mandatory) / 1 round per year (usually Sep-Oct)<br>
+      <b>Contact:</b>Via online form<br>
+      <b>Application Advice:</b><br>
+      • <b>English application mandatory.</b> Showing Azure or Copilot integration is advantageous.<br>
+      • "AI × Social Issue" impact story is key. Focus on results (people helped, prevention rate) over technical details.<br>
+      • Cloud credits (Azure) may be provided, directly reducing infrastructure costs.<br>
+      • Joint application with partner organizations (NPOs, universities) is recommended.
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">📱 Meta Community Grants — Medium Priority</div>
+    <div class="highlight-body">
+      <b>Official URL:</b><a href="https://www.meta.com/community/grants/">https://www.meta.com/community/grants/</a><br>
+      <b>Application Portal:</b>Web application (English mandatory) / 1 round per year (usually summer)<br>
+      <b>Contact:</b>Via online form<br>
+      <b>Application Advice:</b><br>
+      • <b>English application mandatory.</b> Keywords: "online safety," "community protection."<br>
+      • Small grants ($10K-100K) but low application barrier, suitable for beginners.<br>
+      • Strong if linked to community events and awareness campaigns.<br>
+      • Propose combining with awareness campaigns using Meta platforms (Facebook/Instagram).
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:16px">
+    <div class="highlight-title"> Application Tips</div>
+    <div class="highlight-body">
+      1. <b>Simultaneous Multi-Apply</b>: Apply to 3-5 grants at once, not just one.<br>
+      2. <b>Storytelling</b>: Don't just talk tech — tell "who, what harm, and how saved."<br>
+      3. <b>Speak with Numbers</b>: 623K laws, 724K precedents, 17 crime types, anti-grafting — concrete numbers build credibility.<br>
+      4. <b>Attach a Demo</b>: 3-min video + ONE_PAGER.html minimizes reviewer burden.<br>
+      5. <b>Email Inquiry First</b>: Before formal application, make contact via inquiry email to understand needs.<br>
+      6. <b>Follow-up on No Reply</b>: After 2 weeks, send a polite follow-up. Calling the contact directly also works.
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 5: Tech Architecture -->
+<div class="page" id="p5">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">Tech Architecture & Database APP Guide</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">5. System Architecture Overview</div>
+    <div class="section-body">
+      <p>LegalShield adopts a <b>"device-first, minimal server"</b> architecture to protect victim privacy.</p>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="icon">📱</div>
+      <div class="title">Frontend (APP / Web)</div>
+      <div class="desc">React Native or Flutter (mobile APP)<br>Streamlit / Next.js (web prototype)<br>All sensitive data processed on-device</div>
+    </div>
+    <div class="card">
+      <div class="icon">🧠</div>
+      <div class="title">AI Engine (On-Device)</div>
+      <div class="desc">ONNX Runtime / TensorFlow Lite<br>5-role inference model<br>Offline capable (basement, airplane mode)</div>
+    </div>
+    <div class="card">
+      <div class="icon">💾</div>
+      <div class="title">Vector Database (Device + Server)</div>
+      <div class="desc">LanceDB (device cache)<br>623K laws · 724K precedents · 885 stat tables<br>Instant RAG search</div>
+    </div>
+    <div class="card">
+      <div class="icon">☁️</div>
+      <div class="title">Backend (Server)</div>
+      <div class="desc">FastAPI + Python<br>AWS Tokyo Region<br>Anonymized stats only · minimal data stored</div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">5.1 How to Embed the Database into an APP?</div>
+    <div class="section-body">
+      <p><b>Step 1: Choose an APP Framework</b></p>
+      <table>
+        <tr><th>Framework</th><th>Pros</th><th>Cons</th><th>Rating</th></tr>
+        <tr><td><b>Flutter</b></td><td>Single codebase for iOS + Android, high performance, flexible UI</td><td>Requires learning Dart</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td><b>React Native</b></td><td>JavaScript ecosystem, many developers, rich libraries</td><td>Slightly lower performance, version fragmentation</td><td>⭐⭐⭐⭐</td></tr>
+        <tr><td><b>PWA (Web APP)</b></td><td>Fastest release, no review, web-to-app instantly</td><td>Native feature limitations</td><td>⭐⭐⭐⭐<br>Best for MVP</td></tr>
+      </table>
+
+      <p style="margin-top:14px"><b>Step 2: On-Device AI Inference (Offline Capable)</b></p>
+      <div class="highlight">
+        <div class="highlight-body">
+          The victim's phone may be in a <b>basement, airplane mode, or unstable signal area</b>.<br>
+          <b>ONNX Runtime Mobile</b> or <b>TensorFlow Lite</b> to convert AI models for on-device execution conversion.<br>
+          5-role inference completes entirely on-device; <b>recordings, photos, and location data are NEVER sent to servers</b>.
+        </div>
+      </div>
+
+      <p style="margin-top:14px"><b>Step 3: Device-Embedded Vector Database</b></p>
+      <div class="highlight">
+        <div class="highlight-body">
+          <b>LanceDB</b> supports embedded/serverless mode.<br>
+          623K law vectors compressed to <b>~500MB</b> on-device database.<br>
+          Sync at first download, then incremental updates only (~10-50MB/week).<br>
+          Legal search completes on-device with zero network latency.
+        </div>
+      </div>
+
+      <p style="margin-top:14px"><b>Step 4: On-Device Encryption of Sensitive Data</b></p>
+      <div class="highlight">
+        <div class="highlight-body">
+          Evidence photos, recordings, dialogue records: <b>AES-256-GCM on-device encryption</b><br>
+          Key = user password + hardware binding (Secure Enclave / Keystore)<br>
+          The server can <b>never decrypt</b>. Even if the server is compromised, the data is meaningless.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">5.2 Tech Stack Overview</div>
+    <table>
+      <tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr>
+      <tr><td>APP Framework</td><td>Flutter or React Native</td><td>iOS + Android cross-platform</td></tr>
+      <tr><td>UI Design</td><td>Figma → Flutter Widgets</td><td>3 UI modes: elderly, standard, expert</td></tr>
+      <tr><td>AI Inference</td><td>ONNX Runtime Mobile / TensorFlow Lite</td><td>On-device 5-role inference</td></tr>
+      <tr><td>LLM</td><td>Phi-3 / Gemma-2B (quantized)</td><td>Small model · on-device · Japanese compatible</td></tr>
+      <tr><td>Vector DB</td><td>LanceDB (embedded)</td><td>On-device RAG search</td></tr>
+      <tr><td>Embedding</td><td>SentenceTransformer (all-MiniLM)</td><td>Text vectorization</td></tr>
+      <tr><td>Backend API</td><td>FastAPI (Python)</td><td>Auth, stats, expert matching</td></tr>
+      <tr><td>Cloud</td><td>AWS Tokyo Region</td><td>Domestic data center, compliance</td></tr>
+      <tr><td>Encryption</td><td>AES-256-GCM + TLS 1.3</td><td>Comm + storage encryption</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PAGE 6: Mobile Features -->
+<div class="page" id="p6">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">Mobile Integration Guide</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6. How to Call Smartphone Native Features?</div>
+    <div class="section-body">
+      <p>LegalShield uses GPS, camera, microphone, SMS, and other smartphone features. Implementation methods are as follows.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6.1 GPS Location</div>
+    <div class="section-body">
+      <p><b>Use:</b> nearest support search, emergency location send, evidence GPS tagging</p>
+      <table>
+        <tr><th>Platform</th><th>API / Package</th><th>Code Example</th></tr>
+        <tr>
+          <td><b>Flutter</b></td>
+          <td>`geolocator`</td>
+          <td><code>Position pos = await Geolocator.getCurrentPosition();<br>double lat = pos.latitude;<br>double lng = pos.longitude;</code></td>
+        </tr>
+        <tr>
+          <td><b>React Native</b></td>
+          <td>`@react-native-community/geolocation`</td>
+          <td><code>Geolocation.getCurrentPosition(pos => {<br>  const {latitude, longitude} = pos.coords;<br>});</code></td>
+        </tr>
+        <tr>
+          <td><b>PWA (Web)</b></td>
+          <td>Geolocation API</td>
+          <td><code>navigator.geolocation.getCurrentPosition(pos => {<br>  const {latitude, longitude} = pos.coords;<br>});</code></td>
+        </tr>
+      </table>
+      <div class="highlight" style="margin-top:10px">
+        <div class="highlight-title">⚠️ Privacy Protection Principles</div>
+        <div class="highlight-body">
+          • GPS coordinates are <b>NOT stored on server</b>, used only for on-device facility search<br>
+          • Emergency SMS sends only <b>prefecture/municipality-level</b> blurred location<br>
+          • Users can revoke location permission anytime. Other features remain usable after revocation
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6.2 Camera (Evidence Photography)</div>
+    <div class="section-body">
+      <p><b>Use:</b> injury photos, accident scenes, property damage, LINE screenshot preservation</p>
+      <table>
+        <tr><th>Platform</th><th>API / Package</th><th>Description</th></tr>
+        <tr>
+          <td><b>Flutter</b></td>
+          <td>`image_picker` + `camera`</td>
+          <td>Auto-embed <b>timestamp + GPS coordinates + SHA-256 hash</b> watermark after capture</td>
+        </tr>
+        <tr>
+          <td><b>React Native</b></td>
+          <td>`react-native-image-picker`</td>
+          <td>Auto-attach tamper-proof metadata (EXIF + digital signature)</td>
+        </tr>
+        <tr>
+          <td><b>PWA</b></td>
+          <td>`&lt;input type="file" accept="image/*"&gt;`</td>
+          <td>Browser sandbox limitations. For web MVP. Native APP recommended for production.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6.3 Microphone (Recording & Voice Input)</div>
+    <div class="section-body">
+      <p><b>Use:</b> incident statement recording, call recording (with consent), AI voice dialogue</p>
+      <table>
+        <tr><th>Platform</th><th>API / Package</th><th>Description</th></tr>
+        <tr>
+          <td><b>Flutter</b></td>
+          <td>`flutter_sound` + `speech_to_text`</td>
+          <td>Real-time transcription during recording, AI auto keyword extraction</td>
+        </tr>
+        <tr>
+          <td><b>React Native</b></td>
+          <td>`@react-native-voice/voice`</td>
+          <td>Google Speech-to-Text integration, high-accuracy Japanese</td>
+        </tr>
+      </table>
+      <div class="highlight" style="margin-top:10px">
+        <div class="highlight-title">🔒 Recording Privacy Design</div>
+        <div class="highlight-body">
+          • Recording files are <b>NOT uploaded to server</b>; on-device Whisper model transcribes, then audio files are deleted<br>
+          • Only text summaries uploaded (anonymized keywords like "DV, injury, yesterday, husband")<br>
+          • Call recording requires consent from both parties (consent dialog shown in APP)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6.4 SMS Short Message (Emergency Alert)</div>
+    <div class="section-body">
+      <p><b>Use:</b> auto-send to trusted contacts and support agencies after 10-sec countdown</p>
+      <table>
+        <tr><th>Platform</th><th>API / Package</th><th>Code Example</th></tr>
+        <tr>
+          <td><b>Flutter</b></td>
+          <td>`flutter_sms`</td>
+          <td><code>sendSMS(message: msg, recipients: ["080-XXXX-XXXX"]);</code></td>
+        </tr>
+        <tr>
+          <td><b>React Native</b></td>
+          <td>`react-native-sms`</td>
+          <td>Same as above, calls system SMS to send</td>
+        </tr>
+      </table>
+      <div class="highlight" style="margin-top:10px">
+        <div class="highlight-title">📱 Silent Mode</div>
+        <div class="highlight-body">
+          • Emergency SMS sent <b>silently</b>, no sound or vibration<br>
+          • To ensure the perpetrator does not notice the victim is calling for help<br>
+          • SMS body template:<br>
+          <i>"[AUTO-SEND] ○○ (name) has encountered an emergency.<br>Location: Tokyo ○○ Ward (GPS coordinates not sent)<br>Time: 2026/05/14 14:32<br>This message was auto-generated."</i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6.5 Permission Request List (iOS / Android)</div>
+    <table>
+      <tr><th>Feature</th><th>iOS Info.plist</th><th>Android AndroidManifest.xml</th></tr>
+      <tr><td>GPS</td><td>`NSLocationWhenInUseUsageDescription`<br>`NSLocationAlwaysUsageDescription`</td><td>`ACCESS_FINE_LOCATION`<br>`ACCESS_COARSE_LOCATION`</td></tr>
+      <tr><td>Camera</td><td>`NSCameraUsageDescription`</td><td>`CAMERA`</td></tr>
+      <tr><td>Microphone</td><td>`NSMicrophoneUsageDescription`</td><td>`RECORD_AUDIO`</td></tr>
+      <tr><td>SMS</td><td>No special declaration (calls system SMS app)</td><td>`SEND_SMS`</td></tr>
+      <tr><td>Notifications</td><td>`UNUserNotificationCenter`</td><td>`POST_NOTIFICATIONS`</td></tr>
+      <tr><td>Biometrics</td><td>`NSFaceIDUsageDescription`</td><td>`USE_BIOMETRIC`</td></tr>
+    </table>
+  </div>
+
+  <div class="contact-box" style="margin-top:24px">
+    <div class="title">📚 Technical Consultation & Developer Recruitment</div>
+    <div class="item">LegalShield is recruiting Flutter / React Native engineers, AI engineers, and security engineers.</div>
+    <div class="item"><span class="label">Technical Inquiry:</span> kenji@hiiforest.com (Subject: "Technical Inquiry")</div>
+    <div class="item"><span class="label">Open Source Contribution:</span> github.com/Fuilko/lawandbabysupport (PRs welcome)</div>
+  </div>
+
+  <div style="text-align:center;margin-top:32px;color:#6a7ab0;font-size:12px;">
+    LegalShield Civic Tech Project | May 2026<br>
+    "No One Should Face It Alone"
+  </div>
+</div>
+
+</body>
+</html>
