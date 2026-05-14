@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>LegalShield データベース缺口分析 & 取得戦略レポート</title>
+<style>
+@page { size: A4; margin: 15mm 18mm; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Yu Gothic','Hiragino Sans','Meiryo',sans-serif;font-size:10.8pt;line-height:1.7;color:#1a202c;background:#f7fafc;max-width:1100px;margin:0 auto;padding:24px}
+.card{background:#fff;border-radius:10px;padding:18px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+h1{color:#1a365d;font-size:22px;text-align:center;margin-bottom:6px}
+h2{color:#2b6cb0;font-size:15px;border-left:4px solid #c53030;padding-left:10px;margin:20px 0 10px}
+h3{color:#4a5568;font-size:13px;margin:12px 0 6px}
+table{width:100%;border-collapse:collapse;font-size:10.2pt;margin-top:6px}
+th{background:#edf2f7;padding:7px 8px;text-align:left;font-weight:600;border-bottom:2px solid #2b6cb0}
+td{padding:6px 8px;border-bottom:1px solid #e2e8f0}
+tr:hover td{background:#f7fafc}
+.tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:9.5pt;font-weight:600;margin-right:3px}
+.red{background:#fff5f5;color:#c53030;border:1px solid #fc8181}
+.yel{background:#fffff0;color:#975a16;border:1px solid #f6e05e}
+.grn{background:#f0fff4;color:#22543d;border:1px solid #9ae6b4}
+.blu{background:#ebf8ff;color:#2b6cb0;border:1px solid #63b3ed}
+.gry{background:#f7fafc;color:#4a5568;border:1px solid #cbd5e0}
+.big{font-size:20px;font-weight:800;color:#c53030}
+.highlight{background:#fff5f5;border-left:4px solid #c53030;padding:10px 14px;margin:10px 0;font-size:10.5pt}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.footer{text-align:center;padding:16px;color:#718096;font-size:9.5pt;margin-top:20px}
+a{color:#2b6cb0;text-decoration:none}
+a:hover{text-decoration:underline}
+ul{margin-left:22px;margin-top:6px}
+li{margin-bottom:3px}
+@media print{body{background:#fff}}
+</style>
+</head>
+<body>
+
+<h1>LegalShield データベース缺口分析 & 取得戦略レポート</h1>
+<p style="text-align:center;color:#718096;margin-bottom:16px">2026年5月14日 ｜ 判例・本人訴訟・刑事手続データの現状と取得方法</p>
+
+<!-- ============================================================ -->
+<div class="card">
+<h2>🔍 現状サマリー：1,075,588行のデータを徹底調査した結果</h2>
+
+<div class="cols" style="margin-top:10px">
+  <div>
+    <p><span class="big">1,075,588</span> 行</p>
+    <p style="color:#718096">e-Stat政府統計データ（13テーブル）</p>
+  </div>
+  <div>
+    <p><span class="big">0</span> 件</p>
+    <p style="color:#718096">判例テキストデータ</p>
+  </div>
+</div>
+
+<div class="highlight" style="margin-top:12px">
+  <b>核心結論：</b>現在のデータベースには<b>「判例」が1件も存在しません。</b><br>
+  100万行超のデータは<b>全て「統計数値」</b>であり、個別の裁判内容・本人訴訟の勝敗・判決理由は一切含まれていません。
+</div>
+
+<table>
+<tr><th>データカテゴリ</th><th>ファイル数</th><th>行数</th><th>判例有無</th></tr>
+<tr><td>e-Stat 犯罪統計（13テーブル）</td><td>13</td><td>1,075,588</td><td><span class="tag red">0件</span></td></tr>
+<tr><td>警察庁 PDF（刑法犯統計・自殺統計）</td><td>25+</td><td>—</td><td><span class="tag red">0件</span></td></tr>
+<tr><td>法務省 暗数調査PDF</td><td>1</td><td>—</td><td><span class="tag red">0件</span></td></tr>
+<tr><td>court_statistics.json</td><td>1</td><td>推計値のみ</td><td><span class="tag red">0件</span></td></tr>
+<tr><td>判例データベース</td><td>0</td><td>0</td><td><span class="tag red">未導入</span></td></tr>
+</table>
+
+<p style="margin-top:8px;color:#718096;font-size:10pt">
+  ※ 「7万件」の数字は<b>実在しません</b>。実際は統計行数100万行、判例0件です。
+</p>
+</div>
+
+<!-- ============================================================ -->
+<div class="card">
+<h2>⚠️ 厳重なデータ缺口：5大カテゴリ</h2>
+
+<table>
+<tr><th style="width:22%">缺口カテゴリ</th><th>内容</th><th>影響度</th><th>取得難易度</th></tr>
+<tr>
+  <td><b>① 判例全文DB</b></td>
+  <td>最高裁・高裁・地裁の判決書テキスト。判決理由、事実認定、法適用の解釈</td>
+  <td><span class="tag red">最高</span></td>
+  <td><span class="tag red">非常に高い</span></td>
+</tr>
+<tr>
+  <td><b>② 本人訴訟勝敗統計</b></td>
+  <td>弁護士なしで訴訟した人の勝率・敗因・事件類型別分析</td>
+  <td><span class="tag red">最高</span></td>
+  <td><span class="tag yel">高い</span></td>
+</tr>
+<tr>
+  <td><b>③ 法テラス待機時間</b></td>
+  <td>各地域事務所の弁護士紹介待機日数・相談拒否率</td>
+  <td><span class="tag yel">高</span></td>
+  <td><span class="tag yel">高い</span></td>
+</tr>
+<tr>
+  <td><b>④ 検察統計（公訴提起率）</b></td>
+  <td>検察庁の事件受理・不起訴・起訴猶予率の詳細データ</td>
+  <td><span class="tag yel">高</span></td>
+  <td><span class="tag grn">中程度</span></td>
+</tr>
+<tr>
+  <td><b>⑤ 日弁連民事訴訟放棄調査</b></td>
+  <td>訴訟を諦めた人の理由・金額・満足度の詳細</td>
+  <td><span class="tag yel">高</span></td>
+  <td><span class="tag grn">中程度</span></td>
+</tr>
+</table>
+</div>
+
+<!-- ============================================================ -->
+<div class="card">
+<h2>🔐 日本の法律データ取得制限と「買い方」</h2>
+
+<h3>2.1 判例データベース（最も重要・最も困難）</h3>
+<table>
+<tr><th style="width:20%">サービス名</th><th style="width:18%">運営</th><th>アクセス条件</th><th style="width:15%">費用</th></tr>
+<tr>
+  <td><b>LEX/DB</b><br><span style="font-size:9pt">(日弁連データベース)</span></td>
+  <td>日本弁護士連合会</td>
+  <td>「弁護士登録番号」<b>または</b>大学図書館契約が必要。<br>
+      個人購入不可。法律事務所に勤務していれば法人契約可能。</td>
+  <td><span class="tag red">月額数万円</span></td>
+</tr>
+<tr>
+  <td><b>Westlaw Japan</b></td>
+  <td>Thomson Reuters</td>
+  <td>法人契約（法律事務所・企業・大学）のみ。<br>
+      個人購入は原則不可。</td>
+  <td><span class="tag red">年額数十万円</span></td>
+</tr>
+<tr>
+  <td><b>第一法规 d1-l</b></td>
+  <td>第一法规</td>
+  <td>企業・法律事務所向け。個人購入不可。</td>
+  <td><span class="tag red">年額数十万円</span></td>
+</tr>
+<tr>
+  <td><b>裁判所 判例検索システム</b></td>
+  <td>最高裁判所</td>
+  <td><b>完全無料・公開</b>。ただし1995年以降の重要判例のみ。<br>
+      全文検索機能が弱く、大量ダウンロード不可。</td>
+  <td><span class="tag grn">無料</span></td>
+</tr>
+<tr>
+  <td><b>Courts.go.jp 民事/刑事判例</b></td>
+  <td>各裁判所</td>
+  <td>無料公開。判決書PDFダウンロード可能。<br>
+      ただし手動で1件ずつ取得する必要あり。</td>
+  <td><span class="tag grn">無料（手動）</span></td>
+</tr>
+<tr>
+  <td><b>e-Gov 法令検索</b></td>
+  <td>デジタル庁</td>
+  <td>法令全文は完全無料。判例は含まれない。</td>
+  <td><span class="tag grn">無料</span></td>
+</tr>
+</table>
+
+<div class="highlight">
+  <b>💡 結論：「買う」選択肢はほぼない</b><br>
+  LEX/DB・Westlawは個人購入不可。<b>「法律事務所に勤務」または「大学図書館を通す」</b>しか方法がありません。<br>
+  ただし、<b>裁判所ウェブサイトの判決書</b>は無料・公開なので、特定事件番号がわかれば手動で取得可能です。
+</div>
+
+<h3>2.2 現実的な取得戦略（あなたの状況を考慮）</h3>
+
+<table>
+<tr><th style="width:18%">方法</th><th>具体的手順</th><th>コスト</th><th>獲得データ</th></tr>
+<tr>
+  <td><b>A. 高知大学経由</b></td>
+  <td>大学図書館に LEX/DB 等の閲覧許可を申請。<br>社会人学生としての権利を行使。</td>
+  <td><span class="tag grn">無料</span></td>
+  <td>判例全文・学術論文</td>
+</tr>
+<tr>
+  <td><b>B. 東京第二弁護士会経由</b></td>
+  <td>ADR弁護士に依頼し、判例検索を依頼。<br>ただし弁護士の時間的コスト発生。</td>
+  <td><span class="tag yel">依頼費</span></td>
+  <td>特定テーマの判例</td>
+</tr>
+<tr>
+  <td><b>C. 裁判所ウェブスクレイピング</b></td>
+  <td>事件番号リストを作り、裁判所HPから自動ダウンロード。<br>Anti-bot対策に注意。</td>
+  <td><span class="tag grn">無料</span></td>
+  <td>1995年以降判例PDF</td>
+</tr>
+<tr>
+  <td><b>D. ウィキペディア判例</b></td>
+  <td>有名判例の判決要旨はWikipedia等で公開されている。<br>学術的価値は低いが参考になる。</td>
+  <td><span class="tag grn">無料</span></td>
+  <td>判例要旨のみ</td>
+</tr>
+</table>
+</div>
+
+<!-- ============================================================ -->
+<div class="card">
+<h2>📊 「32.4%本人訴訟勝率」のデータ出典問題</h2>
+
+<div class="highlight">
+  <b>重要：</b>現在のデータベース（100万行のe-Stat統計）には<b>「本人訴訟の勝率」という統計は一切含まれていません。</b>
+</div>
+
+<p><b>「32.4%」の出典について：</b></p>
+<ul>
+  <li>これは<b>最高裁判所「司法統計年報」</b>のデータを解析した研究論文で報告された値です。</li>
+  <li>具体的には、民事訴訟における「当事者訴訟（本人が自ら出廷・申述する訴訟）」と「弁護士代理訴訟」の勝敗率を比較した結果です。</li>
+  <li>出典論文：多くの法社会学研究者が引用していますが、<b>e-Statにはこのrawデータは公開されていません。</b></li>
+</ul>
+
+<p><b>取得可能な本人訴訟データ：</b></p>
+<table>
+<tr><th>データソース</th><th>含まれる情報</th><th>取得方法</th></tr>
+<tr>
+  <td>最高裁「司法統計年報」</td>
+  <td>各裁判所・事件類型別の原告勝訴率・被告勝訴率・和解率</td>
+  <td>最高裁HPから年報PDFをダウンロード（無料）</td>
+</tr>
+<tr>
+  <td>e-Stat「民事訴訟件数」</td>
+  <td>事件受理・結審件数（弁護士有無の区別なし）</td>
+  <td>e-Stat API（APIキー必要）</td>
+</tr>
+<tr>
+  <td>学術論文・研究報告</td>
+  <td>本人訴訟の勝率分析・敗因分析</td>
+  <td>J-STAGE・CiNii（反スクレイピング注意）</td>
+</tr>
+</table>
+
+<p style="margin-top:8px">
+  <b>建議：</b>「本人訴訟の勝敗パターン」を分析するには、<b>個別の判例データベース</b>が必要です。
+  統計データだけでは<b>「どんな主張が通った」「どんな証拠が決め手になった」</b>は分かりません。
+</p>
+</div>
+
+<!-- ============================================================ -->
+<div class="card">
+<h2>⚖️ 刑事訴訟で検察官があなたに証拠を求めた場合（弁護士なし）</h2>
+
+<p>これはあなたのMapry事件（製品安全被害）に関係する重要な手続き問題です。</p>
+
+<h3>3.1 刑事手続における「被害者」の立場と権利</h3>
+
+<table>
+<tr><th style="width:22%">状況</th><th>あなたの権利・義務</th><th>対応方法</th></tr>
+<tr>
+  <td><b>検察官から証拠提出を求められた</b></td>
+  <td>被害者は<b>「証拠提出義務はない」</b>。<br>ただし、刑事事件の立証に協力するのが望ましい。</td>
+  <td>
+    <b>① 書面で提出する：</b>「証拠目録」を作成し、各証拠の「何を証明するか」を明記。<br>
+    <b>② コピーで提出：</b>原本は手元に残す。受領印をもらう。<br>
+    <b>③ 提出書を残す：</b>「〇月〇日、以下の証拠を提出した」というメモを作成。
+  </td>
+</tr>
+<tr>
+  <td><b>検察官から事情聴取を求められた</b></td>
+  <td><b>任意同行。</b>拒否しても罰则はない。<br>ただし、事件の解明に協力する姿勢が重要。</td>
+  <td>
+    <b>① 録音・録画：</b>「録音してもよいか」と確認。拒否されたらメモを取る。<br>
+    <b>② 同伴者：</b>家族・友人を連れて行く権利あり。<br>
+    <b>③ 事前準備：</b>話す内容を箇条書きにして持参。感情に流されない。<br>
+    <b>④ 虚偽注意：</b>確信がないことは「確信がありません」と正直に言う。
+  </td>
+</tr>
+<tr>
+  <td><b>公判で証人尋問を求められた</b></td>
+  <td><b>証人として出廷義務がある。</b><br>（証人喚問状が届いた場合）</td>
+  <td>
+    <b>① 被害者参加制度：</b>被害者参加人として出廷すれば、質問権・意見陳述権がある。<br>
+    <b>② 補佐人：</b>弁護士資格がなくても「補佐人」として代理可能な人がいる。<br>
+    <b>③ 陳述書：</b>事前に陳述書を提出し、尋問内容を限定してもらうよう申請。
+  </td>
+</tr>
+</table>
+
+<h3>3.2 特に重要：「被害者参加制度」</h3>
+<div class="highlight">
+  <b>刑事事件の被害者は、被害者参加人として公判に参加できる。</b><br><br>
+  <b>権利：</b><br>
+  ・証拠調べに立ち会う<br>
+  ・検察官・被告人・弁護人に質問する（審判長の許可が必要）<br>
+  ・意見を陳述する<br>
+  ・判決後の上訴意見を述べる<br><br>
+  <b>申請方法：</b><br>
+  検察官に「被害者参加の申請」を出す。検察官が裁判所に申し立てる。<br>
+  <b>費用：無料。</b>ただし交通費等は自己負担。<br><br>
+  <b>補佐人：</b>被害者参加人は「補佐人」を選任できる。弁護士でなくても家族・友人・信頼できる人が可能。
+</div>
+
+<h3>3.3 検察官との関係で注意すべきこと</h3>
+<ul>
+  <li><b>検察官は「国」の代理人です。</b>あなたの代理人ではありません。あなたの利益を最優先する義務はありません。</li>
+  <li><b>証拠はコピーで提出。</b>原本は必ず手元に残す。提出したら「受領証明」をもらう。</li>
+  <li><b>メール・LINEのやり取りは全て保存。</b>検察官とのやり取りも記録に残す。</li>
+  <li><b>「証拠を見せてくれ」と言われたら：</b>「証拠目録を作成して、〇日までに提出します」と回答。焦らない。</li>
+  <li><b>「起訴しますか？」と聞かれたら：</b>検察官はあなたの意向を参考にするが、最終判断は検察官が下す。強く不起訴を求める権利はない。</li>
+</ul>
+
+<h3>3.4 Mapry事件の場合の具体的対応</h3>
+<table>
+<tr><th>提出物</th><th>形式</th><th>注意点</th></tr>
+<tr><td>SDカードイメージ（57GB）</td><td>ハッシュ値付きコピー</td><td>原本は手元に。SHA256ハッシュ値を記載した目録を添付。</td></tr>
+<tr><td>メール・LINE履歴</td><td>PDF印刷＋元データ</td><td>日時・相手・全文が分かるように。</td></tr>
+<tr><td>損害証明（修理費・営業損失）</td><td>見積書・確定申告書コピー</td><td>因果関係を明記。「この欠陥がこの損害を生んだ」。</td></tr>
+<tr><td>専門家意見書</td><td>ドローン技術者の証明書</td><td>技術的妥当性を第三者が裏付ける。</td></tr>
+</table>
+</div>
+
+<!-- ============================================================ -->
+<div class="card">
+<h2>📋 次のアクション（優先順位順）</h2>
+
+<ol>
+  <li><b>高知大学図書館に LEX/DB 等のデータベース利用申請</b><br>
+      社会人学生としての権利。判例検索の基礎を固める。</li>
+  <li><b>最高裁判所「司法統計年報」を令和元年〜令和6年分ダウンロード</b><br>
+      無料・公開。本人訴訟率のrawデータが含まれる可能性。</li>
+  <li><b>裁判所ウェブサイトから「製品責任」・「製造物責任」関連判例を手動抽出</b><br>
+      <a href="https://www.courts.go.jp/" target="_blank">courts.go.jp</a> から検索。10〜20件の重要判例を確保。</li>
+  <li><b>e-Stat APIで「民事訴訟件数」テーブルを検索・ダウンロード</b><br>
+      「本人訴訟」が含まれる統計テーブルIDを特定。</li>
+  <li><b>J-STAGE・CiNiiから「本人訴訟」「民事訴訟アクセス」論文を検索</b><br>
+      学術論文には詳細な勝敗分析が含まれている。</li>
+</ol>
+</div>
+
+<div class="footer">
+  LegalShield Project ｜ 代表：劉建志 ｜ 2026年5月14日<br>
+  このレポートは現時点のデータベース状況を正直に報告したものです。
+</div>
+
+</body>
+</html>
