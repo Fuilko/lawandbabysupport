@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>LegalShield — 初回ガイド</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#0b1020;
+  color:#e6ecff;
+  font-family:-apple-system,'Hiragino Sans','Yu Gothic UI','Noto Sans JP',sans-serif;
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+.screen{
+  display:none;
+  min-height:100vh;
+  padding:24px 20px;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  max-width:480px;
+  margin:0 auto;
+}
+.screen.active{display:flex}
+
+/* === Emergency Screen === */
+.emergency-bg{
+  background:radial-gradient(circle at center,#3a1020 0%,#0b1020 70%);
+}
+.emergency-btn{
+  width:200px;height:200px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ff4757,#c0392b);
+  border:none;
+  color:#fff;
+  font-size:22px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 0 40px rgba(255,71,87,0.4);
+  animation:pulse 2s infinite;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+}
+.emergency-btn .sub{font-size:12px;font-weight:400;opacity:0.9}
+@keyframes pulse{
+  0%{box-shadow:0 0 20px rgba(255,71,87,0.3);transform:scale(1)}
+  50%{box-shadow:0 0 60px rgba(255,71,87,0.6);transform:scale(1.03)}
+  100%{box-shadow:0 0 20px rgba(255,71,87,0.3);transform:scale(1)}
+}
+.emergency-btn:active{transform:scale(0.95)!important;animation:none}
+
+.countdown-ring{
+  width:220px;height:220px;
+  border-radius:50%;
+  border:6px solid #ff4757;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  position:relative;
+}
+.countdown-ring .num{font-size:72px;font-weight:700;color:#ff4757}
+.countdown-ring .label{font-size:14px;color:#e6ecff}
+.cancel-btn{
+  margin-top:40px;
+  padding:16px 48px;
+  border-radius:30px;
+  border:2px solid #7cf0c2;
+  background:transparent;
+  color:#7cf0c2;
+  font-size:16px;
+  cursor:pointer;
+}
+.silent-msg{
+  margin-top:20px;
+  padding:14px;
+  background:#172246;
+  border-radius:10px;
+  font-size:12px;
+  color:#9aa7d0;
+  text-align:center;
+  line-height:1.8;
+}
+
+/* === Triage Screens === */
+.progress-bar{
+  width:100%;height:4px;background:#172246;border-radius:2px;margin-bottom:32px;
+}
+.progress-bar .fill{
+  height:100%;background:#7cf0c2;border-radius:2px;
+  transition:width 0.4s ease;
+}
+.question{font-size:20px;font-weight:600;margin-bottom:24px;text-align:center;color:#fff}
+.options{width:100%;display:flex;flex-direction:column;gap:12px}
+.option-btn{
+  padding:18px 20px;
+  border-radius:14px;
+  border:1px solid #243260;
+  background:#121a33;
+  color:#e6ecff;
+  font-size:16px;
+  cursor:pointer;
+  text-align:left;
+  transition:all 0.2s;
+}
+.option-btn:hover,.option-btn.selected{
+  border-color:#7cf0c2;
+  background:#1a2345;
+}
+.option-btn .check{float:right;color:#7cf0c2;font-size:18px;display:none}
+.option-btn.selected .check{display:block}
+
+.nav-btns{
+  margin-top:auto;
+  padding-top:24px;
+  width:100%;
+  display:flex;
+  gap:12px;
+}
+.nav-btns button{
+  flex:1;
+  padding:16px;
+  border-radius:12px;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+}
+.back-btn{background:#172246;color:#9aa7d0}
+.next-btn{background:#7cf0c2;color:#0b1020;font-weight:700}
+.next-btn:disabled{background:#243260;color:#6a7ab0;cursor:not-allowed}
+
+/* === Consent Screen === */
+.consent-box{
+  width:100%;
+  background:#121a33;
+  border:1px solid #243260;
+  border-radius:14px;
+  padding:16px;
+  margin-bottom:16px;
+  max-height:300px;
+  overflow-y:auto;
+}
+.consent-box h4{color:#ffd166;margin-bottom:10px;font-size:14px}
+.consent-box p{font-size:12px;color:#9aa7d0;margin-bottom:10px;line-height:1.7}
+.consent-box ul{padding-left:18px;font-size:12px;color:#9aa7d0}
+.consent-box li{margin-bottom:6px}
+.checkbox-row{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:14px;background:#121a33;border-radius:10px;margin-bottom:10px;
+}
+.checkbox-row input[type="checkbox"]{
+  width:22px;height:22px;accent-color:#7cf0c2;flex-shrink:0;margin-top:2px;
+}
+.checkbox-row label{font-size:14px;line-height:1.6}
+.checkbox-row label .small{color:#6a7ab0;font-size:12px}
+
+/* === Voice Screen === */
+.mic-btn{
+  width:120px;height:120px;
+  border-radius:50%;
+  border:3px solid #ffd166;
+  background:#121a33;
+  color:#ffd166;
+  font-size:48px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.mic-btn.recording{
+  animation:mic-pulse 1.5s infinite;
+  background:#1a2345;
+}
+@keyframes mic-pulse{
+  0%{box-shadow:0 0 0 0 rgba(255,209,102,0.4)}
+  70%{box-shadow:0 0 0 20px rgba(255,209,102,0)}
+  100%{box-shadow:0 0 0 0 rgba(255,209,102,0)}
+}
+.transcript{
+  margin-top:24px;
+  padding:16px;
+  background:#172246;
+  border-radius:10px;
+  min-height:80px;
+  font-size:14px;
+  color:#e6ecff;
+}
+.ai-summary{
+  margin-top:16px;
+  padding:14px;
+  background:#0f1a36;
+  border-left:3px solid #7cf0c2;
+  border-radius:8px;
+  font-size:13px;
+}
+.ai-summary .title{color:#7cf0c2;font-weight:700;margin-bottom:6px}
+
+/* === Result Screen === */
+.role-cards{width:100%;display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.role-card{
+  padding:14px 16px;
+  background:#121a33;
+  border:1px solid #243260;
+  border-radius:10px;
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.role-card:hover{border-color:#7cf0c2;background:#1a2345}
+.role-card .icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.role-card .text{flex:1}
+.role-card .text .title{font-size:14px;font-weight:600}
+.role-card .text .desc{font-size:12px;color:#9aa7d0}
+.role-card .arrow{color:#6a7ab0}
+
+/* === General === */
+.app-title{text-align:center;margin-bottom:8px}
+.app-title .main{font-size:24px;font-weight:700;color:#7cf0c2}
+.app-title .sub{font-size:13px;color:#9aa7d0}
+.safety-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:20px;
+  background:#172246;font-size:12px;margin-bottom:20px;
+}
+.safety-badge.safe{color:#5ad19a}
+.safety-badge.warn{color:#ffd166}
+.safety-badge.danger{color:#ff6b6b}
+
+.disclaimer-footer{
+  margin-top:auto;padding-top:20px;
+  font-size:11px;color:#6a7ab0;text-align:center;
+}
+</style>
+</head>
+<body>
+
+<!-- SCREEN 0: Welcome / Emergency Entry -->
+<div class="screen active" id="screen-welcome">
+  <div class="app-title">
+    <div class="main">LegalShield</div>
+    <div class="sub">誰も1人にはしない</div>
+  </div>
+  <div class="safety-badge safe" id="safety-status">
+    ● 現在の環境は安全ですか？
+  </div>
+  <button class="emergency-btn" id="emergency-btn" ontouchstart="">
+    <span>🚨</span>
+    <span>助けて</span>
+    <span class="sub">長押し2秒で緊急モード</span>
+  </button>
+  <div style="margin-top:32px;width:100%">
+    <div class="role-cards">
+      <div class="role-card" onclick="goToScreen('screen-triage-1')">
+        <div class="icon" style="background:#1a3a3a">💬</div>
+        <div class="text">
+          <div class="title">相談を始める</div>
+          <div class="desc">AIが状況を整理して支援します</div>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+      <div class="role-card" onclick="goToScreen('screen-evidence')">
+        <div class="icon" style="background:#3a1a3a">📁</div>
+        <div class="text">
+          <div class="title">証拠を保存</div>
+          <div class="desc">写真・録音・書類を安全に保管</div>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+    </div>
+  </div>
+  <div class="disclaimer-footer">
+    緊急時は直接 110 / 119 にご連絡ください<br>
+    本アプリは補助ツールです
+  </div>
+</div>
+
+<!-- SCREEN: Emergency Countdown -->
+<div class="screen emergency-bg" id="screen-emergency">
+  <div style="text-align:center;margin-bottom:24px">
+    <div style="font-size:16px;font-weight:600;color:#ff6b6b;margin-bottom:4px">緊急モード</div>
+    <div style="font-size:13px;color:#9aa7d0">10秒後に支援メッセージを送信します</div>
+  </div>
+  <div class="countdown-ring">
+    <div class="num" id="countdown-num">10</div>
+    <div class="label">キャンセルするには下のボタンを</div>
+  </div>
+  <button class="cancel-btn" id="cancel-btn" onclick="cancelEmergency()">キャンセル</button>
+  <div class="silent-msg" id="silent-msg" style="display:none">
+    <div style="color:#7cf0c2;font-weight:600;margin-bottom:8px">✓ 支援メッセージを送信しました</div>
+    送信先:<br>
+    • 設定された緊急連絡先（山田さん）<br>
+    • 最寄りのDV支援センター（○○市）<br>
+    • 法テラス相談窓口<br><br>
+    GPS位置情報と状況を含むメッセージを<br>
+    サイレント（無音）で送信しました。
+  </div>
+  <div class="disclaimer-footer">
+    これは自動送信メッセージです。<br>
+    最終的な通報判断はご本人が行ってください。
+  </div>
+</div>
+
+<!-- SCREEN: Triage 1 -->
+<div class="screen" id="screen-triage-1">
+  <div class="progress-bar"><div class="fill" style="width:20%"></div></div>
+  <div class="question">今、あなたは安全な場所にいますか？</div>
+  <div class="options">
+    <button class="option-btn" data-value="safe" onclick="selectOption(this)">
+      はい、安全です<span class="check">✓</span>
+    </button>
+    <button class="option-btn" data-value="unsafe" onclick="selectOption(this)">
+      いいえ、不安です<span class="check">✓</span>
+    </button>
+    <button class="option-btn" data-value="unknown" onclick="selectOption(this)">
+      わからない<span class="check">✓</span>
+    </button>
+  </div>
+  <div class="nav-btns">
+    <button class="back-btn" onclick="goToScreen('screen-welcome')">戻る</button>
+    <button class="next-btn" id="btn-t1" onclick="goToScreen('screen-triage-2')" disabled>次へ</button>
+  </div>
+</div>
+
+<!-- SCREEN: Triage 2 -->
+<div class="screen" id="screen-triage-2">
+  <div class="progress-bar"><div class="fill" style="width:40%"></div></div>
+  <div class="question">どんなことが起きていますか？<br><span style="font-size:14px;color:#9aa7d0">複数選択可</span></div>
+  <div class="options">
+    <button class="option-btn multi" data-value="violence" onclick="toggleMulti(this)">
+      暴力を受けている<span class="check">✓</span>
+    </button>
+    <button class="option-btn multi" data-value="sexual" onclick="toggleMulti(this)">
+      性的な被害を受けた<span class="check">✓</span>
+    </button>
+    <button class="option-btn multi" data-value="money" onclick="toggleMulti(this)">
+      お金を騙し取られた<span class="check">✓</span>
+    </button>
+    <button class="option-btn multi" data-value="work" onclick="toggleMulti(this)">
+      職場で困っている<span class="check">✓</span>
+    </button>
+    <button class="option-btn multi" data-value="child" onclick="toggleMulti(this)">
+      子どもが被害を受けている<span class="check">✓</span>
+    </button>
+    <button class="option-btn multi" data-value="other" onclick="toggleMulti(this)">
+      その他<span class="check">✓</span>
+    </button>
+  </div>
+  <div class="nav-btns">
+    <button class="back-btn" onclick="goToScreen('screen-triage-1')">戻る</button>
+    <button class="next-btn" id="btn-t2" onclick="goToScreen('screen-triage-3')" disabled>次へ</button>
+  </div>
+</div>
+
+<!-- SCREEN: Triage 3 -->
+<div class="screen" id="screen-triage-3">
+  <div class="progress-bar"><div class="fill" style="width:60%"></div></div>
+  <div class="question">今、私たちに何を手伝ってほしいですか？</div>
+  <div class="options">
+    <button class="option-btn" data-value="record" onclick="selectOption(this)">
+      状況を整理して記録したい<span class="check">✓</span>
+    </button>
+    <button class="option-btn" data-value="law" onclick="selectOption(this)">
+      法律のこと・自分の権利を知りたい<span class="check">✓</span>
+    </button>
+    <button class="option-btn" data-value="contact" onclick="selectOption(this)">
+      専門家・相談窓口につながりたい<span class="check">✓</span>
+    </button>
+    <button class="option-btn" data-value="evidence" onclick="selectOption(this)">
+      証拠を安全に保存したい<span class="check">✓</span>
+    </button>
+  </div>
+  <div class="nav-btns">
+    <button class="back-btn" onclick="goToScreen('screen-triage-2')">戻る</button>
+    <button class="next-btn" id="btn-t3" onclick="goToScreen('screen-consent')" disabled>次へ</button>
+  </div>
+</div>
+
+<!-- SCREEN: Consent -->
+<div class="screen" id="screen-consent">
+  <div class="progress-bar"><div class="fill" style="width:80%"></div></div>
+  <div class="question">利用規約と同意事項</div>
+
+  <div class="consent-box">
+    <h4>⚠️ 重要な免責事項</h4>
+    <p>LegalShield は「情報整理・補助ツール」です。</p>
+    <ul>
+      <li>緊急通報の100%即時性を保証しません</li>
+      <li>GPS位置情報の完全正確性を保証しません</li>
+      <li>AI判定の100%正確性を保証しません</li>
+      <li>生命・身体の危険がある場合、直接 110 / 119 にご連絡ください</li>
+    </ul>
+    <p style="margin-top:10px">当社は、通信回線の混雑・途切れ、端末の電池切れ・故障、AIの誤判定、第三者の対応遅延による損害について、一切の責任を負いません。</p>
+  </div>
+
+  <div class="checkbox-row">
+    <input type="checkbox" id="c-gps">
+    <label for="c-gps">GPS位置情報の利用に同意<br><span class="small">最寄り施設検索・緊急時位置送信用</span></label>
+  </div>
+  <div class="checkbox-row">
+    <input type="checkbox" id="c-mic">
+    <label for="c-mic">マイク・カメラの利用に同意<br><span class="small">証拠収集・通話録音用</span></label>
+  </div>
+  <div class="checkbox-row">
+    <input type="checkbox" id="c-emergency">
+    <label for="c-emergency">緊急連絡先への自動送信に同意<br><span class="small">10秒カウントダウン後の自動SMS送信</span></label>
+  </div>
+  <div class="checkbox-row">
+    <input type="checkbox" id="c-terms">
+    <label for="c-terms">利用規約・免責事項に同意します<br><span class="small">本アプリは110番の代替ではありません</span></label>
+  </div>
+
+  <div class="nav-btns">
+    <button class="back-btn" onclick="goToScreen('screen-triage-3')">戻る</button>
+    <button class="next-btn" id="btn-consent" onclick="goToScreen('screen-voice')" disabled>同意して始める</button>
+  </div>
+</div>
+
+<!-- SCREEN: Voice Input -->
+<div class="screen" id="screen-voice">
+  <div class="progress-bar"><div class="fill" style="width:100%"></div></div>
+  <div class="question">お話してください</div>
+  <div style="font-size:13px;color:#9aa7d0;text-align:center;margin-bottom:24px">
+    AIが状況を整理します。緊張していても大丈夫です。
+  </div>
+
+  <button class="mic-btn" id="mic-btn" onclick="toggleRecording()">🎤</button>
+  <div style="text-align:center;margin-top:12px;font-size:13px;color:#9aa7d0" id="mic-status">タップして録音開始</div>
+
+  <div class="transcript" id="transcript" style="display:none">
+    「えっと...昨日...夫が...酒を飲んで...急に...私を...殴って...顔が...痛くて...今日は...家に帰れなくて...子供が...家に残ってて...」
+  </div>
+
+  <div class="ai-summary" id="ai-summary" style="display:none">
+    <div class="title">🤖 AI が状況を整理しました</div>
+    <div style="margin-top:8px;line-height:1.8">
+      <b>事件日時:</b> 昨日、夜間<br>
+      <b>加害者:</b> 夫（配偶者）<br>
+      <b>暴力タイプ:</b> 顔面殴打（飲酒による）<br>
+      <b>現在の状況:</b> 避難中、自宅に戻れない<br>
+      <b>懸念事項:</b> 子供が自宅に残っている<br>
+      <b>緊急度:</b> <span style="color:#ff6b6b">HIGH</span>
+    </div>
+  </div>
+
+  <div class="nav-btns" id="voice-nav" style="display:none">
+    <button class="back-btn" onclick="goToScreen('screen-consent')">戻る</button>
+    <button class="next-btn" onclick="goToScreen('screen-result')">レポート作成</button>
+  </div>
+</div>
+
+<!-- SCREEN: Result -->
+<div class="screen" id="screen-result">
+  <div class="app-title" style="margin-bottom:16px">
+    <div class="main" style="font-size:20px">あなたの行動プラン</div>
+  </div>
+
+  <div class="role-cards">
+    <div class="role-card" style="border-color:#ff6b6b">
+      <div class="icon" style="background:#3a1020">🚨</div>
+      <div class="text">
+        <div class="title">緊急対応</div>
+        <div class="desc">#8898（DV相談）<br>警察 110（必要に応じて）</div>
+      </div>
+    </div>
+    <div class="role-card" style="border-color:#ffd166">
+      <div class="icon" style="background:#3a3010">📁</div>
+      <div class="text">
+        <div class="title">証拠保全</div>
+        <div class="desc">診断書・写真・LINEのスクリーンショット</div>
+      </div>
+    </div>
+    <div class="role-card" style="border-color:#7cf0c2">
+      <div class="icon" style="background:#1a3a30">⚖️</div>
+      <div class="text">
+        <div class="title">法律分析</div>
+        <div class="desc">配偶者暴力防止法・刑法204条（傷害罪）</div>
+      </div>
+    </div>
+    <div class="role-card" style="border-color:#7cf0c2">
+      <div class="icon" style="background:#1a2330">🧭</div>
+      <div class="text">
+        <div class="title">戦略シミュレーション</div>
+        <div class="desc">保護命令申請（推奨）+ 民事損害賠償</div>
+      </div>
+    </div>
+    <div class="role-card" style="border-color:#ffd166">
+      <div class="icon" style="background:#3a3020">🗺️</div>
+      <div class="text">
+        <div class="title">専家紹介</div>
+        <div class="desc">東京弁護士会・法テラス東京・○○シェルター</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;width:100%">
+    <button class="next-btn" style="width:100%;padding:18px;border-radius:12px" onclick="alert('レポートを保存しました\n次回起動時から続けられます')">
+      レポートを保存して終了
+    </button>
+  </div>
+</div>
+
+<!-- SCREEN: Evidence -->
+<div class="screen" id="screen-evidence">
+  <div class="app-title" style="margin-bottom:16px">
+    <div class="main" style="font-size:20px">証拠を安全に保存</div>
+    <div class="sub">写真・録音・書類をアップロード</div>
+  </div>
+  <div class="role-cards">
+    <div class="role-card" onclick="alert('カメラを起動します')">
+      <div class="icon" style="background:#1a3a3a">📷</div>
+      <div class="text">
+        <div class="title">写真を撮る</div>
+        <div class="desc">タイムスタンプ・GPS付きで保存</div>
+      </div>
+      <div class="arrow">›</div>
+    </div>
+    <div class="role-card" onclick="alert('マイクを起動します')">
+      <div class="icon" style="background:#3a1a3a">🎙️</div>
+      <div class="text">
+        <div class="title">録音をする</div>
+        <div class="desc">音声をテキスト化して記録</div>
+      </div>
+      <div class="arrow">›</div>
+    </div>
+    <div class="role-card" onclick="alert('ファイル選択画面を開きます')">
+      <div class="icon" style="background:#3a3a1a">📄</div>
+      <div class="text">
+        <div class="title">ファイルをアップロード</div>
+        <div class="desc">診断書・領収書・スクリーンショット</div>
+      </div>
+      <div class="arrow">›</div>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="back-btn" onclick="goToScreen('screen-welcome')">戻る</button>
+  </div>
+</div>
+
+<script>
+let countdownInterval = null;
+let recordingTimer = null;
+
+function goToScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// Emergency long-press
+const emergencyBtn = document.getElementById('emergency-btn');
+let pressTimer = null;
+emergencyBtn.addEventListener('mousedown',()=>{
+  emergencyBtn.style.transform='scale(0.95)';
+  pressTimer = setTimeout(()=>{
+    goToScreen('screen-emergency');
+    startCountdown();
+  },800);
+});
+emergencyBtn.addEventListener('touchstart',(e)=>{
+  e.preventDefault();
+  emergencyBtn.style.transform='scale(0.95)';
+  pressTimer = setTimeout(()=>{
+    goToScreen('screen-emergency');
+    startCountdown();
+  },800);
+});
+emergencyBtn.addEventListener('mouseup',()=>{
+  clearTimeout(pressTimer);
+  emergencyBtn.style.transform='';
+});
+emergencyBtn.addEventListener('touchend',()=>{
+  clearTimeout(pressTimer);
+  emergencyBtn.style.transform='';
+});
+
+function startCountdown(){
+  let n = 10;
+  const numEl = document.getElementById('countdown-num');
+  const msgEl = document.getElementById('silent-msg');
+  const cancelBtn = document.getElementById('cancel-btn');
+  msgEl.style.display='none';
+  cancelBtn.style.display='block';
+  numEl.textContent = n;
+  countdownInterval = setInterval(()=>{
+    n--;
+    numEl.textContent = n;
+    if(n<=3) numEl.style.color = '#ff6b6b';
+    if(n<=0){
+      clearInterval(countdownInterval);
+      numEl.textContent = '✓';
+      numEl.style.color = '#7cf0c2';
+      cancelBtn.style.display='none';
+      msgEl.style.display='block';
+    }
+  },1000);
+}
+
+function cancelEmergency(){
+  clearInterval(countdownInterval);
+  goToScreen('screen-welcome');
+}
+
+function selectOption(btn){
+  btn.parentElement.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+  const screen = btn.closest('.screen').id;
+  if(screen==='screen-triage-1') document.getElementById('btn-t1').disabled=false;
+  if(screen==='screen-triage-3') document.getElementById('btn-t3').disabled=false;
+}
+
+function toggleMulti(btn){
+  btn.classList.toggle('selected');
+  const hasSelected = btn.parentElement.querySelectorAll('.option-btn.selected').length>0;
+  document.getElementById('btn-t2').disabled = !hasSelected;
+}
+
+// Consent checkboxes
+['c-gps','c-mic','c-emergency','c-terms'].forEach(id=>{
+  document.getElementById(id).addEventListener('change',()=>{
+    const all = ['c-gps','c-mic','c-emergency','c-terms'].every(i=>document.getElementById(i).checked);
+    document.getElementById('btn-consent').disabled = !all;
+  });
+});
+
+function toggleRecording(){
+  const btn = document.getElementById('mic-btn');
+  const status = document.getElementById('mic-status');
+  const transcript = document.getElementById('transcript');
+  const summary = document.getElementById('ai-summary');
+  const nav = document.getElementById('voice-nav');
+
+  if(btn.classList.contains('recording')){
+    // Stop
+    btn.classList.remove('recording');
+    status.textContent = '録音完了。AIが分析中...';
+    clearTimeout(recordingTimer);
+    setTimeout(()=>{
+      transcript.style.display='block';
+      summary.style.display='block';
+      nav.style.display='flex';
+      status.textContent = '分析完了';
+    },1500);
+  }else{
+    // Start
+    btn.classList.add('recording');
+    status.textContent = '録音中...（もう一度タップで停止）';
+    transcript.style.display='none';
+    summary.style.display='none';
+    nav.style.display='none';
+    // Auto-stop after 8 seconds for demo
+    recordingTimer = setTimeout(()=>{
+      if(btn.classList.contains('recording')) toggleRecording();
+    },8000);
+  }
+}
+</script>
+</body>
+</html>
