@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LegalShield データ収集状況レポート — 2026年5月14日</title>
+<style>
+@page { size: A4; margin: 15mm; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.7;font-size:13px;max-width:1200px;margin:0 auto;padding:24px}
+h1{text-align:center;background:linear-gradient(135deg,#38bdf8,#f87171);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:28px;margin-bottom:8px}
+h2{color:#38bdf8;border-bottom:2px solid #334155;padding-bottom:8px;margin-top:32px;font-size:18px}
+h3{color:#94a3b8;font-size:15px;margin:16px 0 8px}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+th{background:#1e293b;color:#38bdf8;padding:9px;text-align:left;font-weight:600}
+td{padding:9px;border-bottom:1px solid #334155}
+tr:hover td{background:#1e293b}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600;margin-right:4px}
+.tag-real{background:#064e3b;color:#4ade80}
+.tag-pdf{background:#1e3a5f;color:#60a5fa}
+.tag-tool{background:#422006;color:#fbbf24}
+.tag-missing{background:#450a0a;color:#f87171}
+.highlight{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:16px;margin:12px 0}
+.key-num{font-size:24px;font-weight:800;color:#38bdf8}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.footer{text-align:center;padding:24px;color:#64748b;font-size:12px;border-top:1px solid #334155;margin-top:32px}
+@media print{body{background:#fff;color:#1e293b}.highlight{background:#f8fafc;border-color:#cbd5e1}}
+a{color:#60a5fa;text-decoration:none}
+a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<h1>LegalShield データ収集状況レポート</h1>
+<p style="text-align:center;color:#64748b">2026年5月14日（木）｜ 日本犯罪データ収集プロジェクト</p>
+
+<!-- サマリー -->
+<div class="grid-2" style="margin-top:20px">
+  <div class="highlight" style="text-align:center">
+    <div class="key-num">1,075,588</div>
+    <div>行の政府統計データ</div>
+    <div style="color:#64748b;font-size:12px;margin-top:4px">e-Stat API から直接ダウンロード</div>
+  </div>
+  <div class="highlight" style="text-align:center">
+    <div class="key-num">55</div>
+    <div>ファイルダウンロード済み</div>
+    <div style="color:#64748b;font-size:12px;margin-top:4px">PDF + Parquet + JSON + HTML</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>📊 1. ダウンロード済み政府統計</h2>
+
+<h3>1.1 e-Stat 犯罪関連統計（13 テーブル）</h3>
+<table>
+<tr><th>統計表ID</th><th>内容</th><th>行数</th><th>状態</th></tr>
+<tr><td>0003191320</td><td>刑法犯罪種別認知・検挙件数（2006-2016）</td><td>4,620</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003191340</td><td>刑法犯罪種別前年比較</td><td>8,316</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003272543</td><td>新受刑者属性及犯罪傾向進度</td><td>69,096</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003272884</td><td>外国人受刑者属性及犯罪傾向</td><td>110,438</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003273297</td><td>再入受刑者前刑出所属性及再犯期間</td><td>16,700</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003273579</td><td>保護観察中犯罪処分（2006-2015）</td><td>44,770</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003273580</td><td>保護観察中犯罪処分（2016-2024）</td><td>51,848</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003274131</td><td>被疑事件既済未済人員</td><td>94,200</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003274064</td><td>外国人被疑事件受理処理</td><td>34,522</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003274065</td><td>外国人被疑事件国籍罪名別</td><td>41,078</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003286168</td><td>執行猶豫言渡人員</td><td>200,000</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003286681</td><td>人権侵犯事件受理処理</td><td>200,000</td><td><span class="tag tag-real">REAL</span></td></tr>
+<tr><td>0003286682</td><td>人権相談件数</td><td>200,000</td><td><span class="tag tag-real">REAL</span></td></tr>
+</table>
+
+<h3>1.2 警察庁最新犯罪統計（PDF）</h3>
+<table>
+<tr><th>ファイル</th><th>内容</th><th>サイズ</th><th>状態</th></tr>
+<tr><td>r06keihouhantoukeisiryou.pdf</td><td>令和6年（2024）刑法犯統計資料</td><td>3.7 MB</td><td><span class="tag tag-pdf">PDF</span></td></tr>
+<tr><td>r05keihouhantoukeisiryou.pdf</td><td>令和5年（2023）刑法犯統計資料</td><td>1.1 MB</td><td><span class="tag tag-pdf">PDF</span></td></tr>
+<tr><td>r06.zuhyosakuin.htm</td><td>令和6年図表データ索引（Excel/CSVリンク集）</td><td>141 KB</td><td><span class="tag tag-real">HTML</span></td></tr>
+</table>
+
+<h3>1.3 法務省 犯罪被害実態（暗数）調査 — 超重要！</h3>
+<div class="highlight" style="border-color:#4ade80">
+  <b style="color:#4ade80">🔑 これが「吃案データ」の核心資料</b>
+  <p style="margin-top:8px">警察に認知されていない犯罪（暗数）を含めた実態調査。4〜5年ごとに実施。</p>
+</div>
+<table>
+<tr><th>回数</th><th>実施時期</th><th>状態</th></tr>
+<tr><td>第6回</td><td>令和6年（2024年）1〜2月</td><td><span class="tag tag-pdf">PDF ダウンロード済み</span> 216 KB</td></tr>
+<tr><td>第5回</td><td>平成31年（2019年）1〜2月</td><td><span class="tag tag-missing">未ダウンロード</span></td></tr>
+<tr><td>第4回</td><td>平成24年（2012年）1〜2月</td><td><span class="tag tag-missing">未ダウンロード</span></td></tr>
+<tr><td>第3回</td><td>平成20年（2008年）1〜2月</td><td><span class="tag tag-missing">未ダウンロード</span></td></tr>
+<tr><td>第2回</td><td>平成16年（2004年）2月</td><td><span class="tag tag-missing">未ダウンロード</span></td></tr>
+<tr><td>第1回</td><td>平成12年（2000年）2月</td><td><span class="tag tag-missing">未ダウンロード</span></td></tr>
+</table>
+<p class="highlight" style="margin-top:8px">
+  <b>ソース：</b><a href="https://www.moj.go.jp/housouken/houso_houso34.html" target="_blank">法務省 犯罪被害実態（暗数）調査</a>
+</p>
+
+<h3>1.4 警察庁自殺統計（H29〜R7）</h3>
+<table>
+<tr><th>ファイル数</th><th>内容</th><th>サイズ</th></tr>
+<tr><td>20 ファイル</td><td>平成29年〜令和7年 自殺状況報告書 + Excel参考データ</td><td>約 14 MB</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2>🗺️ 2. 犯罪発生マップ URL 一覧（全国）</h2>
+<p>各都道府県警察が公開する犯罪マップ・Open Data ポータル。</p>
+
+<table>
+<tr><th>地域</th><th>都道府県</th><th>URL</th></tr>
+<tr><td rowspan="7">北海道・東北</td><td>北海道</td><td><a href="https://www.police.pref.hokkaido.lg.jp/map/map.html" target="_blank">犯罪発生マップ</a></td></tr>
+<tr><td>青森県</td><td><a href="https://www.police.pref.aomori.jp/" target="_blank">警察本部HP</a></td></tr>
+<tr><td>岩手県</td><td><a href="https://www.pref.iwate.jp/kenkei/anzen/map/index.html" target="_blank">安全マップ</a></td></tr>
+<tr><td>宮城県</td><td><a href="https://www.police.pref.miyagi.jp/seian/opendata.html" target="_blank">オープンデータ</a></td></tr>
+<tr><td>秋田県</td><td><a href="https://www.police.pref.akita.lg.jp/kenkei" target="_blank">警察本部HP</a></td></tr>
+<tr><td>山形県</td><td><a href="https://www.pref.yamagata.jp/kensei/police/index.html" target="_blank">警察本部HP</a></td></tr>
+<tr><td>福島県</td><td><a href="https://www.police.pref.fukushima.jp/" target="_blank">警察本部HP</a></td></tr>
+<tr><td rowspan="7">関東</td><td>茨城県</td><td><a href="https://www.pref.ibaraki.jp/kenkei/a01_safety/map/crime.html" target="_blank">犯罪マップ</a></td></tr>
+<tr><td>栃木県</td><td><a href="http://www.machi-info.jp/machikado/police_pref_tochigi/infopage.html" target="_blank">まちかど情報</a></td></tr>
+<tr><td>群馬県</td><td><a href="https://www.police.pref.gunma.jp/" target="_blank">警察本部HP</a></td></tr>
+<tr><td>埼玉県</td><td><a href="https://www.police.pref.saitama.lg.jp/a0040/kotsu/jikenjiko-map.html" target="_blank">事件事故マップ</a></td></tr>
+<tr><td>千葉県</td><td><a href="http://www2.wagmap.jp/cp-gis/Portal" target="_blank">WAGMAP ポータル</a></td></tr>
+<tr><td>東京都</td><td><a href="https://www.keishicho.metro.tokyo.lg.jp/jiken_jiko/hassei/map_annai.html" target="_blank">警視庁 犯罪発生マップ</a></td></tr>
+<tr><td>神奈川県</td><td><a href="https://www.police.pref.kanagawa.jp/" target="_blank">警察本部HP</a></td></tr>
+<tr><td rowspan="3">甲信越</td><td>新潟県</td><td><a href="https://www.pref.niigata.lg.jp/site/kenkei/shityouson-hanzai.html" target="_blank">市区町村別犯罪</a></td></tr>
+<tr><td>長野県</td><td><a href="https://www.pref.nagano.lg.jp/police/jikenjiko/hanzai/index.html" target="_blank">犯罪マップ</a></td></tr>
+<tr><td>山梨県</td><td><a href="https://www.pref.yamanashi.jp/police/" target="_blank">警察本部HP</a></td></tr>
+<tr><td rowspan="4">東海</td><td>岐阜県</td><td><a href="http://www.pref.gifu.lg.jp/police/kurashi-anzen/hanzai-yokushi/hanzai-map/" target="_blank">犯罪マップ</a></td></tr>
+<tr><td>静岡県</td><td><a href="https://www.machi-info.jp/machikado/police_pref_shizuoka/" target="_blank">まちかど情報</a></td></tr>
+<tr><td>愛知県</td><td><a href="https://www.pref.aichi.jp/police/anzen/seian-s/anzenmap.html" target="_blank">安全マップ</a></td></tr>
+<tr><td>三重県</td><td><a href="https://www.police.pref.mie.jp/maps/hanzai_map.html" target="_blank">犯罪マップ</a></td></tr>
+<tr><td rowspan="3">北陸</td><td>富山県</td><td><a href="https://police.pref.toyama.jp/" target="_blank">警察本部HP</a></td></tr>
+<tr><td>石川県</td><td><a href="https://www2.police.pref.ishikawa.lg.jp/security/security05/" target="_blank">安全情報</a></td></tr>
+<tr><td>福井県</td><td><a href="https://map.police.fukui.dsvc.jp/confirmation.html" target="_blank">犯罪マップ</a></td></tr>
+<tr><td rowspan="6">関西</td><td>滋賀県</td><td><a href="https://www.pref.shiga.lg.jp/police/" target="_blank">警察本部HP</a></td></tr>
+<tr><td>京都府</td><td><a href="https://www.pref.kyoto.jp/fukei/crime_accident_map.html" target="_blank">犯罪事故マップ</a></td></tr>
+<tr><td>大阪府</td><td><a href="https://www.police.pref.osaka.lg.jp/seikatsu/11608.html" target="_blank">生活安全マップ</a></td></tr>
+<tr><td>兵庫県</td><td><a href="https://www.police.pref.hyogo.lg.jp/bounet/index2.htm" target="_blank">防犯ネット</a></td></tr>
+<tr><td>奈良県</td><td><a href="https://map.police.nara.dsvc.jp/" target="_blank">犯罪マップ</a></td></tr>
+<tr><td>和歌山県</td><td><a href="https://www.police.pref.wakayama.lg.jp/04_toukei/index.html" target="_blank">統計・マップ</a></td></tr>
+</table>
+
+<p style="margin-top:8px;color:#64748b;font-size:12px">
+  ※ 全国読売防犯協力会「<a href="https://www.bouhan-nippon.jp/information/info-map/" target="_blank">ぼうはん日本</a>」より整理
+</p>
+
+<!-- ============================================================ -->
+<h2>🔧 3. GitHub ツール・データソース</h2>
+
+<table>
+<tr><th>ツール/リポジトリ</th><th>内容</th><th>言語</th><th>用途</th></tr>
+<tr>
+  <td><a href="https://github.com/japan-opendata/awesome-japan-opendata" target="_blank">awesome-japan-opendata</a></td>
+  <td>日本のオープンデータ情報一覧・まとめ</td>
+  <td>Markdown</td>
+  <td><span class="tag tag-tool">カタログ</span> 全国・地方自治体・企業のデータリンク集</td>
+</tr>
+<tr>
+  <td><a href="https://github.com/Police-Data-Accessibility-Project/scrapers" target="_blank">Police-Data-Accessibility-Project/scrapers</a></td>
+  <td>アメリカ警察データスクレイピングツール</td>
+  <td>Python</td>
+  <td><span class="tag tag-tool">参考</span> スクレイピングアーキテクチャ参考</td>
+</tr>
+<tr>
+  <td>Japan Neighborhoods</td>
+  <td>警視庁犯罪統計を英語化したプラットフォーム（REST API, CSV）</td>
+  <td>Web</td>
+  <td><span class="tag tag-tool">API</span> 東京23区+多摩地区犯罪データ取得</td>
+</tr>
+<tr>
+  <td>市区町村別犯罪数の計算と可視化</td>
+  <td>Shinichiro Iwata 氏の犯罪データ可視化</td>
+  <td>R / HTML</td>
+  <td><span class="tag tag-tool">GIS</span> GeoJSON + 犯罪データ可視化参考</td>
+</tr>
+</table>
+
+<!-- ============================================================ -->
+<h2>📱 4. 民間プラットフォーム（競品・参考）</h2>
+
+<table>
+<tr><th>プラットフォーム</th><th>URL</th><th>特徴</th></tr>
+<tr>
+  <td><b>Gaccom 安全ナビ</b></td>
+  <td>gaccom.jp</td>
+  <td>日本で最も有名な治安マップ。全国警察発表情報統合</td>
+</tr>
+<tr>
+  <td><b>大島てる (Oshimaland)</b></td>
+  <td>oshimaland.co.jp</td>
+  <td>凶宅・事故物件マップ。群衆出資+公開ニュース収集</td>
+</tr>
+<tr>
+  <td><b>Japan Neighborhoods</b></td>
+  <td>japanneighborhoods.com</td>
+  <td>警視庁オープンデータ英語化。3,110+ 地域の犯罪統計</td>
+</tr>
+<tr>
+  <td><b>ぼうはん日本</b></td>
+  <td>bouhan-nippon.jp</td>
+  <td>全国読売防犯協力会。47都道府県警察犯罪マップ一覧</td>
+</tr>
+</table>
+
+<!-- ============================================================ -->
+<h2>⚠️ 5. 吃案（暗数）データ — 法的制約と実態</h2>
+
+<div class="highlight" style="border-color:#fbbf24">
+  <b style="color:#fbbf24">🔴 重要：吃案データは公式には存在しない</b>
+  <p style="margin-top:8px">
+    警察が「自己吃案」を記録することはあり得ない。しかし、<b>法務省の暗数調査</b>と
+    <b>内閣府の男女共同参画白書</b>に、重要な推計値が含まれる。
+  </p>
+</div>
+
+<h3>5.1 法務省 犯罪被害実態（暗数）調査 から分かること</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>調査名</td><td>犯罪被害実態（暗数）調査（ICVS 日本版）</td></tr>
+<tr><td>実施機関</td><td>法務総合研究所（法務省）</td></tr>
+<tr><td>調査間隔</td><td>4〜5年ごと</td></tr>
+<tr><td>対象</td><td>全国から選んだ16歳以上の男女</td></tr>
+<tr><td>最新</td><td>第6回（令和6年 = 2024年）— <b>ダウンロード済み</b></td></tr>
+<tr><td>含まれるデータ</td><td>警察未認知犯罪の種類・頻度・場所・時期・被害者属性</td></tr>
+</table>
+
+<h3>5.2 内閣府・民間調査からの推計値（参考）</h3>
+<table>
+<tr><th>犯罪種別</th><th>推計報案率</th><th>ソース</th></tr>
+<tr><td>痴漢（電車内性騷擾）</td><td><b>報案率 10〜20%</b>（80〜90%が非報告）</td><td>民間NPO調査</td></tr>
+<tr><td>強制性交等（重大性犯罪）</td><td><b>報案率 &lt; 6%</b></td><td>内閣府「男女共同参画白書」</td></tr>
+<tr><td>DV（配偶者からの暴力）</td><td><b>通報率 〜20%</b></td><td>警察庁・内閣府推計</td></tr>
+<tr><td>ストーカー</td><td><b>相談率 〜15%</b></td><td>警察庁統計</td></tr>
+<tr><td>総合犯罪暗数</td><td>認知件数の <b>2〜5倍</b> が実態</td><td>法務省暗数調査推計</td></tr>
+</table>
+
+<div class="highlight">
+  <b>💡 APP開発への示唆</b>
+  <ul style="margin-top:8px;margin-left:20px">
+    <li>吃案データは<b>自分たちで収集するしかない</b> → 匿名クラウドソーシング機能必須</li>
+    <li>法務省暗数調査を<b>ベースライン</b>として、APPのデータと比較検証可能</li>
+    <li>「警察統計」と「暗数調査」の<b>ギャップ</b>を可視化 → 社会的インパクト大</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<h2>📥 6. まだダウンロードしていない重要データ</h2>
+
+<table>
+<tr><th>データ</th><th>難易度</th><th>取得方法</th></tr>
+<tr><td>法務省暗数調査 第1〜5回</td><td>🟢 容易</td><td>法務省HPからPDFダウンロード</td></tr>
+<tr><td>警察庁 図表データ（Excel/CSV）</td><td>🟢 容易</td><td>r06.zuhyosakuin.htm のリンク先から</td></tr>
+<tr><td>日弁連 民事訴訟放棄調査</td><td>🟡 中等</td><td>日弁連HPで検索・PDF入手</td></tr>
+<tr><td>法テラス 待機時間データ</td><td>🟠 困難</td><td>各事務所個別確認 or 法テラス協会へ問合せ</td></tr>
+<tr><td>各都道府県警 犯罪マップスクレイピング</td><td>🟡 中等</td><td>各サイト構造を解析 → BeautifulSoupで自動化</td></tr>
+<tr><td>最高裁判所 判例データ</td><td>🟡 中等</td><td><a href="https://www.courts.go.jp/" target="_blank">裁判所HP</a> or e-Gov API</td></tr>
+<tr><td>J-STAGE 学術論文</td><td>🔴 困難</td><td>反スクレイピング対策あり。手動 or API要検討</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2>🛠️ 7. 推奨技術スタック（APP開発用）</h2>
+
+<table>
+<tr><th>層</th><th>技術</th><th>用途</th></tr>
+<tr><td>フロントエンド</td><td>Flutter / React Native</td><td>iOS/Android クロスプラットフォーム</td></tr>
+<tr><td>地図表示</td><td>Leaflet.js / Mapbox GL JS</td><td>犯罪発生地点可視化</td></tr>
+<tr><td>日本地図データ</td><td>GeoJSON Japan（国土交通省）</td><td>市区町村境界ポリゴン</td></tr>
+<tr><td>バックエンド</td><td>FastAPI + PostgreSQL/PostGIS</td><td>API + 空間データベース</td></tr>
+<tr><td>スクレイピング</td><td>Python (BeautifulSoup, Scrapy)</td><td>警察サイト定期巡回</td></tr>
+<tr><td>AI</td><td>Ollama + LanceDB</td><td>法的SOPナビゲーション・RAG</td></tr>
+<tr><td>証拠保全</td><td>ブロックチェーンタイムスタンプ</td><td>報案前記録の改ざん防止</td></tr>
+<tr><td>匿名化</td><td>差分プライバシー + k-匿名性</td><td>群衆レポートの個人特定防止</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2>📝 8. 次のアクション</h2>
+
+<ol style="margin-left:24px;line-height:2">
+  <li><b>法務省暗数調査 第1〜5回PDF</b>を一括ダウンロード</li>
+  <li><b>警察庁図表データ（Excel/CSV）</b>を令和2年〜令和6年分一括取得</li>
+  <li><b>各都道府県警サイト</b>の構造を調査 → スクレイピング自動化設計</li>
+  <li><b>日弁連調査報告書</b>を検索・ダウンロード</li>
+  <li><b>被害者支援NPOリスト</b>を作成（ぱっぷす、痴漢抑止活動センターなど）</li>
+  <li><b>APPのMVP設計</b>：第1フェーズは「匿名被害報告 + 証拠保全」機能</li>
+</ol>
+
+<div class="footer">
+  <p>LegalShield Project | 代表：劉建志（りゅう・けんじ）</p>
+  <p>データ収集日：2026年5月14日 ｜ 政府統計ベースのリアルデータ</p>
+</div>
+
+</body>
+</html>

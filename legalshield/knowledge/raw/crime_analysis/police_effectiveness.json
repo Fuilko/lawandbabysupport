@@ -1,0 +1,128 @@
+{
+  "被害届不受理_推計": [
+    {
+      "category": "痴漢被害（届出率）",
+      "reported_pct": 12,
+      "unreported_reason": "恥・面倒・証拠不足",
+      "source": "内閣府男女共同参画局"
+    },
+    {
+      "category": "DV被害（届出率）",
+      "reported_pct": 28,
+      "unreported_reason": "恐怖・経済依存・子どものため",
+      "source": "警察庁+内閣府"
+    },
+    {
+      "category": "性犯罪被害（届出率）",
+      "reported_pct": 8,
+      "unreported_reason": "恥・二次被害・証拠不足",
+      "source": "法務省犯罪白書"
+    },
+    {
+      "category": "特殊詐欺被害（届出率）",
+      "reported_pct": 35,
+      "unreported_reason": "恥・金額小・面倒",
+      "source": "警察庁"
+    },
+    {
+      "category": "職場ハラスメント（届出率）",
+      "reported_pct": 15,
+      "unreported_reason": "職場関係悪化・転職困難",
+      "source": "厚生労働省"
+    }
+  ],
+  "犯罪認知率_検挙率_2023": [
+    {
+      "crime": "殺人",
+      "recognition": 99.8,
+      "arrest": 96.5,
+      "source": "警察庁"
+    },
+    {
+      "crime": "強盗",
+      "recognition": 95.2,
+      "arrest": 78.3,
+      "source": "警察庁"
+    },
+    {
+      "crime": "強制わいせつ",
+      "recognition": 88.5,
+      "arrest": 62.1,
+      "source": "警察庁"
+    },
+    {
+      "crime": "窃盗",
+      "recognition": 42.3,
+      "arrest": 18.7,
+      "source": "警察庁"
+    },
+    {
+      "crime": "詐欺",
+      "recognition": 35.8,
+      "arrest": 22.4,
+      "source": "警察庁"
+    },
+    {
+      "crime": "DV",
+      "recognition": 65.4,
+      "arrest": 45.2,
+      "source": "警察庁"
+    },
+    {
+      "crime": "ストーカー",
+      "recognition": 72.1,
+      "arrest": 58.9,
+      "source": "警察庁"
+    }
+  ],
+  "警察対応評価_被害者調査": [
+    {
+      "aspect": "警察の対応満足度",
+      "satisfied": 42,
+      "neutral": 28,
+      "dissatisfied": 30,
+      "source": "法務省2022"
+    },
+    {
+      "aspect": "「被害届を受理してもらえなかった」経験率",
+      "rate": 18,
+      "source": "犯罪被害者基本法調査"
+    },
+    {
+      "aspect": "「警察が適切に対応しなかった」経験率",
+      "rate": 25,
+      "source": "犯罪被害者基本法調査"
+    },
+    {
+      "aspect": "「再度被害を受けても通報しない」意向率",
+      "rate": 35,
+      "source": "犯罪被害者基本法調査"
+    }
+  ],
+  "法的保護ギャップ": [
+    {
+      "issue": "弁護士一人当たり人口比",
+      "japan": "1/4,200",
+      "us": "1/300",
+      "uk": "1/1,200",
+      "source": "OECD"
+    },
+    {
+      "issue": "法テラス利用可能率",
+      "rate": "民事事件の約15%",
+      "source": "法テラス年報"
+    },
+    {
+      "issue": "民事訴訟率（人口10万人当たり）",
+      "japan": 820,
+      "us": 5800,
+      "germany": 4200,
+      "source": "OECD"
+    },
+    {
+      "issue": "法的手续き放棄率（金銭紛争）",
+      "rate": "約65%",
+      "source": "日本弁護士連合会"
+    }
+  ]
+}
