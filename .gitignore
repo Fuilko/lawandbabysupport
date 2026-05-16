@@ -60,4 +60,6 @@ legalshield/docs/LEGALSHIELD_PITCH_STRATEGY.md
 
 # Private case data (ADR/litigation)
 legalshield/case_studies/mapry_M4_0/
-shared/output/
+
+# Generated research outputs (keep .md, ignore large .jsonl)
+docs/research/precedents/*.jsonl
