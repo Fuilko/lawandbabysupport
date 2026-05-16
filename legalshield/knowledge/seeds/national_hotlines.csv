@@ -1,0 +1,25 @@
+category,name,phone,availability,prefecture,notes,url
+緊急,警察（110番）,110,24時間,全国,緊急事態・犯罪通報,https://www.npa.go.jp/
+緊急,消防・救急（119番）,119,24時間,全国,救急車・消防要請,https://www.fdma.go.jp/
+児童,児童相談所虐待相談・通報ダイヤル,#7119 / 03-6746-9010,24時間,全国,児童虐待通報・相談,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/kodomo_kosodate/jidougyakutai/index.html
+児童,いじめSOSダイヤル,0120-0-78310,24時間,全国,いじめ相談,https://www.mext.go.jp/a_menu/shotou/seitoshidou/1362458.htm
+DV・性暴力,配偶者暴力相談支援センター,#8898 / 03-6746-9090,24時間,全国,DV相談・一時保護,https://www.gender.go.jp/policy/no_violence/e-vaw/soudankikan/
+DV・性暴力,ワンストップ支援センター（性暴力）,#8898,24時間,全国,性暴力被害者支援,https://www.gender.go.jp/policy/no_violence/seibouryoku/
+DV・性暴力,女性DVA相談全国共通番号,0570-0-55220,平日9-17,全国,法テラス連携DV相談,https://www.houterasu.or.jp/
+高齢者,高齢者虐待通報・相談,#8008 / 03-6746-9095,24時間,全国,高齢者虐待・介護問題,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/anzen/doukoukourei/
+障害者,障害者虐待通報,#8008,24時間,全国,障害者虐待・相談,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/shougaihoken_jiritsu/
+消費者,消費者ホットライン,188,平日9-17,全国,消費者被害・相談,https://www.caa.go.jp/policies/mimamori/soudan/consumer_hotline/
+消費者,国民生活センター,0120-940-828,平日10-16,全国,消費者トラブル相談,https://www.kokusen.go.jp/
+消費者,金融ADR,0570-011-109,平日9-17,全国,金融被害・投資トラブル,https://www.fsa.go.jp/
+法律,法テラス（法制度）,050-5538-5555,平日9-17,全国,法律相談・弁護士紹介,https://www.houterasu.or.jp/
+法律,日弁連紹介センター,0570-783-110,平日9-17,全国,都道府県弁護士会紹介,https://www.nichibenren.or.jp/
+労働,労働基準監督署,0120-811-610,平日9-17,全国,過労死・賃金未払い・不当解雇,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/
+労働,ハローワーク,0120-935-960,平日8:30-17:15,全国,失業給付・職業相談,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/hellowork/
+精神,いのちの電話,0120-783-556,24時間,全国,自殺予防・相談,https://www.lifelink.or.jp/
+精神,よりそいホットライン,0120-279-338,24時間,全国,高齢者・孤立死予防,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/
+インターネット,インターネット・ホットラインセンター,03-5979-2345,平日10-17,全国,サイバー犯罪・児童ポルノ通報,https://www.internethotline.jp/
+警察,サイバー相談窓口,03-5979-2240,平日10-17,全国,サイバー犯罪相談,https://www.npa.go.jp/bureau/safetylife/cyber/
+警察,ストーカー相談,03-3265-8181,24時間,全国,ストーカー被害・相談,https://www.npa.go.jp/bureau/safetylife/stalker/
+警察,特殊詐欺相談,03-3581-4321,24時間,全国,特殊詐欺・振り込め詐欺,https://www.npa.go.jp/bureau/safetylife/sousa1/index.html
+差別,人権相談（法務省）,0570-001-801,平日9-17,全国,差別・人権侵害相談,https://www.moj.go.jp/humanrights/
+地域,自治体相談窓口,不明,行政時間,各市町村,住民登録・福祉・税金,https://www.soumu.go.jp/

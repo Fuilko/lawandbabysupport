@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>【コンセプトノート】トヨタ財団共同研究助成</title>
+<style>
+@page { size: A4; margin: 18mm 20mm 20mm 20mm; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Yu Gothic", "Hiragino Sans", "Meiryo", "MS PGothic", sans-serif;
+  font-size: 11pt;
+  line-height: 1.75;
+  color: #1a1a1a;
+  background: #fff;
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 18mm 20mm;
+}
+
+.header {
+  border-bottom: 2.5px solid #1a365d;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+.header h1 {
+  font-size: 15pt;
+  font-weight: 700;
+  color: #1a365d;
+  letter-spacing: 0.5px;
+}
+.header .meta {
+  font-size: 9.5pt;
+  color: #4a5568;
+  margin-top: 4px;
+}
+
+.section {
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: 11.5pt;
+  font-weight: 700;
+  color: #1a365d;
+  border-left: 4px solid #c53030;
+  padding-left: 8px;
+  margin-bottom: 6px;
+}
+
+.highlight-box {
+  background: #fff5f5;
+  border: 1px solid #fc8181;
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin: 8px 0;
+  font-size: 10pt;
+}
+.highlight-box b {
+  color: #c53030;
+}
+
+.key-number {
+  font-size: 14pt;
+  font-weight: 800;
+  color: #c53030;
+}
+
+ul {
+  margin-left: 18px;
+  margin-top: 4px;
+}
+li {
+  margin-bottom: 3px;
+}
+
+.footer {
+  margin-top: 16px;
+  padding-top: 8px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 9pt;
+  color: #718096;
+}
+
+.accent {
+  background: linear-gradient(transparent 60%, #fef3c7 60%);
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10pt;
+  margin-top: 6px;
+}
+th {
+  background: #edf2f7;
+  padding: 4px 6px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 1.5px solid #1a365d;
+}
+td {
+  padding: 4px 6px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.two-col {
+  display: flex;
+  gap: 12px;
+}
+.two-col > div {
+  flex: 1;
+}
+
+@media print {
+  body { padding: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI駆動型法律自助プラットフォームの構築と実証研究</h1>
+  <div class="meta">
+    ―被害者の権利回復と司法アクセス格差の解消を目指して―<br>
+    代表：劉建志（りゅう・けんじ）｜ 光伊フォレスト株式会社 / 高知大学大学院<br>
+    トヨタ財団 共同研究助成（2027年度募集）｜ 2026年5月14日
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-title">1. 背景と課題</div>
+  <p>
+    日本では年間約100万人が犯罪被害に遭うが（警察庁統計）、実際の被害実態はその<span class="accent">2〜5倍</span>と推計される（法務省「犯罪被害実態（暗数）調査」）。多くの被害者は「誰に相談すればいいかわからない」「弁護士費用が高い」「警察が被害届を受理してくれない」という<span class="accent">三重の壁</span>に阻まれ、権利を放棄している。
+  </p>
+  <div class="highlight-box">
+    <b>核心データ：</b>民事訴訟における本人訴訟の勝率は<span class="key-number">32.4%</span>。つまり、弁護士をつけない被害者の3人に1人しか勝てない。司法アクセスの格差は明確な数値として存在する。
+  </div>
+  <p>
+    加えて、近年顕在化した製品安全被害（ドローン事故、自動車・家電の欠陥等）では、個人が企業の隠蔽体制と巨大な法的リソースに対峙し、<span class="accent">構造的な不利</span>に晒される。被害者が孤立無援のまま、権利を諦める社会構造が固定化している。
+  </p>
+</div>
+
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-title">2. 解決策：「LegalShield」プラットフォーム</div>
+  <p>
+    本研究は、<span class="accent">AI（大規模言語モデル×軽量言語モデルのハイブリッドアーキテクチャ）</span>と政府統計・判例データを統合した「法律自助プラットフォーム」を構築する。従来の法テラス等の制度支援とは異なり、以下の3つの独自機能を実装する：
+  </p>
+  <ul>
+    <li><b>① 被害届不受理防止モジュール：</b>警察への届出・相談時の対話記録・証拠保全をAIガイド。行政不服申立・監査請求までのSOPを自動生成。</li>
+    <li><b>② 逆転工学実証ベース：</b>企業の製品欠陥を隠蔽する構造を、57GBのフォレンジック解析（SDカイメージ完全解析、ROS2コードレビュー、MAVLinkログ検証）により可視化する手法を体系化。</li>
+    <li><b>③ プライバシー保証型AI：</b>SLM（Small Language Model、Ollamaローカル運用）とLLM（大規模モデル）を状況に応じて振り分ける階層的推論アーキテクチャ。個人情報は端末内で処理し、外部への流出を原則禁止。</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-title">3. 実証手法</div>
+  <p>
+    本研究は単なるシステム開発ではなく、<span class="accent">「社会実装を伴う実証研究」</span>として位置づける。2年間の助成期間中、以下の実証サイクルを回す：
+  </p>
+  <table>
+    <tr><th>フェーズ</th><th>期間</th><th>内容</th></tr>
+    <tr><td>Phase 1</td><td>第1〜4ヶ月</td><td>プラットフォームアルファ版開発。犯罪被害者コミュニティ（NPO、SNSグループ）との共創設計</td></tr>
+    <tr><td>Phase 2</td><td>第5〜12ヶ月</td><td>パイロット公開（β版）。ユーザーの問い合わせ・報告データを収集・匿名化分析</td></tr>
+    <tr><td>Phase 3</td><td>第13〜20ヶ月</td><td>効果検証。使用前后の「法的行動率」「専門家相談率」「被害届受理率」を比較</td></tr>
+    <tr><td>Phase 4</td><td>第21〜24ヶ月</td><td>学術論文執筆＋政策提言書作成。法務省・消費者庁への提言</td></tr>
+  </table>
+  <p style="margin-top:6px">
+    <b>独創的実証リソース：</b>代表者自身が製品安全被害（ドローン墜落事故、被害額約7,000万円相当）を受け、57GBのフォレンジック証拠を収集・解析した実体験を持つ。この<span class="accent">「被害者兼研究者」</span>という二重の視座は、従来の法社会学研究には存在しない独自の実証基盤となる。
+  </p>
+</div>
+
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-title">4. 期待される成果と社会変革</div>
+  <div class="two-col">
+    <div>
+      <p><b>学術的成果：</b></p>
+      <ul>
+        <li>国際学術誌論文 1〜2編（犯罪学・情報学領域）</li>
+        <li>学会発表 2〜3件（日本犯罪学会、情報処理学会等）</li>
+        <li>オープンソース公開（GitHub）</li>
+      </ul>
+    </div>
+    <div>
+      <p><b>社会的インパクト：</b></p>
+      <ul>
+        <li>「被害届不受理」実態の可視化データ提供</li>
+        <li>製品安全被害における企業隠蔽構造の透明化</li>
+        <li>法テラス等既存制度との連携マップ構築</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:8px">
+    本研究が最終的に目指すのは、<span class="accent">「デジタル技術によって、被害者が一人で戦わなくて済む社会」</span>である。AIは弁護士の代わりにはならない。しかし、被害者が「知らない」「高い」「怖い」という理由で権利を放棄する現状に、科技の力で抵抗する手段を与えることができる。
+  </p>
+</div>
+
+<!-- ============================================================ -->
+<div class="footer">
+  <b>予算：</b>800万円（24ヶ月）｜ <b>代表者：</b>劉建志（高知大学大学院 / 光伊フォレスト株式会社 代表取締役）<br>
+  <b>連絡先：</b>[メールアドレス] ｜ <b>電話：</b>[電話番号]
+</div>
+
+</body>
+</html>

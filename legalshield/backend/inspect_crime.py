@@ -1,0 +1,13 @@
+import duckdb, pathlib
+p = pathlib.Path(r"D:\projects\LegalShield\legalshield\knowledge\parsed\crime_npa")
+pat = str(p / "*.parquet").replace("\\", "/")
+con = duckdb.connect()
+con.execute(f"CREATE VIEW c AS SELECT * FROM read_parquet('{pat}', union_by_name=true)")
+print("== distinct tab_name (first 40) ==")
+print(con.execute("SELECT DISTINCT tab_name FROM c LIMIT 40").fetchdf().to_string())
+print("\n== distinct cat01_name (first 40) ==")
+print(con.execute("SELECT DISTINCT cat01_name FROM c LIMIT 40").fetchdf().to_string())
+print("\n== distinct area_name ==")
+print(con.execute("SELECT DISTINCT area_name FROM c WHERE area_name IS NOT NULL ORDER BY area_name").fetchdf().to_string())
+print("\n== sample 10 rows where area_name=高知県 ==")
+print(con.execute("SELECT tab_name, cat01_name, time_name, value FROM c WHERE area_name='高知県' LIMIT 10").fetchdf().to_string())

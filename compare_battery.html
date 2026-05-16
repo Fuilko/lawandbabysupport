@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<title>RAG モデル比較 — ドローンのバッテリー保護装置の設計欠陥による墜落事故における</title>
+<style>
+* { box-sizing: border-box; }
+body { font-family: -apple-system, "Segoe UI", "Noto Sans JP", sans-serif;
+       background: #0d1117; color: #c9d1d9; padding: 24px; line-height: 1.6;
+       max-width: 1600px; margin: 0 auto; }
+h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 8px; }
+h2 { color: #79c0ff; margin-top: 32px; }
+h3 { color: #d2a8ff; }
+.meta { color: #8b949e; font-size: 0.85em; margin: 8px 0 16px; }
+.question { background: #161b22; padding: 16px; border-radius: 6px;
+             border-left: 4px solid #d2a8ff; font-size: 1.05em; }
+.case { background: #161b22; padding: 10px 14px; border-radius: 4px;
+        margin: 6px 0; border-left: 3px solid #58a6ff; font-size: 0.9em; }
+.cn { color: #58a6ff; font-weight: bold; }
+.court { color: #c9d1d9; }
+.dist { color: #8b949e; font-size: 0.8em; margin-left: 8px; }
+.cname { color: #8b949e; font-size: 0.85em; }
+.cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+        margin-top: 16px; }
+.col { background: #161b22; padding: 18px; border-radius: 8px;
+       border-left: 4px solid #3fb950; min-width: 0; }
+.answer { background: #0d1117; padding: 14px; border-radius: 6px;
+          font-size: 0.92em; white-space: pre-wrap; word-wrap: break-word; }
+.err { color: #f85149; background: #2d1518; padding: 8px; border-radius: 4px;
+      margin-bottom: 8px; }
+@media (max-width: 1200px) { .cols { grid-template-columns: 1fr; } }
+</style></head><body>
+
+<h1>⚖️ RAG モデル品質比較</h1>
+<p class="meta">生成日時: 2026-05-13 10:53:10 ｜ Top-K: 6</p>
+
+<h2>質問</h2>
+<div class="question">ドローンのバッテリー保護装置の設計欠陥による墜落事故における製造物責任</div>
+
+<h2>検索された判例 (Top-6)</h2>
+<div class="case"><span class="cn">[平成7(ワ)4179]</span> <span class="court">名古屋地方裁判所民事第7部</span> <span class="dist">dist=0.198 src=contents</span><br><span class="cname">中華航空エアバス式Ｂ1816機事故損害賠償請求事件</span></div><div class="case"><span class="cn">[平成7(ワ)4179]</span> <span class="court">名古屋地方裁判所民事第7部</span> <span class="dist">dist=0.209 src=contents</span><br><span class="cname">中華航空エアバス式Ｂ1816機事故損害賠償請求事件</span></div><div class="case"><span class="cn">[平成1(行ウ)7]</span> <span class="court">青森地方裁判所</span> <span class="dist">dist=0.210 src=contents</span><br><span class="cname">六ヶ所ウラン濃縮工場の核燃料物質加工事業許可処分無効確認・取消請求事件</span></div><div class="case"><span class="cn">[平成1(行ウ)7]</span> <span class="court">青森地方裁判所</span> <span class="dist">dist=0.210 src=contents</span><br><span class="cname">六ヶ所ウラン濃縮工場の核燃料物質加工事業許可処分無効確認・取消請求事件</span></div><div class="case"><span class="cn">[平成7(ワ)4179]</span> <span class="court">名古屋地方裁判所民事第7部</span> <span class="dist">dist=0.213 src=contents</span><br><span class="cname">中華航空エアバス式Ｂ1816機事故損害賠償請求事件</span></div><div class="case"><span class="cn">[平成7(ワ)4179]</span> <span class="court">名古屋地方裁判所民事第7部</span> <span class="dist">dist=0.213 src=contents</span><br><span class="cname">中華航空エアバス式Ｂ1816機事故損害賠償請求事件</span></div>
+
+<h2>各モデルの回答</h2>
+<div class="cols">
+<div class="col">
+  <h3>phi4:14b</h3>
+  <div class="meta">
+    所要時間: <b>15.1s</b><br>
+    回答長: 550 文字
+  </div>
+  
+  <div class="answer">### 結論:<br>ドローンのバッテリー保護装置の設計欠陥による墜落事故における製造物責任は、原則として「[平成7(ワ)4179] 名古屋地方裁判所民事第7部」の判例が参考になります。この判例では、設計上の欠陥を理由に製造物責任が認められたケースです。<br><br>### 根拠判例:<br>- **[平成7(ワ)4179] 名古屋地方裁判所民事第7部**  <br>  - 設計上の欠陥が原因で発生した航空機事故について、被告エアバスは設計上の欠陥を認め、製造物責任が問われました。この判例では、技術通報や改修措置の不備が指摘され、メーカーに対する安全確保義務違反として責任を認めたものです。<br><br>### 注意点:<br>- **直接的な判例は見当たらない**: ドローンに関する具体的な裁判例は提示されておらず、航空機事故を扱った「[平成7(ワ)4179]」が参考として挙げられます。<br>- **技術通報や改修措置の重要性**: 製造物責任において、製品の安全性を確保するための技術的な対応が不十分であった場合、メーカーは責任を問われる可能性があります。<br>- **国際裁判管轄に関する考慮**: 製造地と事故発生地の関係も重要であり、特に航空機やドローンなど移動性が高い製品では、国際的な法律関係を考慮する必要があるかもしれません。</div>
+</div>
+<div class="col">
+  <h3>gemma3:27b</h3>
+  <div class="meta">
+    所要時間: <b>600.0s</b><br>
+    回答長: 0 文字
+  </div>
+  <div class="err">⚠ HTTPConnectionPool(host=&#x27;127.0.0.1&#x27;, port=11434): Read timed out. (read timeout=600)</div>
+  <div class="answer"></div>
+</div>
+<div class="col">
+  <h3>llama3.3:70b</h3>
+  <div class="meta">
+    所要時間: <b>379.8s</b><br>
+    回答長: 303 文字
+  </div>
+  
+  <div class="answer">結論: ドローンのバッテリー保護装置の設計欠陥による墜落事故における製造物責任については、直接的な判例は見当たらない。<br><br>根拠判例: 提供された判例は、主に航空機事故や核燃料物質加工事業許可処分に関するものであり、ドローンのバッテリー保護装置の設計欠陥による墜落事故について具体的に言及していない。したがって、これらの判例を直接適用することはできない。<br><br>注意点: ドローンの安全性と製造物責任に関する法律や規制は不断に進化しているため、最新の情報と専門家の意見を参考にすることが重要である。また、ドローンの設計欠陥による事故については、製造者の責任だけでなく、使用者や管理者の責任も考慮される場合がある。</div>
+</div></div>
+
+</body></html>

@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LegalShield — プロジェクト紹介・機能説明・申請ガイド</title>
+<style>
+@page { size: A4; margin: 15mm; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Hiragino Sans','Yu Gothic UI','Noto Sans JP',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.8;font-size:14px}
+.page{width:210mm;min-height:297mm;background:#fff;margin:20px auto;padding:32px 36px;box-shadow:0 4px 24px rgba(0,0,0,0.08);page-break-after:always;position:relative}
+.page:last-child{page-break-after:auto}
+.header{text-align:center;padding-bottom:20px;border-bottom:3px solid #1a2a6c;margin-bottom:24px}
+.logo{font-size:36px;font-weight:800;color:#1a2a6c;letter-spacing:-1px}
+.tagline{font-size:16px;color:#7cf0c2;background:#0b1020;display:inline-block;padding:4px 16px;border-radius:20px;margin-top:8px}
+.subtitle{font-size:13px;color:#6a7ab0;margin-top:6px}
+.section{margin-bottom:28px}
+.section-title{font-size:18px;font-weight:700;color:#1a2a6c;border-left:5px solid #7cf0c2;padding-left:12px;margin-bottom:14px}
+.section-body{font-size:13.5px;color:#333}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:#f8f9ff;border:1px solid #e0e3f0;border-radius:10px;padding:14px}
+.card .icon{font-size:28px;margin-bottom:6px}
+.card .title{font-size:14px;font-weight:700;color:#1a2a6c;margin-bottom:4px}
+.card .desc{font-size:12px;color:#555;line-height:1.6}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+th{background:#1a2a6c;color:#fff;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #e0e3f0;color:#333}
+tr:hover td{background:#f8f9ff}
+.contact-box{background:linear-gradient(135deg,#1a2a6c,#0b1020);color:#fff;border-radius:12px;padding:20px}
+.contact-box .title{font-size:16px;font-weight:700;color:#7cf0c2;margin-bottom:10px}
+.contact-box .item{font-size:13px;margin-bottom:6px;color:#e6ecff}
+.contact-box .label{color:#ffd166;font-weight:600}
+.highlight{background:#fff8e6;border-left:4px solid #ffd166;padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0}
+.highlight-title{font-weight:700;color:#856404;font-size:13px}
+.highlight-body{color:#856404;font-size:12.5px}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600}
+.badge-red{background:#ffebee;color:#c0392b}
+.badge-green{background:#e8f5e9;color:#2e7d32}
+.badge-blue{background:#e3f2fd;color:#1565c0}
+.toc{background:#f8f9ff;border:1px solid #e0e3f0;border-radius:10px;padding:16px;margin-bottom:20px}
+.toc-title{font-weight:700;color:#1a2a6c;margin-bottom:8px;font-size:14px}
+.toc a{color:#1a2a6c;text-decoration:none;font-size:13px;display:block;padding:3px 0}
+@media print{body{background:#fff}.page{box-shadow:none;margin:0;padding:20px 24px}}
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE SWITCH -->
+<div style="text-align:center;padding:8px 0;background:#f0f2f5;border-bottom:1px solid #e0e3f0;font-size:13px;">
+  <a href="LEGALSHIELD_INTRO_JP.html" style="margin:0 12px;text-decoration:none;font-weight:700;color:#1a1a2e;">🇯🇵 日本語</a>
+  <a href="LEGALSHIELD_INTRO_ZH.html" style="margin:0 12px;text-decoration:none;color:#6a7ab0;">🇹🇼 繁體中文</a>
+  <a href="LEGALSHIELD_INTRO_EN.html" style="margin:0 12px;text-decoration:none;color:#6a7ab0;">🇺🇸 English</a>
+</div>
+
+<!-- PAGE 1: 表紙 + 自己紹介 -->
+<div class="page">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">「誰も1人にはしない」</div>
+    <div class="subtitle">AI 被害者支援システム | Civic Tech Project | 公益×テクノロジー</div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">目次</div>
+    <a href="#p1">1. 自己紹介</a>
+    <a href="#p2">2. 機能紹介（17類型犯罪 + AI 5重ロール）</a>
+    <a href="#p3">3. 開発の経緯</a>
+    <a href="#p4">4. 申請窓口・メール・パイプライン一覧</a>
+    <a href="#p5">5. 技術アーキテクチャとデータベース APP 化ガイド</a>
+    <a href="#p6">6. スマホ機能連携（GPS・カメラ・マイク・SMS）</a>
+  </div>
+
+  <div class="section" id="p1">
+    <div class="section-title">1. 自己紹介 — LegalShield とは？</div>
+    <div class="section-body">
+      <p><b>LegalShield</b> は、AI を中核とした<strong>犯罪被害者・権利侵害被害者</strong>向けの無料支援システムです。</p>
+      <p style="margin-top:8px">日本では年間 <b>200万人以上</b> が犯罪や権利侵害に遭いますが、その <b>70%</b> が「誰に相談すればいいかわからない」「証拠を保存する時間がない」「被害届が不受理になるのが怖い」と、1人で抱え込んでいます。LegalShield は、その無形の壁を壊すために生まれました。</p>
+
+      <div class="highlight">
+        <div class="highlight-title">核心理念</div>
+        <div class="highlight-body">
+          被害者が法律の専門家になる必要はありません。<br>
+          AI が状況を整理し、証拠を保全し、法律を分析し、戦略をシミュレーションし、専家を紹介する——<br>
+          すべての被害者が、事件発生後の「黄金時間」内に、正しい次の一歩を踏み出せるように。
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top:14px">
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <div class="title">24時間・無料・匿名</div>
+          <div class="desc">本名や住所の登録不要。スマホを開けばすぐに使えます。</div>
+        </div>
+        <div class="card">
+          <div class="icon">🤖</div>
+          <div class="title">AI 5重ロールシステム</div>
+          <div class="desc">緊急対応、証拠保全、法律分析、戦略シミュレーション、専家紹介をワンストップで。</div>
+        </div>
+        <div class="card">
+          <div class="icon">🔥</div>
+          <div class="title">被害届不受理防止機能</div>
+          <div class="desc">AI が法的根拠付きレポートと警察交渉スクリプトを生成し、被害届不受理を防ぎます。</div>
+        </div>
+        <div class="card">
+          <div class="icon">📊</div>
+          <div class="title">日本最大級の法律データベース</div>
+          <div class="desc">国法 623K 件、判例 724K 件、e-Stat 統計 885 テーブルを RAG で即時検索。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">基本情報</div>
+    <table>
+      <tr><th>項目</th><th>内容</th></tr>
+      <tr><td>プロジェクト名</td><td>LegalShield Civic Tech Project</td></tr>
+      <tr><td>連絡先</td><td><b>kenji@hiiforest.com</b></td></tr>
+      <tr><td>GitHub</td><td>github.com/Fuilko/lawandbabysupport</td></tr>
+      <tr><td>対応言語</td><td>日本語（繁体中文・英語は開発中）</td></tr>
+      <tr><td>対応地域</td><td>日本 47 都道府県（GPS 連動）</td></tr>
+      <tr><td>費用</td><td><span class="badge badge-green">被害者完全無料</span></td></tr>
+      <tr><td>データ処理</td><td><span class="badge badge-blue">端末内 AI 処理・サーバー最小アップロード</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PAGE 2: 機能 -->
+<div class="page" id="p2">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">機能紹介</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">2. AI 5重ロールシステム</div>
+    <div class="section-body">
+      <p>LegalShield の AI は <b>5つの専門家ロール</b>を同時に果たし、事件発生から専家マッチングまで全程をサポートします。</p>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>ロール</th><th>機能</th><th>被害者が得られる助け</th></tr>
+    <tr>
+      <td><b>🚨 緊急対応官</b></td>
+      <td>ワンタッチで 110 / #8898 / #7119 通報・GPS 位置共有・無音モード・10秒カウントダウン自動通知</td>
+      <td>命の危機時、考えなくても押せばいい</td>
+    </tr>
+    <tr>
+      <td><b>📁 証拠保全官</b></td>
+      <td>写真・録音・書類の自動整理、SHA-256 ハッシュ・タイムスタンプ・GPS タグ付け・AES-256 暗号化・保全証明書自動生成</td>
+      <td>証拠が失われない、改竄されない、裁判所提出可能</td>
+    </tr>
+    <tr>
+      <td><b>⚖️ 法律分析師</b></td>
+      <td>623K 国法 + 724K 判例の RAG 検索・関連法条即時提示・適用罪名自動判定</td>
+      <td>「私が今遭遇していることは、法律では何と呼ばれるの？」</td>
+    </tr>
+    <tr>
+      <td><b>🧭 戦略模擬師</b></td>
+      <td>刑事告訴・民事訴訟・ADR 調停・行政申訴・保護命令申請——5つのパスの時間・費用・成功率比較</td>
+      <td>「今の私の状況に最適な道はどれ？」</td>
+    </tr>
+    <tr>
+      <td><b>🗺️ 専家紹介ナビゲーター</b></td>
+      <td>GPS 連動で最寄りの支援機関（弁護士会・NPO・法テラス・シェルター）をマッチング・予約スクリプト・準備書類チェック・費用減免確認</td>
+      <td>「私の近くに、誰が助けてくれる人がいるの？」</td>
+    </tr>
+  </table>
+
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">17類型犯罪対応一覧</div>
+    <div class="section-body">
+      <p>LegalShield は日本で最も多い <b>17類型</b>の犯罪と権利侵害に対応。各タイプには黄金時間、証拠チェックリスト、加害者プロファイル、常用狡弁反論マニュアル、AI 対話スクリプトを搭載。</p>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>#</th><th>タイプ</th><th>日本の法条</th><th>黄金時間</th></tr>
+    <tr><td>1</td><td>配偶者暴力（DV）</td><td>刑法204条・配偶者暴力防止法</td><td>直後</td></tr>
+    <tr><td>2</td><td>性暴力</td><td>刑法176-178条の2</td><td>直後</td></tr>
+    <tr><td>3</td><td>消費者被害・詐欺</td><td>刑法246条・組織的犯罪処罰法</td><td>72時間</td></tr>
+    <tr><td>4</td><td>職場パワーハラスメント</td><td>労基法99条・パワハラ防止法</td><td>継続的</td></tr>
+    <tr><td>5</td><td>児童虐待</td><td>児童虐待防止法・児童福祉法</td><td>直後</td></tr>
+    <tr><td>6</td><td>サイバー犯罪・ネットいじめ</td><td>刑法230条・231条</td><td>24時間</td></tr>
+    <tr><td>7</td><td>ストーカー・つきまとい</td><td>ストーカー規制法・刑法222条</td><td>直後</td></tr>
+    <tr><td>8</td><td>薬物被害・依存</td><td>覚せい剤取締法等</td><td>継続的</td></tr>
+    <tr><td>9</td><td>ヘイトクライム・差別</td><td>ヘイトスピーチ規制法</td><td>24時間</td></tr>
+    <tr><td>10</td><td>売買春・人身取引</td><td>売買春防止法・刑法226条の2</td><td>直後</td></tr>
+    <tr><td>11</td><td>監禁・監視</td><td>刑法220条</td><td>直後</td></tr>
+    <tr><td>12</td><td>器物損壊</td><td>刑法261条</td><td>直後</td></tr>
+    <tr><td>13</td><td>脅迫・恐喝</td><td>刑法222条</td><td>直後</td></tr>
+    <tr><td>14</td><td>不正アクセス・情報漏洩</td><td>不正アクセス禁止法</td><td>72時間</td></tr>
+    <tr><td>15</td><td>ディープフェイク・AI 悪用</td><td>刑法175条・肖像権</td><td>24時間</td></tr>
+    <tr><td style="color:#c0392b;font-weight:700">16</td><td style="color:#c0392b;font-weight:700">痴漢・公共交通内性犯罪</td><td>刑法176条・迷惑防止条例</td><td>直後</td></tr>
+    <tr><td style="color:#c0392b;font-weight:700">17</td><td style="color:#c0392b;font-weight:700">公然わいせつ・露出狂</td><td>刑法174条・迷惑防止条例</td><td>直後</td></tr>
+  </table>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">📋 今後追加予定：民事・行政法分野（2026年後半〜）</div>
+    <div class="highlight-body">
+      <b>刑法</b>だけでなく、<b>製造物責任法（PL法）</b>・<b>労働法侵害</b>・<b>売買契約不履行</b>・<b>背任・信託法違反</b>・<b>環境法違反</b>・<b>行政不服申立て</b>も対応予定。<br>
+      開発者（高知大学修士・博士進学予定）は、日本の研究データベース権限を活かして判例研究を深化させ、すべての「被害」を「刑事・民事・行政」の三法域でカバーします。
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:16px">
+    <div class="highlight-title">🛡️ 独自機能：被害届不受理防止</div>
+    <div class="highlight-body">
+      被害者が警察署に行く前に、AI が「法的根拠レポート」と「警察交渉スクリプト」を自動生成：<br>
+      • 警察「これは民事です」→ あなたは刑法条文で反論<br>
+      • 警察「証拠が不十分です」→ あなたは被害届受理に証拠完備性は不要と説明<br>
+      • 警察「相談で記録します」→ あなたは正式な受理番号を要求<br>
+      それでも不受理なら、AI が「公安委員会申立書」「検察審査会申立書」を自動生成します。
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 3: 開発経緯 -->
+<div class="page" id="p3">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">開発の経緯</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">3. 開発者プロフィール — 6800万円の代償が生んだ、弱者の武器</div>
+    <div class="section-body">
+      <p style="margin-top:10px; text-align:center; font-weight:600; color:#c0392b; font-size:15px">
+        この文書は単なるプロジェクト提案書ではありません。<br>
+        正義の壁に1人で立ち向かった者からの、<b>起義宣言</b>です。<br>
+      </p>
+
+      <p style="margin-top:10px">
+        <b>私は誰ですか？</b> 私は劉建志（Kenji）—— 高知大学森林工学研究科修士課程在籍、光伊フォレスト株式会社代表取締役、そして<b>6800万円の企業不正被害の生存者</b>です。<br>
+        大学では<b>犯罪脳科学</b>、<b>刑法・民法・環境法</b>を学び、かつては検察官を夢見ました。<b>Apple・NIKE 工場</b>の安全管理を経験し、台湾の<b>TEAMS 5（防ハッキング企業）</b>と技術提携しています。<br>
+        法律も、テクノロジーも、ビジネスも、私には馴染みのものです。<b>それでも私は無力でした。</b>
+      </p>
+
+      <div class="highlight">
+        <div class="highlight-title" style="color:#c0392b">⚠️ 起爆剤：6800万円の企業不正被害</div>
+        <div class="highlight-body">
+          2026年2月3日、私が林業測量のために購入したドローンが、<b>製品の設計缺陷</b>により台湾で墜落しました。<br>
+          調査の過程で、メーカーが<b>34 項の安全缺陷</b>を隠蔽していたことが判明しました——無効化されたバッテリー保護回路、安全限界の5倍を超える磁気センサー、そして製品として出荷された「0.0.0」の開発版ファームウェア。<br>
+          行政機関・消費者保護体制は<b>無力</b>でした。メーカーは「被害届不受理」のように責任をはねつけ、供給打切りを恫喝しました。<br>
+          高知・大阪・東京と十数社の法律事務所を探しましたが、<b>手頃な費用で私を助けてくれる専門家は見つかりませんでした。</b><br>
+          現在、<b>台湾と日本で同時に訴訟・ADR を進行中</b>（背信・商品損壊）。
+        </div>
+      </div>
+
+      <p style="margin-top:10px">
+        <b>この6800万円の惨禍が、すべての起爆剤となりました。</b><br>
+        私は<b>ドローンのファームウェアを1行ずつ逆アセンブル</b>し、<b>日本の民事法と行政法を1つずつ分析</b>し、<b>数千ページに及ぶ法的証拠データベース</b>を自ら構築しました。<br>
+        この悪夢がなければ、お金も知識も味方もないまま司法の壁の前に立たされる一般市民の絶望を、私は決して理解できなかったでしょう。
+      </p>
+
+      <div class="highlight">
+        <div class="highlight-title">💡 等価交換</div>
+        <div class="highlight-body">
+          <b>1つの林業プロジェクトは破壊されました。</b> しかしその灰の中から、はるかに強大なものが生まれました：<br>
+          <b>LegalShield</b> — 企業不正という「いなごの群れ（Locust Effect）」と戦い、声なき者に力を与え、誰も不正義に1人で立ち向かわなくて済む社会の安全網です。<br>
+          <span style="color:#c0392b; font-weight:600">1つの産業プロジェクトが失われた。社会の安全網が生まれた。</span>
+        </div>
+      </div>
+
+      <p style="margin-top:10px">
+        私は<b>高知県・黒潮の郷</b>で4人の娘を育てています。東京の法律資源からは遠く離れた場所です。<br>
+        都市と地方の<b>圧倒的な資源格差</b>を、私は毎日身に沁みて感じています。地方創生は経済だけではありません。<b>法律、医療、正義の実現</b>——これらが地方では極めて困難です。<br>
+        特に<b>女性、子ども、高齢者</b>にとって、適切な法律支援にアクセスすることは、都市と比べて桁違いに難しいのです。
+      </p>
+
+      <p style="margin-top:10px; text-align:center; font-weight:600">
+        これが LegalShield が存在する理由です：<br>
+      </p>
+      <div class="highlight">
+        <div class="highlight-body" style="text-align:center;font-size:16px;font-weight:600; color:#1a2a6c">
+          「公権力が一般市民を守れないとき、<br>テクノロジーは弱者の手の中の武器になるべきだ。」<br>
+          <span style="font-size:12px;font-weight:400; color:#555">— 劉建志（Kenji）、2026年5月</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">4つの核心観察</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="icon">📉</div>
+        <div class="title">観察一：制度の隙間</div>
+        <div class="desc">
+          日本には年間200万+ の被害者がいるが、法テラスは平日10-16時、NPO は地域格差があり、
+          警察による被害届不受理は頻繁。被害者は「事件発生後 24-72 時間の黄金時間」内に、ほとんど構造化された支援を受けられない。
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">💻</div>
+        <div class="title">観察二：テクノロジーの格差</div>
+        <div class="desc">
+          企業向け Legal Tech（例：Legalscape）は成熟しているが、対象は「弁護士を雇える企業」。
+          一般市民・被害者・弱者こそがテクノロジーから取り残されている。
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">🧠</div>
+        <div class="title">観察三：AI の可能性</div>
+        <div class="desc">
+          2025-2026 年、AI（LLM）は高品質な法律文書分析、戦略シミュレーション、多言語対話が可能になった。
+          この能力は大企業だけのものではなく、すべての助けを必要とする人に開放されるべきだ。
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">⚖️</div>
+        <div class="title">観察四：都市と地方の格差</div>
+        <div class="desc">
+          高知県のような地方では、弁護士・NPO・支援機関へのアクセスが極端に限られる。
+          女性被害者、子育て中の親、高齢者にとって、東京や大阪の資源は遠く、交通費・時間的制約も圧倒的。
+          デジタルで法の力を地方に届けることが急務だ。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">開発の軌跡</div>
+    <table>
+      <tr><th>時期</th><th>マイルストーン</th></tr>
+      <tr><td>2026年2月</td><td>開発者自身が台湾でドローン事故に遭い、メーカーの34項安全缺陷を発見。日本の法律・被害者支援体制を研究開始</td></tr>
+      <tr><td>2026年3月</td><td>LegalShield 構想：AI × 被害者支援 × 被害届不受理防止。自身の訴訟・ADR準備経験と大量証拠管理の知見を結合</td></tr>
+      <tr><td>2026年4月</td><td>国法（e-LAWS XML 623K 件）、判例、統計データのクロール開始。高知大学の研究データベース権限を活用</td></tr>
+      <tr><td>2026年5月上旬</td><td>ベクトルデータベース（LanceDB）・RAG 検索システム・AI 5重ロール原型完成</td></tr>
+      <tr><td>2026年5月中旬</td><td>緊急モード設計・被害届不受理防止機能・17類型犯罪分類学（刑法中心）・加害者プロファイルデータベース完成</td></tr>
+      <tr><td>2026年5月下旬</td><td>（予定）助成金申請・パートナー開拓・TEAMS 5 との技術連携強化・パイロット運営開始</td></tr>
+      <tr><td>2026年後半</td><td>（予定）民事法・行政法分野拡張、判例研究の深化、博士課程進学と研究連携</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">今後の拡張計画 — 刑法だけでなく、民事・行政法も</div>
+    <div class="section-body">
+      <p>現在の LegalShield は<b>17類型の犯罪（刑法分野）</b>を中心に構築されていますが、今後は以下の領域へ拡張します：</p>
+      <ul style="margin-left:20px;margin-top:8px">
+        <li><b>製造物責任法（PL法）</b> — 製品缺陷による被害・リコール対応</li>
+        <li><b>労働法侵害</b> — 不当解雇・賃金未払い・労災隠蔽・パワハラ</li>
+        <li><b>民法上の売買契約不履行</b> — 債務不履行・瑕疵担保責任</li>
+        <li><b>背任・信託法違反</b> — 取締役・役員の背任行為</li>
+        <li><b>環境法違反</b> — 土壌汚染・水質汚染・廃棄物違法投棄</li>
+        <li><b>行政法</b> — 行政不服申立て・国家賠償・情報公開請求</li>
+        <li><b>判例研究の深化</b> — 高知大学のデータベース権限を活かし、各領域の最新判例をリアルタイム統合</li>
+      </ul>
+      <p style="margin-top:10px">
+        <b>開発者は現在高知大学の修士課程に在籍し、博士課程進学を予定しています。</b><br>
+        学術研究と Civic Tech の融合を目指し、日本の研究データベースへのフルアクセス権限を活かして、<br>
+        法律 AI の精度と網羅性を飛躍的に高めていきます。
+      </p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">公益先行、収益は自然に</div>
+    <div class="section-body">
+      <p>LegalShield のビジネスモデルは <b>「被害者への利用は永久無料」</b>です。収益源は：</p>
+      <ul style="margin-left:20px;margin-top:8px">
+        <li>弁護士・NPO への優質案件導流サブスクリプション</li>
+        <li>自治体 GovTech SaaS（相談支援システム）</li>
+        <li>匿名化データ洞察レポート（学術・政策用）</li>
+        <li>被害者向け保険・金融仲介</li>
+      </ul>
+      <p style="margin-top:10px"><b>社会ミッションが第一、収益はミッションの副産物です。</b></p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: 申請窓口 -->
+<div class="page" id="p4">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">申請窓口・メール・パイプライン一覧</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">4. 助成金・補助金申請窓口</div>
+    <div class="section-body">
+      <p>LegalShield は現在<strong>原型完成・パイロット準備</strong>段階です。実証試験のためのシード資金が必要です。以下の窓口に申請可能です。</p>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>優先度</th><th>機関名</th><th>金額目安</th><th>申請方法</th><th>適合理由</th></tr>
+    <tr>
+      <td><span class="badge badge-red">最高</span></td>
+      <td><b>トヨタ財団</b><br>一般助成</td>
+      <td>¥100万-500万</td>
+      <td>ウェブ申請書<br>年1-2回募集</td>
+      <td>社会課題解決・テクノロジー活用・人権支援</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-red">最高</span></td>
+      <td><b>伊藤園ホールディングス</b><br>社会貢献助成</td>
+      <td>¥50万-300万</td>
+      <td>ウェブ申請書<br>年1回募集</td>
+      <td>地域社会・人権支援・弱者支援</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-green">高</span></td>
+      <td><b>DBJ 日本政策投資銀行</b><br>イノベーション助成</td>
+      <td>¥500万-2000万</td>
+      <td>ウェブ・担当者窓口<br>随時</td>
+      <td>Civic Tech・データ活用・社会課題</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-green">高</span></td>
+      <td><b>内閣府 地方創生推進室</b><br>補助金</td>
+      <td>¥100万-1000万</td>
+      <td>自治体経由 or 直接<br>随時</td>
+      <td>地方創生・デジタル化・被害者支援</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-blue">中</span></td>
+      <td><b>Google.org Impact Challenge</b></td>
+      <td>$10万-50万<br>(約¥1500万-7500万)</td>
+      <td>ウェブ申請<br>年1回</td>
+      <td>Technology × Social Impact</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-blue">中</span></td>
+      <td><b>Microsoft AI for Good</b></td>
+      <td>$5万-50万<br>(約¥750万-7500万)</td>
+      <td>ウェブ申請<br>年1回</td>
+      <td>AI × 社会インパクト</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-blue">中</span></td>
+      <td><b>Meta Community Grants</b></td>
+      <td>$1万-10万<br>(約¥150万-1500万)</td>
+      <td>ウェブ申請<br>年1回</td>
+      <td>安全・人権テック</td>
+    </tr>
+  </table>
+
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">4.2 パートナー開拓窓口</div>
+    <div class="section-body">
+      <p>LegalShield は<strong>弁護士会・NPO・支援施設・自治体・大学</strong>をパートナーとして募集しています。</p>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>対象</th><th>窓口</th><th>内容</th></tr>
+    <tr>
+      <td><b>日本弁護士連合会</b></td>
+      <td>各都道府県弁護士会<br>担当部門</td>
+      <td>案件導流協定・法律内容監修・被害者相談窓口紹介</td>
+    </tr>
+    <tr>
+      <td><b>法テラス</b></td>
+      <td>各地方法テラス<br>総務部</td>
+      <td>公設扶助制度連携・無料法律相談窓口の GPS マッチング</td>
+    </tr>
+    <tr>
+      <td><b>DV支援センター</b><br>（全国約120拠点）</td>
+      <td>各都道府県<br>DV相談・支援センター</td>
+      <td>緊急時転介連動・避難所情報 API 化</td>
+    </tr>
+    <tr>
+      <td><b>児童相談所</b></td>
+      <td>各市町村<br>児童相談所</td>
+      <td>児童虐待通報・#7119 連動・児童福祉資料統合</td>
+    </tr>
+    <tr>
+      <td><b>大学・研究機関</b></td>
+      <td>法学部・社会福祉学部<br>犯罪学研究センター</td>
+      <td>学術研究連携・J-STAGE 論文分析・政策提言</td>
+    </tr>
+    <tr>
+      <td><b>自治体</b></td>
+      <td>各市町村<br>ICT推進課・市民協働課</td>
+      <td>GovTech SaaS 販売・地域被害データ可視化</td>
+    </tr>
+  </table>
+
+  <div class="contact-box" style="margin-top:24px">
+    <div class="title">📧 LegalShield 連絡先</div>
+    <div class="item"><span class="label">プロジェクトメール：</span>kenji@hiiforest.com</div>
+    <div class="item"><span class="label">GitHub：</span>github.com/Fuilko/lawandbabysupport</div>
+    <div class="item"><span class="label">申請相談：</span>「機関名・希望する提携内容・担当者連絡先」を上記メールまで</div>
+    <div class="item"><span class="label">返信目安：</span>3営業日以内</div>
+  </div>
+
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">4.3 各機関の詳細情報・URL・申請アドバイス</div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">🚗 トヨタ財団（一般助成）— 最高優先度</div>
+    <div class="highlight-body">
+      <b>公式URL：</b><a href="https://www.toyotafound.or.jp/">https://www.toyotafound.or.jp/</a><br>
+      <b>申請窓口：</b>ウェブ申請書（オンライン）／年1-2回募集（通常3月・9月頃）<br>
+      <b>連絡先：</b>03-5405-6070（平日9:30-17:30）<br>
+      <b>申請アドバイス：</b><br>
+      • 強みは「社会課題解決 × テクノロジー × 人権」。技術詳細よりも「誰が救われるか」のストーリーを重視。<br>
+      • 「被害者支援」「地方創生」「女性・子ども支援」のキーワードを含める。<br>
+      • 実績がない場合は「パイロット計画の具体性」でカバー。高知県での実証試験を強調。<br>
+      • 金額は ¥300万-500万が現実的。大きすぎる金額は避ける。<br>
+      • 添付：プロジェクト紹介HTML（ONE_PAGER）+ 3分動画 + 代表者プロフィール
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">🍵 伊藤園ホールディングス（社会貢献助成）— 最高優先度</div>
+    <div class="highlight-body">
+      <b>公式URL：</b><a href="https://www.itoen-holdings.co.jp/sustainability/society/">https://www.itoen-holdings.co.jp/sustainability/society/</a><br>
+      <b>申請窓口：</b>ウェブ申請書／年1回募集（通常4月-5月）<br>
+      <b>連絡先：</b>サステナビリティ推進部（メール問い合わせフォーム経由）<br>
+      <b>申請アドバイス：</b><br>
+      • 「自然との共生」「地域社会の発展」「人権尊重」が企業価値と接続する訴求が効く。<br>
+      • 高知県・四国エリアの地方創生と結びつける。都市部だけでなく地方の課題解決をアピール。<br>
+      • 「子育て中の親」「女性被害者」など、具体的な受益者像を描く。<br>
+      • 金額は ¥100万-300万が適切。飲料業界の社会貢献イメージと合致させる。
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">🏦 DBJ 日本政策投資銀行（イノベーション助成）— 高優先度</div>
+    <div class="highlight-body">
+      <b>公式URL：</b><a href="https://www.dbj.jp/">https://www.dbj.jp/</a><br>
+      <b>申請窓口：</b>担当者窓口（事前問い合わせ必須）／随時受付<br>
+      <b>連絡先：</b>各支店の「新規事業・イノベーション担当」または本店企画部<br>
+      <b>申請アドバイス：</b><br>
+      • Civic Tech × データ活用 × 社会課題解決の「事業性」を重視。収益モデル（B2B2G）を明確に示す。<br>
+      • 5年後の収益予測（¥5億/年）と「被害者永久無料」の両立を説明。<br>
+      • チームの技術力（TEAMS 5 提携含む）と学術的背景（高知大学）を強調。<br>
+      • 金額は ¥500万-2000万が現実的。事業計画書（BP）の質が勝負。<br>
+      • 面談の機会を作ることが重要。まず「事業相談」として担当者と接触する。
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">🏛️ 内閣府 地方創生推進室（補助金）— 高優先度</div>
+    <div class="highlight-body">
+      <b>公式URL：</b><a href="https://www.kantei.go.jp/jp/singi/tiiki_sousei/">https://www.kantei.go.jp/jp/singi/tiiki_sousei/</a><br>
+      <b>申請窓口：</b>自治体経由 or 直接申請／年間複数回募集（各補助金により異なる）<br>
+      <b>連絡先：</b>内閣府地方創生推進事務局 03-3581-4111<br>
+      <b>申請アドバイス：</b><br>
+      • 「地方創生交付金」「デジタル田園都市構想」など、複数の補助金枠が存在。<br>
+      • 高知県を通じて自治体経由で申請するのが最も現実的。高知県庁の「ICT推進課」にまず相談。<br>
+      • 「高知県内の被害者支援」「デジタル化による行政効率化」を訴求。<br>
+      • GovTech SaaS の自治体導入実績があれば、さらに説得力が増す。
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">� Google.org Impact Challenge — 中優先度</div>
+    <div class="highlight-body">
+      <b>公式URL：</b><a href="https://www.google.org/impactchallenge/">https://www.google.org/impactchallenge/</a><br>
+      <b>申請窓口：</b>ウェブ申請（英語必須）／年1回（時期は地域により異なる）<br>
+      <b>連絡先：</b>オンラインフォームのみ（直接メールは非推奨）<br>
+      <b>申請アドバイス：</b><br>
+      • <b>英語申請必須。</b>日本語では受け付けられない。英文版プロジェクト紹介（ONE_PAGER_EN）が必要。<br>
+      • 「Technology × Social Impact」の明確な接続が必要。AI の具体例（端末内推論・RAG検索）を示す。<br>
+      • 「スケーラビリティ」を重視。日本だけでなくアジア展開の可能性を匂わせる。<br>
+      • 金額は $10万-50万（約¥1500万-7500万）。インパクト指標（KPI）を数字で具体的に示す。<br>
+      • 動画ピッチ（2分以内）が必須。開発者自身の被害者経験をストーリーとして語る。
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">💻 Microsoft AI for Good — 中優先度</div>
+    <div class="highlight-body">
+      <b>公式URL：</b><a href="https://www.microsoft.com/en-us/ai/ai-for-good">https://www.microsoft.com/en-us/ai/ai-for-good</a><br>
+      <b>申請窓口：</b>ウェブ申請（英語必須）／年1回（通常9月-10月）<br>
+      <b>連絡先：</b>オンラインフォーム経由<br>
+      <b>申請アドバイス：</b><br>
+      • <b>英語申請必須。</b>Microsoft Azure や Copilot との技術連携を示すと有利。<br>
+      • 「AI × 社会課題」のインパクトストーリーが重要。技術的詳細より結果（支援人数・防止率）を語る。<br>
+      • クラウドクレジット（Azure）の提供もあり、インフラコスト削減に直結。<br>
+      • パートナー組織（NPO・大学）との共同申請が推奨される。
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:12px">
+    <div class="highlight-title">📱 Meta Community Grants — 中優先度</div>
+    <div class="highlight-body">
+      <b>公式URL：</b><a href="https://www.meta.com/community/grants/">https://www.meta.com/community/grants/</a><br>
+      <b>申請窓口：</b>ウェブ申請（英語必須）／年1回（通常夏季）<br>
+      <b>連絡先：</b>オンラインフォーム経由<br>
+      <b>申請アドバイス：</b><br>
+      • <b>英語申請必須。</b>「オンライン安全」「コミュニティ保護」がキーワード。<br>
+      • 小規模助成（$1万-10万）だが、申請ハードルが低く、初心者に適している。<br>
+      • コミュニティイベント・啓発活動との連携を示すと強い。<br>
+      • Meta のプラットフォーム（Facebook/Instagram）を活用した啓発キャンペーンとの組み合わせを提案。
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:16px">
+    <div class="highlight-title">�💡 申請のコツ</div>
+    <div class="highlight-body">
+      1. <b>同時多投</b>：1つだけでなく、3-5 つの助成金に同時に申請する<br>
+      2. <b>ストーリー化</b>：技術だけでなく、「誰が・どんな被害を・どう救われるか」を語る<br>
+      3. <b>数字で語る</b>：623K 国法・724K 判例・17類型犯罪・被害届不受理防止機能——具体的な数字が説得力を生む<br>
+      4. <b>DEMO を添付</b>：3 分動画 + ONE_PAGER.html で、審査員の負担を最小化する<br>
+      5. <b>メール問い合わせを先に</b>：正式申請前に「問い合わせメール」で担当者と接点を作り、ニーズをヒアリングする<br>
+      6. <b>返信がない場合のフォロー</b>：2週間経過したら丁寧なフォローメールを送る。電話で直接担当者に聞くのも有効。
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 5: 技術アーキテクチャ -->
+<div class="page" id="p5">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">技術アーキテクチャとデータベース APP 化ガイド</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">5. システムアーキテクチャ概要</div>
+    <div class="section-body">
+      <p>LegalShield は <b>「端末優先・サーバー最小」</b>のアーキテクチャを採用し、被害者のプライバシーを保護します。</p>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="icon">📱</div>
+      <div class="title">フロントエンド（APP / Web）</div>
+      <div class="desc">React Native or Flutter（スマホ APP）<br>Streamlit / Next.js（Web 原型）<br>すべての機密データは端末内処理</div>
+    </div>
+    <div class="card">
+      <div class="icon">🧠</div>
+      <div class="title">AI エンジン（端末内）</div>
+      <div class="desc">ONNX Runtime / TensorFlow Lite<br>5重ロール推論モデル<br>オフライン使用可能（地下室・飛行機モード）</div>
+    </div>
+    <div class="card">
+      <div class="icon">💾</div>
+      <div class="title">ベクトルデータベース（端末 + サーバー）</div>
+      <div class="desc">LanceDB（端末キャッシュ）<br>623K 国法・724K 判例・885 統計テーブル<br>RAG 即時検索</div>
+    </div>
+    <div class="card">
+      <div class="icon">☁️</div>
+      <div class="title">バックエンド（サーバー）</div>
+      <div class="desc">FastAPI + Python<br>AWS Tokyo Region<br>匿名化統計・最小必要データのみ保存</div>
+    </div>
+  </div>
+
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">5.1 データベースを APP にするには？</div>
+    <div class="section-body">
+      <p><b>Step 1: APP フレームワークの選択</b></p>
+      <table>
+        <tr><th>フレームワーク</th><th>メリット</th><th>デメリット</th><th>推奨度</th></tr>
+        <tr><td><b>Flutter</b></td><td>1つのコードで iOS + Android、高性能、UI 柔軟</td><td>Dart 言語の学習が必要</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td><b>React Native</b></td><td>JavaScript エコシステム、開発者が多い、ライブラリ豊富</td><td>性能やや劣る、バージョン断片化</td><td>⭐⭐⭐⭐</td></tr>
+        <tr><td><b>PWA (Web APP)</b></td><td>最速リリース、審査不要、Web 即 APP</td><td>ネイティブ機能制限あり</td><td>⭐⭐⭐⭐<br>MVP 最適</td></tr>
+      </table>
+
+      <p style="margin-top:14px"><b>Step 2: 端末内 AI 推論（オフライン使用可能）</b></p>
+      <div class="highlight">
+        <div class="highlight-body">
+          被害者のスマホは<b>地下室・飛行機モード・電波不安定</b>な場所にいる可能性があります。<br>
+          <b>ONNX Runtime Mobile</b> または <b>TensorFlow Lite</b> で AI モデルを端末実行形式に変換。<br>
+          5重ロール推論は完全に端末内で完結し、<b>録音・写真・位置情報は一切サーバーに送信されません</b>。
+        </div>
+      </div>
+
+      <p style="margin-top:14px"><b>Step 3: ベクトルデータベースの端末化</b></p>
+      <div class="highlight">
+        <div class="highlight-body">
+          <b>LanceDB</b> は組み込み・サーバーレスモードをサポート。<br>
+          623K 国法ベクトルデータを <b>~500MB</b> に圧縮した端末データベースに。<br>
+          初回ダウンロード時に同期、その後は増分更新のみ（週 ~10-50MB）。<br>
+          法律検索は端末内で完結し、ネットワーク遅延ゼロ。
+        </div>
+      </div>
+
+      <p style="margin-top:14px"><b>Step 4: 機密データの端末内暗号化</b></p>
+      <div class="highlight">
+        <div class="highlight-body">
+          証拠写真・録音・対話記録：<b>AES-256-GCM 端末内暗号化</b><br>
+          鍵 = ユーザーパスワード + ハードウェアバインド（Secure Enclave / Keystore）<br>
+          サーバーは<b>永遠に復号できません</b>。たとえサーバーが侵害されても、データは無意味です。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">5.2 技術スタック総表</div>
+    <table>
+      <tr><th>層</th><th>技術</th><th>用途</th></tr>
+      <tr><td>APP フレームワーク</td><td>Flutter または React Native</td><td>iOS + Android クロスプラットフォーム</td></tr>
+      <tr><td>UI 設計</td><td>Figma → Flutter Widgets</td><td>高齢者・標準・専家 3種 UI</td></tr>
+      <tr><td>AI 推論</td><td>ONNX Runtime Mobile / TensorFlow Lite</td><td>端末内 5重ロール推論</td></tr>
+      <tr><td>LLM</td><td>Phi-3 / Gemma-2B（量子化）</td><td>小モデル・端末実行・日本語対応</td></tr>
+      <tr><td>ベクトル DB</td><td>LanceDB（組み込み）</td><td>端末内 RAG 検索</td></tr>
+      <tr><td>Embedding</td><td>SentenceTransformer (all-MiniLM)</td><td>テキストベクトル化</td></tr>
+      <tr><td>バックエンド API</td><td>FastAPI (Python)</td><td>認証・統計・専家マッチング</td></tr>
+      <tr><td>クラウド</td><td>AWS Tokyo Region</td><td>国内データセンター・コンプライアンス</td></tr>
+      <tr><td>暗号化</td><td>AES-256-GCM + TLS 1.3</td><td>通信 + 保存暗号化</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- PAGE 6: スマホ機能 -->
+<div class="page" id="p6">
+  <div class="header">
+    <div class="logo">LegalShield</div>
+    <div class="tagline">スマホ機能連携ガイド</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6. スマホのネイティブ機能を呼び出すには？</div>
+    <div class="section-body">
+      <p>LegalShield は GPS・カメラ・マイク・SMS 等のスマホ機能を利用します。各機能の実装方法は以下の通りです。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6.1 GPS 位置情報</div>
+    <div class="section-body">
+      <p><b>用途</b>：最寄り支援機関検索・緊急時位置送信・証拠 GPS タグ付け</p>
+      <table>
+        <tr><th>プラットフォーム</th><th>API / パッケージ</th><th>コード例</th></tr>
+        <tr>
+          <td><b>Flutter</b></td>
+          <td>`geolocator`</td>
+          <td><code>Position pos = await Geolocator.getCurrentPosition();<br>double lat = pos.latitude;<br>double lng = pos.longitude;</code></td>
+        </tr>
+        <tr>
+          <td><b>React Native</b></td>
+          <td>`@react-native-community/geolocation`</td>
+          <td><code>Geolocation.getCurrentPosition(pos => {<br>  const {latitude, longitude} = pos.coords;<br>});</code></td>
+        </tr>
+        <tr>
+          <td><b>PWA (Web)</b></td>
+          <td>Geolocation API</td>
+          <td><code>navigator.geolocation.getCurrentPosition(pos => {<br>  const {latitude, longitude} = pos.coords;<br>});</code></td>
+        </tr>
+      </table>
+      <div class="highlight" style="margin-top:10px">
+        <div class="highlight-title">⚠️ プライバシー保護原則</div>
+        <div class="highlight-body">
+          • GPS 座標は<b>サーバーに保存せず</b>、端末内の施設検索のみに使用<br>
+          • 緊急時 SMS には<b>都道府県・市区町村レベル</b>のぼかし位置のみ送信<br>
+          • ユーザーはいつでも位置権限を停止可能。権限停止後も他の機能は使用可能
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6.2 カメラ（証拠撮影）</div>
+    <div class="section-body">
+      <p><b>用途</b>：傷害写真・事故現場・器物損壊・LINE スクリーンショット保存</p>
+      <table>
+        <tr><th>プラットフォーム</th><th>API / パッケージ</th><th>説明</th></tr>
+        <tr>
+          <td><b>Flutter</b></td>
+          <td>`image_picker` + `camera`</td>
+          <td>撮影後に自動で<b>タイムスタンプ + GPS 座標 + SHA-256 ハッシュ値</b>の透かしを付加</td>
+        </tr>
+        <tr>
+          <td><b>React Native</b></td>
+          <td>`react-native-image-picker`</td>
+          <td>同様に改竄不可能なメタデータ（EXIF + デジタル署名）を自動付加</td>
+        </tr>
+        <tr>
+          <td><b>PWA</b></td>
+          <td>`&lt;input type="file" accept="image/*"&gt;`</td>
+          <td>ブラウザサンドボックスの制限あり。Web MVP 向け。本番はネイティブ APP を推奨</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6.3 マイク（録音・音声入力）</div>
+    <div class="section-body">
+      <p><b>用途</b>：事件陳述録音・通話録音（同意の下）・AI 音声対話</p>
+      <table>
+        <tr><th>プラットフォーム</th><th>API / パッケージ</th><th>説明</th></tr>
+        <tr>
+          <td><b>Flutter</b></td>
+          <td>`flutter_sound` + `speech_to_text`</td>
+          <td>録音と同時にリアルタイム文字起こし、AI が自動でキーワード抽出</td>
+        </tr>
+        <tr>
+          <td><b>React Native</b></td>
+          <td>`@react-native-voice/voice`</td>
+          <td>Google Speech-to-Text 連携、日本語高精度</td>
+        </tr>
+      </table>
+      <div class="highlight" style="margin-top:10px">
+        <div class="highlight-title">🔒 録音プライバシー設計</div>
+        <div class="highlight-body">
+          • 録音ファイルは<b>サーバーにアップロードされず</b>、端末内 Whisper モデルで文字起こし後に音声ファイルを削除<br>
+          • 文字摘要のみアップロード（「DV・傷害・昨日・夫」等の匿名化キーワード）<br>
+          • 通話録音は双方の同意が必要（APP 内で同意確認ダイアログを表示）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6.4 SMS ショートメール（緊急通知）</div>
+    <div class="section-body">
+      <p><b>用途</b>：10秒カウントダウン後の信頼連絡先・支援機関への自動送信</p>
+      <table>
+        <tr><th>プラットフォーム</th><th>API / パッケージ</th><th>コード例</th></tr>
+        <tr>
+          <td><b>Flutter</b></td>
+          <td>`flutter_sms`</td>
+          <td><code>sendSMS(message: msg, recipients: ["080-XXXX-XXXX"]);</code></td>
+        </tr>
+        <tr>
+          <td><b>React Native</b></td>
+          <td>`react-native-sms`</td>
+          <td>同上、システム SMS を呼び出して送信</td>
+        </tr>
+      </table>
+      <div class="highlight" style="margin-top:10px">
+        <div class="highlight-title">📱 無音モード（Silent Mode）</div>
+        <div class="highlight-body">
+          • 緊急 SMS は<b>静かに送信</b>、一切の音や振動を発しない<br>
+          • 加害者に被害者が救助を求めていることに気づかれないようにするため<br>
+          • SMS 本文テンプレート：<br>
+          <i>「【自動送信】○○（名前）が緊急事態に遭遇しました。<br>位置：東京都○○区（GPS 座標は送信されません）<br>時刻：2026/05/14 14:32<br>このメッセージは自動生成されたものです。」</i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6.5 権限申請一覧（iOS / Android）</div>
+    <table>
+      <tr><th>機能</th><th>iOS Info.plist</th><th>Android AndroidManifest.xml</th></tr>
+      <tr><td>GPS</td><td>`NSLocationWhenInUseUsageDescription`<br>`NSLocationAlwaysUsageDescription`</td><td>`ACCESS_FINE_LOCATION`<br>`ACCESS_COARSE_LOCATION`</td></tr>
+      <tr><td>カメラ</td><td>`NSCameraUsageDescription`</td><td>`CAMERA`</td></tr>
+      <tr><td>マイク</td><td>`NSMicrophoneUsageDescription`</td><td>`RECORD_AUDIO`</td></tr>
+      <tr><td>SMS</td><td>特別な宣言不要（システム SMS App を呼び出す）</td><td>`SEND_SMS`</td></tr>
+      <tr><td>通知</td><td>`UNUserNotificationCenter`</td><td>`POST_NOTIFICATIONS`</td></tr>
+      <tr><td>生体認証</td><td>`NSFaceIDUsageDescription`</td><td>`USE_BIOMETRIC`</td></tr>
+    </table>
+  </div>
+
+  <div class="contact-box" style="margin-top:24px">
+    <div class="title">📚 技術相談・開発者募集</div>
+    <div class="item">LegalShield は Flutter / React Native エンジニア、AI エンジニア、セキュリティエンジニアを募集しています。</div>
+    <div class="item"><span class="label">技術相談：</span>kenji@hiiforest.com（件名に「技術相談」と記載）</div>
+    <div class="item"><span class="label">オープンソース貢献：</span>github.com/Fuilko/lawandbabysupport（PR 歓迎）</div>
+  </div>
+
+  <div style="text-align:center;margin-top:32px;color:#6a7ab0;font-size:12px;">
+    LegalShield Civic Tech Project | 2026年5月<br>
+    「誰も1人にはしない」
+  </div>
+</div>
+
+</body>
+</html>
