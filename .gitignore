@@ -37,3 +37,27 @@ vendor/
 # Logs
 *.log
 logs/
+
+# LegalShield ingest infrastructure
+legalshield/knowledge/lancedb/
+legalshield/knowledge/data_set/
+data_set/
+lancedb/
+ingest_*.log
+ingest_*.log.err
+ingest.pid
+ingest.logpath
+legalshield/backend/dry_run.py
+legalshield/backend/verify_defects.py
+
+# Sensitive: Grant applications & internal strategy (do NOT commit to public repo)
+legalshield/docs/TOYOTA_FOUNDATION_PROPOSAL_2026.html
+legalshield/docs/GRANT_INQUIRY_TEMPLATES.md
+legalshield/docs/GRANT_APPLICATION_TEMPLATE.md
+legalshield/docs/GRANT_READINESS.md
+legalshield/docs/SCENARIO_ANALYSIS.md
+legalshield/docs/LEGALSHIELD_PITCH_STRATEGY.md
+
+# Private case data (ADR/litigation)
+legalshield/case_studies/mapry_M4_0/
+shared/output/

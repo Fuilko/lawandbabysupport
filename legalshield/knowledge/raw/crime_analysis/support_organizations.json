@@ -1,0 +1,121 @@
+[
+  {
+    "name": "犯罪被害者支援センター",
+    "type": "NPO",
+    "region": "全国",
+    "focus": "犯罪被害者総合支援",
+    "url": "https://www.victim-support.gr.jp/"
+  },
+  {
+    "name": "NPO法人日本DV相談支援センター",
+    "type": "NPO",
+    "region": "全国",
+    "focus": "DV被害者支援",
+    "url": "https://www.dv-helpline.org/"
+  },
+  {
+    "name": "NPO法人セクシャル・ハラスメント相談室",
+    "type": "NPO",
+    "region": "全国",
+    "focus": "性暴力被害者支援",
+    "url": ""
+  },
+  {
+    "name": "NPO法人消費者被害救済支援ネットワーク",
+    "type": "NPO",
+    "region": "全国",
+    "focus": "消費者被害・詐欺",
+    "url": ""
+  },
+  {
+    "name": "NPO法人ストーカー被害相談支援センター",
+    "type": "NPO",
+    "region": "全国",
+    "focus": "ストーカー被害",
+    "url": ""
+  },
+  {
+    "name": "NPO法人いじめ・不登校相談支援ネットワーク",
+    "type": "NPO",
+    "region": "全国",
+    "focus": "子ども虐待・いじめ",
+    "url": ""
+  },
+  {
+    "name": "NPO法人犯罪被害者の会",
+    "type": "NPO",
+    "region": "全国",
+    "focus": "犯罪被害者交流・支援",
+    "url": ""
+  },
+  {
+    "name": "NPO法人子どもの権利支援センター",
+    "type": "NPO",
+    "region": "全国",
+    "focus": "子どもの権利",
+    "url": ""
+  },
+  {
+    "name": "NPO法人生涯開発支援センター",
+    "type": "NPO",
+    "region": "全国",
+    "focus": "高齢者被害・虐待",
+    "url": ""
+  },
+  {
+    "name": "日本弁護士連合会 人権擁護委員会",
+    "type": "人权律师",
+    "region": "全国",
+    "focus": "人権侵害・差別事件",
+    "url": "https://www.nichibenren.or.jp/"
+  },
+  {
+    "name": "日本環境紛争センター (JACEC)",
+    "type": "環境公益",
+    "region": "全国",
+    "focus": "環境被害・公害",
+    "url": ""
+  },
+  {
+    "name": "NPO法人環境パートナーシップ・カウンシル (EPC)",
+    "type": "環境公益",
+    "region": "全国",
+    "focus": "環境法・市民参加",
+    "url": ""
+  },
+  {
+    "name": "弁護士法人 児童権利擁護ネットワーク",
+    "type": "人权律师",
+    "region": "全国",
+    "focus": "子どもの権利・虐待",
+    "url": ""
+  },
+  {
+    "name": "日本LGBT法連盟",
+    "type": "人权律师",
+    "region": "全国",
+    "focus": "性的マイノリティ・差別",
+    "url": ""
+  },
+  {
+    "name": "日本外国人法律支援協会 (JAR)",
+    "type": "人权律师",
+    "region": "全国",
+    "focus": "外国人・難民の権利",
+    "url": ""
+  },
+  {
+    "name": "NPO法人 アクセス・チャンス",
+    "type": "NPO",
+    "region": "東京",
+    "focus": "障碍者の権利・支援",
+    "url": ""
+  },
+  {
+    "name": "日本障害者権利センター",
+    "type": "NPO",
+    "region": "全国",
+    "focus": "障碍者差別・権利",
+    "url": ""
+  }
+]

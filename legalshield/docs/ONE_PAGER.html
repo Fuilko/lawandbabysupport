@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LegalShield — 1枚案内</title>
+<style>
+@page { size: A4; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 210mm; height: 297mm;
+  background: #fff;
+  font-family: 'Hiragino Sans', 'Yu Gothic UI', 'Noto Sans JP', sans-serif;
+  color: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.header {
+  background: linear-gradient(135deg, #1a2a6c, #0b1020);
+  color: #fff;
+  padding: 28px 36px;
+}
+.header .title {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.header .subtitle {
+  font-size: 14px;
+  color: #9aa7d0;
+  margin-top: 6px;
+}
+.header .tagline {
+  font-size: 18px;
+  color: #7cf0c2;
+  margin-top: 12px;
+  font-weight: 600;
+}
+.main {
+  flex: 1;
+  padding: 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a2a6c;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 16px;
+  background: #7cf0c2;
+  border-radius: 2px;
+}
+.problem-box {
+  background: #fff5f5;
+  border-left: 4px solid #ff6b6b;
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+}
+.problem-box .head {
+  font-size: 13px;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 6px;
+}
+.problem-box .body {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #555;
+}
+.solution-box {
+  background: #f0fff9;
+  border-left: 4px solid #7cf0c2;
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+}
+.solution-box .head {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a2a6c;
+  margin-bottom: 6px;
+}
+.roles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.role-item {
+  background: #f8f9ff;
+  border: 1px solid #e0e3f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.role-item .emoji { font-size: 20px; }
+.role-item .text { font-size: 11px; line-height: 1.5; }
+.role-item .text .title { font-weight: 700; color: #1a2a6c; font-size: 12px; }
+.role-item .text .desc { color: #666; }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.stat-item {
+  text-align: center;
+  padding: 10px;
+  background: #f8f9ff;
+  border-radius: 8px;
+}
+.stat-item .num {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a2a6c;
+}
+.stat-item .label {
+  font-size: 10px;
+  color: #666;
+  margin-top: 2px;
+}
+.partner-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.partner-tag {
+  background: #1a2a6c;
+  color: #fff;
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+.footer {
+  background: #0b1020;
+  color: #9aa7d0;
+  padding: 16px 36px;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer .left { line-height: 1.6; }
+.footer .right {
+  text-align: right;
+}
+.footer .qr {
+  width: 56px;
+  height: 56px;
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a2a6c;
+  font-size: 8px;
+  text-align: center;
+  line-height: 1.3;
+}
+.row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.highlight-box {
+  background: #fff8e6;
+  border: 1px solid #ffd166;
+  border-radius: 8px;
+  padding: 12px;
+}
+.highlight-box .head {
+  font-size: 12px;
+  font-weight: 700;
+  color: #856404;
+  margin-bottom: 4px;
+}
+.highlight-box .body {
+  font-size: 11px;
+  color: #856404;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="title">LegalShield</div>
+  <div class="subtitle">AI 被害者支援システム | Civic Tech Project</div>
+  <div class="tagline">「誰も1人にはしない」</div>
+</div>
+
+<div class="main">
+
+  <div class="problem-box">
+    <div class="head">日本の被害者が直面する5つの壁</div>
+    <div class="body">
+      ① 誰に相談すればいいか分からない &nbsp;② 証拠が時間とともに消えていく<br>
+      ③ 自分にどんな権利があるか知らない &nbsp;④ 近くに支援機関があるか分からない<br>
+      ⑤ 1人で抱え込み、心が折れる — <b>結果: 年間200万人以上が支援を受けられない</b>
+    </div>
+  </div>
+
+  <div class="solution-box">
+    <div class="head">AI が 5 つの役割を同時に果たす</div>
+    <div class="body">
+      事件発生直後から専家につながるまで、AI が「事務所チーム」のように被害者を支える。
+      24時間対応。完全無料。プライバシー最優先。
+    </div>
+  </div>
+
+  <div>
+    <div class="section-title">5 重 AI 支援システム</div>
+    <div class="roles-grid">
+      <div class="role-item">
+        <div class="emoji">🚨</div>
+        <div class="text">
+          <div class="title">緊急応変官</div>
+          <div class="desc">一鍵で 110・#8898・位置情報共有。無音モード対応。</div>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="emoji">📁</div>
+        <div class="text">
+          <div class="title">証拠保全官</div>
+          <div class="desc">写真・録音・書類を自動整理・暗号化・保全証明書発行。</div>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="emoji">⚖️</div>
+        <div class="text">
+          <div class="title">法律分析師</div>
+          <div class="desc">623K 國法 + 724K 判例を RAG 検索。相關法條即座提示。</div>
+        </div>
+      </div>
+      <div class="role-item">
+        <div class="emoji">🧭</div>
+        <div class="text">
+          <div class="title">戦略模擬師</div>
+          <div class="desc">刑事告訴・民事訴訟・ADR 等 5 路徑の比較シミュレーション。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-title">データ資産・実績</div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="num">623K</div>
+        <div class="label">国法全文<br>ベクトル化</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">724K</div>
+        <div class="label">判例<br>ベクトル化</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">885</div>
+        <div class="label">e-Stat<br>統計テーブル</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">24</div>
+        <div class="label">全国<br>緊急熱線</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-2col">
+    <div>
+      <div class="section-title">対応領域</div>
+      <div class="partner-row">
+        <span class="partner-tag">配偶者暴力 (DV)</span>
+        <span class="partner-tag">性暴力</span>
+        <span class="partner-tag">消費者被害</span>
+        <span class="partner-tag">職場パワハラ</span>
+        <span class="partner-tag">児童虐待</span>
+        <span class="partner-tag">高齢者被害</span>
+      </div>
+    </div>
+    <div>
+      <div class="section-title">パートナー募集中</div>
+      <div class="partner-row">
+        <span class="partner-tag">弁護士会</span>
+        <span class="partner-tag">NPO</span>
+        <span class="partner-tag">支援施設</span>
+        <span class="partner-tag">自治体</span>
+        <span class="partner-tag">大学</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <div class="head">ビジネスモデル（4本柱）</div>
+    <div class="body">
+      ① 弁護士・NPO への優質案件導流（サブスク）② 自治体 GovTech SaaS<br>
+      ③ 匿名化データ洞察レポート ④ 被害者向け保険・金融仲介<br>
+      5年後想定収益: <b>年間 4.9 億円</b> | 社会インパクト: <b>被害者到達率 3 倍向上</b>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="left">
+    <b style="color:#7cf0c2">LegalShield Civic Tech Project</b><br>
+    連絡先: info@legalshield.jp<br>
+    GitHub: github.com/Fuilko/lawandbabysupport<br>
+    デモ動画: youtu.be/xxxxx (3分)
+  </div>
+  <div class="right">
+    <div class="qr">
+      QR<br>CODE<br>HERE
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

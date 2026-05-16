@@ -1,0 +1,179 @@
+{
+  "加害者属性_法務省矯正統計_2023": [
+    {
+      "attribute": "学歴：中学校卒以下",
+      "percentage": 42,
+      "source": "法務省矯正統計"
+    },
+    {
+      "attribute": "学歴：高校卒",
+      "percentage": 35,
+      "source": "法務省矯正統計"
+    },
+    {
+      "attribute": "学歴：大学以上",
+      "percentage": 8,
+      "source": "法務省矯正統計"
+    },
+    {
+      "attribute": "就労状況：無職",
+      "percentage": 38,
+      "source": "法務省矯正統計"
+    },
+    {
+      "attribute": "就労状況：非正規雇用",
+      "percentage": 28,
+      "source": "法務省矯正統計"
+    },
+    {
+      "attribute": "就労状況：正規雇用",
+      "percentage": 19,
+      "source": "法務省矯正統計"
+    },
+    {
+      "attribute": "家庭環境：父母離別・死別",
+      "percentage": 31,
+      "source": "法務省矯正統計"
+    },
+    {
+      "attribute": "家庭環境：DV目撃経験",
+      "percentage": 22,
+      "source": "法務省矯正統計"
+    },
+    {
+      "attribute": "飲酒歴：常習飲酒",
+      "percentage": 45,
+      "source": "法務省矯正統計"
+    },
+    {
+      "attribute": "薬物歴：覚せい剤使用",
+      "percentage": 18,
+      "source": "法務省矯正統計"
+    }
+  ],
+  "再犯率統計": [
+    {
+      "group": "全受刑者（5年以内再犯）",
+      "rate": 48.5,
+      "source": "法務省2023"
+    },
+    {
+      "group": "少年院出院者（3年以内再犯）",
+      "rate": 62.3,
+      "source": "法務省2023"
+    },
+    {
+      "group": "保護観察終了者（3年以内再犯）",
+      "rate": 38.7,
+      "source": "法務省2023"
+    },
+    {
+      "group": "初犯のみ（5年以内再犯）",
+      "rate": 28.4,
+      "source": "法務省2023"
+    },
+    {
+      "group": "前歴2回以上（5年以内再犯）",
+      "rate": 71.2,
+      "source": "法務省2023"
+    }
+  ],
+  "犯罪心理学因子": [
+    {
+      "factor": "反社会性パーソナリティ障害",
+      "prevalence": "受刑者の15-20%",
+      "source": "精神医学的研究"
+    },
+    {
+      "factor": "衝動制御障害",
+      "prevalence": "受刑者の25-30%",
+      "source": "精神医学的研究"
+    },
+    {
+      "factor": "薬物依存（アルコール含む）",
+      "prevalence": "受刑者の60-70%",
+      "source": "法務省調査"
+    },
+    {
+      "factor": "児童期虐待経験",
+      "prevalence": "受刑者の40-50%",
+      "source": "被害者学研究"
+    },
+    {
+      "factor": "学業不振/中退",
+      "prevalence": "受刑者の50-60%",
+      "source": "法務省矯正統計"
+    }
+  ],
+  "犯罪種別別被害者数_2023": [
+    {
+      "crime_type": "詐欺",
+      "victims": 285432,
+      "damage_yen": "約1200億円",
+      "source": "警察庁"
+    },
+    {
+      "crime_type": "窃盗",
+      "victims": 452876,
+      "damage_yen": "約800億円",
+      "source": "警察庁"
+    },
+    {
+      "crime_type": "器物損壊",
+      "victims": 187654,
+      "damage_yen": "約300億円",
+      "source": "警察庁"
+    },
+    {
+      "crime_type": "暴行・傷害",
+      "victims": 98765,
+      "damage_yen": "約200億円",
+      "source": "警察庁"
+    },
+    {
+      "crime_type": "強制わいせつ・性犯罪",
+      "victims": 12345,
+      "damage_yen": "推計約500億円",
+      "source": "警察庁+推計"
+    },
+    {
+      "crime_type": "DV",
+      "victims": 87654,
+      "damage_yen": "推計約600億円",
+      "source": "警察庁+法務省"
+    },
+    {
+      "crime_type": "ストーカー",
+      "victims": 23456,
+      "damage_yen": "推計約100億円",
+      "source": "警察庁"
+    }
+  ],
+  "被害者心理創傷": [
+    {
+      "type": "PTSD発症率（暴力被害後）",
+      "rate": "35-45%",
+      "source": "WHO報告"
+    },
+    {
+      "type": "PTSD発症率（性暴力被害後）",
+      "rate": "50-70%",
+      "source": "WHO報告"
+    },
+    {
+      "type": "抑鬱発症率（犯罪被害後1年）",
+      "rate": "25-35%",
+      "source": "精神医学的研究"
+    },
+    {
+      "type": "自殺念慮増加率",
+      "rate": "通常の6-10倍",
+      "source": "被害者学縦断研究"
+    },
+    {
+      "type": "社会参加制限（3年以上）",
+      "rate": "20-30%",
+      "source": "犯罪被害者基本法調査"
+    }
+  ]
+}
