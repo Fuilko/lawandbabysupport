@@ -332,12 +332,30 @@ struct AnalysisReport {
 // MARK: - 文書範本
 
 enum DocumentTemplate: String {
+    // Phase 1: 刑事核心
     case policeReport = "police_report"
     case prosecutorComplaint = "prosecutor_complaint"
     case civilComplaint = "civil_complaint"
     case evidenceList = "evidence_list"
     case witnessInterviewPlan = "witness_interview_plan"
     case preparationDocument = "preparation_document"
+    
+    // Phase 2: 勞動 + 消費者 + 契約
+    case laborComplaint = "labor_complaint"           // 勞動申訴書
+    case laborInspectorReport = "labor_inspector"      // 勞基監督署檢舉
+    case consumerComplaint = "consumer_complaint"      // 消費者申訴
+    case contractTrapAnalysis = "contract_trap"        // 契約陷阱分析報告
+    case coolingOffNotice = "cooling_off"              // クーリング・オフ通知
+    
+    // Phase 3: 行政救濟
+    case reviewRequest = "review_request"              // 審査請求書
+    case administrativeComplaint = "admin_complaint"    // 行政訴訟起訴狀
+    case compensationClaim = "compensation"           // 国家賠償請求
+    case objectionLetter = "objection"                  // 異議申立書
+    
+    // Phase 4: 特殊
+    case saibaninGuide = "saibanin_guide"              // 裁判員對應指南
+    case environmentalReport = "environmental"            // 環境通報
     
     var displayName: String {
         switch self {
@@ -347,6 +365,17 @@ enum DocumentTemplate: String {
         case .evidenceList: return "證據清單"
         case .witnessInterviewPlan: return "證人訪談計畫"
         case .preparationDocument: return "準備書面"
+        case .laborComplaint: return "勞動申訴書"
+        case .laborInspectorReport: return "勞基監督署檢舉函"
+        case .consumerComplaint: return "消費者申訴書"
+        case .contractTrapAnalysis: return "契約陷阱分析報告"
+        case .coolingOffNotice: return "クーリング・オフ通知書"
+        case .reviewRequest: return "審査請求書"
+        case .administrativeComplaint: return "行政訴訟起訴狀"
+        case .compensationClaim: return "国家賠償請求書"
+        case .objectionLetter: return "異議申立書"
+        case .saibaninGuide: return "裁判員制度對應指南"
+        case .environmentalReport: return "環境通報書"
         }
     }
     
@@ -364,6 +393,28 @@ enum DocumentTemplate: String {
             return "你是一名檢察事務官，請針對證人設計訪談計畫。重點：開放式問題、誘導問題避免、交叉詰問預演。"
         case .preparationDocument:
             return "你是一名訴訟律師，請生成準備書面。重點：爭點整理、證據說明、法律見解。"
+        case .laborComplaint:
+            return "你是一名勞動法專家，請生成勞動申訴書草稿。重點：違法事實（加班、工資、解雇）、損害額計算、労働基準法條文。"
+        case .laborInspectorReport:
+            return "你是一名労働基準監督署的調查官，請生成檢舉函草稿。重點：具體違法事實、證據、適用法條、監督署管轄。"
+        case .consumerComplaint:
+            return "你是一名消費者保護專家，請生成消費者申訴書。重點：業者義務違反、消費者基本法、特定商取引法、損害額。"
+        case .contractTrapAnalysis:
+            return "你是一名契約法專家，請分析以下契約條款的陷阱與無效可能性。重點：消費者契約法第8-10条（不利條款規制）、民法第91-93条（錯誤/詐欺）、不当利得。"
+        case .coolingOffNotice:
+            return "你是一名消費者保護律師，請生成クーリング・オフ通知書。重點：特定商取引法第6条、通知期限、返還義務。"
+        case .reviewRequest:
+            return "你是一名行政法專家，請生成審査請求書。重點：原処分內容、不服理由、行政手続法第24条、管轄機關。"
+        case .administrativeComplaint:
+            return "你是一名行政訴訟律師，請生成行政事件訴訟起訴狀。重點：原告適格、処分違法性、行政事件訴訟法第38条、管轄裁判所。"
+        case .compensationClaim:
+            return "你是一名国家賠償專家，請生成損害賠償請求書。重點：公務員故意/過失、國家賠償法第14条時效、損害額計算。"
+        case .objectionLetter:
+            return "你是一名行政法專家，請生成異議申立書。重點：原処分內容、異議理由、簡易救濟。"
+        case .saibaninGuide:
+            return "你是一名裁判員制度專家，請生成證據呈現指南。重點：裁判員は法律専門家ではないため、視覚的・直感的な提示が必要。"
+        case .environmentalReport:
+            return "你是一名環境法專家，請生成環境通報書。重點：環境基本法、大気污染防止法、水質汚濁防止法、通報義務。"
         }
     }
 }

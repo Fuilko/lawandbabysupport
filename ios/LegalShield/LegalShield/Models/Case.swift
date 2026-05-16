@@ -3,14 +3,32 @@ import SwiftData
 
 /// 案件類型
 enum CaseCategory: String, Codable, CaseIterable {
+    // Phase 1: 核心 (兒少 + 偷拍 + 家暴)
     case childAbuse = "child_abuse"
     case sexualHarassment = "sexual_harassment"
     case domesticViolence = "domestic_violence"
     case schoolBullying = "school_bullying"
     case workplaceHarassment = "workplace_harassment"
-    case consumerFraud = "consumer_fraud"
-    case productLiability = "product_liability"
     case hiddenCamera = "hidden_camera"
+    
+    // Phase 2: 勞動 + 消費者 + 契約
+    case laborExploitation = "labor_exploitation"
+    case consumerFraud = "consumer_fraud"
+    case contractTrap = "contract_trap"
+    case productLiability = "product_liability"
+    
+    // Phase 3: 高齡 + 行政
+    case elderAbuse = "elder_abuse"
+    case institutionalNeglect = "institutional_neglect"
+    case administrativeComplaint = "administrative_complaint"
+    
+    // Phase 4: 無人機 + 環境
+    case droneViolation = "drone_violation"
+    case privacyByDrone = "privacy_by_drone"
+    case environmentalCrime = "environmental_crime"
+    
+    case stalking = "stalking"
+    case general = "general"
     case other = "other"
     
     var displayName: String {
@@ -20,21 +38,63 @@ enum CaseCategory: String, Codable, CaseIterable {
         case .domesticViolence: return "家庭暴力"
         case .schoolBullying: return "校園霸凌"
         case .workplaceHarassment: return "職場霸凌"
-        case .consumerFraud: return "消費詐欺"
-        case .productLiability: return "製造物責任"
         case .hiddenCamera: return "偷拍/隱私侵害"
+        case .laborExploitation: return "勞動剝削/過勞"
+        case .consumerFraud: return "消費詐欺"
+        case .contractTrap: return "契約陷阱"
+        case .productLiability: return "製造物責任"
+        case .elderAbuse: return "高齡者虐待"
+        case .institutionalNeglect: return "機構疏忽"
+        case .administrativeComplaint: return "行政救濟"
+        case .droneViolation: return "無人機違法"
+        case .privacyByDrone: return "無人機偷拍"
+        case .environmentalCrime: return "環境犯罪"
+        case .stalking: return "跟蹤騷擾"
+        case .general: return "一般法律諮詢"
         case .other: return "其他"
         }
     }
     
     var urgencyColor: String {
         switch self {
-        case .childAbuse, .sexualHarassment, .domesticViolence:
+        case .childAbuse, .sexualHarassment, .domesticViolence, .elderAbuse:
             return "red"
-        case .schoolBullying, .hiddenCamera:
+        case .schoolBullying, .hiddenCamera, .stalking, .droneViolation, .privacyByDrone:
             return "orange"
-        default:
+        case .laborExploitation, .contractTrap, .consumerFraud:
             return "yellow"
+        default:
+            return "blue"
+        }
+    }
+    
+    /// 對應的日本法規領域 (JapaneseLegalRAG.LegalDomain)
+    var japaneseLegalDomains: [JapaneseLegalRAG.LegalDomain] {
+        switch self {
+        case .childAbuse, .schoolBullying:
+            return [.childAbuse, .criminal]
+        case .sexualHarassment, .stalking:
+            return [.stalking, .criminal]
+        case .domesticViolence:
+            return [.criminal, .childAbuse]
+        case .workplaceHarassment, .laborExploitation:
+            return [.labor, .laborContract]
+        case .consumerFraud, .contractTrap:
+            return [.consumer, .specificCommercial]
+        case .elderAbuse, .institutionalNeglect:
+            return [.elderAbuse, .longTermCare]
+        case .administrativeComplaint:
+            return [.administrative, .adminLitigation]
+        case .droneViolation, .privacyByDrone:
+            return [.aviation, .criminal]
+        case .environmentalCrime:
+            return [.environmental, .soilPollution]
+        case .hiddenCamera:
+            return [.stalking, .criminal]
+        case .productLiability:
+            return [.consumer, .criminal]
+        case .general, .other:
+            return [.criminal, .consumer]
         }
     }
 }
