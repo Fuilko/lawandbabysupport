@@ -188,7 +188,9 @@ final class LegalCase {
     var institutionName: String?      // 機構名稱 (幼兒園/學校)
     
     // 關聯證據 (透過 caseId 關聯)
-    @Relationship(deleteRule: .cascade, inverse: \Evidence.caseId)
+    // 註：inverse 不能指向 UUID 外鍵欄位（Evidence.caseId）；如需 inverse，
+    // 應在 Evidence 中加入 var legalCase: LegalCase? 並指向該屬性
+    @Relationship(deleteRule: .cascade)
     var evidenceItems: [Evidence]?
     
     // 感測器異常記錄
