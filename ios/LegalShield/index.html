@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalShield iOS App — 技術架構與資料庫銜接指南</title>
+    <style>
+        :root {
+            --bg: #0a0e17;
+            --card: #111827;
+            --border: #1f2937;
+            --text: #e5e7eb;
+            --text-dim: #9ca3af;
+            --accent: #3b82f6;
+            --accent-glow: #60a5fa;
+            --red: #ef4444;
+            --green: #22c55e;
+            --orange: #f97316;
+            --purple: #a855f7;
+            --yellow: #eab308;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0a0e17 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 60px 20px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(90deg, var(--accent-glow), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin: 4px;
+        }
+
+        .badge-blue { background: rgba(59,130,246,0.15); color: var(--accent-glow); border: 1px solid rgba(59,130,246,0.3); }
+        .badge-red { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+        .badge-green { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+        .badge-orange { background: rgba(249,115,22,0.15); color: var(--orange); border: 1px solid rgba(249,115,22,0.3); }
+        .badge-purple { background: rgba(168,85,247,0.15); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 48px 0 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .icon { font-size: 1.3rem; }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 28px 0 12px;
+            color: var(--accent-glow);
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin: 20px 0;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .feature-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .feature-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .arrow-box {
+            background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(168,85,247,0.1));
+            border: 1px dashed var(--accent);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            text-align: center;
+            font-family: "SF Mono", "Courier New", monospace;
+            font-size: 0.9rem;
+        }
+
+        code, pre {
+            font-family: "SF Mono", "Courier New", monospace;
+            background: #1a1f2e;
+            border-radius: 8px;
+            padding: 2px 6px;
+            font-size: 0.85rem;
+            color: var(--accent-glow);
+        }
+
+        pre {
+            display: block;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 16px 0;
+            line-height: 1.6;
+        }
+
+        .diagram {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            margin: 20px 0;
+            font-family: "SF Mono", monospace;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .diagram .layer { margin: 8px 0; padding: 8px 12px; border-radius: 6px; }
+        .layer-ui { background: rgba(59,130,246,0.1); border-left: 3px solid var(--accent); }
+        .layer-vm { background: rgba(168,85,247,0.1); border-left: 3px solid var(--purple); }
+        .layer-svc { background: rgba(34,197,94,0.1); border-left: 3px solid var(--green); }
+        .layer-model { background: rgba(249,115,22,0.1); border-left: 3px solid var(--orange); }
+        .layer-db { background: rgba(234,179,8,0.1); border-left: 3px solid var(--yellow); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            color: var(--text-dim);
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .alert {
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.3);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 16px 0;
+        }
+
+        .alert-title {
+            font-weight: 600;
+            color: var(--red);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 48px;
+            margin: 20px 0;
+        }
+
+        .step-list li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+        }
+
+        @media (max-width: 640px) {
+            header h1 { font-size: 1.7rem; }
+            .card { padding: 18px; }
+            .diagram { padding: 16px; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>LegalShield iOS App</h1>
+    <p>司法級證據保全與反偵察系統 — 技術架構與資料庫銜接指南</p>
+    <div style="margin-top: 20px;">
+        <span class="badge badge-blue">SwiftUI</span>
+        <span class="badge badge-purple">SwiftData</span>
+        <span class="badge badge-green">CryptoKit</span>
+        <span class="badge badge-red">CoreBluetooth</span>
+        <span class="badge badge-orange">CoreML</span>
+    </div>
+</header>
+
+<div class="container">
+
+    <h2><span class="icon">🛡️</span> 系統概覽</h2>
+    <p>LegalShield 是一款<strong>原生 iOS 應用</strong>，專為兒少保護、反偷拍調查、家庭暴力等敏感案件的證據收集設計。核心特色包括：</p>
+
+    <div class="card-grid">
+        <div class="feature-card">
+            <h4>🔐 證據鏈保全</h4>
+            <p>拍照/錄音瞬間計算 SHA-256 哈希，AES-256-GCM 加密儲存，形成不可竄改的證據鏈</p>
+        </div>
+        <div class="feature-card">
+            <h4>🎤 防誘導訪談</h4>
+            <p>即時語音辨識偵測 7 種誘導問句，保護童言童語的證據能力</p>
+        </div>
+        <div class="feature-card">
+            <h4>📡 BLE 感測網路</h4>
+            <p>整合心率手環、求救按鈕、環境感測器，無需配對即可讀取數據</p>
+        </div>
+        <div class="feature-card">
+            <h4>👁️ 反偷拍掃描</h4>
+            <p>Wi-Fi 異常裝置、磁力計、LiDAR 深度、外接 IR Dongle 四管齊下</p>
+        </div>
+        <div class="feature-card">
+            <h4>🧠 AI 分析報告</h4>
+            <p>對接本地 Ollama / FastAPI，生成勝訴機率評估與法律文書</p>
+        </div>
+        <div class="feature-card">
+            <h4>🆘 緊急模式</h4>
+            <p>一鍵啟動背景錄音 + GPS 鎖定 + 感測器記錄，爭取黃金時間</p>
+        </div>
+    </div>
+
+    <h2><span class="icon">🏗️</span> 技術架構圖</h2>
+
+    <div class="diagram">
+<div class="layer layer-ui">📱 UI Layer (SwiftUI)
+  ├─ ContentView (5-Tab 主畫面 + 緊急懸浮按鈕)
+  ├─ EvidenceCaptureView (相機預覽 + 即時水印)
+  ├─ InterviewAssistView (即時轉錄 + 誘導警告)
+  ├─ SensorDashboardView (BLE 裝置儀表板)
+  ├─ AntiSurveillanceView (WiFi / 磁力 / LiDAR / IR)
+  └─ NewCaseSheet (快速案件範本)</div>
+
+<div class="layer layer-vm">🧠 ViewModel Layer
+  ├─ CaseViewModel (@Observable / ObservableObject)
+  │   ├─ 案件 CRUD (SwiftData)
+  │   ├─ AI 分析橋接 (LLMService)
+  │   └─ 證據鏈完整性檢查
+  └─ InterviewCopilot (Speech 框架 + Combine)</div>
+
+<div class="layer layer-svc">⚙️ Service Layer
+  ├─ EvidenceManager (CryptoKit SHA-256 + AES-256-GCM)
+  ├─ BLESensorManager (CoreBluetooth — 實機)
+  ├─ MockSensorManager (Simulator 模擬數據)
+  ├─ LLMService (URLSession → Windows Ollama API)
+  └─ SensorAnalyzer (異常偵測引擎)</div>
+
+<div class="layer layer-model">📦 Model Layer (SwiftData)
+  ├─ LegalCase (案件主檔)
+  ├─ Evidence (證據項目 + 哈希鏈)
+  ├─ SensorData (感測器讀數)
+  └─ AnomalyLog (異常記錄)</div>
+
+<div class="layer layer-db">💾 Storage Layer
+  ├─ SwiftData (SQLite — 案件元數據)
+  ├─ FileSystem (Documents/LegalShieldEvidence/ — 加密檔案)
+  ├─ Keychain (AES 對稱金鑰)
+  └─ UserDefaults (App 設定)</div>
+    </div>
+
+    <h2><span class="icon">🔗</span> 資料庫銜接 — 雙層架構</h2>
+
+    <h3>第一層：端內儲存 (SwiftData + FileSystem)</h3>
+    <p>iPhone 本身即為「證據黑盒子」，所有原始敏感數據<strong>不離開裝置</strong>：</p>
+
+    <table>
+        <tr>
+            <th>儲存類型</th>
+            <th>技術</th>
+            <th>用途</th>
+            <th>加密</th>
+        </tr>
+        <tr>
+            <td>案件元數據</td>
+            <td>SwiftData (SQLite)</td>
+            <td>案件標題、類型、當事人、狀態</td>
+            <td>❌ (結構化資料)</td>
+        </tr>
+        <tr>
+            <td>證據檔案</td>
+            <td>FileManager + CryptoKit</td>
+            <td>照片、錄音、感測器 JSON</td>
+            <td>✅ AES-256-GCM</td>
+        </tr>
+        <tr>
+            <td>加密金鑰</td>
+            <td>Keychain</td>
+            <td>對稱金鑰 (256-bit)</td>
+            <td>✅ 硬體安全模組</td>
+        </tr>
+        <tr>
+            <td>證據哈希</td>
+            <td>SwiftData</td>
+            <td>SHA-256 鏈 (前向引用)</td>
+            <td>❌ 哈希本身即防竄改</td>
+        </tr>
+    </table>
+
+    <div class="card">
+        <h4>📁 儲存路徑結構</h4>
+        <pre>Documents/
+└── LegalShieldEvidence/
+    ├── evidence_2024-05-17T10:30:00Z_photo.jpg.encrypted
+    ├── evidence_2024-05-17T10:35:00Z_audio.m4a.encrypted
+    └── sensor_2024-05-17T10:40:00Z_heartRate.json.encrypted</pre>
+        <p style="margin-top:10px; color:var(--text-dim); font-size:0.85rem;">
+            每個檔案名稱內含 ISO-8601 時間戳，<code>.encrypted</code> 後綴表示 AES-256-GCM 加密。
+            解密需要從 Keychain 取出對稱金鑰。
+        </p>
+    </div>
+
+    <h3>第二層：遠端 AI 分析 (FastAPI + Ollama)</h3>
+    <p>原始證據<strong>不上傳</strong>，僅傳送「去識別化結構化數據」進行 AI 分析：</p>
+
+    <div class="arrow-box">
+iPhone ──HTTP──▶ Windows (100.76.218.124:8000)
+                    ├─ FastAPI 路由層
+                    ├─ Ollama (phi4 / llama3.3 / gemma3)
+                    └─ 回傳分析報告 JSON
+    </div>
+
+    <div class="card">
+        <h4>📤 上傳資料範例 (去識別化)</h4>
+        <pre>{
+  "case_summary": "幼兒園異常事件（去識別化）",
+  "evidence_count": 5,
+  "evidence": [
+    {
+      "type": "audio",
+      "timestamp": "2024-05-17T10:30:00Z",
+      "has_evidence_hash": true,
+      "has_location": true,
+      "is_first_disclosure": true
+    }
+  ],
+  "sensor_anomalies": [
+    { "type": "heartRate", "severity": "high", "description": "靜止心率 145bpm" }
+  ]
+}</pre>
+        <p style="margin-top:10px; color:var(--text-dim); font-size:0.85rem;">
+            注意：上傳的 JSON <strong>不包含任何原始錄音內容、照片像素、或感測器原始波形</strong>。
+            僅有元數據（類型、時間、是否存在哈希等），確保隱私。
+        </p>
+    </div>
+
+    <div class="card">
+        <h4>📥 API 回應範例</h4>
+        <pre>{
+  "evidence_grade": "B",
+  "win_probability": 0.65,
+  "key_findings": ["首次揭露時間明確", "感測器異常佐證"],
+  "gaps": ["缺少醫療診斷", "缺少監視器畫面"],
+  "recommendations": ["申請監視器調閱", "安排兒童心智科評估"],
+  "action_items": ["聯繫檢察官", "準備告發狀"]
+}</pre>
+    </div>
+
+    <h2><span class="icon">🔌</span> 資料庫銜接實作步驟</h2>
+
+    <ol class="step-list">
+        <li>
+            <strong>設定 ModelContainer (App 入口)</strong><br>
+            <code>LegalShieldApp.swift</code> 中初始化 SwiftData 容器，指定 <code>LegalCase</code> 與 <code>Evidence</code> 的 Schema。
+            <pre>let schema = Schema([LegalCase.self, Evidence.self])
+let container = try ModelContainer(for: schema)</pre>
+        </li>
+        <li>
+            <strong>透過 ModelContext 操作資料</strong><br>
+            ViewModel 中持有 <code>ModelContext</code>，進行插入、查詢、刪除。
+            <pre>let context = ModelContext(container)
+context.insert(newCase)
+try context.save()</pre>
+        </li>
+        <li>
+            <strong>加密檔案儲存 (EvidenceManager)</strong><br>
+            證據採集後，使用 CryptoKit 加密寫入 FileSystem，同時將「檔案路徑 + 哈希」存入 SwiftData。
+            <pre>let sealedBox = try AES.GCM.seal(data, using: symmetricKey)
+try sealedBox.combined?.write(to: encryptedURL)</pre>
+        </li>
+        <li>
+            <strong>啟動 Windows Ollama 服務</strong><br>
+            在 Windows 機器 (RTX 4080) 上確保 Ollama 與 FastAPI 正在運行：
+            <pre>ollama serve
+uvicorn api_server:app --host 0.0.0.0 --port 8000</pre>
+        </li>
+        <li>
+            <strong>設定 LLMService API 端點</strong><br>
+            在 iOS App 設定中輸入 Windows 機器的 Tailscale / 區網 IP：
+            <pre>var apiEndpoint = "http://100.76.218.124:8000"</pre>
+        </li>
+        <li>
+            <strong>執行 AI 分析</strong><br>
+            CaseViewModel 將去識別化結構化數據 POST 到 Ollama API，取得分析報告後更新 SwiftData。
+            <pre>let report = try await llmService.analyzeEvidence(
+    caseSummary: caseItem.incidentDescription,
+    evidenceList: evidenceItems
+)
+caseItem.updateAIAnalysis(summary: report.rawResponse, ...)
+try context.save()</pre>
+        </li>
+    </ol>
+
+    <h2><span class="icon">⚠️</span> 安全與隱私原則</h2>
+
+    <div class="alert">
+        <div class="alert-title">🚨 絕對禁止的行為</div>
+        <ul style="margin-left: 20px; color: var(--text-dim);">
+            <li>❌ 原始錄音內容直接上傳雲端</li>
+            <li>❌ 未加密的證據照片儲存在 iCloud Photo Library</li>
+            <li>❌ 使用第三方 Analytics SDK 追蹤使用者行為</li>
+            <li>❌ 將 AES 金鑰硬編碼在原始碼中</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h4>✅ 正確做法</h4>
+        <ul style="margin-left: 20px; color: var(--text-dim);">
+            <li>原始證據僅儲存在裝置加密沙盒</li>
+            <li>AI 分析僅傳送去識別化結構化 JSON</li>
+            <li>金鑰由 CryptoKit 生成，存入 Keychain</li>
+            <li>開啟 App 時預設深色模式（降低公共場合可見度）</li>
+        </ul>
+    </div>
+
+    <h2><span class="icon">🚀</span> 快速啟動</h2>
+
+    <div class="card">
+        <pre><strong># 1. 生成 Xcode 專案</strong>
+cd ~/工作用/lawandbabysupport/ios/LegalShield
+brew install xcodegen
+xcodegen generate
+open LegalShield.xcodeproj
+
+<strong># 2. 啟動 Windows 後端 (遠端 SSH)</strong>
+ssh admin@100.76.218.124
+cd D:/projects/LegalShield
+python -m uvicorn api_server:app --host 0.0.0.0 --port 8000
+
+<strong># 3. 在 iOS 設定中填入 API 端點</strong>
+設定 → API 端點 → http://100.76.218.124:8000
+
+<strong># 4. 開始測試</strong>
+• Simulator: MockSensorManager 自動啟動
+• 實機: 開啟藍牙掃描現有裝置</pre>
+    </div>
+
+    <h2><span class="icon">📋</span> 檔案總覽</h2>
+
+    <table>
+        <tr>
+            <th>路徑</th>
+            <th>用途</th>
+        </tr>
+        <tr><td><code>LegalShieldApp.swift</code></td><td>App 入口 + ModelContainer</td></tr>
+        <tr><td><code>Models/Evidence.swift</code></td><td>證據模型 (SHA-256 + 鏈索引)</td></tr>
+        <tr><td><code>Models/Case.swift</code></td><td>案件模型 + 範本</td></tr>
+        <tr><td><code>Services/EvidenceManager.swift</code></td><td>加密儲存 + 相機/錄音</td></tr>
+        <tr><td><code>Services/BLESensorManager.swift</code></td><td>CoreBluetooth 實機感測器</td></tr>
+        <tr><td><code>Services/MockSensorManager.swift</code></td><td>Simulator 模擬數據</td></tr>
+        <tr><td><code>Services/LLMService.swift</code></td><td>Ollama API 客戶端</td></tr>
+        <tr><td><code>Services/InterviewCopilot.swift</code></td><td>防誘導訪談引擎</td></tr>
+        <tr><td><code>Views/ContentView.swift</code></td><td>5-Tab 主畫面</td></tr>
+        <tr><td><code>Views/EvidenceCaptureView.swift</code></td><td>相機/錄音取證</td></tr>
+        <tr><td><code>Views/InterviewAssistView.swift</code></td><td>訪談輔助 UI</td></tr>
+        <tr><td><code>Views/SensorDashboardView.swift</code></td><td>感測器儀表板</td></tr>
+        <tr><td><code>Views/AntiSurveillanceView.swift</code></td><td>反偷拍掃描</td></tr>
+        <tr><td><code>ViewModels/CaseViewModel.swift</code></td><td>案件管理 + AI 橋接</td></tr>
+    </table>
+
+</div>
+
+<footer>
+    <p>LegalShield — 被害者を支援し、誰も1人にはしない。</p>
+    <p style="margin-top:8px; font-size: 0.75rem;">技術文件版本 v1.0 | 產生時間：2026-05-17</p>
+</footer>
+
+</body>
+</html>
