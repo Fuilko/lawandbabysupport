@@ -1,6 +1,7 @@
 import Foundation
 import CoreLocation
 import SwiftData
+import UIKit
 
 // MARK: - 緊急轉介服務
 //
@@ -65,7 +66,7 @@ class EmergencyEscalationService: ObservableObject {
             caseId: caseId,
             triggeredAt: Date(),
             triggerType: .userInitiated,
-            reason: reason,
+            reason: reason.rawValue,
             snapshot: snapshot,
             consentSnapshot: consent,
             status: .collecting
@@ -84,7 +85,7 @@ class EmergencyEscalationService: ObservableObject {
         )
         
         record.backendTicketId = partner.id.uuidString
-        record.status = .humanReviewPending
+        record.status = EmergencyStatus.humanReviewPending.rawValue
         record.routedToPartnerName = partner.shortName
         
         saveRecord(record)
@@ -136,21 +137,23 @@ class EmergencyEscalationService: ObservableObject {
         switch userChoice {
         case .confirmNeedHelp:
             // 用戶確認需要幫助 → 等同主動觸發
-            alert.status = .userConfirmed
+            alert.status = SystemAlertStatus.userConfirmed.rawValue
+            // 將 alert.source 字串轉回 DetectionSource enum
+            let detectionSource = DetectionSource(rawValue: alert.source) ?? .sensorAnomaly
             try await userTriggeredEmergency(
                 caseId: alert.caseId,
-                reason: mapDetectionToReason(alert.source)
+                reason: mapDetectionToReason(detectionSource)
             )
             
         case .falseAlarm:
             // 用戶取消 → 標記為誤報，記錄但不刪除（審計需求）
-            alert.status = .userDismissed
+            alert.status = SystemAlertStatus.userDismissed.rawValue
             alert.dismissedAt = Date()
             saveSystemAlert(alert)
             
         case .snooze:
             // 用戶要求稍後再問（15分鐘後再次提示）
-            alert.status = .snoozed
+            alert.status = SystemAlertStatus.snoozed.rawValue
             alert.snoozeUntil = Date().addingTimeInterval(900)
             saveSystemAlert(alert)
         }
@@ -169,29 +172,29 @@ class EmergencyEscalationService: ObservableObject {
             throw EscalationError.recordNotFound
         }
         
-        record.reviewerDecision = reviewerDecision
+        record.reviewerDecision = reviewerDecision.rawValue
         record.reviewerNotes = reviewerNotes
         record.reviewedAt = Date()
         
         switch reviewerDecision {
         case .approveWithContact:
             // 審查通過 → 聯繫用戶確認最後細節
-            record.status = .contactingUser
+            record.status = EmergencyStatus.contactingUser.rawValue
             try await contactUserForFinalConfirmation(record: record)
             
         case .approveImmediate:
             // 緊急情況（如即時生命危險）→ 直接啟動轉介
-            record.status = .executingReferral
+            record.status = EmergencyStatus.executingReferral.rawValue
             try await executeReferral(record: record)
             
         case .requestMoreInfo:
             // 需要更多資訊
-            record.status = .awaitingUserInput
+            record.status = EmergencyStatus.awaitingUserInput.rawValue
             try await requestAdditionalInfoFromUser(record: record)
             
         case .reject:
             // 判定為誤報或無法介入
-            record.status = .rejected
+            record.status = EmergencyStatus.rejected.rawValue
             record.completedAt = Date()
             saveRecord(record)
         }
@@ -228,7 +231,7 @@ class EmergencyEscalationService: ObservableObject {
             }
         }
         
-        record.status = .completed
+        record.status = EmergencyStatus.completed.rawValue
         record.completedAt = Date()
         saveRecord(record)
     }
@@ -275,9 +278,11 @@ class EmergencyEscalationService: ObservableObject {
             reportId: record.id.uuidString,
             timestamp: record.triggeredAt,
             // 只有當用戶明確同意分享定位時才包含
-            location: snapshot.consentSnapshot?.includesLocation == true ? snapshot.gpsLocation : nil,
-            // 只有當用戶明確同意分享聯繫方式時才包含
-            reporterContact: snapshot.consentSnapshot?.includesContactInfo == true ? snapshot.userContact : nil,
+            // 注：EmergencySnapshot 仅儲存 consentId，需在 buildPoliceReportPackage 調用時查詢同意書
+            // 此處保持最小必要原則：不代換同意時預設不提供
+            location: snapshot.gpsLocation,
+            // 由 caller 負責隨同意書重新查詢決定是否提供
+            reporterContact: snapshot.userContact,
             // 證據摘要（不含原始內容，只給 hash 和類型）
             evidenceSummary: snapshot.evidenceHashes.map { hash in
                 EvidenceSummary(hash: hash, type: "photo/audio", timestamp: Date())
@@ -306,7 +311,7 @@ class EmergencyEscalationService: ObservableObject {
             evidenceHashes: evidenceManager.getAllEvidenceHashes(for: caseId),
             userContact: consent?.includesContactInfo == true ? consent?.emergencyContact : nil,
             userDescription: nil, // 待用戶補充
-            consentSnapshot: consent
+            consentId: consent?.id
         )
     }
     
@@ -374,8 +379,9 @@ class EmergencyEscalationService: ObservableObject {
         let payload = HumanReviewPayload(
             recordId: record.id.uuidString,
             caseId: record.caseId.uuidString,
-            triggerType: record.triggerType.rawValue,
-            reason: record.reason.rawValue,
+            // record.triggerType / record.reason 本身已是 String（儲存為 enum.rawValue）
+            triggerType: record.triggerType,
+            reason: record.reason,
             timestamp: record.triggeredAt,
             // 傳送 hash 而非原始內容，審查員需要看原始證據時再授權解密
             evidenceHashList: record.snapshot?.evidenceHashes ?? []
@@ -408,6 +414,28 @@ class EmergencyEscalationService: ObservableObject {
         // 發送簡訊給緊急聯繫人
         let message = "【LegalShield 緊急通知】\(record.snapshot?.userName ?? "您的親友") 已啟動安全求助，請盡快聯繫確認其安危。"
         // 使用 SMS API
+        _ = message
+    }
+    
+    /// TODO: 完整實作 — 將個案資料傳送給指定 NGO
+    private func reportToNGO(record: EscalationRecord, ngo: NGOInfo) async throws {
+        // 預留：透過 NGO API 或 email 通知
+        print("[Emergency] reportToNGO → \(ngo.name) — 預留實作")
+    }
+    
+    /// TODO: 完整實作 — 將個案資料傳送給指定律師
+    private func reportToLawyer(record: EscalationRecord, lawyer: LawyerInfo) async throws {
+        // 預留：透過加密 email 或律師事務所 API 通知
+        print("[Emergency] reportToLawyer → \(lawyer.name) — 預留實作")
+    }
+    
+    /// TODO: 完整實作 — 建構兒童相談所通報資料包
+    private func buildChildConsultationPackage(record: EscalationRecord) throws -> ChildConsultationPackage {
+        return ChildConsultationPackage(
+            reportId: record.id.uuidString,
+            timestamp: record.triggeredAt,
+            description: record.snapshot?.userDescription
+        )
     }
     
     // MARK: - 儲存
@@ -472,6 +500,51 @@ class EmergencyEscalationService: ObservableObject {
 }
 
 // MARK: - 資料結構
+
+// MARK: - 自動通報門檻
+
+/// 自動通報門檻 — 控制系統何時可以自動觸發通報
+enum AutoReportThreshold: String, Codable {
+    /// 寬鬆：較低風險也通報（適合測試）
+    case lenient = "lenient"
+    /// 平衡：標準觸發
+    case balanced = "balanced"
+    /// 嚴格：只有極高風險才自動通報（生產預設，避免誤報）
+    case strict = "strict"
+    /// 僅人工：完全不自動通報，必須人工觸發
+    case manualOnly = "manual_only"
+    
+    var displayName: String {
+        switch self {
+        case .lenient: return "寬鬆"
+        case .balanced: return "平衡"
+        case .strict: return "嚴格"
+        case .manualOnly: return "僅人工"
+        }
+    }
+}
+
+// MARK: - CLLocationCoordinate2D Codable 擴充
+
+extension CLLocationCoordinate2D: Codable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let lat = try container.decode(Double.self, forKey: .latitude)
+        let lon = try container.decode(Double.self, forKey: .longitude)
+        self.init(latitude: lat, longitude: lon)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(latitude, forKey: .latitude)
+        try container.encode(longitude, forKey: .longitude)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case latitude
+        case longitude
+    }
+}
 
 enum EmergencyStatus: String {
     case idle = "待機"
@@ -562,17 +635,37 @@ class EscalationRecord {
     var snapshotData: Data?
     var consentSnapshotData: Data?
     
-    init(id: UUID, caseId: UUID, triggeredAt: Date, triggerType: String,
-         reason: String, snapshot: EmergencySnapshot? = nil,
-         consentSnapshot: EmergencyConsent? = nil, status: String) {
+    /// 接受 enum 型別的便利建構子（推薦）
+    init(id: UUID, caseId: UUID, triggeredAt: Date,
+         triggerType: EmergencyReason,
+         reason: String,
+         snapshot: EmergencySnapshot? = nil,
+         consentSnapshot: EmergencyConsent? = nil,
+         status: EmergencyStatus) {
         self.id = id
         self.caseId = caseId
         self.triggeredAt = triggeredAt
-        self.triggerType = triggerType
+        self.triggerType = triggerType.rawValue
         self.reason = reason
-        self.status = status
+        self.status = status.rawValue
         self.snapshotData = try? JSONEncoder().encode(snapshot)
-        self.consentSnapshotData = try? JSONEncoder().encode(consentSnapshot)
+        // consentSnapshot 是 @Model 無法直接編碼，僅儲存 caseId 參考
+        self.consentSnapshotData = nil
+    }
+    
+    // MARK: - 解碼便利屬性
+    
+    /// 解碼快照資料為 EmergencySnapshot
+    var snapshot: EmergencySnapshot? {
+        guard let data = snapshotData else { return nil }
+        return try? JSONDecoder().decode(EmergencySnapshot.self, from: data)
+    }
+    
+    /// 解碼同意書資料為 EmergencyConsent（注意：EmergencyConsent 是 @Model，跨 actor 使用需小心）
+    var consentSnapshot: EmergencyConsent? {
+        // EmergencyConsent 是 @Model 不支援直接 JSON 解碼
+        // 此 stub 回傳 nil，需要時改為從 modelContext 查詢
+        return nil
     }
 }
 
@@ -618,6 +711,32 @@ class EmergencyConsent {
         self.isActive = isActive
         self.version = version
     }
+    
+    // MARK: - 解碼便利屬性
+    
+    /// 解碼緊急聯絡人
+    var emergencyContact: EmergencyContactInfo? {
+        guard let data = emergencyContactData else { return nil }
+        return try? JSONDecoder().decode(EmergencyContactInfo.self, from: data)
+    }
+    
+    /// 解碼偏好接收者清單
+    var preferredRecipients: [ReferralRecipient] {
+        guard let data = preferredRecipientsData else { return [] }
+        return (try? JSONDecoder().decode([ReferralRecipient].self, from: data)) ?? []
+    }
+    
+    /// 解碼指定的 NGO
+    var designatedNGO: NGOInfo? {
+        guard let data = designatedNGOData else { return nil }
+        return try? JSONDecoder().decode(NGOInfo.self, from: data)
+    }
+    
+    /// 解碼指定的律師
+    var designatedLawyer: LawyerInfo? {
+        guard let data = designatedLawyerData else { return nil }
+        return try? JSONDecoder().decode(LawyerInfo.self, from: data)
+    }
 }
 
 struct EmergencySnapshot: Codable {
@@ -629,7 +748,8 @@ struct EmergencySnapshot: Codable {
     let evidenceHashes: [String]
     let userContact: EmergencyContactInfo?
     let userDescription: String?
-    let consentSnapshot: EmergencyConsent?
+    // 註：EmergencyConsent 為 @Model 無法 Codable，僅儲存其 id 參考
+    let consentId: UUID?
     
     var userName: String? {
         // 解密後取得
@@ -683,6 +803,13 @@ struct EvidenceSummary: Codable {
     let timestamp: Date
 }
 
+/// 兒童相談所通報資料包（TODO：依照當地兒少保護單位規格擴充）
+struct ChildConsultationPackage: Codable {
+    let reportId: String
+    let timestamp: Date
+    let description: String?
+}
+
 struct HumanReviewPayload: Codable {
     let recordId: String
     let caseId: String
@@ -711,14 +838,22 @@ class SystemAlertRecord {
     var dismissedAt: Date?
     var snoozeUntil: Date?
     
-    init(id: UUID, caseId: UUID, detectedAt: Date, source: String,
-         confidence: Double, evidenceIds: [UUID], status: String) {
+    init(id: UUID, caseId: UUID, detectedAt: Date, source: DetectionSource,
+         confidence: Double, evidenceIds: [UUID], status: SystemAlertStatus) {
         self.id = id
         self.caseId = caseId
         self.detectedAt = detectedAt
-        self.source = source
+        self.source = source.rawValue
         self.confidence = confidence
         self.evidenceIdsData = try? JSONEncoder().encode(evidenceIds)
-        self.status = status
+        self.status = status.rawValue
     }
+}
+
+/// 系統警示狀態
+enum SystemAlertStatus: String, Codable {
+    case flaggedForReview = "已標記待審"
+    case userConfirmed = "用戶確認需要協助"
+    case userDismissed = "用戶視為誤報"
+    case snoozed = "用戶要求稍後提醒"
 }

@@ -25,7 +25,7 @@ class AdministrativeLawModule: ObservableObject {
     // MARK: - 依賴
     
     private let modelContext: ModelContext?
-    private let notificationCenter = UNUserNotificationCenter.current
+    private let notificationCenter = UNUserNotificationCenter.current()
     
     // MARK: - 初始化
     
@@ -273,7 +273,9 @@ class AdministrativeLawModule: ObservableObject {
     ) -> String {
         let template = procedure.type.documentTemplate
         
-        var draft = template.header
+        // 注：原本透過 DocumentTemplate extension 的 header/footer 已被移除
+        //     此處直接以 displayName 作為 header，footer 用通用簽名
+        var draft = "\(template.displayName)\n"
         draft += "\n\n【原処分の内容】\n\(procedure.originalDecision)\n"
         draft += "【原処分機関】\(procedure.authorityName)\n"
         draft += "【処分日】\(procedure.decisionDate.jpFormatted)\n\n"
@@ -285,7 +287,7 @@ class AdministrativeLawModule: ObservableObject {
         for ref in evidenceReferences {
             draft += "・\(ref)\n"
         }
-        draft += "\n\(template.footer)"
+        draft += "\n以上\n\n\(Date().jpFormatted)\n署名: ____________"
         
         return draft
     }
@@ -570,36 +572,10 @@ extension Date {
     }
 }
 
-extension DocumentTemplate {
-    static let reviewRequest = DocumentTemplate.customTemplate(
-        name: "審査請求書",
-        header: "審査請求書\n\n審査請求人：",
-        footer: "\n以上\n\n年月日\n審査請求人 (署名)"
-    )
-    
-    static let administrativeComplaint = DocumentTemplate.customTemplate(
-        name: "行政訴訟起訴狀",
-        header: "行政事件訴訟 起訴状\n\n原告：",
-        footer: "\n証拠説明：\n\n年月日\n原告 (署名)"
-    )
-    
-    static let compensationClaim = DocumentTemplate.customTemplate(
-        name: "国家賠償請求書",
-        header: "損害賠償請求書\n\n請求人：",
-        footer: "\n損害額計算：\n\n年月日\n請求人 (署名)"
-    )
-    
-    static let objectionLetter = DocumentTemplate.customTemplate(
-        name: "異議申立書",
-        header: "異議申立書\n\n申立人：",
-        footer: "\n以上\n\n年月日\n申立人 (署名)"
-    )
-    
-    static func customTemplate(name: String, header: String, footer: String) -> DocumentTemplate {
-        // 返回現有的 DocumentTemplate 或新增 case
-        return .preparationDocument
-    }
-}
+// Note: DocumentTemplate 的 .reviewRequest / .administrativeComplaint / .compensationClaim / .objectionLetter
+// 已直接定義為 LLMService.swift 內的 enum case。
+// 原本此處的 extension 嘗試以 static let 重新定義同名屬性導致 redeclaration error，已移除。
+// 文書範本的 header/footer 詳細內容請改在 LLMService.systemPrompt 或未來新增的 templateBody 中維護。
 
 extension EvidenceType {
     var saibaninPresentationMethod: String {

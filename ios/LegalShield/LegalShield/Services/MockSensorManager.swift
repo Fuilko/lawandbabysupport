@@ -67,7 +67,7 @@ class MockSensorManager: SensorDataSource {
     }
     
     func subscribe(to types: [SensorType]) -> AnyPublisher<SensorData, Never> {
-        dataStream.filter { types.contains($0.type) }
+        dataStream.filter { types.contains($0.type) }.eraseToAnyPublisher()
     }
     
     // MARK: - 模擬控制
@@ -96,7 +96,7 @@ class MockSensorManager: SensorDataSource {
         case .panicButtonPressed:
             emitButtonPress()
         case .heartRateSpike:
-            emitHeartRateSpike()
+            emitHeartRateSpikeData(timestamp: Date())
         case .hiddenCameraDetected:
             emitMagnetometerSpike()
         default:

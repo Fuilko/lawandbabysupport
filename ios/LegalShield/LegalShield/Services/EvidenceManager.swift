@@ -3,6 +3,7 @@ import CryptoKit
 import SwiftData
 import CoreLocation
 import UIKit
+import AVFoundation
 
 /// 證據管理器 — 司法級存證鏈核心
 /// 
@@ -207,9 +208,10 @@ class EvidenceManager: NSObject, ObservableObject {
             chainIndex: chainIndex,
             latitude: currentLocation?.coordinate.latitude,
             longitude: currentLocation?.coordinate.longitude,
-            locationAccuracy: currentLocation?.horizontalAccuracy,
-            interviewDuration: recordingDuration
+            locationAccuracy: currentLocation?.horizontalAccuracy
         )
+        // interviewDuration 不在 init 參數中，事後賦值
+        evidence.interviewDuration = recordingDuration
         
         chainIndex += 1
         lastHash = hash
@@ -228,7 +230,7 @@ class EvidenceManager: NSObject, ObservableObject {
     func captureSensorEvidence(
         sensorData: SensorData,
         anomalyDescription: String
-    ) throws -> Evidence {
+    ) async throws -> Evidence {
         guard let caseId = currentCase?.id else {
             throw EvidenceError.noActiveCase
         }
@@ -310,8 +312,8 @@ class EvidenceManager: NSObject, ObservableObject {
     }
     
     /// 解密檔案
-    func decryptFile(at path: String) throws -> Data {
-        let symmetricKey = try getOrCreateEncryptionKey().get()
+    func decryptFile(at path: String) async throws -> Data {
+        let symmetricKey = try await getOrCreateEncryptionKey()
         let encryptedData = try Data(contentsOf: URL(fileURLWithPath: path))
         let sealedBox = try AES.GCM.SealedBox(combined: encryptedData)
         return try AES.GCM.open(sealedBox, using: symmetricKey)
@@ -447,6 +449,29 @@ enum KeychainHelper {
 }
 
 // MARK: - CLLocationManagerDelegate
+
+// MARK: - 緊急轉介所需的查詢介面（提供給 EmergencyEscalationService）
+
+extension EvidenceManager {
+    /// 鎖定某案件下所有證據（防止用戶誤刪或裝置被奪）
+    /// TODO: 完整實作 — 將案件下所有 Evidence.isLocked 設為 true 並寫入 SwiftData
+    func lockEvidenceForCase(_ caseId: UUID) async throws {
+        // 預留：未來透過 modelContext 查詢該 caseId 下所有 Evidence 並標記鎖定
+        print("[EvidenceManager] lockEvidenceForCase(\(caseId)) — 預留實作")
+    }
+    
+    /// 取得某案件最近一筆證據的 SHA-256 雜湊
+    func getLastEvidenceHash(for caseId: UUID) -> String? {
+        // 預留：未來透過 modelContext 撈出最後一筆 Evidence
+        return nil
+    }
+    
+    /// 取得某案件下所有證據雜湊清單
+    func getAllEvidenceHashes(for caseId: UUID) -> [String] {
+        // 預留：未來透過 modelContext 撈出所有 Evidence
+        return []
+    }
+}
 
 extension EvidenceManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

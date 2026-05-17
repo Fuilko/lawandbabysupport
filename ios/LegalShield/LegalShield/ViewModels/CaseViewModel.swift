@@ -51,8 +51,8 @@ class CaseViewModel: ObservableObject {
             category: category,
             victimAlias: victimAlias,
             victimAge: victimAge,
-            institutionName: institution,
-            incidentDescription: description
+            incidentDescription: description,
+            institutionName: institution
         )
         
         modelContext.insert(newCase)

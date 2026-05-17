@@ -59,7 +59,6 @@ class ResearchDataManager: ObservableObject {
             hasFirstDisclosure: hasFirstDisclosure,
             evidenceCount: 0,
             leadingQuestionCount: nil,
-            anomalyCount: nil,
             sensorType: nil
         )
         localRawStats.append(record)

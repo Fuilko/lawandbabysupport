@@ -1,5 +1,7 @@
 import Foundation
 import Combine
+import CoreBluetooth
+import SwiftUI
 
 // MARK: - 感測器數據結構
 
@@ -17,7 +19,7 @@ struct SensorData: Identifiable {
     var anomalySeverity: AnomalySeverity = .none
 }
 
-enum SensorType: String, CaseIterable {
+enum SensorType: String, CaseIterable, Codable {
     case heartRate = "heart_rate"
     case accelerometer = "accelerometer"
     case gyroscope = "gyroscope"
@@ -67,7 +69,7 @@ enum SensorType: String, CaseIterable {
     }
 }
 
-enum AnomalySeverity: String {
+enum AnomalySeverity: String, Codable {
     case none = "none"
     case low = "low"
     case medium = "medium"
@@ -88,7 +90,8 @@ enum AnomalySeverity: String {
 // MARK: - 感測器協定 (Protocol-Oriented)
 
 /// 所有感測器的抽象接口
-protocol SensorDataSource: AnyObject {
+/// 繼承 ObservableObject 讓 @StateObject / @ObservedObject 可用
+protocol SensorDataSource: AnyObject, ObservableObject {
     /// 數據流 (Combine Publisher)
     var dataStream: AnyPublisher<SensorData, Never> { get }
     
@@ -245,9 +248,11 @@ class SensorAnalyzer {
         institution: String
     ) -> GroupAnomalyResult? {
         // 簡化版：檢查同一機構多個使用者在相似時間點出現異常
-        let anomalyByTime = readings.flatMap { $0 }
+        // flatMap { $0 } 在 [[SensorData]] 上型別推斷可能誤判，明確展平為 [SensorData]
+        let allReadings: [SensorData] = readings.reduce(into: []) { $0.append(contentsOf: $1) }
+        let anomalyByTime = allReadings
             .filter { $0.isAnomaly }
-            .reduce(into: [:]) { dict, data in
+            .reduce(into: [Int: Int]()) { dict, data in
                 let hour = Calendar.current.component(.hour, from: data.timestamp)
                 dict[hour, default: 0] += 1
             }

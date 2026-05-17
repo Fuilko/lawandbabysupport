@@ -94,7 +94,7 @@ class BLESensorManager: NSObject, SensorDataSource {
     }
     
     func subscribe(to types: [SensorType]) -> AnyPublisher<SensorData, Never> {
-        dataStream.filter { types.contains($0.type) }
+        dataStream.filter { types.contains($0.type) }.eraseToAnyPublisher()
     }
     
     // MARK: - 私有方法

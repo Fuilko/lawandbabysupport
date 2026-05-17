@@ -142,7 +142,7 @@ class LLMService: ObservableObject {
         defer { isProcessing = false }
         
         let systemPrompt = templateType.systemPrompt
-        let userPrompt = buildDocumentPrompt(template: templateType, case: caseData, evidence: evidenceItems)
+        let userPrompt = buildDocumentPrompt(template: templateType, caseItem: caseData, evidence: evidenceItems)
         
         return try await callOllamaAPI(
             model: LLMModel.llama33.rawValue,
@@ -267,17 +267,17 @@ class LLMService: ObservableObject {
     
     private func buildDocumentPrompt(
         template: DocumentTemplate,
-        case: LegalCase,
+        caseItem: LegalCase,
         evidence: [Evidence]
     ) -> String {
         """
-        案件標題：\(case.title)
-        案件類型：\(case.caseCategory.displayName)
-        當事人代號：\(case.victimAlias)
-        案件年齡：\(case.victimAge.map(String.init) ?? "未知")
-        機構名稱：\(case.institutionName ?? "未知")
-        事件日期：\(case.incidentDate?.iso8601 ?? "未知")
-        事件描述：\(case.incidentDescription ?? "未提供")
+        案件標題：\(caseItem.title)
+        案件類型：\(caseItem.caseCategory.displayName)
+        當事人代號：\(caseItem.victimAlias)
+        案件年齡：\(caseItem.victimAge.map(String.init) ?? "未知")
+        機構名稱：\(caseItem.institutionName ?? "未知")
+        事件日期：\(caseItem.incidentDate?.iso8601 ?? "未知")
+        事件描述：\(caseItem.incidentDescription ?? "未提供")
         
         證據摘要：
         \(evidence.map { "- [\($0.evidenceType.displayName)] \($0.createdAt.iso8601) (Hash: \($0.sha256Hash.prefix(16)))" }.joined(separator: "\n"))

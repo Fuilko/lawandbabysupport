@@ -172,6 +172,23 @@ class JapaneseLegalRAG {
             return [.environmental, .soilPollution]
         case .droneViolation, .privacyByDrone:
             return [.aviation, .criminal]
+        case .sexualHarassment:
+            return [.stalking, .criminal]
+        case .productLiability:
+            return [.consumer, .productLiabilityLaw]
+        // Phase 5: 民事領域擴展
+        case .contractDispute:
+            return [.civil, .consumer]
+        case .productDefect:
+            return [.consumer, .productLiabilityLaw]
+        case .policeInaction:
+            return [.administrative, .adminLitigation, .criminal]
+        case .defamation:
+            return [.civil, .criminal]
+        case .unjustEnrichment, .neighborDispute:
+            return [.civil]
+        case .trafficAccident, .medicalMalpractice:
+            return [.civil, .criminal]
         case .general, .other:
             return [.criminal, .consumer]
         }

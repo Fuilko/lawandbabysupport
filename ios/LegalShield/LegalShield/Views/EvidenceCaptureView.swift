@@ -1,10 +1,12 @@
 import SwiftUI
 import AVFoundation
+import CoreLocation
 
 /// 證據採集畫面 — 相機 + 錄音 + 感測器自動關聯
 struct EvidenceCaptureView: View {
     @StateObject private var camera = CameraController()
-    @StateObject private var evidenceManager: EvidenceManager?
+    // EvidenceManager 由 App 層級注入，需 ModelContainer 初始化
+    @EnvironmentObject private var evidenceManager: EvidenceManager
     @State private var showPhotoPreview = false
     @State private var capturedImage: UIImage?
     @State private var isRecordingAudio = false

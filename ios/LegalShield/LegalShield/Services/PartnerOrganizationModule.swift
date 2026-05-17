@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import CryptoKit
 import CoreLocation
 
 /// 合作夥伴組織管理模組
@@ -88,7 +89,7 @@ class PartnerOrganizationModule: ObservableObject {
     /// 審核通過合作夥伴申請
     func approvePartner(partnerId: UUID, approvedBy: String) {
         guard let partner = registeredPartners.first(where: { $0.id == partnerId }) else { return }
-        partner.status = .active
+        partner.status = PartnerStatus.active.rawValue
         partner.approvedAt = Date()
         partner.approvedBy = approvedBy
         
@@ -116,8 +117,9 @@ class PartnerOrganizationModule: ObservableObject {
         let category = caseData.caseCategory
         
         // 1. 過濾：活躍狀態 + 具備對應服務能力
+        let activeRaw = PartnerStatus.active.rawValue
         let candidates = registeredPartners.filter { partner in
-            partner.status == .active &&
+            partner.status == activeRaw &&
             partner.services.contains(mapCategoryToService(category)) &&
             isPartnerOnDuty(partner)
         }
@@ -128,7 +130,7 @@ class PartnerOrganizationModule: ObservableObject {
         
         // 2. 優先：管轄區域匹配
         let jurisdictionMatches = candidates.filter { partner in
-            partner.jurisdiction.contains(location: location)
+            partner.jurisdiction?.contains(location: location) ?? false
         }
         
         let finalCandidates = jurisdictionMatches.isEmpty ? candidates : jurisdictionMatches
@@ -183,7 +185,7 @@ class PartnerOrganizationModule: ObservableObject {
         let snapshot = record?.snapshot
         
         return PartnerCaseCard(
-            caseId: routing.escalationId.uuidString,
+            id: routing.escalationId.uuidString,
             receivedAt: routing.routedAt,
             urgency: routing.urgencyLevel,
             // 去識別化：只顯示「區域」而非精確地址
@@ -194,7 +196,7 @@ class PartnerOrganizationModule: ObservableObject {
             evidenceCount: snapshot?.evidenceHashes.count ?? 0,
             // 是否已授權解密（需專員點擊「確認介入」後才開放）
             isAuthorized: routing.partnerAuthorizedAt != nil,
-            status: routing.status.rawValue,
+            status: routing.status,
             // 系統建議行動
             systemRecommendation: routing.systemRecommendation
         )
@@ -212,7 +214,9 @@ class PartnerOrganizationModule: ObservableObject {
             throw PartnerError.routingNotFound
         }
         
-        guard routing.status == .routed || routing.status == .reviewing else {
+        // 允許在「已路由」或「夥伴審查中」狀態下對案件進行正式授權訪問
+        let allowedStatuses = [PartnerCaseStatus.routed.rawValue, PartnerCaseStatus.partnerReviewing.rawValue]
+        guard allowedStatuses.contains(routing.status) else {
             throw PartnerError.invalidStatusForAuthorization
         }
         
@@ -230,7 +234,7 @@ class PartnerOrganizationModule: ObservableObject {
         
         routing.partnerAuthorizedAt = Date()
         routing.partnerStaffId = partnerStaffId
-        routing.status = .partnerReviewing
+        routing.status = PartnerCaseStatus.partnerReviewing.rawValue
         saveRouting(routing)
         
         // 解密並返回完整資料包
@@ -249,7 +253,7 @@ class PartnerOrganizationModule: ObservableObject {
     ) {
         guard let routing = loadRouting(id: routingId) else { return }
         
-        routing.status = newStatus
+        routing.status = newStatus.rawValue
         routing.partnerNotes = partnerNotes
         routing.outcome = outcome
         routing.updatedAt = Date()
@@ -300,16 +304,18 @@ class PartnerOrganizationModule: ObservableObject {
             return .sexualViolenceSupport
         case .laborExploitation, .workplaceHarassment:
             return .laborRights
-        case .consumerFraud, .contractTrap, .productLiability:
+        case .consumerFraud, .contractTrap, .productLiability, .productDefect, .contractDispute:
             return .consumerProtection
         case .elderAbuse, .institutionalNeglect:
             return .elderCare
-        case .administrativeComplaint:
+        case .administrativeComplaint, .policeInaction:
             return .administrativeRelief
         case .droneViolation, .privacyByDrone:
             return .publicSafety
         case .environmentalCrime:
             return .environmentalProtection
+        case .defamation, .unjustEnrichment, .neighborDispute, .trafficAccident, .medicalMalpractice:
+            return .generalConsultation
         case .general, .other:
             return .generalConsultation
         }
@@ -335,7 +341,9 @@ class PartnerOrganizationModule: ObservableObject {
         let uuid = UUID().uuidString
         let timestamp = String(Date().timeIntervalSince1970)
         let raw = "\(uuid)_\(timestamp)"
-        return raw.sha256 // 假設有 SHA256 extension
+        // 使用 CryptoKit 計算 SHA-256
+        let hash = SHA256.hash(data: Data(raw.utf8))
+        return hash.compactMap { String(format: "%02x", $0) }.joined()
     }
     
     private func notifyPartnerOfNewCase(partner: PartnerOrganization, record: EscalationRecord) async {
@@ -355,8 +363,12 @@ class PartnerOrganizationModule: ObservableObject {
         }
         
         // 使用緊急解密金鑰
+        // 注：EmergencyConsent 只儲存加密後的 identityData，需要在未來複原 Encryption、金鑰管理
+        let encryptedIdentity: EncryptedUserIdentity? = consent.encryptedIdentityData.flatMap {
+            try? JSONDecoder().decode(EncryptedUserIdentity.self, from: $0)
+        }
         return DecryptedCasePackage(
-            reporterIdentity: consent.userIdentity, // 解密後
+            reporterIdentity: encryptedIdentity,
             location: snapshot.gpsLocation,
             contactInfo: snapshot.userContact,
             evidenceHashes: snapshot.evidenceHashes,

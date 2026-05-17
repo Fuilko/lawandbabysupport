@@ -177,7 +177,7 @@ struct AntiSurveillanceView: View {
 // MARK: - 威脅等級指示器
 
 struct ThreatLevelIndicator: View {
-    let level: ThreatLevel
+    let level: AntiSurveillanceView.ThreatLevel
     let isScanning: Bool
     @State private var pulse = false
     

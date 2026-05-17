@@ -255,7 +255,7 @@ class CommunicationEvidenceImporter {
         )
     }
     
-    private func calculateThreatLevel(categories: [ThreatCategory], keywordCount: Int) -> ThreatLevel {
+    private func calculateThreatLevel(categories: [ThreatCategory], keywordCount: Int) -> CommunicationThreatLevel {
         if categories.contains(.physicalViolence) || categories.contains(.sexualCoercion) {
             return .critical
         }
@@ -391,7 +391,7 @@ enum ThreatCategory: String, Codable {
     case stalkingBehavior = "stalking_behavior"      // ストーカー規制法
 }
 
-enum ThreatLevel: String, Codable {
+enum CommunicationThreatLevel: String, Codable {
     case low = "low"
     case medium = "medium"
     case high = "high"
@@ -415,7 +415,7 @@ struct ThreatDetectionResult {
     let hasThreat: Bool
     let keywords: [String]
     let threatCategories: [ThreatCategory]
-    let threatLevel: ThreatLevel
+    let threatLevel: CommunicationThreatLevel
     let recommendedAction: String
 }
 

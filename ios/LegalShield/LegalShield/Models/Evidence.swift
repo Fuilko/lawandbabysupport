@@ -2,6 +2,7 @@ import Foundation
 import CryptoKit
 import SwiftData
 import CoreLocation
+import UIKit
 
 /// 證據類型
 enum EvidenceType: String, Codable, CaseIterable {

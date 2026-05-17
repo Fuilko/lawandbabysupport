@@ -3,7 +3,9 @@ import Combine
 
 /// 感測器儀表板 — 藍牙裝置數據視覺化
 struct SensorDashboardView: View {
-    @StateObject private var sensorManager: SensorDataSource
+    // 使用具體型別 MockSensorManager (繼承 SensorDataSource)
+    // 未來要切換為真實 BLESensorManager 時，以 @EnvironmentObject 或泛型重構
+    @StateObject private var sensorManager = MockSensorManager()
     @State private var selectedTypes: Set<SensorType> = [.heartRate, .accelerometer]
     @State private var readings: [SensorData] = []
     @State private var analyzer = SensorAnalyzer()
@@ -103,7 +105,7 @@ struct SensorDashboardView: View {
 // MARK: - 裝置掃描區
 
 struct DeviceScanSection: View {
-    @ObservedObject var manager: SensorDataSource
+    @ObservedObject var manager: MockSensorManager
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
