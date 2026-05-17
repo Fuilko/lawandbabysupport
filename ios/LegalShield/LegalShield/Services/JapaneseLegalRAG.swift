@@ -47,12 +47,17 @@ class JapaneseLegalRAG {
         case environmental = "環境基本法"
         case soilPollution = "土壌汚染対策法"
         
+        // Phase 5: 民事領域擴展
+        case civil = "民法"
+        case productLiabilityLaw = "製造物責任法"
+        
         var phase: Int {
             switch self {
             case .childAbuse, .stalking, .criminal: return 1
             case .labor, .laborContract, .consumer, .specificCommercial: return 2
             case .elderAbuse, .longTermCare, .administrative, .adminLitigation: return 3
             case .aviation, .environmental, .soilPollution: return 4
+            case .civil, .productLiabilityLaw: return 5
             }
         }
         
@@ -86,6 +91,10 @@ class JapaneseLegalRAG {
                 return ["第2条 (基本理念)", "第16条 (環境影響評価)"]
             case .soilPollution:
                 return ["第3条 (指定区域)", "第7条 (汚染状況調査義務)"]
+            case .civil:
+                return ["第415条 (債務不履行)", "第709条 (不法行為)", "第713条 (責任無能力者の監督義務)", "第722条 (損害賠償の方法)", "第724条 (消滅時効)"]
+            case .productLiabilityLaw:
+                return ["第2条 (製造業者等の定義)", "第3条 (製造物責任)", "第4条 (免責事由)", "第5条 (期間の制限)"]
             }
         }
     }

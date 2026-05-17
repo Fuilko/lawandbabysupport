@@ -246,7 +246,7 @@ class EvidenceManager: NSObject, ObservableObject {
         let hash = Evidence.computeSHA256(for: jsonData)
         
         let fileName = "sensor_\(Date().iso8601)_\(sensorData.type.rawValue).json"
-        let filePath = try saveEncrypted(data: jsonData, fileName: fileName).get()
+        let filePath = try await saveEncrypted(data: jsonData, fileName: fileName)
         
         let evidence = Evidence(
             caseId: caseId,
@@ -278,7 +278,8 @@ class EvidenceManager: NSObject, ObservableObject {
     // MARK: - 加密儲存
     
     /// AES-256-GCM 加密儲存
-    private func saveEncrypted(data: Data, fileName: String) async throws -> String {
+    /// internal 訪問權限，讓同模組的 importer/generator 可以使用
+    func saveEncrypted(data: Data, fileName: String) async throws -> String {
         let symmetricKey = try await getOrCreateEncryptionKey()
         let nonce = AES.GCM.Nonce()
         let sealedBox = try AES.GCM.seal(data, using: symmetricKey, nonce: nonce)

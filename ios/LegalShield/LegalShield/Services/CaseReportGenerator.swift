@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import UIKit
 
 /// 案件報告生成器
 /// 統整所有證據、時間線、法律分析，由 LLM 生成可直接提交法庭/檢察官的文書
@@ -9,7 +10,7 @@ class CaseReportGenerator {
     private let llmService: LLMService
     
     init(context: ModelContext, llmService: LLMService) {
-        self.modelContext = modelContext
+        self.modelContext = context
         self.llmService = llmService
     }
     
@@ -81,7 +82,7 @@ class CaseReportGenerator {
         let evidenceIndex = try buildEvidenceIndex(for: caseId)
         
         // 3. 重建時間線
-        let timeline = buildTimeline(case: caseItem, evidences: evidenceIndex)
+        let timeline = buildTimeline(caseItem: caseItem, evidences: evidenceIndex)
         
         // 4. 法律領域分析
         let legalDomains = caseItem.caseCategory.japaneseLegalDomains
@@ -95,8 +96,12 @@ class CaseReportGenerator {
             legalDomains: legalDomains
         )
         
-        // 6. 呼叫後端 LLM
-        let llmResponse = try await llmService.generateReport(prompt: prompt)
+        // 6. 呼叫後端 LLM（使用現有的 legalQA 介面）
+        let llmResponse = try await llmService.legalQA(
+            question: prompt,
+            context: nil,
+            model: .llama33  // 高精度模型用於文書生成
+        )
         
         // 7. 生成證據保全證明書（PDF 附件）
         let evidenceCertificate = try generateEvidenceCertificate(
@@ -121,8 +126,10 @@ class CaseReportGenerator {
     // MARK: - 資料收集
     
     private func loadCase(id: UUID) throws -> LegalCase {
+        // 將 id 提取為局部常量，避免 Predicate 捕獲外部參數的並發警告
+        let targetId = id
         let descriptor = FetchDescriptor<LegalCase>(
-            predicate: #Predicate { $0.id == id }
+            predicate: #Predicate { $0.id == targetId }
         )
         guard let caseItem = try modelContext.fetch(descriptor).first else {
             throw ReportError.caseNotFound
@@ -132,8 +139,9 @@ class CaseReportGenerator {
     
     /// 建立證據索引（只收集 hash 和 metadata，不載入原始內容）
     private func buildEvidenceIndex(for caseId: UUID) throws -> [EvidenceIndexItem] {
+        let targetCaseId = caseId
         let descriptor = FetchDescriptor<Evidence>(
-            predicate: #Predicate { $0.caseId == caseId }
+            predicate: #Predicate { $0.caseId == targetCaseId }
         )
         let evidences = try modelContext.fetch(descriptor)
         
@@ -153,23 +161,24 @@ class CaseReportGenerator {
     }
     
     /// 重建時間線
-    private func buildTimeline(case: LegalCase, evidences: [EvidenceIndexItem]) -> [TimelineEvent] {
+    /// 注：參數名不能用 `case`（Swift 關鍵字），改用 caseItem
+    private func buildTimeline(caseItem: LegalCase, evidences: [EvidenceIndexItem]) -> [TimelineEvent] {
         var events: [TimelineEvent] = []
         
         // 案件建立
         events.append(TimelineEvent(
-            date: case.createdAt,
+            date: caseItem.createdAt,
             type: .caseCreated,
-            description: "案件建立：\(case.title)",
+            description: "案件建立：\(caseItem.title)",
             evidenceIds: []
         ))
         
         // 事件發生（如果已知）
-        if let incidentDate = case.incidentDate {
+        if let incidentDate = caseItem.incidentDate {
             events.append(TimelineEvent(
                 date: incidentDate,
                 type: .incident,
-                description: "事件發生：\(case.incidentDescription ?? "")",
+                description: "事件發生：\(caseItem.incidentDescription ?? "")",
                 evidenceIds: []
             ))
         }
@@ -185,9 +194,9 @@ class CaseReportGenerator {
         }
         
         // 緊急轉介（如果有）
-        if case.caseStatus == .escalated {
+        if caseItem.caseStatus == .escalated {
             events.append(TimelineEvent(
-                date: case.updatedAt,
+                date: caseItem.updatedAt,
                 type: .escalation,
                 description: "案件升級/轉介",
                 evidenceIds: []
@@ -289,7 +298,15 @@ class CaseReportGenerator {
         """
         
         for (index, evidence) in evidences.enumerated() {
-            let exhibit = String(UnicodeScalar(65 + index)!) // A, B, C...
+            // Exhibit 編號：A-Z (26 個)，超過則使用 AA, AB...
+            let exhibit: String
+            if index < 26 {
+                exhibit = String(UnicodeScalar(65 + index) ?? Unicode.Scalar(63))
+            } else {
+                let first = String(UnicodeScalar(65 + (index / 26 - 1)) ?? Unicode.Scalar(63))
+                let second = String(UnicodeScalar(65 + (index % 26)) ?? Unicode.Scalar(63))
+                exhibit = first + second
+            }
             certificateContent += """
             [Exhibit \(exhibit)] \(evidence.type.displayName)
             ─────────────────────────────────

@@ -49,7 +49,7 @@ class CommunicationEvidenceImporter {
         )
         
         // 6. 儲存結構化通訊記錄（作為 transcript 類型證據）
-        let transcriptEvidence = try saveTranscriptEvidence(
+        let transcriptEvidence = try await saveTranscriptEvidence(
             parsedMessages: parsedMessages,
             rawText: recognizedText,
             caseId: caseId,
@@ -305,11 +305,11 @@ class CommunicationEvidenceImporter {
         caseId: UUID,
         sourceApp: CommunicationSourceApp,
         threatResult: ThreatDetectionResult
-    ) throws -> Evidence {
+    ) async throws -> Evidence {
         let transcriptData = try JSONEncoder().encode(parsedMessages)
         let hash = Evidence.computeSHA256(for: transcriptData)
         let fileName = "transcript_\(sourceApp.rawValue)_\(Date().iso8601).json"
-        let filePath = try evidenceManager.saveEncrypted(data: transcriptData, fileName: fileName).get()
+        let filePath = try await evidenceManager.saveEncrypted(data: transcriptData, fileName: fileName)
         
         let evidence = Evidence(
             caseId: caseId,
@@ -335,8 +335,10 @@ class CommunicationEvidenceImporter {
     // MARK: - 案件緊急度提升
     
     private func escalateCaseUrgency(caseId: UUID, threatResult: ThreatDetectionResult) async {
+        // 將 caseId 提取為局部常量，避免 Predicate 捕獲外部參數的並發警告
+        let targetCaseId = caseId
         let descriptor = FetchDescriptor<LegalCase>(
-            predicate: #Predicate { $0.id == caseId }
+            predicate: #Predicate { $0.id == targetCaseId }
         )
         guard let caseItem = try? modelContext.fetch(descriptor).first else { return }
         

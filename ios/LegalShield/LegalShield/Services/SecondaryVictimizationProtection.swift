@@ -117,15 +117,16 @@ class SecondaryVictimizationProtection {
         for caseId: UUID,
         settings: AccompanimentSettings
     ) throws {
+        let targetId = caseId
         let descriptor = FetchDescriptor<LegalCase>(
-            predicate: #Predicate { $0.id == caseId }
+            predicate: #Predicate { $0.id == targetId }
         )
         guard let caseItem = try modelContext.fetch(descriptor).first else {
             throw ProtectionError.caseNotFound
         }
         
-        // 儲存陪同人設定（加密）
-        let settingsData = try JSONEncoder().encode(settings)
+        // 儲存陪同人設定至案件 (未來可加密並儲存到專用欄位)
+        _ = try JSONEncoder().encode(settings)
         caseItem.sharedWith = [settings.accompanistContact].compactMap { $0 }
         
         // 如果啟用，通知緊急轉介流程
@@ -160,8 +161,9 @@ class SecondaryVictimizationProtection {
         for caseId: UUID,
         protection: IdentityProtection
     ) async throws {
+        let targetCaseId = caseId
         let descriptor = FetchDescriptor<Evidence>(
-            predicate: #Predicate { $0.caseId == caseId }
+            predicate: #Predicate { $0.caseId == targetCaseId }
         )
         let evidences = try modelContext.fetch(descriptor)
         
@@ -197,8 +199,9 @@ class SecondaryVictimizationProtection {
             return // 只有特定類型啟用快速通道
         }
         
+        let targetId = caseId
         let descriptor = FetchDescriptor<LegalCase>(
-            predicate: #Predicate { $0.id == caseId }
+            predicate: #Predicate { $0.id == targetId }
         )
         guard let caseItem = try modelContext.fetch(descriptor).first else {
             throw ProtectionError.caseNotFound
@@ -287,16 +290,18 @@ class SecondaryVictimizationProtection {
         for caseId: UUID,
         orderType: ProtectionOrderType
     ) async throws -> Data {
+        let targetId = caseId
         let descriptor = FetchDescriptor<LegalCase>(
-            predicate: #Predicate { $0.id == caseId }
+            predicate: #Predicate { $0.id == targetId }
         )
         guard let caseItem = try modelContext.fetch(descriptor).first else {
             throw ProtectionError.caseNotFound
         }
         
         // 收集證據摘要
+        let targetCaseId = caseId
         let evidenceDescriptor = FetchDescriptor<Evidence>(
-            predicate: #Predicate { $0.caseId == caseId }
+            predicate: #Predicate { $0.caseId == targetCaseId }
         )
         let evidences = try modelContext.fetch(evidenceDescriptor)
         
@@ -310,9 +315,9 @@ class SecondaryVictimizationProtection {
         【申立の趣旨】
         \(orderType.applicableLaw)に基づき、以下の保護命令を求めます。
         
-        1. 禁止命令：相手方が申立人に対する暴力、脅迫、\n        またはストーカー行為を行わないこと。
+        1. 禁止命令：相手方が申立人に対する暴力、脅迫、またはストーカー行為を行わないこと。
         
-        2. 退去命令：相手方が現在居住する\n        \(caseItem.incidentLocation ?? "居所")から退去すること。
+        2. 退去命令：相手方が現在居住する\(caseItem.incidentLocation ?? "居所")から退去すること。
         
         【事実と理由】
         \(caseItem.incidentDescription ?? "（詳細は添付証拠に譲る）")
@@ -333,8 +338,9 @@ class SecondaryVictimizationProtection {
     
     /// 生成對外分享用的「去識別化案件摘要」
     func generateDeIdentifiedSummary(for caseId: UUID) throws -> String {
+        let targetId = caseId
         let descriptor = FetchDescriptor<LegalCase>(
-            predicate: #Predicate { $0.id == caseId }
+            predicate: #Predicate { $0.id == targetId }
         )
         guard let caseItem = try modelContext.fetch(descriptor).first else {
             throw ProtectionError.caseNotFound
@@ -351,10 +357,8 @@ class SecondaryVictimizationProtection {
     
     /// 自動化名處理文字
     private func anonymizeText(_ text: String) -> String {
-        var result = text
-        // 簡單化名：將常見姓名替換為 〇〇
-        // 實際應使用 NLP 命名實體識別
-        return result
+        // TODO: 未來使用 NLP 命名實體識別替換姓名為 〇〇
+        return text
     }
 }
 
