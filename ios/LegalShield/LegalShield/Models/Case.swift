@@ -27,6 +27,16 @@ enum CaseCategory: String, Codable, CaseIterable {
     case privacyByDrone = "privacy_by_drone"
     case environmentalCrime = "environmental_crime"
     
+    // Phase 5: 民事領域擴展
+    case contractDispute = "contract_dispute"           // 契約糾紛
+    case productDefect = "product_defect"               // 產品缺陷/售後不履行
+    case policeInaction = "police_inaction"             // 警察不作為
+    case defamation = "defamation"                      // 名譽毀損
+    case unjustEnrichment = "unjust_enrichment"         // 不當得利
+    case neighborDispute = "neighbor_dispute"            // 鄰居糾紛
+    case trafficAccident = "traffic_accident"           // 交通事故
+    case medicalMalpractice = "medical_malpractice"   // 醫療過失
+    
     case stalking = "stalking"
     case general = "general"
     case other = "other"
@@ -43,6 +53,14 @@ enum CaseCategory: String, Codable, CaseIterable {
         case .consumerFraud: return "消費詐欺"
         case .contractTrap: return "契約陷阱"
         case .productLiability: return "製造物責任"
+        case .contractDispute: return "契約糾紛"
+        case .productDefect: return "產品缺陷/售後"
+        case .policeInaction: return "警察不作為"
+        case .defamation: return "名譽毀損"
+        case .unjustEnrichment: return "不當得利"
+        case .neighborDispute: return "鄰居糾紛"
+        case .trafficAccident: return "交通事故"
+        case .medicalMalpractice: return "醫療過失"
         case .elderAbuse: return "高齡者虐待"
         case .institutionalNeglect: return "機構疏忽"
         case .administrativeComplaint: return "行政救濟"
@@ -61,8 +79,12 @@ enum CaseCategory: String, Codable, CaseIterable {
             return "red"
         case .schoolBullying, .hiddenCamera, .stalking, .droneViolation, .privacyByDrone:
             return "orange"
-        case .laborExploitation, .contractTrap, .consumerFraud:
+        case .laborExploitation, .contractTrap, .consumerFraud, .contractDispute, .productDefect:
             return "yellow"
+        case .policeInaction, .defamation, .trafficAccident, .medicalMalpractice:
+            return "orange"
+        case .unjustEnrichment, .neighborDispute:
+            return "blue"
         default:
             return "blue"
         }
@@ -93,6 +115,22 @@ enum CaseCategory: String, Codable, CaseIterable {
             return [.stalking, .criminal]
         case .productLiability:
             return [.consumer, .criminal]
+        case .contractDispute:
+            return [.civil, .consumer]
+        case .productDefect:
+            return [.consumer, .productLiabilityLaw]
+        case .policeInaction:
+            return [.administrative, .adminLitigation, .criminal]
+        case .defamation:
+            return [.civil, .criminal]
+        case .unjustEnrichment:
+            return [.civil]
+        case .neighborDispute:
+            return [.civil]
+        case .trafficAccident:
+            return [.civil, .criminal]
+        case .medicalMalpractice:
+            return [.civil, .criminal]
         case .general, .other:
             return [.criminal, .consumer]
         }
