@@ -18,7 +18,8 @@ struct LegalShieldApp: App {
         // 設定 Model Schema
         let schema = Schema([
             LegalCase.self,
-            Evidence.self
+            Evidence.self,
+            AuditLog.self
         ])
         
         let modelConfiguration = ModelConfiguration(
@@ -35,6 +36,17 @@ struct LegalShieldApp: App {
             fatalError("Could not initialize ModelContainer: \(error)")
         }
         
+        // 監査ログサービス起動
+        let container = self.container
+        Task { @MainActor in
+            AuditLogService.shared.configure(container: container)
+            AuditLogService.shared.record(
+                actor: .system,
+                action: .loginSuccess,
+                detail: "アプリ起動"
+            )
+        }
+
         // App 啟動設定
         configureAppearance()
     }
@@ -58,7 +70,7 @@ struct LegalShieldApp: App {
 // MARK: - Preview
 
 #Preview {
-    let schema = Schema([LegalCase.self, Evidence.self])
+    let schema = Schema([LegalCase.self, Evidence.self, AuditLog.self])
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: schema, configurations: [config])
     

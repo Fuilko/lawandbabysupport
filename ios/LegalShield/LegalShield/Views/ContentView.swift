@@ -422,34 +422,152 @@ struct AnalysisResultCard: View {
 // MARK: - 設定
 
 struct SettingsView: View {
-    @AppStorage("apiEndpoint") private var apiEndpoint = "http://100.76.218.124:8000"
     @AppStorage("useMockData") private var useMockData = false
-    
+    @ObservedObject private var llmSettings = LLMSettings.shared
+    @State private var showAuditLog = false
+
     var body: some View {
         NavigationStack {
             Form {
-                Section("伺服器設定") {
-                    TextField("API 端點", text: $apiEndpoint)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                    
-                    Toggle("使用模擬數據 (Simulator)", isOn: $useMockData)
+                // MARK: - LLM プロバイダ
+                Section("AI モデル設定") {
+                    Picker("優先プロバイダ", selection: $llmSettings.preferredProvider) {
+                        ForEach(LLMSettings.ProviderKind.allCases, id: \.self) { kind in
+                            Text(kind.displayName).tag(kind)
+                        }
+                    }
+
+                    Toggle("複雑案件用マルチエージェント", isOn: $llmSettings.enableMultiAgent)
+                        .tint(.orange)
+
+                    if llmSettings.preferredProvider == .ollama {
+                        TextField("Ollama エンドポイント", text: $llmSettings.ollamaEndpoint)
+                            .textInputAutocapitalization(.never)
+                            .autocorrectionDisabled()
+                        TextField("モデル ID (例: phi4:14b, llama3.3:70b)", text: $llmSettings.ollamaModelId)
+                            .textInputAutocapitalization(.never)
+                            .autocorrectionDisabled()
+                    }
+
+                    if llmSettings.preferredProvider == .bedrock {
+                        TextField("Bedrock プロキシ URL", text: $llmSettings.bedrockProxy)
+                            .textInputAutocapitalization(.never)
+                            .autocorrectionDisabled()
+                        TextField("モデル ID", text: $llmSettings.bedrockModelId)
+                            .textInputAutocapitalization(.never)
+                            .autocorrectionDisabled()
+                        SecureField("API キー (任意)", text: $llmSettings.bedrockApiKey)
+                    }
+
+                    if llmSettings.preferredProvider == .onDevice {
+                        Text("⚠ 端末上 SLM は Phase 1 ではモック実装。意図分類とトリアージのみ動作します。")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
-                
-                Section("關於") {
+
+                // MARK: - 監査ログ
+                Section("監査・後台監視") {
+                    Button("監査ログを表示") {
+                        showAuditLog = true
+                    }
+                    Button("チェーン整合性を検証") {
+                        let report = AuditLogService.shared.verifyIntegrity()
+                        print(report.summary)
+                    }
+                }
+
+                // MARK: - 開発用
+                Section("開発用") {
+                    Toggle("モックデータを使う (Simulator)", isOn: $useMockData)
+                }
+
+                // MARK: - 情報
+                Section("情報") {
                     HStack {
-                        Text("版本")
+                        Text("バージョン")
                         Spacer()
                         Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
                             .foregroundStyle(.secondary)
                     }
-                    
                     Text("LegalShield — 被害者を支援し、誰も1人にはしない。")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
             }
             .navigationTitle("設定")
+            .sheet(isPresented: $showAuditLog) {
+                AuditLogView()
+            }
+        }
+    }
+}
+
+// MARK: - 監査ログ表示
+
+struct AuditLogView: View {
+    @Environment(\.dismiss) private var dismiss
+    @State private var logs: [AuditLog] = []
+    @State private var integrityReport: AuditIntegrityReport?
+
+    var body: some View {
+        NavigationStack {
+            List {
+                if let report = integrityReport {
+                    Section {
+                        HStack {
+                            Image(systemName: report.isIntact ? "checkmark.seal.fill" : "exclamationmark.triangle.fill")
+                                .foregroundColor(report.isIntact ? .green : .red)
+                            Text(report.summary)
+                                .font(.caption)
+                        }
+                    }
+                }
+
+                Section("最新 \(logs.count) 件") {
+                    ForEach(logs, id: \.id) { log in
+                        VStack(alignment: .leading, spacing: 4) {
+                            HStack {
+                                Text(log.actionType)
+                                    .font(.caption.monospaced())
+                                    .padding(.horizontal, 6).padding(.vertical, 2)
+                                    .background(Color.blue.opacity(0.2))
+                                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                                Spacer()
+                                Text(log.timestamp.formatted(date: .numeric, time: .standard))
+                                    .font(.caption2)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Text(log.actionDetail)
+                                .font(.caption)
+                            HStack {
+                                Text("by: \(log.actorType)")
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                                if let res = log.resourceId {
+                                    Text("res: \(res.prefix(8))…")
+                                        .font(.caption2)
+                                        .foregroundStyle(.tertiary)
+                                }
+                                Text("#\(log.chainIndex)")
+                                    .font(.caption2)
+                                    .foregroundStyle(.tertiary)
+                            }
+                        }
+                        .padding(.vertical, 4)
+                    }
+                }
+            }
+            .navigationTitle("監査ログ")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("閉じる") { dismiss() }
+                }
+            }
+            .task {
+                logs = AuditLogService.shared.fetchRecent(limit: 200)
+                integrityReport = AuditLogService.shared.verifyIntegrity()
+            }
         }
     }
 }
