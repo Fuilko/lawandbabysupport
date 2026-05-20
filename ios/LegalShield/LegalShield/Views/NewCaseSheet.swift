@@ -17,13 +17,13 @@ struct NewCaseSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("快速範本") {
+                Section("クイックテンプレート") {
                     if showQuickTemplates {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 10) {
                                 QuickTemplateButton(
                                     icon: "figure.child",
-                                    title: "幼兒園虐待",
+                                    title: "幼稚園虐待",
                                     color: .red
                                 ) {
                                     applyTemplate(.childAbuse)
@@ -31,7 +31,7 @@ struct NewCaseSheet: View {
                                 
                                 QuickTemplateButton(
                                     icon: "eye.slash.fill",
-                                    title: "偷拍調查",
+                                    title: "盗撮調査",
                                     color: .purple
                                 ) {
                                     applyTemplate(.hiddenCamera)
@@ -39,7 +39,7 @@ struct NewCaseSheet: View {
                                 
                                 QuickTemplateButton(
                                     icon: "house.fill",
-                                    title: "家庭暴力",
+                                    title: "家庭暴力",  // DV
                                     color: .orange
                                 ) {
                                     applyTemplate(.domesticViolence)
@@ -47,7 +47,7 @@ struct NewCaseSheet: View {
                                 
                                 QuickTemplateButton(
                                     icon: "building.columns.fill",
-                                    title: "校園霸凌",
+                                    title: "イジメ・虐め",
                                     color: .blue
                                 ) {
                                     applyTemplate(.schoolBullying)
@@ -58,38 +58,38 @@ struct NewCaseSheet: View {
                     }
                 }
                 
-                Section("基本資訊") {
-                    TextField("案件標題", text: $title)
+                Section("基本情報") {
+                    TextField("案件タイトル", text: $title)
                     
-                    Picker("案件類型", selection: $selectedCategory) {
+                    Picker("案件カテゴリー", selection: $selectedCategory) {
                         ForEach(CaseCategory.allCases, id: \.self) { category in
                             Text(category.displayName).tag(category)
                         }
                     }
                     
-                    Picker("緊急等級", selection: $urgency) {
+                    Picker("緊急度", selection: $urgency) {
                         ForEach(UrgencyLevel.allCases, id: \.self) { level in
                             Text(level.displayName).tag(level)
                         }
                     }
                 }
                 
-                Section("當事人資訊") {
-                    TextField("受害者代號 (如：小華)", text: $victimAlias)
+                Section("当事者情報") {
+                    TextField("被害者エイリアス (例: 太郎くん)", text: $victimAlias)
                     
                     HStack {
-                        Text("年齡")
+                        Text("年齢")
                         Spacer()
-                        TextField("歲", text: $victimAge)
+                        TextField("歳", text: $victimAge)
                             .keyboardType(.numberPad)
                             .multilineTextAlignment(.trailing)
                             .frame(width: 80)
                     }
                     
-                    TextField("機構名稱 (如：XX幼兒園)", text: $institution)
+                    TextField("機関名 (例: XX幼稚園)", text: $institution)
                 }
                 
-                Section("事件描述") {
+                Section("事案の概要") {
                     TextEditor(text: $description)
                         .frame(minHeight: 100)
                 }
@@ -98,7 +98,7 @@ struct NewCaseSheet: View {
                     Button(action: createCase) {
                         HStack {
                             Spacer()
-                            Text("建立案件並啟動證據保全")
+                            Text("案件を作成して証拠保全を開始")
                                 .fontWeight(.semibold)
                             Spacer()
                         }
@@ -106,11 +106,11 @@ struct NewCaseSheet: View {
                     .disabled(title.isEmpty)
                 }
             }
-            .navigationTitle("建立新案件")
+            .navigationTitle("新規案件の作成")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("取消") { dismiss() }
+                    Button("キャンセル") { dismiss() }
                 }
             }
         }
@@ -122,20 +122,20 @@ struct NewCaseSheet: View {
         
         switch category {
         case .childAbuse:
-            title = "幼兒園兒少保護案件"
-            victimAlias = "小華"
+            title = "幼稚園での児童虐待案件"
+            victimAlias = "太郎くん"
             institution = ""
             
         case .hiddenCamera:
-            title = "偷拍/隱私侵害調查"
+            title = "盗撮・プライバシー侵害の調査"
             institution = ""
             
         case .domesticViolence:
-            title = "家庭暴力事件"
-            victimAlias = "受害者"
+            title = "家庭内暴力事件"
+            victimAlias = "被害者"
             
         case .schoolBullying:
-            title = "校園霸凌事件"
+            title = "学校でのイジメ事件"
             institution = ""
             
         default:
@@ -151,7 +151,7 @@ struct NewCaseSheet: View {
         let newCase = viewModel.createCase(
             title: title,
             category: selectedCategory,
-            victimAlias: victimAlias.isEmpty ? "匿名" : victimAlias,
+            victimAlias: victimAlias.isEmpty ? "匿名" : victimAlias,  // 同一漢字
             victimAge: age,
             institution: institution.isEmpty ? nil : institution,
             description: description.isEmpty ? nil : description

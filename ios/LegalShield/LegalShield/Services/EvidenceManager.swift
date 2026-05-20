@@ -73,6 +73,20 @@ class EvidenceManager: NSObject, ObservableObject {
         chainIndex = 0
         lastHash = nil
         
+        // 監査ログ記録
+        let caseTitle = title
+        let caseCat = category.rawValue
+        let caseUuid = newCase.id.uuidString
+        Task { @MainActor in
+            AuditLogService.shared.record(
+                actor: .user,
+                action: .createCase,
+                detail: "新規案件作成: \(caseTitle) [\(caseCat)]",
+                resourceType: "Case",
+                resourceId: caseUuid
+            )
+        }
+        
         return newCase
     }
     
@@ -80,7 +94,21 @@ class EvidenceManager: NSObject, ObservableObject {
         let descriptor = FetchDescriptor<LegalCase>(
             predicate: #Predicate { $0.id == id }
         )
-        return try? modelContext.fetch(descriptor).first
+        let result = try? modelContext.fetch(descriptor).first
+        if let caseItem = result {
+            let title = caseItem.title
+            let uuid = caseItem.id.uuidString
+            Task { @MainActor in
+                AuditLogService.shared.record(
+                    actor: .user,
+                    action: .viewCase,
+                    detail: "案件を読み込み: \(title)",
+                    resourceType: "Case",
+                    resourceId: uuid
+                )
+            }
+        }
+        return result
     }
     
     // MARK: - 照片證據
@@ -135,6 +163,24 @@ class EvidenceManager: NSObject, ObservableObject {
         try modelContext.save()
         
         lastEvidence = evidence
+        
+        // 8. 監査ログ記録
+        let evHash = String(hash.prefix(12))
+        let evUuid = evidence.id.uuidString
+        let evChainIdx = evidence.chainIndex
+        let evCaseId = caseId.uuidString
+        let evFirst = isFirstDisclosure
+        Task { @MainActor in
+            AuditLogService.shared.record(
+                actor: .user,
+                action: .createEvidence,
+                detail: "写真証拠を作成 (sha256: \(evHash)…)",
+                resourceType: "Evidence",
+                resourceId: evUuid,
+                contextNotes: "caseId=\(evCaseId) chainIndex=\(evChainIdx) firstDisclosure=\(evFirst)"
+            )
+        }
+        
         return evidence
     }
     

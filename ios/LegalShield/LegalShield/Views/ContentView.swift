@@ -13,35 +13,35 @@ struct ContentView: View {
             // Tab 1: 案件總覽
             CaseListView(viewModel: viewModel)
                 .tabItem {
-                    Label("案件", systemImage: "folder.fill")
+                    Label("案件", systemImage: "folder.fill")  // 日本語と同一表記
                 }
                 .tag(0)
             
             // Tab 2: 感測器儀表板
             SensorDashboardView()
                 .tabItem {
-                    Label("感測器", systemImage: "sensor.tag.fill")
+                    Label("センサー", systemImage: "sensor.tag.fill")
                 }
                 .tag(1)
             
             // Tab 3: 證據中心
             EvidenceCenterView(viewModel: viewModel)
                 .tabItem {
-                    Label("證據", systemImage: "lock.shield.fill")
+                    Label("証拠", systemImage: "lock.shield.fill")
                 }
                 .tag(2)
             
             // Tab 4: AI 分析
             AIAnalysisView(viewModel: viewModel)
                 .tabItem {
-                    Label("AI分析", systemImage: "brain.fill")
+                    Label("AI 分析", systemImage: "brain.fill")
                 }
                 .tag(3)
             
             // Tab 5: 設定
             SettingsView()
                 .tabItem {
-                    Label("設定", systemImage: "gear")
+                    Label("設定", systemImage: "gear")  // 設定 日本語同
                 }
                 .tag(4)
         }
@@ -72,13 +72,13 @@ struct CaseListView: View {
                             Button(role: .destructive) {
                                 // 封存而非刪除
                             } label: {
-                                Label("封存", systemImage: "archivebox")
+                                Label("アーカイブ", systemImage: "archivebox")
                             }
                         }
                 }
             }
             .listStyle(.plain)
-            .navigationTitle("我的案件")
+            .navigationTitle("案件一覧")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: { showNewCaseSheet = true }) {
@@ -112,7 +112,7 @@ struct CaseRowView: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     
-                    Label("\(caseItem.evidenceCount) 項證據", systemImage: "lock.shield")
+                    Label("証拠 \(caseItem.evidenceCount) 件", systemImage: "lock.shield")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -130,7 +130,7 @@ struct CaseRowView: View {
                     
                     Spacer()
                     
-                    Text("\(caseItem.daysSinceCreation) 天前")
+                    Text("\(caseItem.daysSinceCreation) 日前")
                         .font(.caption2)
                         .foregroundStyle(.tertiary)
                 }
@@ -197,11 +197,11 @@ struct EmergencyActionSheet: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
-                Text("緊急行動")
+                Text("緊急対応")
                     .font(.title)
                     .fontWeight(.bold)
                 
-                Text("選擇適當的緊急應對措施")
+                Text("適切な緊急対応を選んでください")
                     .foregroundStyle(.secondary)
                 
                 Spacer()
@@ -209,32 +209,32 @@ struct EmergencyActionSheet: View {
                 VStack(spacing: 12) {
                     EmergencyActionButton(
                         icon: "phone.fill",
-                        title: "撥打 110",
-                        subtitle: "直接報警",
+                        title: "110 番に電話",
+                        subtitle: "警察へ直接通報",
                         color: .red,
                         action: { /* 撥打 110 */ }
                     )
                     
                     EmergencyActionButton(
                         icon: "mic.fill",
-                        title: "立即錄音取證",
-                        subtitle: "背景錄音 + 時間戳鎖定",
+                        title: "録音を開始",
+                        subtitle: "背景録音 + タイムスタンプ",
                         color: .orange,
                         action: { /* 啟動錄音 */ }
                     )
                     
                     EmergencyActionButton(
                         icon: "camera.fill",
-                        title: "拍照存證",
-                        subtitle: "即時哈希 + GPS 定位",
+                        title: "写真で証拠保全",
+                        subtitle: "SHA256 ハッシュ + GPS",
                         color: .blue,
                         action: { /* 啟動相機 */ }
                     )
                     
                     EmergencyActionButton(
                         icon: "shield.fill",
-                        title: "啟動防誘導訪談",
-                        subtitle: "保護童言童語證據力",
+                        title: "誘導防止面談を開始",
+                        subtitle: "子どもの証言の信頼性を保護",
                         color: .green,
                         action: { /* 啟動 InterviewCopilot */ }
                     )
@@ -245,7 +245,7 @@ struct EmergencyActionSheet: View {
             .padding()
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("取消") { dismiss() }
+                    Button("キャンセル") { dismiss() }
                 }
             }
         }
@@ -296,32 +296,32 @@ struct EvidenceCenterView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("快速取證") {
+                Section("撮影・録画") {
                     NavigationLink(destination: EvidenceCaptureView()) {
-                        Label("拍照/錄影", systemImage: "camera.fill")
+                        Label("撮影・録画", systemImage: "camera.fill")
                     }
                     NavigationLink(destination: InterviewAssistView()) {
-                        Label("防誘導訪談", systemImage: "mic.fill")
+                        Label("誘導防止面談", systemImage: "mic.fill")
                     }
                     NavigationLink(destination: AntiSurveillanceView()) {
-                        Label("反偷拍掃描", systemImage: "eye.slash.fill")
+                        Label("盗撮検出スキャン", systemImage: "eye.slash.fill")
                     }
                 }
                 
-                Section("證據庫") {
+                Section("証拠ライブラリ") {
                     if let currentCase = viewModel.currentCase {
-                        Text("案件：\(currentCase.title)")
+                        Text("案件: \(currentCase.title)")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                         
                         // 這裡顯示該案件的證據列表
                     } else {
-                        Text("請先選擇或建立案件")
+                        Text("まず案件を選択または作成してください")
                             .foregroundStyle(.secondary)
                     }
                 }
             }
-            .navigationTitle("證據中心")
+            .navigationTitle("証拠センター")
         }
     }
 }
@@ -343,7 +343,7 @@ struct AIAnalysisView: View {
                         Button(action: { runAnalysis() }) {
                             HStack {
                                 Image(systemName: "brain.fill")
-                                Text(isAnalyzing ? "分析中..." : "執行 AI 分析")
+                                Text(isAnalyzing ? "分析中..." : "AI 分析を実行")
                             }
                             .frame(maxWidth: .infinity)
                             .padding()
@@ -359,8 +359,8 @@ struct AIAnalysisView: View {
                     } else {
                         EmptyStateView(
                             icon: "brain",
-                            title: "選擇案件進行 AI 分析",
-                            subtitle: "AI 將評估證據鏈完整性並提供策略建議"
+                            title: "案件を選んで AI 分析",
+                            subtitle: "証拠チェーンの完全性を評価し、戦略を提案"
                         )
                     }
                 }
@@ -374,7 +374,7 @@ struct AIAnalysisView: View {
         isAnalyzing = true
         // 實際呼叫 LLMService
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            analysisResult = "✅ 證據鏈完整性：B 級\n🎯 勝訴機率估計：65%\n\n建議補強方向：\n• 補充醫療診斷證明\n• 尋找目擊證人\n• 申請監視器調閱"
+            analysisResult = "✅ 証拠チェーン完全性: B ランク\n🎯 勝訴見込み推定: 65%\n\n補強推奨項目:\n• 医療診断書を追加\n• 目撃証人を探す\n• 監視カメラ映像を請求"
             isAnalyzing = false
         }
     }
@@ -391,7 +391,7 @@ struct CaseSummaryCard: View {
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
             HStack {
-                Label("\(caseItem.evidenceCount) 項證據", systemImage: "doc.fill")
+                Label("証拠 \(caseItem.evidenceCount) 件", systemImage: "doc.fill")
                 Spacer()
                 UrgencyBadge(level: caseItem.urgencyLevel)
             }
@@ -407,7 +407,7 @@ struct AnalysisResultCard: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("分析結果")
+            Text("分析結果")  // 日本語同一表記
                 .font(.headline)
             Text(result)
                 .font(.body)

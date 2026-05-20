@@ -18,11 +18,13 @@ class LLMService: ObservableObject {
     
     // MARK: - 配置
     
-    /// API 端點 (指向你的 Windows / EC2 伺服器)
-    var apiEndpoint: String = "http://100.76.218.124:8000"  // Windows Ollama API
+    /// 舊 API 端點設定——現在改為讀取 LLMSettings。此異性保留以免外部呼叫破裂。
+    var apiEndpoint: String {
+        get async { await MainActor.run { LLMSettings.shared.ollamaEndpoint } }
+    }
     var apiKey: String? = nil
     
-    /// 模型選擇
+    /// 模型選擇（legacy，仅為復合舊呼叫素性保留）
     enum LLMModel: String {
         case phi4 = "phi4:14b"           // 快速推理
         case llama33 = "llama3.3:70b"   // 高精度
@@ -176,44 +178,63 @@ class LLMService: ObservableObject {
     
     // MARK: - 私有 API 呼叫
     
+    /// 現在所有 LLM 呼叫統一走這裡——透過 LLMSettings 選出 provider，
+    /// 並且自動寫入 AuditLog。
+    /// model 參數仅作為 audit log 上的說明文字使用（實際 model 由 LLMSettings 決定）。
     private func callOllamaAPI(
         model: String,
         system: String,
         user: String,
         temperature: Double = 0.3
     ) async throws -> String {
-        let url = URL(string: "\(apiEndpoint)/api/generate")!
-        
-        let requestBody: [String: Any] = [
-            "model": model,
-            "system": system,
-            "prompt": user,
-            "stream": false,
-            "options": [
-                "temperature": temperature,
-                "num_predict": 2048
-            ]
-        ]
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-            let statusCode = (response as? HTTPURLResponse)?.statusCode ?? 0
-            throw LLMError.apiError("HTTP \(statusCode)")
+        // 1. 記録「送信」監査ログ
+        let summary = String(user.prefix(80)).replacingOccurrences(of: "\n", with: " ")
+        await MainActor.run {
+            AuditLogService.shared.record(
+                actor: .ai,
+                action: .aiPromptDispatched,
+                detail: "LLM へ送信: \(summary)\(user.count > 80 ? "…" : "")",
+                contextNotes: "model_hint=\(model) temp=\(temperature)"
+            )
         }
         
-        guard let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
-              let result = json["response"] as? String else {
-            throw LLMError.parseError
+        // 2. 設定から provider を生成
+        let provider = await MainActor.run { LLMSettings.shared.makeProvider() }
+        let prompt = LLMPrompt(
+            systemPrompt: system,
+            userPrompt: user,
+            temperature: temperature,
+            maxTokens: 2048
+        )
+        
+        // 3. 実行
+        let response: LLMResponse
+        do {
+            response = try await provider.complete(prompt: prompt)
+        } catch let error as LLMProviderError {
+            await MainActor.run {
+                AuditLogService.shared.record(
+                    actor: .ai,
+                    action: .aiResponseReceived,
+                    detail: "LLM エラー: \(error)",
+                    contextNotes: "provider=\(provider.providerId)"
+                )
+            }
+            throw LLMError.apiError("\(error)")
         }
         
-        return result
+        // 4. 記録「受信」監査ログ
+        let respSummary = String(response.text.prefix(120)).replacingOccurrences(of: "\n", with: " ")
+        await MainActor.run {
+            AuditLogService.shared.record(
+                actor: .ai,
+                action: .aiResponseReceived,
+                detail: "LLM から受信: \(respSummary)",
+                contextNotes: "provider=\(provider.providerId) model=\(response.modelId) latency=\(response.latencyMs)ms"
+            )
+        }
+        
+        return response.text
     }
     
     // MARK: - 私有輔助方法
