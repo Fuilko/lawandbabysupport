@@ -1,0 +1,63 @@
+# Xcode
+## Build generated
+build/
+DerivedData/
+*.ipa
+*.app.dSYM.zip
+*.dSYM
+
+## Xcode project (we use XcodeGen)
+*.xcodeproj/
+*.xcworkspace/
+
+## Xcode settings
+xcuserdata/
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+## Swift Package Manager
+.build/
+Package.resolved
+
+## CocoaPods
+Pods/
+*.xcworkspace
+
+## Carthage
+Carthage/Build/
+
+## fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+## Code Signing
+codesign.log
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+## SwiftUI Previews
+*.preview-thumbs
+
+## Secrets (never commit!)
+Secrets.plist
+GoogleService-Info.plist
+*.p8
+*.p12
+*.cer
+*.mobileprovision
+
+## Temporary files
+*.tmp
+*.swp
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride

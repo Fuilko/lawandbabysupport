@@ -1,0 +1,457 @@
+import Foundation
+import Combine
+
+/// LLM 服務 — 端側 + 雲端混合架構
+/// 
+/// 隱私原則：
+/// - 敏感證據原始數據不上傳
+/// - 僅上傳去識別化結構化 JSON
+/// - 端側優先：意圖分類、簡易 QA
+/// - 雲端：複雜分析、文書生成
+class LLMService: ObservableObject {
+    
+    // MARK: - Published
+    
+    @Published var isProcessing: Bool = false
+    @Published var lastResponse: String = ""
+    @Published var lastError: String?
+    
+    // MARK: - 配置
+    
+    /// 舊 API 端點設定——現在改為讀取 LLMSettings。此異性保留以免外部呼叫破裂。
+    var apiEndpoint: String {
+        get async { await MainActor.run { LLMSettings.shared.ollamaEndpoint } }
+    }
+    var apiKey: String? = nil
+    
+    /// 模型選擇（legacy，仅為復合舊呼叫素性保留）
+    enum LLMModel: String {
+        case phi4 = "phi4:14b"           // 快速推理
+        case llama33 = "llama3.3:70b"   // 高精度
+        case gemma3 = "gemma3:27b"      // 平衡
+        case custom = "custom"           // 自訂端點
+    }
+    
+    // MARK: - 公開方法
+    
+    /// 一般法務 QA (雲端 API)
+    func legalQA(
+        question: String,
+        context: String? = nil,
+        model: LLMModel = .phi4
+    ) async throws -> String {
+        isProcessing = true
+        defer { isProcessing = false }
+        
+        let systemPrompt = """
+        你是一名資深的日本與台灣法律研究助理。請根據以下原則回答：
+        
+        1. 僅基於事實與法條，不臆測
+        2. 區分「確定法律」與「實務傾向」
+        3. 提供具體法條號與判例參考
+        4. 最後必須加上：「本回答僅供參考，具體法律行動請諮詢執業律師」
+        """
+        
+        var userPrompt = question
+        if let ctx = context {
+            userPrompt = "【案情背景】\n\(ctx)\n\n【問題】\n\(question)"
+        }
+        
+        return try await callOllamaAPI(
+            model: model.rawValue,
+            system: systemPrompt,
+            user: userPrompt
+        )
+    }
+    
+    /// 證據分析報告生成 (結構化數據輸入)
+    func analyzeEvidence(
+        caseSummary: String,
+        evidenceList: [Evidence],
+        sensorAnomalies: [AnomalyLog]? = nil
+    ) async throws -> AnalysisReport {
+        isProcessing = true
+        defer { isProcessing = false }
+        
+        // 構建去識別化結構化數據
+        let evidenceData = evidenceList.map { e in
+            [
+                "type": e.type,
+                "timestamp": e.createdAt.iso8601,
+                "has_evidence_hash": !e.sha256Hash.isEmpty,
+                "has_location": e.latitude != nil,
+                "is_first_disclosure": e.isFirstDisclosure,
+                "leading_question_detected": e.leadingQuestionCount
+            ] as [String: Any]
+        }
+        
+        let sensorData = sensorAnomalies?.map { a in
+            [
+                "type": a.sensorType,
+                "severity": a.severity,
+                "description": a.description
+            ] as [String: Any]
+        } ?? []
+        
+        let structuredInput: [String: Any] = [
+            "case_summary": caseSummary,
+            "evidence_count": evidenceList.count,
+            "evidence": evidenceData,
+            "sensor_anomalies": sensorData,
+            "analysis_request": [
+                "assess_strength": true,
+                "identify_gaps": true,
+                "recommend_actions": true,
+                "estimate_win_probability": true
+            ]
+        ]
+        
+        let jsonData = try JSONSerialization.data(withJSONObject: structuredInput)
+        let jsonString = String(data: jsonData, encoding: .utf8) ?? "{}"
+        
+        let systemPrompt = """
+        你是一名冷酷的檢察官兼法醫行為學專家。請分析以下去識別化的案件數據結構。
+        
+        注意：你沒有看到任何原始證據內容（錄音、照片內容），僅有元數據與哈希值。
+        你的分析僅基於：證據鏈完整性、時序邏輯、感測器異常模式。
+        
+        請輸出以下格式：
+        1. 證據鏈完整性評估 (A-F 級)
+        2. 時間軸邏輯分析
+        3. 感測器異常關聯性
+        4. 證據缺口識別
+        5. 建議補強方向
+        6. 綜合勝訴機率估計 (0-100%)
+        7. 下一步行動清單
+        """
+        
+        let response = try await callOllamaAPI(
+            model: LLMModel.llama33.rawValue,
+            system: systemPrompt,
+            user: jsonString
+        )
+        
+        return parseAnalysisReport(from: response)
+    }
+    
+    /// 生成法律文書
+    func generateDocument(
+        templateType: DocumentTemplate,
+        caseData: LegalCase,
+        evidenceItems: [Evidence]
+    ) async throws -> String {
+        isProcessing = true
+        defer { isProcessing = false }
+        
+        let systemPrompt = templateType.systemPrompt
+        let userPrompt = buildDocumentPrompt(template: templateType, caseItem: caseData, evidence: evidenceItems)
+        
+        return try await callOllamaAPI(
+            model: LLMModel.llama33.rawValue,
+            system: systemPrompt,
+            user: userPrompt
+        )
+    }
+    
+    /// 端側簡易意圖分類 (本地模型或規則引擎)
+    func classifyIntent(_ text: String) -> UserIntent {
+        let lowercased = text.lowercased()
+        
+        if lowercased.contains("求救") || lowercased.contains("help") || lowercased.contains("110") {
+            return .emergency
+        }
+        if lowercased.contains("證據") || lowercased.contains("拍照") || lowercased.contains("錄音") {
+            return .evidence
+        }
+        if lowercased.contains("法律") || lowercased.contains("條文") || lowercased.contains("判例") {
+            return .legal
+        }
+        if lowercased.contains("策略") || lowercased.contains("怎麼辦") || lowercased.contains("下一步") {
+            return .strategy
+        }
+        if lowercased.contains("轉介") || lowercased.contains("社工") || lowercased.contains("律師") {
+            return .referral
+        }
+        
+        return .general
+    }
+    
+    // MARK: - 私有 API 呼叫
+    
+    /// 現在所有 LLM 呼叫統一走這裡——透過 LLMSettings 選出 provider，
+    /// 並且自動寫入 AuditLog。
+    /// model 參數仅作為 audit log 上的說明文字使用（實際 model 由 LLMSettings 決定）。
+    private func callOllamaAPI(
+        model: String,
+        system: String,
+        user: String,
+        temperature: Double = 0.3
+    ) async throws -> String {
+        // 1. 記録「送信」監査ログ
+        let summary = String(user.prefix(80)).replacingOccurrences(of: "\n", with: " ")
+        await MainActor.run {
+            AuditLogService.shared.record(
+                actor: .ai,
+                action: .aiPromptDispatched,
+                detail: "LLM へ送信: \(summary)\(user.count > 80 ? "…" : "")",
+                contextNotes: "model_hint=\(model) temp=\(temperature)"
+            )
+        }
+        
+        // 2. 設定から provider を生成
+        let provider = await MainActor.run { LLMSettings.shared.makeProvider() }
+        let prompt = LLMPrompt(
+            systemPrompt: system,
+            userPrompt: user,
+            temperature: temperature,
+            maxTokens: 2048
+        )
+        
+        // 3. 実行
+        let response: LLMResponse
+        do {
+            response = try await provider.complete(prompt: prompt)
+        } catch let error as LLMProviderError {
+            await MainActor.run {
+                AuditLogService.shared.record(
+                    actor: .ai,
+                    action: .aiResponseReceived,
+                    detail: "LLM エラー: \(error)",
+                    contextNotes: "provider=\(provider.providerId)"
+                )
+            }
+            throw LLMError.apiError("\(error)")
+        }
+        
+        // 4. 記録「受信」監査ログ
+        let respSummary = String(response.text.prefix(120)).replacingOccurrences(of: "\n", with: " ")
+        await MainActor.run {
+            AuditLogService.shared.record(
+                actor: .ai,
+                action: .aiResponseReceived,
+                detail: "LLM から受信: \(respSummary)",
+                contextNotes: "provider=\(provider.providerId) model=\(response.modelId) latency=\(response.latencyMs)ms"
+            )
+        }
+        
+        return response.text
+    }
+    
+    // MARK: - 私有輔助方法
+    
+    private func parseAnalysisReport(from text: String) -> AnalysisReport {
+        // 簡化解析：從回應中提取結構化數據
+        var grade: String = "C"
+        var winProbability: Double = 0.5
+        
+        if text.contains("A級") || text.contains("完整性評估：A") {
+            grade = "A"
+        } else if text.contains("B級") || text.contains("完整性評估：B") {
+            grade = "B"
+        }
+        
+        // 提取勝訴機率
+        if let range = text.range(of: "機率.*?(\\d+)%", options: .regularExpression) {
+            let match = text[range]
+            if let num = Int(match.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) {
+                winProbability = Double(num) / 100.0
+            }
+        }
+        
+        return AnalysisReport(
+            rawResponse: text,
+            evidenceGrade: grade,
+            winProbability: winProbability,
+            keyFindings: extractBulletPoints(from: text, section: "時間軸邏輯分析"),
+            gaps: extractBulletPoints(from: text, section: "證據缺口識別"),
+            recommendations: extractBulletPoints(from: text, section: "建議補強方向"),
+            actionItems: extractBulletPoints(from: text, section: "下一步行動清單")
+        )
+    }
+    
+    private func extractBulletPoints(from text: String, section: String) -> [String] {
+        // 簡化：找 section 後的項目
+        guard let sectionRange = text.range(of: section) else { return [] }
+        let afterSection = String(text[sectionRange.upperBound...])
+        let lines = afterSection.components(separatedBy: .newlines)
+        
+        var bullets: [String] = []
+        for line in lines {
+            let trimmed = line.trimmingCharacters(in: .whitespaces)
+            if trimmed.hasPrefix("-") || trimmed.hasPrefix("•") || trimmed.hasPrefix("1.") || trimmed.hasPrefix("2.") {
+                bullets.append(trimmed.trimmingCharacters(in: CharacterSet(charactersIn: "-•1234567890. ")))
+            }
+            if bullets.count >= 5 { break }
+        }
+        return bullets
+    }
+    
+    private func buildDocumentPrompt(
+        template: DocumentTemplate,
+        caseItem: LegalCase,
+        evidence: [Evidence]
+    ) -> String {
+        """
+        案件標題：\(caseItem.title)
+        案件類型：\(caseItem.caseCategory.displayName)
+        當事人代號：\(caseItem.victimAlias)
+        案件年齡：\(caseItem.victimAge.map(String.init) ?? "未知")
+        機構名稱：\(caseItem.institutionName ?? "未知")
+        事件日期：\(caseItem.incidentDate?.iso8601 ?? "未知")
+        事件描述：\(caseItem.incidentDescription ?? "未提供")
+        
+        證據摘要：
+        \(evidence.map { "- [\($0.evidenceType.displayName)] \($0.createdAt.iso8601) (Hash: \($0.sha256Hash.prefix(16)))" }.joined(separator: "\n"))
+        
+        請根據以上資訊生成：\(template.displayName)
+        """
+    }
+}
+
+// MARK: - 用戶意圖
+
+enum UserIntent {
+    case emergency
+    case evidence
+    case legal
+    case strategy
+    case referral
+    case general
+}
+
+// MARK: - 分析報告
+
+struct AnalysisReport {
+    let rawResponse: String
+    let evidenceGrade: String       // A, B, C, D, E, F
+    let winProbability: Double      // 0.0 ~ 1.0
+    let keyFindings: [String]
+    let gaps: [String]
+    let recommendations: [String]
+    let actionItems: [String]
+    
+    var formattedSummary: String {
+        """
+        📊 證據鏈完整性：\(evidenceGrade) 級
+        🎯 勝訴機率估計：\(Int(winProbability * 100))%
+        
+        🔍 關鍵發現：
+        \(keyFindings.map { "• \($0)" }.joined(separator: "\n"))
+        
+        ⚠️ 證據缺口：
+        \(gaps.map { "• \($0)" }.joined(separator: "\n"))
+        
+        💡 建議補強：
+        \(recommendations.map { "• \($0)" }.joined(separator: "\n"))
+        
+        📝 下一步行動：
+        \(actionItems.map { "\($0)" }.joined(separator: "\n"))
+        """
+    }
+}
+
+// MARK: - 文書範本
+
+enum DocumentTemplate: String {
+    // Phase 1: 刑事核心
+    case policeReport = "police_report"
+    case prosecutorComplaint = "prosecutor_complaint"
+    case civilComplaint = "civil_complaint"
+    case evidenceList = "evidence_list"
+    case witnessInterviewPlan = "witness_interview_plan"
+    case preparationDocument = "preparation_document"
+    
+    // Phase 2: 勞動 + 消費者 + 契約
+    case laborComplaint = "labor_complaint"           // 勞動申訴書
+    case laborInspectorReport = "labor_inspector"      // 勞基監督署檢舉
+    case consumerComplaint = "consumer_complaint"      // 消費者申訴
+    case contractTrapAnalysis = "contract_trap"        // 契約陷阱分析報告
+    case coolingOffNotice = "cooling_off"              // クーリング・オフ通知
+    
+    // Phase 3: 行政救濟
+    case reviewRequest = "review_request"              // 審査請求書
+    case administrativeComplaint = "admin_complaint"    // 行政訴訟起訴狀
+    case compensationClaim = "compensation"           // 国家賠償請求
+    case objectionLetter = "objection"                  // 異議申立書
+    
+    // Phase 4: 特殊
+    case saibaninGuide = "saibanin_guide"              // 裁判員對應指南
+    case environmentalReport = "environmental"            // 環境通報
+    
+    var displayName: String {
+        switch self {
+        case .policeReport: return "警察報案筆錄輔助"
+        case .prosecutorComplaint: return "檢察官告發狀"
+        case .civilComplaint: return "民事訴狀"
+        case .evidenceList: return "證據清單"
+        case .witnessInterviewPlan: return "證人訪談計畫"
+        case .preparationDocument: return "準備書面"
+        case .laborComplaint: return "勞動申訴書"
+        case .laborInspectorReport: return "勞基監督署檢舉函"
+        case .consumerComplaint: return "消費者申訴書"
+        case .contractTrapAnalysis: return "契約陷阱分析報告"
+        case .coolingOffNotice: return "クーリング・オフ通知書"
+        case .reviewRequest: return "審査請求書"
+        case .administrativeComplaint: return "行政訴訟起訴狀"
+        case .compensationClaim: return "国家賠償請求書"
+        case .objectionLetter: return "異議申立書"
+        case .saibaninGuide: return "裁判員制度對應指南"
+        case .environmentalReport: return "環境通報書"
+        }
+    }
+    
+    var systemPrompt: String {
+        switch self {
+        case .policeReport:
+            return "你是一名資深刑警，請根據案情協助生成一份「有助於警方立案」的報案陳述輔助文稿。重點：客觀事實、時間軸清晰、法律依據明確。"
+        case .prosecutorComplaint:
+            return "你是一名檢察官，請根據證據鏈生成一份「檢察官難以拒絕受理」的刑事告發狀草稿。重點：構成要件分析、證據對應、求刑建議。"
+        case .civilComplaint:
+            return "你是一名專精侵權訴訟的律師，請生成民事訴狀草稿。重點：損害賠償計算、過失比例、證據清單。"
+        case .evidenceList:
+            return "你是一名證據整理專家，請將所有證據按時間序排列，標註證據能力與證明力。"
+        case .witnessInterviewPlan:
+            return "你是一名檢察事務官，請針對證人設計訪談計畫。重點：開放式問題、誘導問題避免、交叉詰問預演。"
+        case .preparationDocument:
+            return "你是一名訴訟律師，請生成準備書面。重點：爭點整理、證據說明、法律見解。"
+        case .laborComplaint:
+            return "你是一名勞動法專家，請生成勞動申訴書草稿。重點：違法事實（加班、工資、解雇）、損害額計算、労働基準法條文。"
+        case .laborInspectorReport:
+            return "你是一名労働基準監督署的調查官，請生成檢舉函草稿。重點：具體違法事實、證據、適用法條、監督署管轄。"
+        case .consumerComplaint:
+            return "你是一名消費者保護專家，請生成消費者申訴書。重點：業者義務違反、消費者基本法、特定商取引法、損害額。"
+        case .contractTrapAnalysis:
+            return "你是一名契約法專家，請分析以下契約條款的陷阱與無效可能性。重點：消費者契約法第8-10条（不利條款規制）、民法第91-93条（錯誤/詐欺）、不当利得。"
+        case .coolingOffNotice:
+            return "你是一名消費者保護律師，請生成クーリング・オフ通知書。重點：特定商取引法第6条、通知期限、返還義務。"
+        case .reviewRequest:
+            return "你是一名行政法專家，請生成審査請求書。重點：原処分內容、不服理由、行政手続法第24条、管轄機關。"
+        case .administrativeComplaint:
+            return "你是一名行政訴訟律師，請生成行政事件訴訟起訴狀。重點：原告適格、処分違法性、行政事件訴訟法第38条、管轄裁判所。"
+        case .compensationClaim:
+            return "你是一名国家賠償專家，請生成損害賠償請求書。重點：公務員故意/過失、國家賠償法第14条時效、損害額計算。"
+        case .objectionLetter:
+            return "你是一名行政法專家，請生成異議申立書。重點：原処分內容、異議理由、簡易救濟。"
+        case .saibaninGuide:
+            return "你是一名裁判員制度專家，請生成證據呈現指南。重點：裁判員は法律専門家ではないため、視覚的・直感的な提示が必要。"
+        case .environmentalReport:
+            return "你是一名環境法專家，請生成環境通報書。重點：環境基本法、大気污染防止法、水質汚濁防止法、通報義務。"
+        }
+    }
+}
+
+// MARK: - 錯誤
+
+enum LLMError: Error {
+    case apiError(String)
+    case parseError
+    case noEndpointConfigured
+    
+    var localizedDescription: String {
+        switch self {
+        case .apiError(let msg): return "API 錯誤: \(msg)"
+        case .parseError: return "解析回應失敗"
+        case .noEndpointConfigured: return "未設定 API 端點"
+        }
+    }
+}

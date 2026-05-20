@@ -1,0 +1,63 @@
+# XcodeGen configuration for LegalShield iOS
+# Usage: brew install xcodegen && xcodegen generate
+
+name: LegalShield
+targets:
+  LegalShield:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: LegalShield
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.legalshield.ios
+        INFOPLIST_FILE: LegalShield/Info.plist
+        SWIFT_VERSION: "5.9"
+        TARGETED_DEVICE_FAMILY: "1,2"  # iPhone, iPad
+        SUPPORTS_MACCATALYST: NO
+      configs:
+        Debug:
+          CODE_SIGN_IDENTITY: ""
+          CODE_SIGNING_REQUIRED: NO
+          CODE_SIGNING_ALLOWED: NO
+        Release:
+          CODE_SIGN_IDENTITY: ""
+          CODE_SIGNING_REQUIRED: NO
+          CODE_SIGNING_ALLOWED: NO
+    info:
+      path: LegalShield/Info.plist
+      properties:
+        CFBundleDisplayName: LegalShield
+        CFBundleShortVersionString: "1.0.0"
+        CFBundleVersion: "1"
+        UILaunchScreen: {}
+        UIRequiresFullScreen: YES
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        # Privacy descriptions (required by Apple)
+        NSBluetoothAlwaysUsageDescription: "LegalShield 需要藍牙權限來連接心率手環、求救按鈕等安全裝置。"
+        NSCameraUsageDescription: "LegalShield 需要相機權限來拍攝證據照片並即時計算 SHA-256 哈希值。"
+        NSMicrophoneUsageDescription: "LegalShield 需要麥克風權限來進行背景取證錄音與防誘導訪談監測。"
+        NSLocationWhenInUseUsageDescription: "LegalShield 需要定位權限來記錄證據採集地點，形成完整的證據鏈。"
+        NSSpeechRecognitionUsageDescription: "LegalShield 需要語音辨識權限來進行防誘導訪談的即時問句分析。"
+        # Background modes
+        UIBackgroundModes:
+          - bluetooth-central
+          - audio
+          - location
+    entitlements:
+      path: LegalShield/LegalShield.entitlements
+      properties:
+        # App Groups for data sharing (optional)
+        # com.apple.security.application-groups:
+        #   - group.com.legalshield
+    
+  LegalShieldTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: LegalShieldTests
+    dependencies:
+      - target: LegalShield
