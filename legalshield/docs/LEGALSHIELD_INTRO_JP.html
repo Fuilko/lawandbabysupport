@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LegalShield — プロジェクト紹介・機能説明・申請ガイド</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
 @page { size: A4; margin: 15mm; }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,'Hiragino Sans','Yu Gothic UI','Noto Sans JP',sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.8;font-size:14px}
+body{font-family:'Noto Sans JP', 'Yu Gothic', 'Meiryo', sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.8;font-size:14px}
 .page{width:210mm;min-height:297mm;background:#fff;margin:20px auto;padding:32px 36px;box-shadow:0 4px 24px rgba(0,0,0,0.08);page-break-after:always;position:relative}
 .page:last-child{page-break-after:auto}
 .header{text-align:center;padding-bottom:20px;border-bottom:3px solid #1a2a6c;margin-bottom:24px}
@@ -115,7 +116,7 @@ tr:hover td{background:#f8f9ff}
     <table>
       <tr><th>項目</th><th>内容</th></tr>
       <tr><td>プロジェクト名</td><td>LegalShield Civic Tech Project</td></tr>
-      <tr><td>連絡先</td><td><b>kenji@hiiforest.com</b></td></tr>
+      <tr><td>連絡先</td><td><b>kenji@hiiforest.com</b> / <b>080-8475-2122</b></td></tr>
       <tr><td>GitHub</td><td>github.com/Fuilko/lawandbabysupport</td></tr>
       <tr><td>対応言語</td><td>日本語（繁体中文・英語は開発中）</td></tr>
       <tr><td>対応地域</td><td>日本 47 都道府県（GPS 連動）</td></tr>
@@ -264,9 +265,8 @@ tr:hover td{background:#f8f9ff}
       </div>
 
       <p style="margin-top:10px">
-        私は<b>高知県・黒潮の郷</b>で4人の娘を育てています。東京の法律資源からは遠く離れた場所です。<br>
-        都市と地方の<b>圧倒的な資源格差</b>を、私は毎日身に沁みて感じています。地方創生は経済だけではありません。<b>法律、医療、正義の実現</b>——これらが地方では極めて困難です。<br>
-        特に<b>女性、子ども、高齢者</b>にとって、適切な法律支援にアクセスすることは、都市と比べて桁違いに難しいのです。
+        私は<b>高知県・黒潮の郷</b>で、日本人女性と結婚し4人の娘を育てています。長女はまだ小学1年生です。妻は地域で数少ない独立型の産婦人科・助産ケアに携わる<b>助産師</b>であり、日々の会話から、彼女の元を訪れる患者や妊婦の方々が、性暴力や不法行為といった深刻な悩みを抱えながらも、誰にも相談できずに孤立している現実を耳にしてまいりました。<br>
+        東京の法律資源や医療体制から遠く離れたこの地で、都市と地方の<b>圧倒的な資源格差</b>を私は毎日身に沁みて感じています。地方創生は経済だけではありません。<b>法律、医療、正義の実現</b>——これらが地方では極めて困難であり、特に<b>女性、子ども、高齢者</b>にとって、適切な支援にアクセスすることは都市部より遥かに高いハードルがあります。愛する娘たちの未来を守ること、聲なき被害者を技術で守ることは、私の生涯の使命です。
       </p>
 
       <p style="margin-top:10px; text-align:center; font-weight:600">
@@ -689,13 +689,77 @@ tr:hover td{background:#f8f9ff}
       <tr><td>APP フレームワーク</td><td>Flutter または React Native</td><td>iOS + Android クロスプラットフォーム</td></tr>
       <tr><td>UI 設計</td><td>Figma → Flutter Widgets</td><td>高齢者・標準・専家 3種 UI</td></tr>
       <tr><td>AI 推論</td><td>ONNX Runtime Mobile / TensorFlow Lite</td><td>端末内 5重ロール推論</td></tr>
-      <tr><td>LLM</td><td>Phi-3 / Gemma-2B（量子化）</td><td>小モデル・端末実行・日本語対応</td></tr>
+      <tr><td>SLM（端末内）</td><td>Phi-3 / Gemma-2B（量子化）</td><td>小モデル・端末実行・日本語対応</td></tr>
       <tr><td>ベクトル DB</td><td>LanceDB（組み込み）</td><td>端末内 RAG 検索</td></tr>
       <tr><td>Embedding</td><td>SentenceTransformer (all-MiniLM)</td><td>テキストベクトル化</td></tr>
       <tr><td>バックエンド API</td><td>FastAPI (Python)</td><td>認証・統計・専家マッチング</td></tr>
       <tr><td>クラウド</td><td>AWS Tokyo Region</td><td>国内データセンター・コンプライアンス</td></tr>
       <tr><td>暗号化</td><td>AES-256-GCM + TLS 1.3</td><td>通信 + 保存暗号化</td></tr>
     </table>
+  </div>
+
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">5.3 去標示化（非識別化）GIS 犯罪地図と暗号特徴コードによる累犯検知</div>
+    <div class="section-body">
+      <p>被害者のプライバシーを守りながら、地域社会の安全を高めるために、LegalShield は <b>「非識別化（アノニマイズ）された GIS 位置情報分析」</b> および <b>「暗号特徴コード（シグネチャ）による累犯照合システム」</b> を採用します。このシステムは、機密性の高い個人情報を完全に保護しつつ、リアルタイムの犯罪防止と行政支援の接続を可能にする大規模分散システムです。</p>
+
+      <div class="card-grid" style="margin-top:14px">
+        <div class="card">
+          <div class="icon">🗺️</div>
+          <div class="title">非識別化 GIS 犯罪マッピング</div>
+          <div class="desc">
+            位置ノイズ付加（Perturbation）やグリッド集計（H3/S2）技術を用い、個人の自宅や特定位置を特定させない形で、地域ごとの危険エリアをヒートマップ化。
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">🆘</div>
+          <div class="title">緊急求急点（SOS ホットスポット）</div>
+          <div class="desc">
+            連続被害が発生している地域、または高リスク地域を動的に抽出し、アプリ上に「緊急警戒ポイント」として提示。
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">🔑</div>
+          <div class="title">顔部特徴デコードと段階的可逆暗号分析</div>
+          <div class="desc">
+            不審者や加害者の顔写真を本地でデコード解析し、高次元の顔特徴ベクトル（Facial Embedding）と暗号コードを生成して統合データベースへ登録。この顔データは<b>「多重鍵閾値暗号（Threshold Cryptography）」</b>で暗号化され、普段は完全な匿名暗号コードとして機能しますが、複数の提携弁護士や公的機関の鍵が合致した際のみ<b>「段階的に逆解析（復号・照合）」</b>して加合者を特定可能。
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">📢</div>
+          <div class="title">位置連動型 急難救助情報の共有</div>
+          <div class="desc">
+            特定のエリアで不審者情報や新たなストーカー・連続詐欺被害（同一暗号シグネチャ）が検知された際、同地域内のユーザーに匿名化された警告アラートを即時ブロードキャスト。
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight" style="margin-top:16px">
+        <div class="highlight-title">🛡️ プラットフォームおよび運営団体の強固な法的保護（Safe Harbor）設計</div>
+        <div class="highlight-body">
+          匿名通報、顔特徴デコード、および可逆的累犯分析に伴う法的トラブル（名誉毀損やプライバシー侵害等）を防ぐため、以下の3重の強固なリーガル・シールドを実装します：<br>
+          • <b>バックエンドでの厳重保管と段階的復号ルール</b>：デコードされた顔特徴データおよび証拠群はバックエンドに完全に暗号化されて厳重保管され、平時はシステム管理者を含む何人にも一切開示・開放されません。検察・捜査機関からの法的な捜査令状・行政開示請求、あるいは裁判所への正式な民事起訴・訴訟提起時に初めて、マルチキーによる「逆解析・復号・証拠開示」プロセスが起動します。<br>
+          • <b>「鍵の分離管理」と個人情報保護法への適合</b>：逆解析（復号）に必要な暗号鍵を「プラットフォーム」「提携弁護士会」「支援NPO」等に分散配置（Shamir's Secret Sharing）。単一の組織（プラットフォーム）だけでは顔データを逆解析できないため、データベースは法的に完全な「仮名・匿名加工情報」とみなされ、不当な「個人情報取扱事業者」としての管理責任や漏洩リスクから完全に保護されます。<br>
+          • <b>プロバイダ責任制限法（セーフハーバー原則）の適用</b>：プラットフォームは暗号化された中継・分散DBのインフラのみを提供する「中立的技術プロバイダ」であり、ユーザー間の暗号化通報の具体的内容について直接 of 不法行為責任を負わない法的立場を確立します。<br>
+          • <b>公益目的（刑法・民法上の違法性阻却事由）の成立</b>：地域社会の安全確保、連続性被害（累犯）の未然防止、市民生活の生命・身体・財産の保護を目的とする匿名情報の集計・警告は、法における「公益を図る目的（違法性阻却）」に完全に該当するため、運営者や参加団体に対する民事・刑事上の名誉毀損や損害賠償請求等のリスクを強力に防御します。
+        </div>
+      </div>
+
+      <div class="highlight" style="margin-top:16px; border-left: 4px solid #7cf0c2; background-color: #f0fdf4;">
+        <div class="highlight-title" style="color: #1b4332;">🤝 台湾トップのサイバーセキュリティ企業「TeamT5」との共同開発体制</div>
+        <div class="highlight-body" style="color: #1b4332;">
+          本プラットフォームのバックエンドセキュリティおよび対ハッキング侵入防御は、NHKの特集番組等でも繰り返し報道・取材されている、台湾発の世界最高峰のサイバー脅威インテリジェンス・反ハッカーセキュリティ企業である <b>TeamT5（杜浦デジタル安全 / TeamT5 Inc.）</b> と共同開発。APT攻撃（国家支援型ハッカー）等の高度標的型攻撃への対策技術を導入し、軍用レベルの情報セキュリティと改ざん不可能な証拠保全（Chain of Custody）を実現します。
+        </div>
+      </div>
+
+      <div class="highlight" style="margin-top:16px">
+        <div class="highlight-title">�� クラウド（AWS）とローカル（SLM / スマホ）の役割分担</div>
+        <div class="highlight-body">
+          • <b>スマホ端末（SLM / ローカル DB）</b>：被害記録の入力、音声自動文字起こし、不審特徴や手口の分析、 CryptoKit による特徴量の「暗号特徴シグネチャ（ハッシュ）」生成、位置情報の非識別化（1km グリッド丸め）。オフラインで完全に動作。<br>
+          • <b>AWS クラウド（Tokyo Region）</b>：暗号特徴シグネチャ（ハッシュコード）の突合・集計、GIS（PostGIS）による広域連続性ヒートマップ解析、大型 LLM による「複数事件の共通パターン自動照合」、行政支援データ配信、緊急アラートの安全なルーティング。
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -839,6 +903,51 @@ tr:hover td{background:#f8f9ff}
       <tr><td>通知</td><td>`UNUserNotificationCenter`</td><td>`POST_NOTIFICATIONS`</td></tr>
       <tr><td>生体認証</td><td>`NSFaceIDUsageDescription`</td><td>`USE_BIOMETRIC`</td></tr>
     </table>
+  </div>
+
+  <div class="section" style="margin-top:24px">
+    <div class="section-title">6.6 Xcode iOS 模擬実証環境（Simulator）と開発進捗状況</div>
+    <div class="section-body">
+      <p>本プロジェクトは単なる設計段階ではなく、すでに<b>原生（Native）iOS App（SwiftUI）のプロトタイプ開発が完了</b>しており、Xcode のシミュレータ環境において実証実験を行っています。</p>
+      
+      <div class="highlight" style="margin-top:12px">
+        <div class="highlight-title">📱 iOS 17+ ＆ iPhone 17 Pro 実機・シミュレータ検証環境</div>
+        <div class="highlight-body">
+          開発者は macOS 環境下で Xcode を用い、最新の <b>iPhone 17 Pro / iOS 17+ 模擬環境（Simulator）</b> 上で、オンデバイスでの各種セキュア処理・AI ワークフローの完全なエンドツーエンド（E2E）動作検証を完了しています。
+        </div>
+      </div>
+
+      <div class="card-grid" style="margin-top:14px">
+        <div class="card">
+          <div class="icon">⚙️</div>
+          <div class="title">MockSensorManager（模擬感測）</div>
+          <div class="desc">
+            シミュレータ上では BLE 物理ハードウェアが動かないため、模擬センサーエンジンを実装。緊急 SOS ボタンのクリック、心拍数の急変動などのシミュレーションシナリオを Xcode 上で完全に再現・テスト可能。
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">🔒</div>
+          <div class="title">SwiftData ＆ CryptoKit の保全</div>
+          <div class="desc">
+            スマホ本地に保存される証拠チェーンは、iOS 17 の新技術「SwiftData」で構造化。証拠写真・録音データは「CryptoKit」による P-256 特異鍵で SHA-256 署名・暗号化され、改ざんを完全に防御。
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">🗣️</div>
+          <div class="title">防誘導 Copilot 音声デモ</div>
+          <div class="desc">
+            iOS 本地の Speech フレームワークをシミュレータ上で稼働。対話相手の「誘導尋問」や「不当な言葉の暴力」をリアルタイムでテキスト化し、オンデバイス LLM（Apple MLX）による警戒信号灯をシミュレート。
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon">📡</div>
+          <div class="title">反偵察 IoT ＆ 磁力計テスト</div>
+          <div class="desc">
+            盗撮カメラ等の Wi-Fi 異常パケット検知（反偵察）や、盗聴マイクの磁気検知（磁力計）モジュールを Xcode デバッグコンソールから即時稼働・動作評価可能。
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="contact-box" style="margin-top:24px">
