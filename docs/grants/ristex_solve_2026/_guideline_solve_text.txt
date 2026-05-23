@@ -1,0 +1,4 @@
+  File "<string>", line 1
+    from pypdf import PdfReader; r=PdfReader(r'D:\projects\LegalShield\docs\grants\ristex_solve_2026\guideline_solve2026_jp.pdf'); print(f'pages={len(r.pages)}'); [print(f'--- page {i+1} ---'); print(r.pages[i].extract_text()) for i in range(len(r.pages))]
+                                                                                                                                                                                                ^
+SyntaxError: invalid syntax

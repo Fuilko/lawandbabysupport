@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>LegalShield 紹介書</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">LegalShield 紹介書</h1>
+</header>
+<h1 id="legalshield-プロジェクト紹介書">LegalShield
+プロジェクト紹介書</h1>
+<h2
+id="誰一人置き去りにしない安全社会の-aiiot-共創-台湾-lass-のオープンソース精神に学び現場のデータから法改正の基盤を育てる">誰一人置き去りにしない安全社会の
+AI／IoT 共創 — 台湾 LASS
+のオープンソース精神に学び、現場のデータから法改正の基盤を育てる</h2>
+<blockquote>
+<p><strong>発信者</strong>：［お名前］／高知大学大学院
+修士課程在籍／高知県在住 <strong>所属法人</strong>：［光伊Forest
+等の法人名］ <strong>連絡先</strong>：Email ［ ］／Tel ［ ］／Web
+［GitHub・プロジェクトサイト］
+<strong>本書の位置付け</strong>：協力者・パートナー候補の皆様に、本プロジェクトの全体像と、ご検討いただきたい協力の形を
+3 ページでお伝えするものです（2026 年 5 月版）</p>
+</blockquote>
+<hr />
+<h2 id="出発点">1. 出発点</h2>
+<p>私は現在、高知大学大学院で森林工学を専攻する修士課程の学生です。指導教官は本学の鈴木保志教授（学会理事長）。同時に、台湾から日本に渡って事業を立ち上げ、その過程で困難も経験した一人の生活者でもあります。</p>
+<p>数年前、台湾で <strong>Mapry
+株式会社の無人機代理店として活動していた際、上流からの一方的な契約打ち切り、債権処理を巡る紛争、名誉に関わる内部文書の流通</strong>に直面しました。被害金額・心理的負担も小さくありませんでしたが、最も応えたのは「<strong>一人では司法・行政・社会のどこにも声が届きにくい</strong>」という構造そのものでした。</p>
+<p>その経験から学んだのは、性暴力・労働・行政手続き・消費者契約など、領域を問わず、<strong>「制度のはざまにいる方が、まだ十分な支援につながれていない」</strong>という社会全体に共通する課題でした。代表的な公的統計を挙げると：</p>
+<ul>
+<li>性暴力被害について、女性の約 6 割・男性の約 7
+割が誰にも相談していない（内閣府 令和 5 年度）</li>
+<li>ストーカー相談 19,843 件に対して検挙 1,081 件（警察庁 令和 5
+年版）</li>
+<li>同じ加害者・同じ事業者による複数被害という構造の存在が国際的に確認されている（Lisak
+&amp; Miller 2002）</li>
+</ul>
+<p>「<strong>同じ加害者・同じ事業者・同じ窓口で別の被害者と出会う仕組み</strong>」が社会のどこにもないため、当事者は単独で立証責任を負わされ、解決の選択肢が狭まりやすい構造があります。</p>
+<p>私はこの課題に、自分が持っている技術と経験で、少しでも貢献したいと考えました。</p>
+<hr />
+<h2 id="構築しているもの-legalshield-プラットフォーム">2.
+構築しているもの — LegalShield プラットフォーム</h2>
+<p>LegalShield は、AI／IoT
+を統合した社会安全基盤プラットフォームです。<strong>着想の原点は、十数年にわたる台湾・日本の双方での事業・現場経験の蓄積</strong>
+にあり、その経験を経て近年、外部資金ゼロの独立開発として設計と試作を進めてきました。</p>
+<h3 id="a-横断的法令検索基盤judb-legal-rag">(A) 横断的法令検索基盤（JUDB
+/ Legal RAG）</h3>
+<p>警察庁・内閣府・厚生労働省・衛福部（台湾）等の公開統計と、e-Gov 法令
+API 等の法令データを集約する DuckDB ベースの分析基盤。47
+都道府県別の各種指標を可視化済。</p>
+<h3 id="b-共通機能モジュール群設計済試作段階">(B)
+共通機能モジュール群（設計済・試作段階）</h3>
+<ul>
+<li><strong>法令検索・参照</strong>：民法・刑法・行政法・労働法・消費者契約法等を横断的に検索</li>
+<li><strong>端末側での記録取得</strong>：スマートフォンの
+GPS・センサー・音声・画像をオンデバイスで処理</li>
+<li><strong>証拠保全</strong>：SHA-256
+ハッシュチェーン、タイムスタンプによる改ざん防止</li>
+<li><strong>音声から専門文書への自動整形</strong>：Whisper
+等を用いた窓口対応の文書化</li>
+<li><strong>行政手続支援書類の作成補助</strong>：申請書・上申書・不服申立て等のドラフト生成補助</li>
+<li><strong>プライバシー保護型協調検知</strong>：顔特徴量・位置情報をサーバに送らずに共通性を確認</li>
+<li><strong>支援機関とのマッチング</strong>：地理・専門性・言語によるマルチパラメータ対応</li>
+<li><strong>位置情報を活用した緊急連絡</strong></li>
+<li><strong>検証型運用のためのフィードバック収集と AI 改善</strong></li>
+</ul>
+<p>基盤となる技術は全てオープンソースまたは確立された学術成果です： -
+顔特徴量抽出（FaceNet / ArcFace, CVPR 2015 / 2019） -
+局所性鋭敏ハッシュ（Datar et al. 2004） - 私的集合交差（Pinkas et
+al. 2018、OpenMined PSI） - 閾値秘密分散方式（Shamir 1979） - Project
+Callisto モデル（米国 30 以上の大学等で 10 年運用） -
+大規模言語モデル（LLM／SLM）、地理情報システム（PostGIS）、音声認識（Whisper）</p>
+<h3 id="c-エビデンス基盤">(C) エビデンス基盤</h3>
+<p>35
+件の一次資料を整備済。内閣府男女間暴力調査原典、警察庁ストーカー・DV
+年次報告、衛福部統計、Callisto・Lisak・LASS／AirBox
+等の査読論文、日本・台湾の関連法令・判例。</p>
+<h3 id="d-設計書群">(D) 設計書群</h3>
+<p>SAFETY_GIS_DESIGN／FEWN_DESIGN／EVIDENCE_BASE／EXPANSION_AND_DISPATCH_DESIGN／PIPELINE_AND_RISK_ANALYSIS／USER_AGREEMENT
+— シナリオ創出フェーズに相当する準備の完了を示す資料群。</p>
+<hr />
+<h2 id="台湾-lass-のオープンソース精神を継承">3. 台湾 LASS
+のオープンソース精神を継承</h2>
+<p>本プロジェクトは、台湾の市民科学プロジェクト <strong>LASS（Location
+Aware Sensor System、2015 年〜）</strong>および <strong>AirBox
+プロジェクト</strong> の理念に学んでいます。LASS は、PM2.5
+を計測する市民参加型センサー網を完全オープンソース・自発的参加・分散運用で構築し、その蓄積データが台湾の環境政策と研究（<em>Nature
+Humanities &amp; Social Sciences Communications</em> 2022
+査読）に大きく寄与しました。</p>
+<table>
+<thead>
+<tr>
+<th>LASS／AirBox の理念</th>
+<th>LegalShield での継承</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完全オープンソース</td>
+<td>全コードを MIT または Apache 2.0 で公開</td>
+</tr>
+<tr>
+<td>自発的参加</td>
+<td>当事者・支援者・市民開発者の任意参加</td>
+</tr>
+<tr>
+<td>分散運用</td>
+<td>鍵分散方式による地域団体主導の運用</td>
+</tr>
+<tr>
+<td>市民の主体的参画</td>
+<td>NPO・自治体・大学・市民の対等な共創</td>
+</tr>
+<tr>
+<td>PM2.5 データ → 環境政策の改善</td>
+<td>制度のはざまの実態 → 法改正の基盤</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="年に目指す姿ビジョン">4. 2030 年に目指す姿（ビジョン）</h2>
+<blockquote>
+<p><strong>2030
+年までに、日本に暮らす全ての方が、自身のプライバシーと尊厳を守られたまま、必要なときに必要な支援機関と安全につながることができる社会基盤を整える。同時に、当事者・現場・データから蓄積されたエビデンスを政策提言と法改正の基盤とし、より公正で安心して暮らせる国づくりに貢献する。</strong></p>
+</blockquote>
+<hr />
+<h2 id="直近の動き-jst-ristex-solve-2026-年度応募">5. 直近の動き — JST
+RISTEX SOLVE 2026 年度応募</h2>
+<p>JST 社会技術研究開発事業（RISTEX）の <strong>「SDGs
+の達成に向けた共創的研究開発プログラム（ソリューション創出フェーズ）」</strong>に、<strong>2026
+年 6 月 3 日締切</strong>で応募します。</p>
+<ul>
+<li>採択 2 件程度・3 年半・直接経費上限 1,900 万円／年</li>
+<li>応募要件として、研究代表者または協働実施者の少なくとも一方が大学等所属である必要がある</li>
+<li><strong>本フェーズで実証研究を行う範囲</strong>は、3
+領域（性暴力・労働・消費者）× 3 地域（高知・東京・秋田）に厳選</li>
+<li><strong>製品としての射程</strong>は全法律領域・全地域で、プロジェクト終了後の段階的展開を計画</li>
+</ul>
+<p>応募の有無にかかわらず、本プロジェクトは独立に継続します。<strong>この応募準備のプロセスそのものが、ステークホルダーとの対話・現場知の蓄積・連携体制の構築という、本研究の中身そのもの</strong>だからです。</p>
+<hr />
+<h2 id="ご検討いただきたい協力の形">6. ご検討いただきたい協力の形</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>レベル</th>
+<th>内容</th>
+<th>求めるリソース</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>① 30 分の対話</strong></td>
+<td>プロジェクトを聞いていただき、率直なご批判・ご助言をいただく</td>
+<td>30 分のオンラインまたは対面</td>
+</tr>
+<tr>
+<td><strong>② 紹介</strong></td>
+<td>適切な研究者・実務家・NPO・自治体・弁護士をご紹介いただく</td>
+<td>メールでのご紹介 1 件</td>
+</tr>
+<tr>
+<td><strong>③ 試用・フィードバック</strong></td>
+<td>JUDB の暗数可視化レポートのご試用、設計書の批判的レビュー</td>
+<td>1〜2 時間</td>
+</tr>
+<tr>
+<td><strong>④ 共同提案・連携</strong></td>
+<td>RISTEX
+応募の協働実施者・連携機関等としてご参加いただく可能性のご検討</td>
+<td>機関同意プロセス</td>
+</tr>
+</tbody>
+</table>
+<p>最も多くの方には ① か ②
+をお願いしています。<strong>お断りいただきやすい設計</strong>にしているつもりです。ご関心がなければ、遠慮なくその旨お伝えください。</p>
+<hr />
+<h2 id="私の立ち位置-何ではないか">7. 私の立ち位置 — 何ではないか</h2>
+<p>正直さが信頼の出発点だと考えていますので、明示しておきます：</p>
+<ul>
+<li><strong>大学教員でも研究機関職員でもありません</strong>：森林工学の修士課程に在籍しています。情報法・ジェンダー研究の専門教育は受けていません。だからこそ、大学側の研究代表者を必要としています</li>
+<li><strong>大手 NPO
+の代表でもありません</strong>：個人法人レベルでの独立開発者です</li>
+<li><strong>被害者支援の現場経験は限定的</strong>です：自身の被害経験から出発していますが、現場経験豊富な
+NPO のご指導を必要としています</li>
+<li><strong>商業化を主目的にしていません</strong>：暗号モジュールはオープンソース公開する設計です</li>
+<li><strong>政治的中立</strong>です：特定の政党・運動・思想に属していません</li>
+</ul>
+<p>3 ページお読みいただき、ありがとうございました。30
+分の対話を一度だけお願いできれば、それで十分です。</p>
+<p>［日付・お名前・署名］</p>
+</body>
+</html>

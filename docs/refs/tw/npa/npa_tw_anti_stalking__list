@@ -1,0 +1,1281 @@
+                                        <!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="DcbOjkTgBUTxZ4N39iNc3_VQ30srfxdoAgUhlZyU3gg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no">
+    <meta name="DC.Title" content="內政部警政署全球資訊網" />
+    <meta name="DC.Creator" content="內政部警政署" />
+    <meta name="DC.Subject" content="懶人包" />
+    <meta name="DC.Description" content="懶人包" />
+    <meta name="DC.Publisher" content="內政部警政署" />
+    <meta name="DC.Contributor" content="內政部警政署" />
+    <meta name="DC.Date" content="2023-01-05" />
+    <meta name="DC.Type" content="text/html" />
+    <meta name="DC.Format" content="text/html" />
+    <meta name="DC.Identifier" content="A01010000C" />
+    <meta name="DC.Relation" content="內政部警政署" />
+    <meta name="DC.Source" content="內政部警政署" />
+    <meta name="DC.Language" content="中文" />
+    <meta name="DC.coverage.t.min" content="2026-05-20" />
+    <meta name="DC.coverage.t.max" content="2026-05-20" />
+    <meta name="DC.Rights" content="內政部警政署" />
+    <meta name="Category.Theme" content="170" />
+    <meta name="Category.Cake" content="140" />
+    <meta name="Category.Service" content="I00" />
+    <meta name="keywords" content="內政部警政署" />
+    <meta property="og:title" content="懶人包-內政部警政署全球資訊網" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://www.npa.gov.tw/static/images/template/logo.png" />
+
+    <title>懶人包-內政部警政署全球資訊網</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+
+    <link rel="stylesheet" href="/static/js/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css02/megamenu.css">
+    <link rel="stylesheet" href="/static/js/slick-1.6.0/slick/slick.css">
+    <link rel="stylesheet" href="/static/js/slick-1.6.0/slick/slick-theme.css">
+    <script src="/static/js/jquery-3.5.0.min.js"></script>
+    <noscript>您的瀏覽器不支援JavaScript功能，若網頁功能無法正常使用時，請開啟瀏覽器JavaScript狀態</noscript>
+    <link rel="stylesheet" href="/static/css02/footer.css">
+    <link rel="stylesheet" href="/static/css02/layout.css">
+    <link rel="stylesheet" href="/static/js/zico/css/zico.min.css">
+    <link rel="stylesheet" href="/static/css02/equal_height.css">
+    <link rel="stylesheet" href="/static/css02/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/footer_npa.css">
+    <style>
+        .gsc-input {
+            font-size: 100% !important;
+        }
+    </style>
+	<script src="/static/js/popper.min.js" ></script>
+    <script src="/static/js/bootstrap-4.4.1-dist/js/bootstrap.min.js" ></script>
+        <script src="/static/js/skrollr-master/dist/skrollr.min.js"></script>
+    <script src="/static/js/wow.min.js"></script>
+    <script src="/static/js/megamenu-js-master/js/megamenu.js"></script>
+    <script src="/static/js/slick-1.6.0/slick/slick.min.js"></script>
+        <link rel="stylesheet" href="/static/css02/ap.css">
+    <link rel="stylesheet" href="/static/js/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css">
+
+</head>
+<body data-0="background-position:center 0px;" data-100000="background-position:center -50000px;" class='ch home'>
+    <link rel="stylesheet" href="/static/css02/layout.css">
+    <div id="bg1" data-0="background-position:0px 0px;" data-end="background-position:0 -5000px;"></div>
+    <div class="into"><a href="#accesskey_c" tabindex="1" title="進入內容區塊">進入內容區塊</a></div>
+        <header id="top">
+        <div class="container">
+            <h1 class="logo">
+                <a href="/ch/index">
+                    <img width="517" height="91" src="/ch/index/viewtopimage?module=websitetop" alt="內政部警政署">
+                </a>
+            </h1>
+                        <div class="toplink">
+                <a href="javascript:void(0);" accesskey="u" class="accesskey" title="上方選單連結區">:::</a>
+                                    <a href="/ch/index" title="回首頁" >回首頁</a>
+                    |                        <a href="/ch/sitemap" title="網站導覽" >網站導覽</a>
+                    |                        <a href="/en/index" title="English" >English</a>
+                    |                        <a href="/kids/index" title="兒童版" >兒童版</a>
+                    |                        <a href="/ch/app/folder/587" title="雙語詞彙" >雙語詞彙</a>
+                    |                        <a href="/ch/app/faq/list?module=faq&amp;id=2144" title="常見問答" >常見問答</a>
+                    |                        <a href="https://police.npa.gov.tw/" title="警光雜誌社(開啟新視窗)" target="_blank">電子報</a>
+                                    </div>
+                        <div class="search_box">
+                                <div class="search">
+                    <script>
+                        (function() {
+                            var cx = "7189beac72d8cef5c";
+                            var gcse = document.createElement("script");
+                            gcse.type = "text/javascript";
+                            gcse.async = true;
+                            gcse.src = (document.location.protocol == "https:" ? "https:" : "http:") +
+                                            "//cse.google.com/cse.js?cx=" + cx;
+                            var s = document.getElementsByTagName("script")[0];
+                            s.parentNode.insertBefore(gcse, s);
+                        })();
+                        document.write("<gcse:searchbox-only></gcse:searchbox-only>");
+                    </script>
+                    <div class="advanced"><a href="https://www.google.com.tw/advanced_search?as_sitesearch=https://www.npa.gov.tw/"
+                        title="進階搜尋(開啟新視窗)" target="_blank">進階搜尋</a></div>
+                                            <div class="hotsearch">
+                            <span class="text-danger"></span>
+                                                                    <a href="https://www.google.com.tw/cse?cx=7189beac72d8cef5c&amp;q=反詐騙&amp;hl=zh-TW&amp;as_sitesearch=https://www.npa.gov.tw/"
+                                   class="text-danger-a" title="反詐騙(開啟新視窗)" target="_blank">反詐騙</a> 、                                        <a href="https://www.google.com.tw/cse?cx=7189beac72d8cef5c&amp;q=酒駕&amp;hl=zh-TW&amp;as_sitesearch=https://www.npa.gov.tw/"
+                                   class="text-danger-a" title="酒駕(開啟新視窗)" target="_blank">酒駕</a> 、                                        <a href="https://www.google.com.tw/cse?cx=7189beac72d8cef5c&amp;q=警政統計&amp;hl=zh-TW&amp;as_sitesearch=https://www.npa.gov.tw/"
+                                   class="text-danger-a" title="警政統計(開啟新視窗)" target="_blank">警政統計</a>                                 </div>
+                                    </div>
+                                <div class="setweb">
+                                        <div id="sizefont" class="size font-medium">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="字型大小">字型大小</button>
+                        <script type="text/javascript">
+                                                        function createCookie(name, value, days) {
+                                if (days) {
+                                    var date = new Date();
+                                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                                    var expires = "; expires=" + date.toGMTString();
+                                }
+                                else expires = "";
+                            document.cookie = name + "=" + value + expires + ";Secure;path=/";
+                            }
+                            function readCookie(name) {
+                                var nameEQ = name + "=";
+                                var ca = document.cookie.split(';');
+                                for (var i = 0; i < ca.length; i++) {
+                                    var c = ca[i];
+                                    while (c.charAt(0) == ' ')
+                                        c = c.substring(1, c.length);
+                                    if (c.indexOf(nameEQ) == 0)
+                                        return c.substring(nameEQ.length, c.length);
+                                }
+                                return null;
+                            }
+                            function SetFont(size) {
+                                document.getElementById("fs").className="container main "+size;
+                                document.getElementById("sizefont").className="size "+size;
+		                        createCookie('fontsize', size, 30);
+                            }
+                            function LoadFont() {
+                                var fontsize;
+                                if (readCookie('fontsize') == null) {
+                                    createCookie('fontsize', 'font-medium', 30);
+                                    fontsize = 'font-medium';
+                                } else {
+                                    fontsize = readCookie('fontsize');
+                                }
+                                SetFont(fontsize);
+                            }
+                        </script>
+                        <div class="dropdown-menu dropdown-menu-right" style="">
+                            <a class="dropdown-item" href="javascript:SetFont(&#39;font-small&#39;)"><img width="22" height="18" src="/static/images/template/icon_size_s.png" alt="小"/></a>
+                            <a class="dropdown-item" href="javascript:SetFont(&#39;font-medium&#39;)"><img width="22" height="18" src="/static/images/template/icon_size_m.png" alt="中"/></a>
+                            <a class="dropdown-item" href="javascript:SetFont(&#39;font-large&#39;)"><img width="22" height="18" src="/static/images/template/icon_size_l.png" alt="大"/></a>
+                        </div>
+                    </div>
+                                                <div class="share">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton2"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="分享">
+                            <img width="19" height="19" src="/static/images/template/icon_share.png" alt="分享">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" style="">
+                            <a class="dropdown-item" title="分享到Facebook(開啟新視窗)" target="_blank"
+                                 href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fwww.npa.gov.tw%2Fch%2Fapp%2Fdata%2Flist">
+                                <img width="22" height="18" src="/static/images/template/icon_share_fb.png" alt="facebook">
+                            </a>
+                            <a class="dropdown-item" title="分享到X(開啟新視窗)" target="_blank"
+                                href="https://x.com/intent/post?url=https%3A%2F%2Fwww.npa.gov.tw%2Fch%2Fapp%2Fdata%2Flist">
+                                <img width="22" height="18" src="/static/images/template/icon_share_x.png" alt="X">
+                            </a>
+                            <a class="dropdown-item" title="分享到LINE(開啟新視窗)" target="_blank"
+                                href="https://line.me/R/msg/text/?懶人包-內政部警政署全球資訊網%0D%0Ahttps%3A%2F%2Fwww.npa.gov.tw%2Fch%2Fapp%2Fdata%2Flist">
+                                <img width="22" height="18" src="/static/images/template/icon_share_line.png" alt="line"/>
+                            </a>
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </header>
+            <div class="menu">
+        <a href="#" accesskey="m" class="accesskey" title="主要功能選單">:::</a>
+        <ul>
+            <li>
+                                <div class="toplink">
+                                            <a href="/ch/index" title="回首頁" >回首頁</a>
+                                            <a href="/ch/sitemap" title="網站導覽" >網站導覽</a>
+                                            <a href="/en/index" title="English" >English</a>
+                                            <a href="/kids/index" title="兒童版" >兒童版</a>
+                                            <a href="/ch/app/folder/587" title="雙語詞彙" >雙語詞彙</a>
+                                            <a href="/ch/app/faq/list?module=faq&amp;id=2144" title="常見問答" >常見問答</a>
+                                            <a href="https://police.npa.gov.tw/" title="警光雜誌社(開啟新視窗)" target="_blank">電子報</a>
+                                    </div>
+                            </li>
+                        <li>
+                <a href="/ch/app/folder/533" title="機關簡介"   >
+                    機關簡介                </a>
+                                    <ul class="equal-height-thumbnail">
+                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=691&amp;serno=a2b51476-1a3e-449f-874a-fe3298cb4444" title="沿革"  >沿革</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/534" title="首長介紹"  >首長介紹</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=18890&amp;serno=56a31935-252d-4a87-b41e-2e995b917d9b" title="署長 張榮興"  >署長 張榮興</a></li>
+                                                                                            <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=19062&amp;serno=929669a9-6a27-443a-88c8-609bc6c2236b" title="副署長 廖訓誠"  >副署長 廖訓誠</a></li>
+                                                                                            <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=19063&amp;serno=87171895-6183-4a2b-bfb5-32ff501fe698" title="副署長 李文章"  >副署長 李文章</a></li>
+                                                                                            <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=19151&amp;serno=61ff828e-449e-4cc5-a424-8c4beb42f97c" title="副署長 郭士傑"  >副署長 郭士傑</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=692&amp;serno=0b3d1e68-12d1-471f-9d93-7de18ba655c2" title="警察體系"  >警察體系</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=693&amp;serno=97c5ec29-815c-46fb-bdba-fc430ede5b9f" title="組織架構"  >組織架構</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=policyfocus&amp;id=1819" title="施政重點"  >施政重點</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=liaison&amp;id=1820" title="警察機關地址電話一覽"  >警察機關地址電話一覽</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/535" title="警察大事記"  >警察大事記</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/data/list?module=events&amp;id=19142" title="一一五年度"  >一一五年度</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=events&amp;id=18990" title="一一四年度"  >一一四年度</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=events&amp;id=18873" title="一一三年度"  >一一三年度</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=events&amp;id=18751" title="一一二年度"  >一一二年度</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=events&amp;id=18455" title="一一一年度"  >一一一年度</a></li>
+                                                                                                                                                                       <li class="more"><a href="/ch/app/folder/535" title="看更多警察大事記">MORE+</a></li>
+                                                                            </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/572" title="主題網站"  >主題網站</a>
+                                                                    <ul>
+                                                                                    <li><a href="https://www.npa.gov.tw/ch/app/folder/614" title="警察消防海巡移民空勤人員醫療照護實施方案專區"  >警察消防海巡移民空勤人員醫療照護實施方案專區</a></li>
+                                                                                            <li><a href="https://historical.npa.gov.tw/" title="警察史蹟館專區(開啟新視窗)"  target=&#39;_blank&#39;  >警察史蹟館專區</a></li>
+                                                                                            <li><a href="/ch/app/folder/573" title="警察消防及義勇民力安全濟助基金會"  >警察消防及義勇民力安全濟助基金會</a></li>
+                                                                                            <li><a href="/ch/app/folder/575" title="義勇人員安全濟助基金會"  >義勇人員安全濟助基金會</a></li>
+                                                                                            <li><a href="/ch/app/folder/578" title="警消海移空勤協勤民力基金專區"  >警消海移空勤協勤民力基金專區</a></li>
+                                                                                                                                               <li class="more"><a href="/ch/app/folder/572" title="看更多主題網站">MORE+</a></li>
+                                                                            </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg032&amp;id=1822" title="委託研究計畫報告"  >委託研究計畫報告</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg031&amp;id=1821" title="警政工作年報"  >警政工作年報</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/536" title="本署各業務單位"  >本署各業務單位</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/folder/537" title="行政組"  >行政組</a></li>
+                                                                                            <li><a href="/ch/app/folder/538" title="保安組"  >保安組</a></li>
+                                                                                            <li><a href="/ch/app/folder/539" title="教育組"  >教育組</a></li>
+                                                                                            <li><a href="/ch/app/folder/541" title="國際組"  >國際組</a></li>
+                                                                                            <li><a href="/ch/app/folder/548" title="交通組"  >交通組</a></li>
+                                                                                                                                                                                                                                                           <li class="more"><a href="/ch/app/folder/536" title="看更多本署各業務單位">MORE+</a></li>
+                                                                            </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/webLink/list?module=webLink&amp;id=1824" title="警政署相關單位"  >警政署相關單位</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg033&amp;id=1823" title="中華民國警察畫刊"  >中華民國警察畫刊</a>
+                                                            </li>
+                                            </ul>
+                            </li>
+                        <li>
+                <a href="/ch/app/folder/585" title="訊息公告"   >
+                    訊息公告                </a>
+                                    <ul class="equal-height-thumbnail">
+                                                    <li><a href="/ch/app/news/list?module=headnews&amp;id=2136" title="最新消息"  >最新消息</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/news/list?module=news&amp;id=2139" title="各警察機關新聞發布"  >各警察機關新聞發布</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/news/list?module=clarification&amp;id=2141" title="警政爭議訊息澄清"  >警政爭議訊息澄清</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/faq/list?module=faq&amp;id=2144" title="常見問答"  >常見問答</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/587" title="雙語詞彙"  >雙語詞彙</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/bilingual/list?module=bilingual&amp;id=18079" title="警政署人員職稱中英翻譯對照表"  >警政署人員職稱中英翻譯對照表</a></li>
+                                                                                            <li><a href="https://terms.naer.edu.tw/" title="國家教育研究院雙語詞彙、學術名詞暨辭書資訊網(開啟新視窗)"  target=&#39;_blank&#39;  >國家教育研究院雙語詞彙、學術名詞暨辭書資訊網</a></li>
+                                                                                            <li><a href="/ch/app/bilingual/list?module=bilingual&amp;id=18080" title="警政署各單位中英翻譯對照表"  >警政署各單位中英翻譯對照表</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg050&amp;id=2150" title="多國日常問候語"  >多國日常問候語</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=895&amp;serno=1057af14-0d7d-464c-836a-0856d014cc9a" title="政府網站資料開放宣告"  >政府網站資料開放宣告</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=897&amp;serno=a68eb266-592b-4a7b-ab4b-cd8543caa687" title="隱私權及網站安全政策"  >隱私權及網站安全政策</a>
+                                                            </li>
+                                                    <li><a href="/menuDoc/3120" title="下載(pdf)"  >保有及管理個人資料</a>
+                                                            </li>
+                                            </ul>
+                            </li>
+                        <li>
+                <a href="/ch/app/folder/589" title="資訊公開"   >
+                    資訊公開                </a>
+                                    <ul class="equal-height-thumbnail">
+                                                    <li><a href="/ch/app/folder/19052" title="防空避難專區"  >防空避難專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="https://adr.npa.gov.tw/" title="防空避難專區(連結民防指揮管制所)(開啟新視窗)"  target=&#39;_blank&#39;  >防空避難專區(連結民防指揮管制所)</a></li>
+                                                                                            <li><a href="https://ps.npa.gov.tw/AdrList/index.html" title="防空避難處所查詢(開啟新視窗)"  target=&#39;_blank&#39;  >防空避難處所查詢</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1301&amp;serno=2c255777-ad96-48c7-9760-3aa15102aa79" title="政府資訊公開"  >政府資訊公開</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg052&amp;id=2186" title="警察教育"  >警察教育</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg051&amp;id=2177" title="OPEN DATA"  >OPEN DATA</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/592" title="警政統計"  >警政統計</a>
+                                                                    <ul>
+                                                                                    <li><a href="https://oh.npa.gov.tw/OHWeb/MainPage.html" title="警政統計視覺化查詢專區(開啟新視窗)"  target=&#39;_blank&#39;  >警政統計視覺化查詢專區</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg054&amp;id=2206" title="警政統計主題專區"  >警政統計主題專區</a></li>
+                                                                                            <li><a href="https://ba.npa.gov.tw/" title="警政統計查詢網(開啟新視窗)"  target=&#39;_blank&#39;  >警政統計查詢網</a></li>
+                                                                                            <li><a href="/ch/app/folder/593" title="警政統計月報"  >警政統計月報</a></li>
+                                                                                            <li><a href="/ch/app/folder/594" title="警政統計年報"  >警政統計年報</a></li>
+                                                                                                                                                                                               <li class="more"><a href="/ch/app/folder/592" title="看更多警政統計">MORE+</a></li>
+                                                                            </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/597" title="性別主流化專區"  >性別主流化專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/data/list?module=wg063&amp;id=2231" title="性別與法律"  >性別與法律</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg063&amp;id=2233" title="性別與計畫、規定"  >性別與計畫、規定</a></li>
+                                                                                            <li><a href="http://www.cedaw.org.tw/tw/en-global/home" title="消除對婦女一切形式歧視公約-CEDAW專區(開啟新視窗)"  target=&#39;_blank&#39;  >消除對婦女一切形式歧視公約-CEDAW專區</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg063&amp;id=2235" title="性別平等工作小組宣導"  >性別平等工作小組宣導</a></li>
+                                                                                            <li><a href="/ch/app/folder/598" title="性別統計"  >性別統計</a></li>
+                                                                                                                                               <li class="more"><a href="/ch/app/folder/597" title="看更多性別主流化專區">MORE+</a></li>
+                                                                            </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/599" title="行政院治安會報專區"  >行政院治安會報專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=902&amp;serno=5e34d4af-078c-4519-b316-917fb8f0b46e" title="行政院治安會報實施要點"  >行政院治安會報實施要點</a></li>
+                                                                                            <li><a href="/menuDoc/18384" title="下載(pdf)"  >行政院治安會報委員名冊</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg203&amp;id=18399" title="行政院治安會報會議紀錄"  >行政院治安會報會議紀錄</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg064&amp;id=18787" title="行政院發布治安會報新聞"  >行政院發布治安會報新聞</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/18921" title="保全業企業服務廉政平臺專區"  >保全業企業服務廉政平臺專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/folder/18922" title="平臺介紹"  >平臺介紹</a></li>
+                                                                                            <li><a href="/ch/app/folder/18923" title="宣導資料"  >宣導資料</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg042&amp;id=18924" title="成果分享"  >成果分享</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg042&amp;id=18925" title="相關連結"  >相關連結</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/menuDoc/18874" title="下載(pdf)"  >警察機關通譯聯絡窗口</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg062&amp;id=2198" title="出版品目錄"  >出版品目錄</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg203&amp;id=18845" title="警政署職場互助教保服務中心專區"  >警政署職場互助教保服務中心專區</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/18953" title="消費者保護專區"  >消費者保護專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/data/list?module=wg213&amp;id=18954" title="消費者保護方案"  >消費者保護方案</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg213&amp;id=18955" title="消費者保護網站相關連結"  >消費者保護網站相關連結</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg213&amp;id=18995" title="消費者保護教育宣導"  >消費者保護教育宣導</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                            </ul>
+                            </li>
+                        <li>
+                <a href="/ch/app/folder/600" title="線上申辦"   >
+                    線上申辦                </a>
+                                    <ul class="equal-height-thumbnail">
+                                                    <li><a href="/ch/app/folder/19032" title="警察刑事紀錄證明（俗稱良民證）"  >警察刑事紀錄證明（俗稱良民證）</a>
+                                                                    <ul>
+                                                                                    <li><a href="https://eli.npa.gov.tw/E7WebO/index01.jsp" title="警察刑事紀錄證明（俗稱良民證）線上申辦(開啟新視窗)"  target=&#39;_blank&#39;  >線上申辦</a></li>
+                                                                                            <li><a href="https://youtu.be/uVc4QiGUyOg" title="「網路申請郵寄領證」宣導影片(開啟新視窗)"  target=&#39;_blank&#39;  >「網路申請郵寄領證」宣導影片</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="https://nv2.npa.gov.tw/NM107-604Client" title="入山案件申辦系統(開啟新視窗)"  target=&#39;_blank&#39;  >入山案件申辦系統</a>
+                                                            </li>
+                                                    <li><a href="https://tm2.npa.gov.tw/NM105-505ClientRWD2/TM01A01Q_01.jsp" title="道路交通事故資料申請系統(開啟新視窗)"  target=&#39;_blank&#39;  >道路交通事故資料申請系統</a>
+                                                            </li>
+                                                    <li><a href="https://gnaie.npa.gov.tw" title="槍砲彈藥簽審通關業務系統(開啟新視窗)"  target=&#39;_blank&#39;  >槍砲彈藥簽審通關業務系統</a>
+                                                            </li>
+                                            </ul>
+                            </li>
+                        <li>
+                <a href="/ch/app/folder/607" title="便民服務"   >
+                    便民服務                </a>
+                                    <ul class="equal-height-thumbnail">
+                                                    <li><a href="/ch/app/eform/list?module=eform&amp;id=2248" title="申辦事項及電子表單"  >申辦事項及電子表單</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1048&amp;serno=e3ad2889-4dee-41cf-aef8-9b9d26dc6950" title="110報案"  >110報案</a>
+                                                            </li>
+                                                    <li><a href="https://ps.npa.gov.tw/TrafficSearch/" title="測速執法點及違規拖吊查詢(開啟新視窗)"  target=&#39;_blank&#39;  >測速執法點及保管場查詢</a>
+                                                            </li>
+                                                    <li><a href="https://tm2.npa.gov.tw/NM105-505ClientRWD2/TM02B01Q_01.jsp" title="車損事故處理(開啟新視窗)"  target=&#39;_blank&#39;  >車損事故處理</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/608" title="協助維護治安查詢"  >協助維護治安查詢</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=18497&amp;serno=f0260fce-0005-46e9-bf73-ab46baa12122" title="通緝犯資料查詢(公告)平臺(新版)"  >通緝犯資料查詢(公告)平臺(新版)</a></li>
+                                                                                            <li><a href="https://eze8.npa.gov.tw/NpaE8ServerRWD/CL_Query.jsp" title="車輛竊盜、車牌失竊(含計程車)資料查詢(開啟新視窗)"  target=&#39;_blank&#39;  >車輛竊盜、車牌失竊(含計程車)資料查詢</a></li>
+                                                                                            <li><a href="https://eze8.npa.gov.tw/NpaE8ServerRWD/NK_Query.jsp" title="查尋失蹤人口、身分不明者資料(開啟新視窗)"  target=&#39;_blank&#39;  >查尋失蹤人口、身分不明者資料</a></li>
+                                                                                            <li><a href="https://eze8.npa.gov.tw/NpaE8ServerRWD/RP_Query.jsp" title="受理案件查詢(開啟新視窗)"  target=&#39;_blank&#39;  >受理案件查詢</a></li>
+                                                                                            <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1050&amp;serno=087ea7f0-dcc1-4deb-85a4-4bc5b5c52dad" title="高再犯風險之性侵害加害人人數公告查詢"  >高再犯風險之性侵害加害人人數公告查詢</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/609" title="e化服務查詢"  >e化服務查詢</a>
+                                                                    <ul>
+                                                                                    <li><a href="https://oa.npa.gov.tw/NM113-502Web/" title="員警定期請調存記暨核調名冊查詢(開啟新視窗)"  target=&#39;_blank&#39;  >員警定期請調存記暨核調名冊查詢</a></li>
+                                                                                            <li><a href="https://op2.npa.gov.tw/NM107-512Client/OP01A01Q_01.jsp" title="本署拾得遺失物網路公告(開啟新視窗)"  target=&#39;_blank&#39;  >本署拾得遺失物網路公告</a></li>
+                                                                                            <li><a href="https://os.npa.gov.tw/NPAOSClient/" title="遺失服務證及刑警證徽專區(開啟新視窗)"  target=&#39;_blank&#39;  >遺失服務證及刑警證徽專區</a></li>
+                                                                                            <li><a href="/ch/app/folder/610" title="警察公墓管理"  >警察公墓管理</a></li>
+                                                                                            <li><a href="https://tx3.npa.gov.tw/NM112-512WebE/index" title="計程車駕駛人服務網(開啟新視窗)"  target=&#39;_blank&#39;  >計程車駕駛人服務網</a></li>
+                                                                                                           <li class="more"><a href="/ch/app/folder/609" title="看更多e化服務查詢">MORE+</a></li>
+                                                                            </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/611" title="署長專區"  >署長專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/folder/2270" title="署長信箱"  >署長信箱</a></li>
+                                                                                            <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=809&amp;serno=ccf641d6-2d47-4678-bb0d-b2ce48f82d99" title="民眾服務中心"  >民眾服務中心</a></li>
+                                                                                            <li><a href="https://www.cib.npa.gov.tw/ch/app/folder/2058" title="檢舉賄選信箱(開啟新視窗)"  target=&#39;_blank&#39;  >檢舉賄選信箱</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg203&amp;id=18549" title="開放文件格式(ODF)宣導專區"  >開放文件格式(ODF)宣導專區</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg203&amp;id=18151" title="權利告知書專區"  >權利告知書專區</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/612" title="社群網站"  >社群網站</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1059&amp;serno=371ba296-709b-49b5-ba14-21147e9f10ec" title="社群專區"  >社群專區</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/banner/list?module=smallBanner&amp;id=18285" title="相關網站連結"  >相關網站連結</a>
+                                                            </li>
+                                            </ul>
+                            </li>
+                        <li>
+                <a href="/ch/app/folder/613" title="溫馨關懷"   >
+                    溫馨關懷                </a>
+                                    <ul class="equal-height-thumbnail">
+                                                    <li><a href="/ch/app/folder/614" title="警察消防海巡移民空勤人員醫療照護實施方案專區"  >警察消防海巡移民空勤人員醫療照護實施方案專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1064&amp;serno=89ecebf1-a698-416a-85fa-c6f60d1a1782" title="實施方案"  >實施方案</a></li>
+                                                                                            <li><a href="/ch/app/folder/615" title="醫療院所分布圖"  >醫療院所分布圖</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg067&amp;id=2286" title="就醫流程圖"  >就醫流程圖</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg067&amp;id=2289" title="Q&A"  >Q&A</a></li>
+                                                                                            <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1070&amp;serno=64006637-ea4a-465c-a117-39be18e86623" title="意見反映區"  >意見反映區</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/18798" title="輪班輪休人員勤休專區"  >輪班輪休人員勤休專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/folder/2270" title="問題反映(連結署長信箱)"  >問題反映(連結署長信箱)</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg034&amp;id=18800" title="問題查詢(FAQ)"  >問題查詢(FAQ)</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg034&amp;id=18801" title="政令宣導"  >政令宣導</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/617" title="關老師愛心園地"  >關老師愛心園地</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1072&amp;serno=e9aa7822-7f02-4877-84d0-d2abef3cff27" title="業務簡介"  >業務簡介</a></li>
+                                                                                            <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1074&amp;serno=9d0cc12c-69b3-4d96-af13-3d8cbc3c8b9d" title="聽見心靈的聲音"  >聽見心靈的聲音</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg068&amp;id=2295" title="社會資源"  >社會資源</a></li>
+                                                                                            <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1075&amp;serno=5631b1ba-f5dc-4604-bf63-abba2e401c9c" title="關老師愛心服務專線及信箱"  >關老師愛心服務專線及信箱</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/618" title="警察優良事蹟及社團專區"  >警察優良事蹟及社團專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/warmPolice/list?module=warmPolice&amp;id=2279" title="警馨情"  >警馨情</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg070&amp;id=2280" title="全國模範警察甄選事蹟"  >全國模範警察甄選事蹟</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg070&amp;id=2282" title="本署社團"  >本署社團</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/619" title="防制酒駕專區"  >防制酒駕專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/data/list?module=wg073&amp;id=2283" title="新聞訊息"  >新聞訊息</a></li>
+                                                                                            <li><a href="https://ba.npa.gov.tw/" title="執法統計(連結警政署統計查詢網)(開啟新視窗)"  target=&#39;_blank&#39;  >執法統計(連結警政署統計查詢網)</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg073&amp;id=2300" title="交通宣導"  >交通宣導</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg073&amp;id=2301" title="法令規範"  >法令規範</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/620" title="交通事故專區"  >交通事故專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/data/list?module=wg074&amp;id=2285" title="重大交通事故公告"  >重大交通事故公告</a></li>
+                                                                                            <li><a href="https://data.gov.tw/datasets/search?p=1&amp;size=10&amp;rft=%E6%AD%B7%E5%8F%B2%E4%BA%A4%E9%80%9A" title="歷史交通事故資料(開啟新視窗)"  target=&#39;_blank&#39;  >歷史交通事故資料</a></li>
+                                                                                            <li><a href="https://data.gov.tw/datasets/search?p=1&amp;size=10&amp;rft=%E5%8D%B3%E6%99%82%E4%BA%A4%E9%80%9A" title="即時交通事故資料(開啟新視窗)"  target=&#39;_blank&#39;  >即時交通事故資料</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=4432&amp;serno=dfdca94a-8332-466c-b912-7ceef7ab30c0" title="各警察機關交通違規檢舉專區網頁"  >各警察機關交通違規檢舉專區網頁</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg075&amp;id=2278" title="交通安全宣導"  >交通安全宣導</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg036&amp;id=18883" title="防制人口販運專區"  >防制人口販運專區</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/18271" title="宣導專區"  >宣導專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/data/list?module=wg071&amp;id=18272" title="保護您小秘方"  >保護您小秘方</a></li>
+                                                                                            <li><a href="http://www.avs.org.tw" title="犯罪被害人保護(連結財團法人犯罪被害人保護協會)(開啟新視窗)"  target=&#39;_blank&#39;  >犯罪被害人保護(連結財團法人犯罪被害人保護協會)</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                                    <li><a href="/ch/app/video/list?module=video&amp;id=2275" title="影音專區"  >影音專區</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/19102" title="護生法集專區"  >護生法集專區</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/data/list?module=wg203&amp;id=19103" title="關懷青少年的警官"  >關懷青少年的警官</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg203&amp;id=19104" title="護生法集"  >護生法集</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg203&amp;id=19105" title="詩詞與勵志嘉言與文章"  >詩詞與勵志嘉言與文章</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg203&amp;id=19106" title="盬巴學報"  >盬巴學報</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                            </ul>
+                            </li>
+                        <li>
+                <a href="/ch/app/folder/621" title="婦幼專區"   >
+                    婦幼專區                </a>
+                                    <ul class="equal-height-thumbnail">
+                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1084&amp;serno=137de39c-6cd7-4008-bb67-066871ed221c" title="婦幼安全"  >婦幼安全</a>
+                                                            </li>
+                                                    <li><a href="https://data.gov.tw/dataset/6247" title="定期公布婦幼安全警示地點(開啟新視窗)"  target=&#39;_blank&#39;  >定期公布婦幼安全警示地點</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/folder/18494" title="防制跟蹤騷擾"  >防制跟蹤騷擾</a>
+                                                                    <ul>
+                                                                                    <li><a href="/ch/app/data/list?module=wg203&amp;id=18680" title="懶人包"  >懶人包</a></li>
+                                                                                            <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=18509&amp;serno=c0396feb-291a-4bd4-8b25-9ac5849eeae3" title="宣導簡報"  >宣導簡報</a></li>
+                                                                                            <li><a href="/ch/app/data/list?module=wg203&amp;id=18630" title="執行成果"  >執行成果</a></li>
+                                                                                        </ul>
+                                                            </li>
+                                            </ul>
+                            </li>
+                        <li>
+                <a href="/ch/app/folder/622" title="全國警察法規"   >
+                    全國警察法規                </a>
+                                    <ul class="equal-height-thumbnail">
+                                                    <li><a href="/ch/app/data/list?module=wg076&amp;id=2305" title="草案預告"  >草案預告</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg076&amp;id=2306" title="法規命令發布"  >法規命令發布</a>
+                                                            </li>
+                                                    <li><a href="https://ou3.npa.gov.tw/law" title="全國警察法規查詢(開啟新視窗)"  target=&#39;_blank&#39;  >全國警察法規查詢</a>
+                                                            </li>
+                                            </ul>
+                            </li>
+                        <li>
+                <a href="/ch/app/folder/19144" title="外僑專區"   >
+                    外僑專區                </a>
+                                    <ul class="equal-height-thumbnail">
+                                                    <li><a href="/ch/app/data/list?module=wg036&amp;id=19145" title="犯罪預防宣導"  >犯罪預防宣導</a>
+                                                            </li>
+                                                    <li><a href="/ch/app/data/list?module=wg036&amp;id=19146" title="外籍人士生活安全問答集"  >外籍人士生活安全問答集</a>
+                                                            </li>
+                                            </ul>
+                            </li>
+                    </ul>
+    </div>
+                <div class="light_pic modal fade plat" id="picModal" tabindex="-1" role="dialog" aria-labelledby="titie01" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img id="tmpPicSrc" src="/static/images/upload/card_Cpic02.jpg" alt="無預覽圖" />
+                        <p id="tmpPicDesc"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉視窗</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fs" class="container main font-medium">
+                    <a href="javascript:void(0);" accesskey="c" class="accesskey" id="accesskey_c" title="主要內容區">:::</a>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/ch/index" title="首頁"><i class="zi zi_home"></i>首頁</a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="/ch/app/folder/621" title="婦幼專區">婦幼專區</a></li><li class="breadcrumb-item"><a href="/ch/app/folder/18494" title="防制跟蹤騷擾">防制跟蹤騷擾</a></li><li class="breadcrumb-item active" aria-current="page">懶人包</li>                </ol>
+            </nav>
+            <div class="file_icon clearfix">
+                <ul>
+                    <li class="xml">
+                        <a href="/ch/app/openData/data/list?module=wg203&mserno=4f8abc63-8c90-40d4-a53e-839d8e1030b0&type=xml" target="_blank" title="開啟新視窗">
+                            <img src="/static/images/template/icon_xml.png" alt="xml"/>
+                        </a>
+                    </li>
+                    <li class="json">
+                        <a href="/ch/app/openData/data/list?module=wg203&mserno=4f8abc63-8c90-40d4-a53e-839d8e1030b0&type=json" target="_blank" title="開啟新視窗">
+                            <img src="/static/images/template/icon_json.png" alt="json"/>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+                <h2 class="p_title">
+            <p>懶人包</p>
+        </h2>
+        <form id="filterForm" action="/ch/app/data/query?module=wg203&id=18680" method="post">
+            <div class="ap">
+                                <div class="text-right">
+                    <a class="search_bt" data-toggle="collapse" href="#search_list" role="button" aria-expanded="false" aria-controls="search_list">
+                        條件搜尋                    </a>
+                </div>
+                <div class="search_group collapse" id="search_list">
+                    <div class="row">
+                                                <div class="form-flex col-lg-12 col-md-12">
+                                                    <div class="p-1 form_title">
+                                <label class="form-check-label" for="keyword">標題關鍵字</label>
+                            </div>
+                            <div class="p-1 w-100">
+                                <input type="text" id="keyword" name="keyword" class="form-control"
+                                       placeholder="請輸入標題關鍵字" value="">
+                            </div>
+                        </div>
+                                                                                                                                    <div class="form-flex w-100 col-lg-6 col-md-6 col-sm-12">
+                                <div class="p-1 form_title">
+                                    <label class="form-check-label" for="startUpDate">更新日期(起日)</label>
+                                </div>
+                                <div class="p-1 w-100">
+                                    <input id="startUpDate" type="text" name="startUpDate"
+                                           class="form-control" placeholder="開始日期(YYY-MM-DD)"
+                                           value="">
+                                </div>
+                                <div class="p-1 day form_title">
+                                    <a href="javascript:void(0);" class="toggleStartUpDate"><img src="/static/images/template/icon_calendar.png" alt="更新日期(起日)"/></a>~
+                                </div>
+                            </div>
+                            <div class="form-flex w-100 col-lg-6 col-md-6 col-sm-12">
+                                <div class="p-1 form_title">
+                                    <label class="form-check-label" for="endUpDate">更新日期(迄日)</label>
+                                </div>
+                                <div class="p-1 w-100">
+                                    <input id="endUpDate" name="endUpDate" type="text"
+                                           class="form-control" placeholder="結束日期(YYY-MM-DD)"
+                                           value="">
+                                </div>
+                                <div class="p-1 day form_title">
+                                    <a href="javascript:void(0);" class="toggleEndUpDate"><img src="/static/images/template/icon_calendar.png" alt="更新日期(迄日)"/></a>
+                                </div>
+                            </div>
+                                                                                                                                                            <div class="form-flex col-12 d-flex justify-content-center">
+                            <div class="d-flex justify-content-center">
+                                <button id="query" type="submit" class="btn">查詢</button>
+                                <button id="reset" type="reset" class="btn">重設</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                <div class="list_group">
+                    <div class="list_title">懶人包列表</div>
+                    <div class="list">
+                        <ul>
+                                                            <li>
+                                                                                    <a id="listImageNum0" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=69c5388a-577f-48e9-ae68-4faef7af9ee9" title="性影像犯罪防制-兒少誘騙篇"   class="addRead" data-serno="69c5388a-577f-48e9-ae68-4faef7af9ee9" >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-10-29</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">1.性影像犯罪防制-兒少誘騙篇</p>
+                                    </a>
+                                </li>
+                                                            <li>
+                                                                                    <a id="listImageNum1" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=aa563fe5-5d88-4568-a912-7a56af40e1d3" title="性影像犯罪防制-暴力威脅篇"   class="addRead" data-serno="aa563fe5-5d88-4568-a912-7a56af40e1d3" >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-10-29</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">2.性影像犯罪防制-暴力威脅篇</p>
+                                    </a>
+                                </li>
+                                                            <li>
+                                                                                    <a id="listImageNum2" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=c9167979-ffc5-47a5-9191-56a8a19f26bb" title="性影像犯罪防制-打工詐騙篇"   class="addRead" data-serno="c9167979-ffc5-47a5-9191-56a8a19f26bb" >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-10-29</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">3.性影像犯罪防制-打工詐騙篇</p>
+                                    </a>
+                                </li>
+                                                            <li>
+                                                                                    <a id="listImageNum3" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=beb9ed2b-a08e-4e0b-8a07-e08f7ce6427e" title="跟蹤騷擾防制法懶人包"   class="addRead" data-serno="beb9ed2b-a08e-4e0b-8a07-e08f7ce6427e" >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-09-19</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">4.跟蹤騷擾防制法懶人包</p>
+                                    </a>
+                                </li>
+                                                            <li>
+                                                                                    <a id="listImageNum4" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=532a466d-d186-4b9a-af61-3a8e010a7c0a" title="跟蹤騷擾防制法懶人包"  >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-05-01</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">5.跟蹤騷擾防制法懶人包</p>
+                                    </a>
+                                </li>
+                                                            <li>
+                                                                                    <a id="listImageNum5" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=99031623-612d-44a9-8810-16fe9d750e7b" title="認識搭訕騷擾懶人包"   class="addRead" data-serno="99031623-612d-44a9-8810-16fe9d750e7b" >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-04-22</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">6.認識搭訕騷擾懶人包</p>
+                                    </a>
+                                </li>
+                                                            <li>
+                                                                                    <a id="listImageNum6" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=d5adac42-a7d5-45a6-a749-1978b1e2385c" title="刑法妨害性隱私及不實性影像罪、兒童及少年性剝削防制條例(遭對方散布性影像篇)"   class="addRead" data-serno="d5adac42-a7d5-45a6-a749-1978b1e2385c" >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-04-22</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">7.刑法妨害性隱私及不實性影像罪、兒童及少年性剝削防制條例(遭對方散布性影像篇)</p>
+                                    </a>
+                                </li>
+                                                            <li>
+                                                                                    <a id="listImageNum7" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=67dacac6-d1c3-4ace-b1cf-f4b361ea14d0" title="認識數位網路/妨害秘密等新型態跟蹤騷擾犯罪"  >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-04-22</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">8.認識數位網路/妨害秘密等新型態跟蹤騷擾犯罪</p>
+                                    </a>
+                                </li>
+                                                            <li>
+                                                                                    <a id="listImageNum8" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=30898f19-ecca-4961-b7b0-30f8aec9085d" title="認識不受歡迎追求懶人包"  >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-04-22</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">9.認識不受歡迎追求懶人包</p>
+                                    </a>
+                                </li>
+                                                            <li>
+                                                                                    <a id="listImageNum9" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=42835702-3aa7-46dc-984d-488f0118c0a8" title="兒童及少年性剝削防制條例(保護性隱私權篇)"   class="addRead" data-serno="42835702-3aa7-46dc-984d-488f0118c0a8" >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-04-22</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">10.兒童及少年性剝削防制條例(保護性隱私權篇)</p>
+                                    </a>
+                                </li>
+                                                            <li>
+                                                                                    <a id="listImageNum10" href="/ch/app/data/view?module=wg203&amp;id=18680&amp;serno=9ea1c8ac-3e1f-41cf-b104-cd7d53077386" title="兒童及少年性剝削防制條例(認識條例篇)"   class="addRead" data-serno="9ea1c8ac-3e1f-41cf-b104-cd7d53077386" >
+                                                                                <div class="info">
+                                                                                                                                                                                                <p class="color02"><i class="zi zi_squareHandCorrect"></i> 更新日期：114-04-22</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p class="color01"><i class="zi zi_circleVatar"></i> 發布單位：警政署防治組</p>
+                                                                                                                                    </div>
+                                        <p class="subject">11.兒童及少年性剝削防制條例(認識條例篇)</p>
+                                    </a>
+                                </li>
+                                                    </ul>
+                    </div>
+                </div>
+                                <div class="page">
+                    <div class="button">
+                        <ul>
+                            <li class="first"><a id="firstPage" href="javascript:void(0);" title="第一頁"><i class="zi zi_doubleLeft"></i> 第一頁</a></li>
+                            <li class="pre"><a id="prevPage" href="javascript:void(0);" title="上一頁"><i class="zi zi_forLeft"></i> 上一頁</a></li>
+                            <li class="next"><a id="nextPage" href="javascript:void(0);" title="下一頁">下一頁 <i class="zi zi_forRight"></i></a></li>
+                            <li class="end"><a id="lastPage" href="javascript:void(0);" title="最後一頁">最末頁 <i class="zi zi_doubleRight"></i></a></li>
+                        </ul>
+                        <div class="fast_page">
+                            <span>
+                                <label for="page">目前位於 第</label>
+                                <select id="page" name="page" class="select">
+                                                                            <option value="0" selected="selected">1</option>
+                                                                    </select>頁                            </span>
+                            <span class="go"><a id="go" href="javascript:void(0);" title="前往">前往</a></span>
+                                                            <span>
+                                    <label for="pageSize">資料每次顯示</label>
+                                    <select id="pageSize" name="pageSize" class="select">
+                                        <option value="15" selected="selected">15</option>
+                                        <option value="25" >25</option>
+                                        <option value="50" >50</option>
+                                        <option value="100" >100</option>
+                                    </select>筆                                </span>
+                                <span class="go"><a id="pageSizeGo" href="javascript:void(0);" title="前往">前往</a></span>
+                                                        <span>頁數 1/1 共有<span class="text-danger">11</span>筆</span>
+                        </div>
+                        <ul>
+                            <li class="back">
+                                <a href="javascript:window.history.go(-1);" title="回上一頁"><i class="zi zi_replyall"></i> 回上一頁</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="_csrf" value="b082b29d-b4d9-46eb-a158-4e7977e9f147">
+        </form>
+        <div class="info Update">
+            <ul>
+                <li><i class="zi zi_eye"></i> 瀏覽人次：<span class="text-secondary">21770</span></li>
+            </ul>
+        </div>
+    </div>
+                <div class="fatfoot wow fadeInUp">
+        <a class="btn collapsed" data-toggle="collapse" href="#fatfoot" role="button" aria-expanded="true" aria-controls="fatfoot"><p>展開/收合</p></a>
+        <div class="container">
+            <div class="collapse " id="fatfoot">
+                <div class="card card-body">
+                    <div class="equal-height-thumbnail">
+                                                <ul>
+                            <li class="title"><a href="/ch/app/folder/533" title="機關簡介"   >機關簡介</a></li>
+                                                                        <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=691&amp;serno=a2b51476-1a3e-449f-874a-fe3298cb4444" title="沿革"   >沿革</a></li>
+                                                                    <li><a href="/ch/app/folder/534" title="首長介紹"   >首長介紹</a></li>
+                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=692&amp;serno=0b3d1e68-12d1-471f-9d93-7de18ba655c2" title="警察體系"   >警察體系</a></li>
+                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=693&amp;serno=97c5ec29-815c-46fb-bdba-fc430ede5b9f" title="組織架構"   >組織架構</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=policyfocus&amp;id=1819" title="施政重點"   >施政重點</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=liaison&amp;id=1820" title="警察機關地址電話一覽"   >警察機關地址電話一覽</a></li>
+                                                                    <li><a href="/ch/app/folder/535" title="警察大事記"   >警察大事記</a></li>
+                                                                    <li><a href="/ch/app/folder/572" title="主題網站"   >主題網站</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg032&amp;id=1822" title="委託研究計畫報告"   >委託研究計畫報告</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg031&amp;id=1821" title="警政工作年報"   >警政工作年報</a></li>
+                                                                    <li><a href="/ch/app/folder/536" title="本署各業務單位"   >本署各業務單位</a></li>
+                                                                    <li><a href="/ch/app/webLink/list?module=webLink&amp;id=1824" title="警政署相關單位"   >警政署相關單位</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg033&amp;id=1823" title="中華民國警察畫刊"   >中華民國警察畫刊</a></li>
+                                                            </ul>
+                                                <ul>
+                            <li class="title"><a href="/ch/app/folder/585" title="訊息公告"   >訊息公告</a></li>
+                                                                        <li><a href="/ch/app/news/list?module=headnews&amp;id=2136" title="最新消息"   >最新消息</a></li>
+                                                                    <li><a href="/ch/app/news/list?module=news&amp;id=2139" title="各警察機關新聞發布"   >各警察機關新聞發布</a></li>
+                                                                    <li><a href="/ch/app/news/list?module=clarification&amp;id=2141" title="警政爭議訊息澄清"   >警政爭議訊息澄清</a></li>
+                                                                    <li><a href="/ch/app/faq/list?module=faq&amp;id=2144" title="常見問答"   >常見問答</a></li>
+                                                                    <li><a href="/ch/app/folder/587" title="雙語詞彙"   >雙語詞彙</a></li>
+                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=895&amp;serno=1057af14-0d7d-464c-836a-0856d014cc9a" title="政府網站資料開放宣告"   >政府網站資料開放宣告</a></li>
+                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=897&amp;serno=a68eb266-592b-4a7b-ab4b-cd8543caa687" title="隱私權及網站安全政策"   >隱私權及網站安全政策</a></li>
+                                                                    <li><a href="/menuDoc/3120" title="下載(pdf)"   >保有及管理個人資料</a></li>
+                                                            </ul>
+                                                <ul>
+                            <li class="title"><a href="/ch/app/folder/589" title="資訊公開"   >資訊公開</a></li>
+                                                                        <li><a href="/ch/app/folder/19052" title="防空避難專區"   >防空避難專區</a></li>
+                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1301&amp;serno=2c255777-ad96-48c7-9760-3aa15102aa79" title="政府資訊公開"   >政府資訊公開</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg052&amp;id=2186" title="警察教育"   >警察教育</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg051&amp;id=2177" title="OPEN DATA"   >OPEN DATA</a></li>
+                                                                    <li><a href="/ch/app/folder/592" title="警政統計"   >警政統計</a></li>
+                                                                    <li><a href="/ch/app/folder/597" title="性別主流化專區"   >性別主流化專區</a></li>
+                                                                    <li><a href="/ch/app/folder/599" title="行政院治安會報專區"   >行政院治安會報專區</a></li>
+                                                                    <li><a href="/ch/app/folder/18921" title="保全業企業服務廉政平臺專區"   >保全業企業服務廉政平臺專區</a></li>
+                                                                    <li><a href="/menuDoc/18874" title="下載(pdf)"   >警察機關通譯聯絡窗口</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg062&amp;id=2198" title="出版品目錄"   >出版品目錄</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg203&amp;id=18845" title="警政署職場互助教保服務中心專區"   >警政署職場互助教保服務中心專區</a></li>
+                                                                    <li><a href="/ch/app/folder/18953" title="消費者保護專區"   >消費者保護專區</a></li>
+                                                            </ul>
+                                                <ul>
+                            <li class="title"><a href="/ch/app/folder/600" title="線上申辦"   >線上申辦</a></li>
+                                                                        <li><a href="/ch/app/folder/19032" title="警察刑事紀錄證明（俗稱良民證）"   >警察刑事紀錄證明（俗稱良民證）</a></li>
+                                                                    <li><a href="https://nv2.npa.gov.tw/NM107-604Client" title="入山案件申辦系統(開啟新視窗)"  target=&#39;_blank&#39;   >入山案件申辦系統</a></li>
+                                                                    <li><a href="https://tm2.npa.gov.tw/NM105-505ClientRWD2/TM01A01Q_01.jsp" title="道路交通事故資料申請系統(開啟新視窗)"  target=&#39;_blank&#39;   >道路交通事故資料申請系統</a></li>
+                                                                    <li><a href="https://gnaie.npa.gov.tw" title="槍砲彈藥簽審通關業務系統(開啟新視窗)"  target=&#39;_blank&#39;   >槍砲彈藥簽審通關業務系統</a></li>
+                                                            </ul>
+                                                <ul>
+                            <li class="title"><a href="/ch/app/folder/607" title="便民服務"   >便民服務</a></li>
+                                                                        <li><a href="/ch/app/eform/list?module=eform&amp;id=2248" title="申辦事項及電子表單"   >申辦事項及電子表單</a></li>
+                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1048&amp;serno=e3ad2889-4dee-41cf-aef8-9b9d26dc6950" title="110報案"   >110報案</a></li>
+                                                                    <li><a href="https://ps.npa.gov.tw/TrafficSearch/" title="測速執法點及違規拖吊查詢(開啟新視窗)"  target=&#39;_blank&#39;   >測速執法點及保管場查詢</a></li>
+                                                                    <li><a href="https://tm2.npa.gov.tw/NM105-505ClientRWD2/TM02B01Q_01.jsp" title="車損事故處理(開啟新視窗)"  target=&#39;_blank&#39;   >車損事故處理</a></li>
+                                                                    <li><a href="/ch/app/folder/608" title="協助維護治安查詢"   >協助維護治安查詢</a></li>
+                                                                    <li><a href="/ch/app/folder/609" title="e化服務查詢"   >e化服務查詢</a></li>
+                                                                    <li><a href="/ch/app/folder/611" title="署長專區"   >署長專區</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg203&amp;id=18549" title="開放文件格式(ODF)宣導專區"   >開放文件格式(ODF)宣導專區</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg203&amp;id=18151" title="權利告知書專區"   >權利告知書專區</a></li>
+                                                                    <li><a href="/ch/app/folder/612" title="社群網站"   >社群網站</a></li>
+                                                                    <li><a href="/ch/app/banner/list?module=smallBanner&amp;id=18285" title="相關網站連結"   >相關網站連結</a></li>
+                                                            </ul>
+                                                <ul>
+                            <li class="title"><a href="/ch/app/folder/613" title="溫馨關懷"   >溫馨關懷</a></li>
+                                                                        <li><a href="/ch/app/folder/614" title="警察消防海巡移民空勤人員醫療照護實施方案專區"   >警察消防海巡移民空勤人員醫療照護實施方案專區</a></li>
+                                                                    <li><a href="/ch/app/folder/18798" title="輪班輪休人員勤休專區"   >輪班輪休人員勤休專區</a></li>
+                                                                    <li><a href="/ch/app/folder/617" title="關老師愛心園地"   >關老師愛心園地</a></li>
+                                                                    <li><a href="/ch/app/folder/618" title="警察優良事蹟及社團專區"   >警察優良事蹟及社團專區</a></li>
+                                                                    <li><a href="/ch/app/folder/619" title="防制酒駕專區"   >防制酒駕專區</a></li>
+                                                                    <li><a href="/ch/app/folder/620" title="交通事故專區"   >交通事故專區</a></li>
+                                                                    <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=4432&amp;serno=dfdca94a-8332-466c-b912-7ceef7ab30c0" title="各警察機關交通違規檢舉專區網頁"   >各警察機關交通違規檢舉專區網頁</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg075&amp;id=2278" title="交通安全宣導"   >交通安全宣導</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg036&amp;id=18883" title="防制人口販運專區"   >防制人口販運專區</a></li>
+                                                                    <li><a href="/ch/app/folder/18271" title="宣導專區"   >宣導專區</a></li>
+                                                                    <li><a href="/ch/app/video/list?module=video&amp;id=2275" title="影音專區"   >影音專區</a></li>
+                                                                    <li><a href="/ch/app/folder/19102" title="護生法集專區"   >護生法集專區</a></li>
+                                                            </ul>
+                                                <ul>
+                            <li class="title"><a href="/ch/app/folder/621" title="婦幼專區"   >婦幼專區</a></li>
+                                                                        <li><a href="/ch/app/artwebsite/view?module=artwebsite&amp;id=1084&amp;serno=137de39c-6cd7-4008-bb67-066871ed221c" title="婦幼安全"   >婦幼安全</a></li>
+                                                                    <li><a href="https://data.gov.tw/dataset/6247" title="定期公布婦幼安全警示地點(開啟新視窗)"  target=&#39;_blank&#39;   >定期公布婦幼安全警示地點</a></li>
+                                                                    <li><a href="/ch/app/folder/18494" title="防制跟蹤騷擾"   >防制跟蹤騷擾</a></li>
+                                                            </ul>
+                                                <ul>
+                            <li class="title"><a href="/ch/app/folder/622" title="全國警察法規"   >全國警察法規</a></li>
+                                                                        <li><a href="/ch/app/data/list?module=wg076&amp;id=2305" title="草案預告"   >草案預告</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg076&amp;id=2306" title="法規命令發布"   >法規命令發布</a></li>
+                                                                    <li><a href="https://ou3.npa.gov.tw/law" title="全國警察法規查詢(開啟新視窗)"  target=&#39;_blank&#39;   >全國警察法規查詢</a></li>
+                                                            </ul>
+                                                <ul>
+                            <li class="title"><a href="/ch/app/folder/19144" title="外僑專區"   >外僑專區</a></li>
+                                                                        <li><a href="/ch/app/data/list?module=wg036&amp;id=19145" title="犯罪預防宣導"   >犯罪預防宣導</a></li>
+                                                                    <li><a href="/ch/app/data/list?module=wg036&amp;id=19146" title="外籍人士生活安全問答集"   >外籍人士生活安全問答集</a></li>
+                                                            </ul>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <footer class="wow fadeInUp">
+        <div class="container">
+            <div class="logo"><a href="/ch/index"><img width="381" height="84" src="/ch/index/viewBottomimage?module=websiteBottom" alt="內政部警政署"/></a></div>
+            <div class="editor"><div class="info">
+<div class="left">
+<div class="right">
+<ul>
+	<li><img alt="警政署QR Code" height="68" src="/userfiles/chnpa/images/qrcodenpa.png" width="68" />
+	<p><strong>警政署</strong></p>
+	</li>
+	<li><img alt="警政服務APP(iOS QR Code)" height="68" src="/userfiles/chnpa/images/qrcodeios.png" width="68" />
+	<p><strong>ios版本</strong></p>
+	</li>
+	<li><img alt="警政服務APP(Android QR Code)" height="68" src="/userfiles/chnpa/images/qrcodeandroid.png" width="68" />
+	<p><strong>Android版本</strong></p>
+	</li>
+	<li><img alt="防空避難專區QR Code" height="68" src="/userfiles/chnpa/images/20230607094927625.jpg" width="68" />
+	<p><strong>防空避難專區</strong></p>
+	</li>
+</ul>
+</div>
+
+<p>內政部警政署版權所有</p>
+
+<p>總機：<a href="tel:0223219011">02-2321-9011</a> [本電話僅具受話功能，無法顯示來電號碼，請勿受騙]</p>
+
+<p>地址：100009 臺北市中正區忠孝東路1段7號 <a href="https://goo.gl/maps/We1kECFHZr9U4Pxj6" target="_blank" title="Google Map(另開新視窗)">【地圖(Map)】</a></p>
+
+<p>本署各單位服務時間：08:30-17:30</p>
+
+<p>本網站建議使用Google Chrome瀏覽器，最佳瀏覽解析度：1024x768</p>
+</div>
+
+<div class="right">
+<ul>
+	<li><a href="https://www.gov.tw/" target="_blank" title="我的E政府(另開新視窗)"><img alt="我的E政府(另開新視窗)" height="45" src="/userfiles/images/at01-min.png" width="43" /></a></li>
+	<li><a href="https://accessibility.moda.gov.tw/Applications/Detail?category=20240419131704" target="_blank" title="無障礙網站(另開新視窗)"><img alt="通過AA檢測等級無障礙網頁檢測(另開新視窗)" height="45" src="/userfiles/images/at02_1-min.png" width="128" /></a></li>
+</ul>
+</div>
+</div></div>
+        </div>
+        <div class="linkbar">
+            <div class="container">
+                <div class="link">
+                    <a href="https://www.npa.gov.tw/ch/app/artwebsite/view?module=artwebsite&amp;id=895&amp;serno=1057af14-0d7d-464c-836a-0856d014cc9a">政府網站資料開放宣告</a> ｜
+                    <a href="https://www.npa.gov.tw/ch/app/artwebsite/view?module=artwebsite&amp;id=897&amp;serno=a68eb266-592b-4a7b-ab4b-cd8543caa687">隱私權及網站安全政策</a>
+                     ｜<a href="https://www.npa.gov.tw/menuDoc/3120"> 保有及管理個人資料</a>                    <span style="color: transparent;"></span>
+                </div>
+            <div>
+                        <p>
+                <i class="zi zi_history"></i> 更新日期：115年05月20日        <i class="zi zi_eye"></i> 瀏覽人次：59462125            </p>
+                    </div>
+    </footer>
+                <div class="fold">
+
+        <a class="btn" data-toggle="collapse" href="#topleft" role="button" aria-expanded="true" aria-controls="topleft">展開/收合</a>
+        <div class="collapse show" id="topleft" style="">
+        <div class="">
+        <div class="fast left">
+        <ul>
+
+        <li class="fb"><a href="https://www.facebook.com/NPA4U/" "title="NPA署長室FB(開啟新視窗)" target="_blank"><img width="10" height="20" src="/static/images/fb.svg" alt="facebook"><p>NPA<br>署長室</p></a></li>
+        <li class="fb"><a href="https://www.facebook.com/165bear/" "title="165全民防騙FB(開啟新視窗)" target="_blank"><img width="10" height="20" src="/static/images/fb.svg" alt="facebook"><p>165<br>全民防騙</p></a></li>
+        <li class="line"><a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=fpk0216m" "title="警光新聞雲LINE(開啟新視窗)" target="_blank"><img width="21" height="20" src="/static/images/line.svg" alt="line"><p>警光<br>新聞雲</p></a></li>
+        <li class="line"><a href="https://liff.line.me/1645278921-kWRPP32q/?accountId=tw165" "title="165防騙宣導LINE(開啟新視窗)" target="_blank"><img width="21" height="20" src="/static/images/line.svg" alt="line"><p>165<br>防騙宣導</p></a></li>
+        <li class="yt"><a href="https://www.youtube.com/@cib2128" "title="CIB刑事警察局youtube(開啟新視窗)" target="_blank"><img width="25" height="18" src="/static/images/yt.svg" alt="youtube"><p>CIB<br>刑事警察局</p></a></li>
+        </ul>
+        </div>
+        </div>
+        </div>
+	</div>
+    
+                <div class="fast right">
+        <ul>
+            <li><a href="#top" class="backtop">
+                <svg id="TOP_1" data-name="TOP 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88.11 35.5"><title>TOP</title><polygon points="25.03 1.66 0 1.66 0 9.83 7.92 9.83 7.92 35.37 16.34 35.37 16.34 9.83 25.03 9.83 25.03 1.66"/><path d="M960.14,522.24a17.5,17.5,0,1,0,17.49,17.49A17.49,17.49,0,0,0,960.14,522.24Zm0,25.28a7.79,7.79,0,1,1,7.79-7.79A7.79,7.79,0,0,1,960.14,547.52Z" transform="translate(-915.7 -522.24)"/><path d="M992.25,522.36a11.56,11.56,0,0,0-11.53,10.86h0v24.52h7.91V544.89a11.56,11.56,0,1,0,3.64-22.53Zm0,14.94a3.38,3.38,0,1,1,3.39-3.38A3.38,3.38,0,0,1,992.25,537.3Z" transform="translate(-915.7 -522.24)"/></svg>
+                <p class="backtop_golden">回上方</p>
+            </a></li>
+        </ul>
+    </div>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EKWS249WL3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EKWS249WL3');
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            localStorage.removeItem('mykey');
+
+            console.log("gsc-i-id1="+document.getElementById("gsc-i-id1"));
+
+			$("body").on('click','.gsc-search-button',function(e) {
+                e.stopPropagation();
+                e.preventDefault;
+                $.ajax({
+                    url: "/ch/search/add?word="+document.getElementById("gsc-i-id1").value,
+                    type: "POST",
+                });
+			});
+
+			$("body").on('keyup','#gsc-i-id1',function(e) {
+                var word=$('#gsc-i-id1').val();
+			    var word_save=localStorage.getItem('mykey');
+			    if(word_save!='undefined'){
+			        var keys=word_save+word;
+			        localStorage.setItem('mykey', keys)
+			    }else{
+			        localStorage.setItem('mykey', word )
+			    }
+			});
+
+			$("#gsc-i-id1").keydown(function(e) {
+			    var word_save=localStorage.getItem('mykey');
+			    localStorage.removeItem('mykey');
+                e.stopPropagation();
+                e.preventDefault;
+                console.log('e.which='+e.which);
+				if(e.which == 13) {
+                    $.ajax({
+                        url: "/ch/search/add?word="+word_save,
+                        type: "POST",
+                    });
+                }
+			});
+
+			skrollr.init({
+				forceHeight: false,
+				smoothScrolling: true
+			});
+
+			function allowFormsInIscroll(){
+				[].slice.call(document.querySelectorAll('input, select, textarea')).forEach(function(el){
+    　　		el.addEventListener(('ontouchstart' in window)?'touchstart':'mousedown', function(e){
+       　		　 e.stopPropagation();
+					})
+				})
+			}
+			document.addEventListener('DOMContentLoaded', allowFormsInIscroll, false);
+
+            if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+                new WOW().init();
+            };
+
+                        window.addEventListener("scroll", function(e) {
+                var elements  = [".menu"];
+                var distanceY = window.pageYOffset || document.documentElement.scrollTop, shrinkOn = 0;
+                if (distanceY > shrinkOn){
+                    for (k in elements) {
+                        $(elements[k]).addClass("smaller");
+                    }
+                } else {
+                    for (k in elements) {
+                        if ($(elements[k]).hasClass("smaller")) {
+                            $(elements[k]).removeClass("smaller");
+                        }
+                    }
+                }
+            });
+
+            $("body").scrollspy({target: ".menu", offset:0});
+
+            /*
+            $(".fast.right a").on("click", function(event) {
+                if (this.hash !== "") {
+                  event.preventDefault();
+                  var hash = this.hash;
+                  $("html, body").animate({
+                      scrollTop: $(hash).offset().top
+                  }, 800, function() {
+                    window.location.hash = hash;
+                  });
+                }
+            });
+            */
+            $(".sbanner").slick({
+                dots: false,
+                arrows: true,
+                infinite: true,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                autoplay: true,
+                responsive: [
+                    {breakpoint:1100,settings: {slidesToShow:3,}},
+                    {breakpoint: 860,settings: {slidesToShow:2,}},
+                    {breakpoint: 600,settings: {slidesToShow:1,}}
+                ]
+            });
+
+                            $('#fatfoot').collapse();
+            $('#topleft').collapse('show');
+            $('#search_list').collapse({toggle: false});
+
+            
+                
+            setTimeout(function() {
+                $("#gsc-i-id1").attr({
+                    size: "100%"
+                });
+            }, 1000);
+
+        });
+    </script>
+    <script>LoadFont();</script>
+        <script src="/static/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="/static/js/bootstrap-datepicker/locales/bootstrap-datepicker.zh-TW.min.js"></script>
+    <script src="/static/js/clickToggle.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#query").on("click", function () {
+                if ($("input[id='startDate']").val() != '' && $("input[id='endDate']").val() != '') {
+                    var posterTime = $("input[id='startDate']").val();
+                    var closeTime = $("input[id='endDate']").val();
+                    if (posterTime > closeTime) {
+                        alert('發布日期(迄日)必須大於發布日期(起日)。');
+                        return false;
+                    }
+                }
+                if ($("input[id='startUpDate']").val() != '' && $("input[id='endUpDate']").val() != '') {
+                    var posterTime = $("input[id='startUpDate']").val();
+                    var closeTime = $("input[id='endUpDate']").val();
+                    if (posterTime > closeTime) {
+                        alert('更新日期(迄日)必須大於更新日期(起日)。');
+                        return false;
+                    }
+                }
+                var form = $("#filterForm");
+                $("select[name='page']", form).val("0");
+                                $("select[name='pageSize']", form).val("15");
+                                form.submit();
+                return false;
+            });
+
+            $("#reset").on("click", function () {
+                var form = $("#filterForm");
+                $("select[name='dataClass']", form).val("");
+                $("input[name='keyword']", form).val("");
+                $("input[name='startDate']", form).val("");
+                $("input[name='endDate']", form).val("");
+                $("input[name='startUpDate']", form).val("");
+                $("input[name='endUpDate']", form).val("");
+                $("select[name='page']", form).val("0");
+                                $("select[name='pageSize']", form).val("15");
+                                return false;
+            });
+
+            $("#firstPage").on("click", function () {
+                var form = $("#filterForm");
+                $("select[name='page']", form).val("0");
+                form.submit();
+                return false;
+            });
+
+            $("#prevPage").on("click", function () {
+                                return false;
+            });
+
+            $("#nextPage").on("click", function () {
+                                return false;
+            });
+
+            $("#lastPage").on("click", function () {
+                var form = $("#filterForm");
+                $("select[name='page']", form).val("0");
+                form.submit();
+                return false;
+            });
+
+            $("#go").on("click", function () {
+                var form = $("#filterForm");
+                form.submit();
+                return false;
+            });
+
+                            $("#pageSizeGo").on("click", function () {
+                    var form = $("#filterForm");
+                    $("select[name='page']", form).val("0");
+                    form.submit();
+                    return false;
+                });
+            
+            var startDatePicker = $("#startDate").datepicker({
+                format: "twy-mm-dd",
+                language: "zh-TW",
+                showOnFocus: false,
+                todayHighlight: true
+            }).on("show", function (e) {
+                $("div.box").css({minHeight: "480px"});
+            }).on("hide", function (e) {
+                $("div.box").css({minHeight: "auto"});
+            });
+
+            $("a.toggleStartDate").on("click", function () {
+                startDatePicker.datepicker( "customizeEvent" );
+            });
+
+            var endDatePicker = $("#endDate").datepicker({
+                format: "twy-mm-dd",
+                language: "zh-TW",
+                showOnFocus: false,
+                todayHighlight: true
+            }).on("show", function (e) {
+                $("div.box").css({minHeight: "480px"});
+            }).on("hide", function (e) {
+                $("div.box").css({minHeight: "auto"});
+            });
+
+            $("a.toggleEndDate").on("click", function () {
+                endDatePicker.datepicker( "customizeEvent" );
+            });
+
+            var startUpDatePicker = $("#startUpDate").datepicker({
+                format: "twy-mm-dd",
+                language: "zh-TW",
+                showOnFocus: false,
+                todayHighlight: true
+            }).on("show", function (e) {
+                $("div.box").css({minHeight: "480px"});
+            }).on("hide", function (e) {
+                $("div.box").css({minHeight: "auto"});
+            });
+
+            $("a.toggleStartUpDate").on("click", function () {
+                startUpDatePicker.datepicker( "customizeEvent" );
+            });
+
+            var endUpDatePicker = $("#endUpDate").datepicker({
+                format: "twy-mm-dd",
+                language: "zh-TW",
+                showOnFocus: false,
+                todayHighlight: true
+            }).on("show", function (e) {
+                $("div.box").css({minHeight: "480px"});
+            }).on("hide", function (e) {
+                $("div.box").css({minHeight: "auto"});
+            });
+
+            $("a.toggleEndUpDate").on("click", function () {
+                endUpDatePicker.datepicker( "customizeEvent" );
+            });
+
+            $(document).on("click", "a.showPic", function() {
+                var itemIdx = $(this).data("index");
+                var serno = $(this).data("serno");
+
+                var tmpImgSrc = $("img[name='pics[" + itemIdx + "]']").attr("src").replace("&init=N","&init=Y");
+                var tmpImgAlt = $("img[name='pics[" + itemIdx + "]']").attr("alt");
+
+                $("#tmpPicSrc").attr("src", tmpImgSrc);
+                $("#tmpPicSrc").attr("alt", tmpImgAlt);
+                $("#tmpPicDesc").text(tmpImgAlt);
+                $("#picModal").modal('show');
+
+                var index = $( ".list_pic ul li a" ).index( this );
+                $('#picModal').on('hide.bs.modal', function () {
+                    setTimeout(function() {
+                        $('#listImageNum'+index).trigger('focus');
+                    }, 0);
+                });
+
+                var index1 = $( ".list ul li a" ).index( this );
+                $('#picModal').on('hide.bs.modal', function () {
+                    setTimeout(function() {
+                        $('#listImageNum'+index1).trigger('focus');
+                    }, 0);
+                });
+
+                $.ajax({
+                  type: 'POST',
+                  url: "/addOneDataFileReadNumber",
+                  data: { _csrf:"b082b29d-b4d9-46eb-a158-4e7977e9f147",module:"wg203",serno:serno },
+                  dataType: "json",
+                  success: function(msg) {}
+                });
+
+            });
+
+            $(document).on("click", "a.addRead", function() {
+                var serno = $(this).data("serno");
+
+                $.ajax({
+                  type: 'POST',
+                  url: "/addOneDataFileReadNumber",
+                  data: { _csrf:"b082b29d-b4d9-46eb-a158-4e7977e9f147",module:"wg203",serno:serno },
+                  dataType: "json",
+                  success: function(msg) {}
+                });
+
+            });
+
+        });
+
+        window.addEventListener('pageshow', () => {
+          if (event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+            location.reload()
+          }
+        }, false)
+    </script>
+</body>
+</html>

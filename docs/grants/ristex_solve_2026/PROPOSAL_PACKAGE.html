@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RISTEX SOLVE 2026 提案パッケージ — LegalShield / FEWN</title>
+<style>
+:root{--bg:#fafaf8;--fg:#1a1a1a;--muted:#666;--accent:#b8002b;--accent2:#0a4d6f;
+--warn:#c46500;--ok:#1a7a3a;--line:#e3e0db;--code:#f4f0ea;--sw:280px;}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);
+ font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo","Noto Sans CJK JP",sans-serif;
+ line-height:1.75;font-size:15px;}
+a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}
+code{background:var(--code);padding:1px 5px;border-radius:3px;font-size:0.9em;
+ font-family:"Consolas","Menlo",monospace}
+pre{background:var(--code);padding:14px;border-radius:6px;overflow-x:auto;font-size:0.82em;
+ line-height:1.5;border-left:3px solid var(--accent2);
+ font-family:"Consolas","Menlo",monospace;white-space:pre}
+#sidebar{position:fixed;top:0;left:0;width:var(--sw);height:100vh;overflow-y:auto;
+ background:#fff;border-right:1px solid var(--line);padding:24px 18px;font-size:13px}
+#sidebar h2{font-size:14px;margin:0 0 12px;color:var(--accent);letter-spacing:0.05em}
+#sidebar ol{list-style:none;padding:0;margin:0}
+#sidebar li{margin:4px 0;line-height:1.45}
+#sidebar a{display:block;padding:3px 6px;border-radius:3px;color:var(--fg)}
+#sidebar a:hover{background:#f0ebe3;text-decoration:none}
+#sidebar .ttl{font-weight:700;font-size:15px;color:var(--accent);display:block;
+ margin-bottom:6px;line-height:1.3}
+#sidebar .sub{font-size:11px;color:var(--muted);margin-bottom:18px}
+main{margin-left:var(--sw);padding:40px 50px;max-width:980px}
+h1{font-size:30px;line-height:1.3;margin:0 0 8px;color:var(--accent);
+ border-bottom:3px solid var(--accent);padding-bottom:12px}
+h1 .sub{display:block;font-size:17px;color:var(--muted);font-weight:400;margin-top:6px}
+h2{font-size:23px;margin:44px 0 14px;color:var(--accent2);
+ border-left:5px solid var(--accent2);padding-left:14px}
+h3{font-size:18px;margin:24px 0 10px;color:var(--accent)}
+h4{font-size:15.5px;margin:18px 0 8px;color:var(--accent2)}
+h5{font-size:14px;margin:14px 0 6px;color:#333;font-weight:600}
+p{margin:6px 0 12px}
+blockquote{border-left:4px solid var(--accent);background:#fff5f0;margin:12px 0;
+ padding:10px 16px;color:#333;border-radius:0 4px 4px 0}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:0.92em;background:#fff;
+ border-radius:4px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04)}
+th{background:var(--accent2);color:#fff;padding:7px 9px;text-align:left;font-weight:600}
+td{padding:6px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:#faf8f4}
+.hero{background:linear-gradient(135deg,#fff,#fff5f0);padding:28px;border-radius:8px;
+ margin:24px 0;border:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.three-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.three-facts .f{background:#fff;padding:18px;border-radius:6px;border-top:4px solid var(--accent);
+ box-shadow:0 1px 3px rgba(0,0,0,0.06)}
+.three-facts .f .big{font-size:30px;font-weight:700;color:var(--accent);line-height:1.1;margin:6px 0}
+.three-facts .f .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em}
+.three-facts .f .desc{font-size:12.5px;color:#333;margin-top:6px}
+.callout{padding:12px 16px;border-radius:6px;margin:14px 0}
+.c-warn{background:#fff5e6;border-left:4px solid var(--warn)}
+.c-ok{background:#ebf7ef;border-left:4px solid var(--ok)}
+.c-red{background:#fde9ec;border-left:4px solid var(--accent)}
+.c-blue{background:#e9f3f8;border-left:4px solid var(--accent2)}
+.badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;
+ font-weight:600;margin:0 3px 3px 0}
+.b-red{background:#fde2e2;color:var(--accent)}
+.b-blue{background:#dceaf0;color:var(--accent2)}
+.b-green{background:#dceadc;color:var(--ok)}
+.b-orange{background:#fbe6cd;color:var(--warn)}
+details{margin:14px 0;background:#fff;border:1px solid var(--line);border-radius:5px;padding:14px 18px}
+details[open]{box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+summary{cursor:pointer;font-weight:700;color:var(--accent2);outline:none;user-select:none;font-size:15px}
+summary:hover{color:var(--accent)}
+.print-btn{position:fixed;top:14px;right:20px;background:var(--accent);color:#fff;
+ padding:9px 16px;border-radius:99px;border:none;cursor:pointer;font-size:12.5px;
+ font-weight:600;box-shadow:0 4px 12px rgba(184,0,43,0.3);z-index:100}
+.print-btn:hover{background:#8e0021}
+ul,ol{padding-left:24px;margin:6px 0}ul li,ol li{margin:3px 0}
+footer{margin-top:60px;padding:20px 0;border-top:1px solid var(--line);
+ color:var(--muted);font-size:13px;text-align:center}
+@media print{
+ #sidebar,.print-btn{display:none}main{margin-left:0;padding:20px;max-width:none}
+ body{font-size:10.5pt}h1,h2,h3{page-break-after:avoid}
+ table,blockquote,.callout{page-break-inside:avoid}
+ details{page-break-inside:avoid}details summary~*{display:block !important}
+ details:not([open])>summary~*{display:block !important}
+}
+@media (max-width:900px){:root{--sw:0}#sidebar{display:none}
+ main{margin-left:0;padding:20px 16px}.three-facts{grid-template-columns:1fr}}
+</style></head><body>
+<button class="print-btn" onclick="window.print()">印刷 / PDF 保存</button>
+<nav id="sidebar">
+<span class="ttl">RISTEX SOLVE 2026<br>提案パッケージ</span>
+<span class="sub">LegalShield / FEWN<br>2026.5.21 / 締切まで 13 日</span>
+<h2>目次</h2><ol>
+<li><a href="#summary"><strong>エグゼクティブサマリー</strong></a></li>
+<li style="margin-top:12px;color:var(--muted);font-size:11px">━━ 提案書本文 ━━</li>
+<li><a href="#draft_00">全体ガイド</a></li>
+<li><a href="#draft_01">様式 1 基本事項</a></li>
+<li><a href="#draft_02">様式 2 構想</a></li>
+<li><a href="#draft_03">様式 3 独創性・優位性</a></li>
+<li><a href="#draft_04">様式 4 目標・実施計画</a></li>
+<li><a href="#draft_05">様式 4-2 予算計画</a></li>
+<li><a href="#draft_06">様式 5 実施体制</a></li>
+<li><a href="#draft_07">様式 6 実績</a></li>
+<li><a href="#draft_08">様式 7-8 その他</a></li>
+<li><a href="#draft_09">16 評価視点セルフチェック</a></li>
+<li style="margin-top:12px;color:var(--muted);font-size:11px">━━ 外聯・実行 ━━</li>
+<li><a href="#out_00">外聯戦略</a></li>
+<li><a href="#out_01">汎用紹介書（PDF 化用）</a></li>
+<li><a href="#out_02">Cover ① 鈴木先生</a></li>
+<li><a href="#out_03">Cover ② 高知ローカル</a></li>
+<li><a href="#out_04">Cover ③ 東京 NPO・弁連</a></li>
+<li><a href="#out_05">Cover ④⑤ POSSE / Civic Tech</a></li>
+<li><a href="#out_06">13 日スプリント計画</a></li>
+<li><a href="#grant_landscape">助成金カレンダー（並行応募戦略）</a></li>
+</ol></nav>
+<main>
+
+<section id="summary">
+<h1>JST RISTEX SOLVE for SDGs 2026
+<span class="sub">暗数の彼方の被害者をつなぐ — 連続加害者の暗号学的検知ネットワーク（FEWN）による「誰一人置き去りにしない」安全社会の共創</span>
+</h1>
+<div class="hero">
+<p style="font-size:15.5px;margin:0">
+<strong>キーアイデア</strong>：被害者が顔写真や位置情報を一切サーバに送らずに「同じ加害者を記録した別の被害者」を <em>暗号学的にのみ</em> 検知する分散ネットワーク。米国 Callisto（10 年実証）に <strong>顔エンベディング LSH を加えて改名による逃亡を貫通</strong>する世界初の社会実装。
+</p>
+</div>
+<h2>採択評価サマリー</h2>
+<table>
+<tr><th>項目</th><th>値</th></tr>
+<tr><td>公募</td><td>JST RISTEX SDGs ソリューション創出フェーズ（2026 年度）</td></tr>
+<tr><td>締切</td><td><strong>2026 年 6 月 3 日（水）正午</strong> e-Rad</td></tr>
+<tr><td>期間</td><td>2026.10 〜 2030.3（3 年 6 ヶ月）</td></tr>
+<tr><td>予算</td><td>直接経費 約 5,450 万円（上限 1,900 万円/年）</td></tr>
+<tr><td>採択枠</td><td>2 件程度（採択率 <strong>5-10%</strong>）</td></tr>
+<tr><td>対象 SDGs</td><td><span class="badge b-red">Goal 5</span> <span class="badge b-blue">Goal 16</span> <span class="badge b-green">Goal 10</span></td></tr>
+<tr><td>実施地域</td><td>東京・大阪・<strong>高知</strong>＋台湾連携（加点）</td></tr>
+<tr><td>研究代表者</td><td>確定待ち（鈴木保志教授 等大学側パートナー）</td></tr>
+<tr><td>協働実施者</td><td>あなた（光伊Forest 等法人代表）</td></tr>
+</table>
+
+<div class="callout c-warn">
+<strong>採択確率について</strong>：本年度は 5-10%。それでも応募する価値は十分。<strong>応募準備プロセス自体がステークホルダー対話・現場知蓄積・連携体制構築になる</strong>ため、不採択でも来年度応募の地盤として有効。
+</div>
+
+<h2>直視すべき三つの定量的事実</h2>
+<p>本提案の出発点。これを掛け合わせると、日本社会の制度設計上の真空地帯が浮かび上がる。</p>
+<div class="three-facts">
+<div class="f"><div class="lbl">沈黙率</div><div class="big">60-70%</div>
+<div class="desc">性暴力被害者の女性 6 割・男性 7 割が <strong>誰にも相談しない</strong>。<br><span style="color:var(--muted);font-size:11px">内閣府 男女間における暴力に関する調査 R5</span></div></div>
+<div class="f"><div class="lbl">ギャップ係数</div><div class="big">18.36×</div>
+<div class="desc">ストーカー相談 19,843 件に対し検挙 1,081 件。<br><span style="color:var(--muted);font-size:11px">警察庁 令和 5 年版</span></div></div>
+<div class="f"><div class="lbl">連続加害集中</div><div class="big">4% / 5.8件</div>
+<div class="desc">男性人口の 4% の連続加害者が <strong>平均 5.8 件の被害</strong>を生む。<br><span style="color:var(--muted);font-size:11px">Lisak &amp; Miller 2002</span></div></div>
+</div>
+<div class="callout c-red">
+<strong>制度設計上の真空地帯</strong>：日本社会には「同じ加害者の別の被害者と出会う仕組み」がどこにも存在しない。被害者は単独で警察を訪れて「証拠不十分」として帰され、4% の連続加害者は事実上の野放しになる。<strong>本プロジェクトはこの真空を、暗号学的に塞ぐ。</strong>
+</div>
+
+<h2>応募資格の現実 — あなたは資格充分</h2>
+<div class="callout c-ok">
+<strong>教授必須ではありません。</strong> 公募要領が要求するのは <strong>「研究代表者 OR 協働実施者の片方が大学等所属」</strong> のみ。あなた自身は <strong>協働実施者</strong>（光伊Forest 代表）として応募可能。鈴木先生に研究代表者をお願いする形が最も自然。
+</div>
+
+<h2>5 つの強み（採択ポイント）</h2>
+<table>
+<tr><th>強み</th><th>RISTEX 公募要領との整合</th></tr>
+<tr><td><strong>① SDGs Goal 5 主軸</strong></td><td>2025 SDR で日本のジェンダー平等達成度が最低水準。プログラム総括が「特に積極的な提案を期待」と明示（p.10）</td></tr>
+<tr><td><strong>② 技術シーズ既存</strong></td><td>FaceNet・LSH・PSI・Threshold Crypto・Callisto は全て査読論文＋商用実装あり。「研究室レベル可能性試験は終了」要件を厳密充足</td></tr>
+<tr><td><strong>③ 「誰一人置き去りにしない」直撃</strong></td><td>沈黙率 60% という「置き去り」の数字を中核に据える</td></tr>
+<tr><td><strong>④ 複数地域＋海外連携</strong></td><td>東京・大阪・高知の 3 地域＋台湾国際連携で加点</td></tr>
+<tr><td><strong>⑤ 既に構築済みの基盤</strong></td><td>JUDB／EVIDENCE_BASE／FEWN 設計書／35 件文献／クローラ群が完成</td></tr>
+</table>
+
+<h2>4 つのリスクと対応</h2>
+<table>
+<tr><th>リスク</th><th>対応</th></tr>
+<tr><td>研究代表者の専門性（森林工学）</td><td>主たる実施者に情報法／犯罪学研究者を配置、外部倫理委員 3 名で補強</td></tr>
+<tr><td>13 日間の準備期間</td><td>IRB・警察協定は「採択後の確実な締結見込み」として記述</td></tr>
+<tr><td>修士＋独立開発者</td><td>協働実施者として位置付け、マネジメント経験ある研究代表者を配置</td></tr>
+<tr><td>倫理的機微性</td><td>外部倫理委員 + 弁連監査 + 大学 IRB の三重保護</td></tr>
+</table>
+</section>
+
+<section id="draft_00"><details><summary>📋 全体ガイド</summary><h2>RISTEX SOLVE 2026 提案書ドラフト（v1）</h2>
+
+<p><strong>締切</strong>: 2026 年 6 月 3 日（水）正午（e-Rad 受付期限）</p>
+
+<h3>ファイル構成</h3>
+
+<table>
+<tr><th>ファイル</th><th>様式</th><th>字数目安</th><th>Word 制約</th></tr>
+<tr><td><code>01_basic.md</code></td><td>様式1 基本事項</td><td>表＋概要300字</td><td>A4 2P 厳守</td></tr>
+<tr><td><code>02_concept.md</code></td><td>様式2 構想</td><td>6,000-8,000字</td><td>A4 4P 厳守</td></tr>
+<tr><td><code>03_originality.md</code></td><td>様式3 独創性・優位性</td><td>3,000-4,000字</td><td>A4 2P 厳守</td></tr>
+<tr><td><code>04_plan.md</code></td><td>様式4-1 目標・実施計画</td><td>4,500-6,000字</td><td>A4 3P＋計画表 1P</td></tr>
+<tr><td><code>05_budget.md</code></td><td>様式4-2 予算計画</td><td>表中心</td><td>制限なし</td></tr>
+<tr><td><code>06_team.md</code></td><td>様式5-1/5-2/5-3 実施体制</td><td>テンプレ</td><td>5-2: 2P / 5-3: 各 2P</td></tr>
+<tr><td><code>07_achievements.md</code></td><td>様式6-1/6-2 実績</td><td>テンプレ</td><td>各 3P</td></tr>
+<tr><td><code>08_others.md</code></td><td>様式7 他制度／様式8 利益相反</td><td>テンプレ</td><td>様式8: 2P</td></tr>
+</table>
+
+<h3>提案概要</h3>
+
+<p><strong>研究課題名</strong>: 暗数の彼方の被害者をつなぐ — 連続加害者の暗号学的検知ネットワーク（FEWN）による「誰一人置き去りにしない」安全社会の共創</p>
+
+<p><strong>短縮</strong>: 被害者協調ネット FEWN</p>
+
+<p><strong>期間</strong>: 2026.10 〜 2030.3（3 年 6 ヶ月）</p>
+
+<p><strong>予算</strong>: 直接経費 約 5,550 万円</p>
+
+<p><strong>SDGs</strong>: Goal 5 / Goal 16 / Goal 10</p>
+
+<p><strong>主要技術シーズ</strong>（全て既存）:</p>
+<ol>
+<li>FaceNet/ArcFace 顔エンベディング（CVPR 2015/2019）</li>
+<li>Locality-Sensitive Hashing（Datar et al. SoCG 2004）</li>
+<li>Private Set Intersection（Pinkas et al. J. Crypto 2018）</li>
+<li>Threshold Cryptography（Shamir 1979）</li>
+<li>Callisto モデル（米国 10 年運用実績）</li>
+</ol>
+
+<h3>採用すべきデータ／引用（既取得済）</h3>
+
+<ul>
+<li>内閣府 R5 男女間暴力調査 → <strong>沈黙率 女性60%／男性70%</strong></li>
+<li>警察庁 R5 ストーカー・DV → <strong>ギャップ係数 18.36</strong></li>
+<li>衛福部 → <strong>通報まで平均 4.2 年</strong></li>
+<li>Lisak &amp; Miller 2002 → <strong>4% の連続加害者が平均 5.8 件</strong></li>
+<li>Callisto 2018 ACM COMPASS → 米国 10 年実証</li>
+<li>AirBox Nature 2022 → 市民データの政策化前例</li>
+<li>NNEDV 2024 → プライバシー＝被害者安全</li>
+</ul>
+</details></section>
+<section id="draft_01"><details><summary>📋 様式 1 基本事項</summary><h2>様式1　基本事項（A4 2 ページ厳守）</h2>
+
+<h3>提案先プログラム</h3>
+<p>SDGs の達成に向けた共創的研究開発プログラム（ソリューション創出フェーズ）</p>
+
+<h3>研究課題名</h3>
+<p><strong>誰一人置き去りにしない安全社会の AI/IoT 共創 — 台湾 LASS 開源精神に学び、現場のデータから法改正の基盤を育てる分野横断的法律支援プラットフォーム LegalShield</strong></p>
+
+<p>英語名：LegalShield — A Cross-Domain AI/IoT Platform Inheriting Taiwan&#x27;s LASS Open-Source Spirit: From Citizen Data to Law Reform, Toward &quot;No One Left Behind&quot;</p>
+
+<p>日本語短縮（20 字程度併記）：<strong>LegalShield 新しい平権の社会安全 OS</strong></p>
+
+<h3>研究代表者</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>氏名（フリガナ）</td><td>［後日記入］</td></tr>
+<tr><td>氏名（漢字等）</td><td>［後日記入］</td></tr>
+<tr><td>生年月日（西暦）</td><td>［後日記入］</td></tr>
+<tr><td>所属機関・部署・役職</td><td>［〇〇大学大学院△△研究科 〇〇分野 准教授／教授 等を予定］</td></tr>
+<tr><td>住所</td><td>〒</td></tr>
+<tr><td>電話番号</td><td></td></tr>
+<tr><td>緊急連絡先（携帯等）</td><td></td></tr>
+<tr><td>E-mail</td><td></td></tr>
+</table>
+
+<h3>研究開発期間</h3>
+<p><strong>2026 年 10 月 〜 2030 年 3 月（3 年 6 ヶ月）</strong></p>
+
+<h3>協働実施者</h3>
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td>氏名（フリガナ）</td><td>［後日記入］</td></tr>
+<tr><td>氏名（漢字等）</td><td>［後日記入］</td></tr>
+<tr><td>生年月日（西暦）</td><td>［後日記入］</td></tr>
+<tr><td>所属機関・部署・役職</td><td>［光伊Forest 等 法人代表／LegalShield プロジェクト代表。多分野 NPO 連合のハブとして社会安全プラットフォームの実装を主導］</td></tr>
+<tr><td>住所</td><td>〒</td></tr>
+<tr><td>電話番号</td><td></td></tr>
+<tr><td>緊急連絡先（携帯等）</td><td></td></tr>
+<tr><td>E-mail</td><td></td></tr>
+</table>
+
+<h3>研究概要（300 字以内）</h3>
+
+<blockquote>日本には、性暴力・労働・行政手続き・消費者・差別など、あらゆる領域でまだ支援に届いていない声がある。本研究は、台湾のLASS（Location Aware Sensor System）が市民データで環境政策を動かした開源精神に学び、被害当事者・支援者・市民開発者・多分野NPO・大学・自治体が共創するAI/IoT統合社会安全プラットフォームLegalShieldを、東京・大阪・高知の3地域で実証する。完全OSS、暗号学的プライバシー保護、分野横断的法令RAG、行政協助資料の自動生成、連続加害者の暗号学的協調検知を統合し、現場と使用者からのフィードバックでAIを育てる。蓄積されたエビデンスを政策提言と法改正の基盤とし、日本と世界の安全社会の前進に貢献する。</blockquote>
+
+<p>（300 字）</p>
+</details></section>
+<section id="draft_02"><details><summary>📋 様式 2 構想</summary><h2>様式2　構想（A4 4 ページ厳守）</h2>
+
+<h3>2.1 解決を目指す社会課題と 2030 年に向けたビジョン</h3>
+
+<h4>出発点：まだ支援に届いていない声に、新しい選択肢を届ける</h4>
+
+<p>日本社会には、性暴力・労働・行政手続き・消費者契約・差別など、あらゆる領域で <strong>「制度のはざまにいる」</strong> ために支援に届いていない方々が存在する。これは特定の地域や属性に限った課題ではなく、<strong>日本全国どの地域においても存在する共通の社会課題</strong>である。代表的な公的統計を以下に示す。</p>
+
+<blockquote>① 性暴力被害について、女性の約 6 割・男性の約 7 割が誰にも相談していない。</blockquote>
+<blockquote>　（内閣府『男女間における暴力に関する調査』令和 5 年度）</blockquote>
+<blockquote></blockquote>
+<blockquote>② ストーカー相談 19,843 件に対し検挙はわずか 1,081 件。相談と立件の係数差は <strong>約 18 倍</strong>。</blockquote>
+<blockquote>　（警察庁「令和 5 年におけるストーカー事案等への対応状況」）</blockquote>
+<blockquote></blockquote>
+<blockquote>③ 同一加害者が複数の被害者を生む構造があり、男性人口の約 4% に集中する連続加害者の存在が国際的に確認されている。</blockquote>
+<blockquote>　（Lisak &amp;amp; Miller, <em>Violence and Victims</em> 17(1), 2002）</blockquote>
+
+<p>同じ構造は、ハラスメント・労働被害（外国人技能実習生含む）、消費者契約被害（代理店契約・サブスク詐欺等）、行政手続きの不適切対応にも観察される。<strong>「同じ加害者・同じ事業者・同じ窓口で別の被害者と出会う仕組み」が社会のどこにも存在しない</strong>ため、当事者は単独で立証責任を負わされる構造に陥りやすい。</p>
+
+<h4>2030 年に目指す姿（ビジョン）</h4>
+
+<blockquote><strong>2030 年までに、日本に暮らす全ての方が、自身のプライバシーと尊厳を守られたまま、必要なときに必要な支援機関と安全につながることができる社会基盤を整える。同時に、当事者・現場・データから蓄積されたエビデンスを政策提言と法改正の基盤とし、より公正で安心して暮らせる国づくりに貢献する。</strong></blockquote>
+
+<p>達成指標の例：</p>
+<ul>
+<li>性暴力・ハラスメント・消費者被害の相談アクセス率の向上</li>
+<li>複数当事者による連名告訴・集団訴訟件数の創出</li>
+<li>行政手続きにおける書類作成の所要時間短縮（書類の壁の低減）</li>
+<li>自殺総合対策・孤独孤立対策との連携実績の創出</li>
+</ul>
+
+<h4>SDGs 17 ゴール／169 ターゲットとの関連</h4>
+
+<table>
+<tr><th>ゴール</th><th>関連ターゲット</th><th>本提案の寄与</th></tr>
+<tr><td><strong>Goal 5 ジェンダー平等</strong></td><td>5.1, 5.2, 5.5</td><td>性暴力・DV・ストーカー領域での新たな選択肢の提供</td></tr>
+<tr><td><strong>Goal 16 平和と公正</strong></td><td>16.1, 16.3, 16.6</td><td>司法アクセスの改善、説明責任ある制度運用への貢献</td></tr>
+<tr><td><strong>Goal 10 不平等の解消</strong></td><td>10.2, 10.3</td><td>地域・属性・言語による支援アクセス格差の可視化と是正</td></tr>
+<tr><td>Goal 1 貧困</td><td>1.3</td><td>行政手続支援を通じた社会保障アクセスの改善</td></tr>
+<tr><td>Goal 3 健康</td><td>3.4, 3.5</td><td>自殺総合対策・メンタルヘルスとの連携</td></tr>
+<tr><td>Goal 8 働きがい</td><td>8.7, 8.8</td><td>労働被害・外国人技能実習生支援との接続</td></tr>
+</table>
+
+<p>特に <strong>Goal 5 については、2025 年「Sustainable Development Report」で日本の達成度評価が世界平均を下回っており、本プログラム総括の方針で「特に積極的な提案を期待する」と明示されたゴール</strong>である（公募要領 p.10）。</p>
+
+<h3>2.2 製品フレームワークと研究実証範囲の二層構造</h3>
+
+<p>本研究の対象は、AI／IoT を活用した社会安全基盤プラットフォーム <strong>LegalShield</strong> の共創である。提案にあたっては、製品としての射程と、本フェーズで実証研究を行う範囲を、以下のとおり明確に分けて設計している。</p>
+
+<h4>製品としての射程（フレームワーク全体）</h4>
+
+<p><strong>LegalShield プラットフォーム</strong>は、最終的に <strong>日本全国の皆様にご利用いただけるオープンソース基盤</strong>として設計されており、対象領域は以下を含む。</p>
+
+<pre>
+[ 法律領域 ]
+  民法 ／ 刑法 ／ 行政法 ／ 行政手続法 ／ 個人情報保護法
+  労働法 ／ 労働契約法 ／ 入管法
+  消費者契約法 ／ 特定商取引法
+  ストーカー規制法 ／ DV 防止法 ／ 児童虐待防止法
+  障害者差別解消法 ／ 高齢者虐待防止法
+  公害健康被害補償法 ／ 生活保護法 ／ 教育基本法 など
+
+[ 機能モジュール（共通基盤） ]
+  ① 横断的法令検索・参照（法令 RAG）
+  ② 端末側での記録取得（IoT センサー・音声・画像）
+  ③ 証拠保全（ハッシュチェーン・タイムスタンプ）
+  ④ 音声から専門文書への自動整形
+  ⑤ 行政手続支援書類の作成補助
+  ⑥ プライバシー保護型協調検知（同種被害の共通性発見）
+  ⑦ 支援機関とのマッチング（地理・専門性・言語）
+  ⑧ 位置情報を活用した緊急連絡
+  ⑨ 検証型運用のためのフィードバック収集と AI 改善
+</pre>
+
+<h4>本フェーズで実証研究を行う範囲（厳選 3 領域 × 3 地域）</h4>
+
+<p>研究の実行可能性と効果検証可能性を担保するため、3.5 年間の実証研究では <strong>以下の 3 領域 × 3 地域</strong>に絞って取り組む。地域や対象者を限定するものではなく、<strong>研究推進と検証可能性の観点から選定</strong>したものである。</p>
+
+<p><strong>実証 3 領域</strong></p>
+
+<table>
+<tr><th>領域</th><th>想定する連携先（候補）</th><th>立証可能性</th></tr>
+<tr><td>A. 性暴力・DV・ストーカー領域</td><td>性暴力被害者支援を行う NPO 法人等</td><td>米国 Callisto 10 年実証あり</td></tr>
+<tr><td>B. ハラスメント・労働被害領域（外国人技能実習生含む）</td><td>労働者支援を行う NPO・労働組合等</td><td>労働基準法・労働契約法・入管法で論点明確</td></tr>
+<tr><td>C. 消費者契約被害領域（代理店契約・特定商取引等）</td><td>消費者問題関連団体・消費生活センター連携</td><td>消費者契約法・特定商取引法で立証容易</td></tr>
+</table>
+
+<p><strong>実証 3 地域</strong></p>
+
+<table>
+<tr><th>地域</th><th>役割</th><th>想定する連携機関（候補）</th></tr>
+<tr><td><strong>高知県（西日本・地域実証拠点）</strong></td><td>自伐型林業に学ぶ地域分散型運用の原点</td><td>高知大学、地域の自治体・市民団体等</td></tr>
+<tr><td><strong>東京都（首都圏・支援機関連携拠点）</strong></td><td>各分野の NPO・弁護士会等との連携拠点</td><td>多分野 NPO、弁護士会、内閣府関連等</td></tr>
+<tr><td><strong>秋田県（東北・地域格差検証拠点）</strong></td><td>自殺・孤立・医療空白等の課題と向き合う地域</td><td>秋田大学、自殺総合対策推進センター連携団体等</td></tr>
+</table>
+
+<p><strong>地理的・制度的多様性</strong>を意識した三角配置（西日本・首都圏・東北）により、地域資源の濃淡が異なる現場で同一プラットフォームを検証することで、<strong>他地域展開時の適用可能条件</strong>を抽出する。</p>
+
+<h3>2.3 台湾 LASS の理念に学ぶ — オープンソース精神の継承</h3>
+
+<p>本研究は、台湾の市民科学プロジェクト <strong>LASS（Location Aware Sensor System、2015 年〜）</strong> および <strong>AirBox プロジェクト</strong>の理念に学ぶ。LASS は、PM2.5 を計測する市民参加型センサー網を完全オープンソース・自発的参加・分散運用で構築し、その蓄積データが台湾の環境政策と研究（Wong et al., <em>Nature Humanities &amp;amp; Social Sciences Communications</em>, 2022）に大きく寄与した。</p>
+
+<table>
+<tr><th>LASS／AirBox（台湾、2015〜）</th><th>LegalShield（日台共創、2026〜）</th></tr>
+<tr><td>完全オープンソース</td><td>全コードを MIT または Apache 2.0 で公開</td></tr>
+<tr><td>自発的参加</td><td>当事者・支援者・市民開発者の任意参加</td></tr>
+<tr><td>分散運用</td><td>鍵分散方式による地域 NPO 主導の運用</td></tr>
+<tr><td>市民の主体的参画</td><td>NPO・自治体・大学・市民が対等に共創</td></tr>
+<tr><td>PM2.5 データ → 環境政策の改善</td><td>制度のはざまの実態 → 法改正の基盤</td></tr>
+</table>
+
+<p>本研究は、台湾 LASS コミュニティとの対話を通じて、東アジア地域における<strong>市民データから政策へ</strong>のモデルを共有・発展させることを目指す。</p>
+
+<h3>2.4 既存の技術シーズの統合的活用</h3>
+
+<p>本研究は、新しい技術シーズを生み出すのではなく、<strong>既に確立された技術シーズを社会的に統合</strong>することで課題解決を図る。代表的な技術シーズは以下のとおりで、いずれも査読論文または商用実装で確立済みである。</p>
+
+<table>
+<tr><th>技術シーズ</th><th>確立性の根拠</th><th>本研究での活用</th></tr>
+<tr><td>顔特徴量抽出（FaceNet / ArcFace）</td><td>CVPR 2015 / 2019、Apple Vision Framework・Google ML Kit で公開済</td><td>端末側での特徴量化</td></tr>
+<tr><td>局所性鋭敏ハッシュ（LSH）</td><td>Datar et al., SoCG 2004、商用利用多数</td><td>再識別困難なバケット変換</td></tr>
+<tr><td>私的集合交差（PSI）</td><td>Pinkas et al., <em>J. Cryptology</em>, 2018、OpenMined PSI 等のオープン実装</td><td>サーバ非露出での共通性検知</td></tr>
+<tr><td>閾値秘密分散方式</td><td>Shamir 1979</td><td>複数主体の合意なしには復号できない仕組み</td></tr>
+<tr><td>Callisto モデル</td><td>米国 30 以上の大学等で 10 年運用、ACM COMPASS 2018</td><td>暗号学的サバイバーマッチングの先行事例</td></tr>
+<tr><td>大規模言語モデル（LLM／SLM）</td><td>GPT・Claude・llama.cpp 等の商用および OSS 実装</td><td>法令検索・文書整形・対話支援</td></tr>
+<tr><td>地理情報システム（GIS）</td><td>PostGIS、QGIS、OpenStreetMap</td><td>支援機関マッチング、現場記録</td></tr>
+<tr><td>音声認識（Whisper 等）</td><td>OpenAI Whisper、Vosk</td><td>窓口対応の文書化、専門用語整形</td></tr>
+</table>
+
+<p>これらを統合して被害者支援・行政手続支援・市民協働の領域で社会実装する取り組みは、世界的にも先進事例となる。</p>
+
+<h3>2.5 役割分担</h3>
+
+<p><strong>研究代表者</strong>（大学等所属）：研究開発全体の責任者として、（1）情報法・社会科学・人文知の統合、（2）大学倫理委員会への申請と継続的倫理審査、（3）プロトコルの正当性検証と論文化、（4）プログラム総括等との対話を担う。</p>
+
+<p><strong>協働実施者</strong>（社会課題に取り組む団体・組織の代表）：現場実装と事業継続性の中核として、（1）当事者・支援者の声を研究設計に反映、（2）地域 NPO・自治体・弁護士会等との実務的な連携、（3）実証研究における倫理的運用、（4）プロジェクト終了後の事業継続主体としての準備を担う。</p>
+
+<h3>2.6 主な実施項目と期間</h3>
+
+<table>
+<tr><th>大項目</th><th>期間</th><th>内容</th></tr>
+<tr><td><strong>A. 基盤構築・倫理整備</strong></td><td>2026.10 〜 2027.9</td><td>倫理審査体制の構築、共通基盤のプロトタイプ整備</td></tr>
+<tr><td><strong>B. 三地域パイロット実証</strong></td><td>2027.4 〜 2028.9</td><td>高知・東京・秋田の各地で領域別パイロット実施</td></tr>
+<tr><td><strong>C. 横展開と国際連携</strong></td><td>2028.4 〜 2029.9</td><td>他地域展開の可能性試験、台湾 LASS コミュニティとの対話</td></tr>
+<tr><td><strong>D. 事業計画策定・自立移管</strong></td><td>2029.4 〜 2030.3</td><td>継続運用体制の整備、政策提言の取りまとめ</td></tr>
+</table>
+
+<p>詳細は様式 4-1 にて示す。</p>
+
+<h3>2.7 プロジェクト終了後の継続性と将来展開</h3>
+
+<p>研究開発終了後は、協働実施者を中心とした運用主体が中核となり、以下の形で事業を継続することを構想している。</p>
+
+<ol>
+<li><strong>継続運用体制</strong>：オープンソース基盤を維持する一般財団法人または公益的運用主体を整備</li>
+<li><strong>継続資金源</strong>：自治体委託費、社会的インパクト投資、民間財団助成、利用機関からの維持費等、複数経路の組み合わせ</li>
+<li><strong>他地域展開</strong>：本フェーズの 3 地域から、全国の支援団体・自治体への段階的な展開</li>
+<li><strong>将来の領域拡張</strong>（プロジェクト終了後 5〜10 年での想定射程）：</li>
+</ol>
+<ul>
+<li>環境公害・健康被害（不知火海地域・福島原発関連避難者支援等）</li>
+<li>行政手続きの不適切対応（生活保護・児童相談所対応等）</li>
+<li>医療事故・介護事故への対応</li>
+<li>児童虐待・教育現場のハラスメント対応</li>
+<li>外国人・難民・障害者・高齢者の権利擁護</li>
+</ul>
+<ol>
+<li><strong>国際展開</strong>：台湾 LASS コミュニティから始まり、韓国・英国等のジェンダー暴力対策先進地域との連携</li>
+</ol>
+
+<p>事業構想の主な構成要素（公募要領 様式 2 注 ※1 で求められる項目）：</p>
+<ul>
+<li><strong>解決策の実施と定着のための組織体制</strong>：オープンソースコミュニティ＋運用主体＋連携 NPO 連合</li>
+<li><strong>解決策を他地域へ展開するための仕組み</strong>：全国 NPO ネットワークへの鍵分散配布、運用ハンドブック、契約雛形の公開</li>
+<li><strong>他地域展開の候補地と選定観点</strong>：相談アクセス困難地域、自治体協力可能地域、NPO 活動歴のある地域</li>
+</ul>
+
+<h3>2.8 SDGs で特に重視するゴール（最大 3 つ）</h3>
+
+<p><strong>Goal 5 ジェンダー平等（主軸）／Goal 16 平和と公正／Goal 10 不平等の解消</strong></p>
+</details></section>
+<section id="draft_03"><details><summary>📋 様式 3 独創性・優位性</summary><h2>様式3　提案の独創性・優位性（A4 2 ページ厳守）</h2>
+
+<h3>3.1 国内外における関連分野の現状と動向</h3>
+
+<h4>既存の被害者支援システムとその限界</h4>
+
+<table>
+<tr><th>システム</th><th>国・主体</th><th>機能</th><th>限界</th></tr>
+<tr><td>110 番通報・専用通報アプリ</td><td>日本（警察庁）</td><td>緊急通報</td><td>単独通報が中心、複数当事者の協働的立件が困難</td></tr>
+<tr><td>DV 相談プラス</td><td>日本（内閣府）</td><td>電話・SNS 相談</td><td>加害者の重複性検知機能はない</td></tr>
+<tr><td>跟蹤騷擾防制法 e化通報</td><td>台湾（衛福部）</td><td>ストーカー被害通報</td><td>同上、当事者間の協働支援機能はない</td></tr>
+<tr><td>Project Callisto</td><td>米国（30 以上の大学等）</td><td>暗号学的サバイバーマッチング</td><td>テキストのみで照合、改名等での回避が容易、対象が大学・IT 業界に限定</td></tr>
+<tr><td>各種 SNS 上の #MeToo 運動</td><td>国際</td><td>当事者の発信支援</td><td>プライバシー保護と名誉毀損リスクの両立が課題</td></tr>
+</table>
+
+<h4>関連分野の学術的動向</h4>
+
+<ul>
+<li><strong>連続加害行為に関する研究</strong>：Lisak &amp;amp; Miller (2002) を起点に、米国 NSVRC「Rethinking Serial Perpetration」(2015) 等で繰り返し検証され、被害が偏在的に集中する構造が学術的に支持されている。</li>
+<li><strong>プライバシー保護型データ照合</strong>：私的集合交差（PSI）の商用実装が成熟期に入り（Pinkas et al. 2018、OpenMined PSI、Microsoft APSI 等）、社会実装の準備が整いつつある。</li>
+<li><strong>市民参加型データと政策接続</strong>：台湾 LASS／AirBox を題材とした Wong et al. <em>Nature Humanities &amp;amp; Social Sciences Communications</em> (2022) が、市民データから政策提言につながる過程を学術的に検証している。</li>
+<li><strong>当事者プライバシーと安全の不可分性</strong>：NNEDV「Privacy Matters」(2024)、UN Women Safety &amp;amp; Security Toolkit 等が、被害者の安全とプライバシーの保護が不可分であることを国際的に確立している。</li>
+<li><strong>AI／LLM の法律支援応用</strong>：海外では Stanford CodeX、欧州 Legal Tech 関連で進展、国内でも法律相談チャットボットの研究が増えている。</li>
+</ul>
+
+<h3>3.2 受益者から見た本提案の優位性</h3>
+
+<p><strong>「技術シーズの独自性ではなく、受益者から見た効果の観点」</strong>（公募要領 p.16 様式 3 注釈）から記述する。</p>
+
+<h4>受益者の体験における変化（Before／After）</h4>
+
+<table>
+<tr><th>局面</th><th>現状（Before）</th><th>本提案の実装後（After）</th></tr>
+<tr><td>被害・困難の直後</td><td>一人で抱え、相談先を探す段階で諦めることが多い</td><td>端末上のセキュアな記録機能で自己防衛のための記録を残せ、心理的な選択肢が増える</td></tr>
+<tr><td>相談判断</td><td>一人での通報・相談を躊躇</td><td>「同じような状況の方が他にもいるか」を、自身のプライバシーを守ったまま確認できる</td></tr>
+<tr><td>共通性の発見</td><td>仕組みが存在しない</td><td>暗号学的に共通性が確認されたときのみ、支援機関を介した安全な仲介が始まる</td></tr>
+<tr><td>連名告訴・集団的解決</td><td>制度上は可能だが運用上ほぼ実例なし</td><td>支援機関による仲介で、本人の意思に基づく協働的解決の選択肢が開ける</td></tr>
+<tr><td>プライバシー保護</td><td>異機関間で意図せず情報共有される懸念</td><td>顔・位置等の情報を外部サーバに送らずに済む設計</td></tr>
+<tr><td>行政手続き</td><td>書類作成の負担で諦める方が多い</td><td>法令検索と書類作成補助で、申請・不服申立て等の選択肢が広がる</td></tr>
+<tr><td>心理的回復</td><td>孤立しやすい</td><td>同じ経験を持つ仲間と安全につながる選択肢が生まれる</td></tr>
+</table>
+
+<h4>国内外における独自性</h4>
+
+<ol>
+<li><strong>AI 法律支援と暗号学的協調検知の統合</strong>：海外でも別々には存在するが、両者を<strong>全法律領域に横断適用可能な共通基盤</strong>として統合する取り組みは先進的である。</li>
+<li><strong>多者合意型の鍵管理</strong>：支援機関・法務専門家・運用主体・倫理委員会等の複数主体の合意なしには機微情報を復号できない設計により、単独主体への信頼集中を構造的に避ける。</li>
+<li><strong>日台二拠点からの東アジアモデル</strong>：「課題先進国・日本」モデル（公募要領 p.6）を、台湾 LASS コミュニティの理念と接続することで、東アジア地域の市民データ駆動型政策モデルの先行事例となる可能性がある。</li>
+<li><strong>暗数定量化データベース（JUDB）との接続</strong>：警察庁・内閣府・厚労省・衛福部等の公開統計と本研究の集約データ（一定人数以上の匿名集約のみ）を統合し、地域別の指標可視化を実現する（既に研究基盤として構築済）。</li>
+</ol>
+
+<h3>3.3 競合・先行研究との位置付け</h3>
+
+<table>
+<tr><th>先行事例</th><th>強み</th><th>本研究との関係</th></tr>
+<tr><td>Project Callisto（米国）</td><td>10 年運用実績、査読論文（ACM COMPASS 2018）</td><td>本研究はその発展形として、対象領域を拡張し、日本法制度との適合を図る</td></tr>
+<tr><td>LASS／AirBox（台湾）</td><td>市民データ駆動型政策の実証、Nature 査読</td><td>本研究は同コミュニティの理念を継承し、扱う対象を社会安全領域に拡張する</td></tr>
+<tr><td>#MeToo 運動</td><td>国際的可視化と社会的合意形成</td><td>本研究は、声を上げる方々のプライバシー保護と被害の証拠保全を補完する</td></tr>
+<tr><td>既存の警察・行政の通報制度</td><td>公的な受付窓口</td><td>本研究は、これらの公的制度を補完し、複数当事者の協働的解決を可能にする予備的な仕組みとして機能する</td></tr>
+</table>
+
+<h3>3.4 研究代表者・協働実施者の準備状況</h3>
+
+<p>本提案チームは、公募開始前から本研究の基盤となる以下を独自に整備しており、シナリオ創出フェーズに相当する準備が完了し、ソリューション創出フェーズに進める段階にある。</p>
+
+<ol>
+<li><strong>JUDB（Japan Underreporting Database）</strong>：日台の公開統計を集約する DuckDB ベースの分析基盤。47 都道府県マスター、複数の指標ビューを実装済（<code>legalshield/db/judb.py</code>、<code>judb_schema.sql</code>）。</li>
+<li><strong>エビデンス基盤</strong>：35 件の一次資料を <code>docs/refs/refs.bib</code> に整備済（内閣府男女間暴力調査原典、警察庁ストーカー・DV 年次報告、衛福部統計、Callisto、Lisak、LASS／AirBox 等）。</li>
+<li><strong>法制度マッピング</strong>：日本の関連法令（個人情報保護法、ストーカー規制法、DV 防止法、児童虐待防止法、消費者契約法、特定商取引法、労働法等）と台湾の関連法令（個資法、跟蹤騷擾防制法、家庭暴力防治法、性侵害防治法等）の条文と関連判例を整理済。</li>
+<li><strong>クローラ群</strong>：警察庁公開資料の自動抽出、台湾司法院判決書 API 連携を実装済。</li>
+<li><strong>設計書群</strong>：システム設計、安全性分析、利用規約案、運用設計を文書化済（<code>SAFETY_GIS_DESIGN</code>、<code>FEWN_DESIGN</code>、<code>EVIDENCE_BASE</code>、<code>EXPANSION_AND_DISPATCH_DESIGN</code>、<code>PIPELINE_AND_RISK_ANALYSIS</code>、<code>USER_AGREEMENT</code> 等）。</li>
+<li><strong>既存技術シーズの統合プロトタイプ</strong>：OpenMined PSI および顔特徴量抽出のオープン実装について、研究室レベルの動作確認を完了済。</li>
+</ol>
+
+<p>これらの基盤により、本フェーズに採択された場合、初年度の早期から実証フィールドの構築段階に円滑に移行可能な状態にある。</p>
+</details></section>
+<section id="draft_04"><details><summary>📋 様式 4 目標・実施計画</summary><h2>様式4-1　目標・実施計画</h2>
+
+<h3>1. 目標・実施計画（A4 3 ページ厳守）</h3>
+
+<h4>4-1.1 創出される価値と実施期間終了時点（2030 年 3 月）の達成目標</h4>
+
+<p>3 領域（性暴力・労働・消費者）× 3 地域（高知・東京・秋田）の実証研究を通じて、以下の達成目標を掲げる。これらは検証可能な指標として位置付け、外部の独立評価を受ける前提で運用する。</p>
+
+<table>
+<tr><th>達成指標</th><th>検証方法（想定）</th></tr>
+<tr><td>各実証地域における登録支援対象者の累計人数</td><td>連携 NPO の運用記録</td></tr>
+<tr><td>暗号学的な共通性検知の累計件数</td><td>共通基盤の監査ログ</td></tr>
+<tr><td>支援機関による仲介・接続事例の累計件数</td><td>NPO・弁護士会等への引継統計</td></tr>
+<tr><td>当事者の開示請求・削除請求への対応率（適時性）</td><td>外部監査</td></tr>
+<tr><td>透明性レポートの発行回数</td><td>公開実績</td></tr>
+<tr><td>自治体・支援機関との連携実績の数</td><td>協定書・MOU</td></tr>
+<tr><td>政策提言・立法府への報告・査読論文の本数</td><td>公開実績</td></tr>
+<tr><td>他地域への展開可能性の検証地数</td><td>展開可能性レポート</td></tr>
+<tr><td>プラットフォームのコード公開状況（OSS）</td><td>公開リポジトリ</td></tr>
+</table>
+
+<h4>4-1.2 全体アプローチ（バックキャスティング）</h4>
+
+<p>公募要領 p.12 の「目指すべき姿から立ち戻って計画を立てるバックキャスティング」に従い、2030 年ビジョンから 4 段階（A〜D）の実施計画に展開する。</p>
+
+<p><strong>想定されるリスクと対応</strong></p>
+
+<table>
+<tr><th>想定リスク</th><th>対応</th></tr>
+<tr><td>プライバシー保護型照合における偽陽性</td><td>複数投影による多重判定、支援機関による仲介を必須とし、自動通知のみで完結しない設計</td></tr>
+<tr><td>加害者側からの逆利用の懸念</td><td>端末側で生成された識別子のみを用い、サーバ側に直接の個人情報を持たない設計</td></tr>
+<tr><td>自治体・支援機関との協力体制構築の遅延</td><td>採択後に段階的な対話を進め、内閣府・自治体の既存施策（自殺総合対策、孤独孤立対策等）との接続を優先</td></tr>
+<tr><td>個情法・関連法令の改正への対応</td><td>法務監査体制を継続的に運用し、半年ごとに設計レビューを実施</td></tr>
+<tr><td>プロジェクト終了後の継続資金</td><td>自治体委託費・社会的インパクト投資・財団助成等、複数経路の調達計画を初年度に策定</td></tr>
+<tr><td>採択評価における「技術が前面に出ている」との指摘の回避</td><td>全ての実証フェーズで協働実施者主導の運用とし、研究代表者は支援・倫理担保に徹する</td></tr>
+</table>
+
+<h4>4-1.3 4 つの研究開発項目とマイルストーン</h4>
+
+<h5>A. 基盤構築・倫理整備（2026.10 〜 2027.9、12 ヶ月）</h5>
+
+<table>
+<tr><th>中項目</th><th>担当（想定）</th><th>内容</th></tr>
+<tr><td>A-1 倫理審査体制構築</td><td>研究代表者 G</td><td>大学倫理委員会への申請、外部倫理委員（弁護士・当事者経験者・情報倫理学者）の招集</td></tr>
+<tr><td>A-2 鍵分散管理の運用設計</td><td>協働実施者 G・法務協力者</td><td>複数主体合意プロセスの策定（支援機関・法務専門家・運用主体・倫理委員会の協働形態）</td></tr>
+<tr><td>A-3 共通基盤のプロトタイプ整備</td><td>研究代表者 G（情報セキュリティ）</td><td>OpenMined PSI、SQLCipher 等のオープンソース基盤の統合、第三者によるセキュリティ評価</td></tr>
+<tr><td>A-4 当事者・支援者対話</td><td>協働実施者 G</td><td>当事者経験者・支援団体・専門職との要件定義対話</td></tr>
+</table>
+
+<ul>
+<li><strong>マイルストーン M1</strong>：2027.3 までに倫理審査の承認取得</li>
+<li><strong>マイルストーン M2</strong>：2027.6 までに要件定義書を公開</li>
+<li><strong>マイルストーン M3</strong>：2027.9 までに共通基盤の第三者評価を完了</li>
+</ul>
+
+<h5>B. 三地域パイロット実証（2027.4 〜 2028.9、18 ヶ月）</h5>
+
+<table>
+<tr><th>中項目</th><th>担当（想定）</th><th>内容</th></tr>
+<tr><td>B-1 高知パイロット（地域実証拠点）</td><td>協働実施者 G・高知の連携機関</td><td>自伐型林業の分散思想を運用設計に反映、3 領域横断のパイロット</td></tr>
+<tr><td>B-2 東京パイロット（首都圏連携拠点）</td><td>連携 NPO・弁護士会</td><td>多分野 NPO 連携、政策接続の基点</td></tr>
+<tr><td>B-3 秋田パイロット（地域格差検証拠点）</td><td>秋田大学等学術連携・地域 NPO</td><td>自殺・孤立・医療空白等の地域特性を踏まえた検証</td></tr>
+<tr><td>B-4 領域横断機能の検証</td><td>全グループ</td><td>法令 RAG・行政手続支援・暗号学的協調検知の 3 領域同時稼働</td></tr>
+</table>
+
+<ul>
+<li><strong>マイルストーン M4</strong>：2027.12 までに最初の地域での運用開始</li>
+<li><strong>マイルストーン M5</strong>：2028.6 までに 3 地域での運用実績の中間評価</li>
+<li><strong>マイルストーン M6</strong>：2028.9 までに領域横断の運用報告を取りまとめ</li>
+</ul>
+
+<h5>C. 横展開と国際連携（2028.4 〜 2029.9、18 ヶ月）</h5>
+
+<table>
+<tr><th>中項目</th><th>担当（想定）</th><th>内容</th></tr>
+<tr><td>C-1 国内他地域への展開可能性試験</td><td>全国の支援団体ネットワーク</td><td>鍵分散方式による地域分散運用の試行</td></tr>
+<tr><td>C-2 台湾 LASS コミュニティとの対話</td><td>研究代表者 G・台湾連携</td><td>オープンソース精神の共有、現代婦女基金會等との情報交換</td></tr>
+<tr><td>C-3 政策接続</td><td>全グループ</td><td>内閣府・厚労省・関連自治体への中間報告、政策提言素案の作成</td></tr>
+<tr><td>C-4 学術成果の公開</td><td>研究代表者 G</td><td>査読論文の投稿、国際会議発表</td></tr>
+</table>
+
+<ul>
+<li><strong>マイルストーン M7</strong>：2029.3 までに国内他地域での試行運用 1 件以上</li>
+<li><strong>マイルストーン M8</strong>：2029.6 までに台湾コミュニティとの対話実績を公開</li>
+<li><strong>マイルストーン M9</strong>：2029.9 までに政策提言素案を公開</li>
+</ul>
+
+<h5>D. 事業計画策定・自立移管（2029.4 〜 2030.3、12 ヶ月）</h5>
+
+<table>
+<tr><th>中項目</th><th>担当（想定）</th><th>内容</th></tr>
+<tr><td>D-1 継続運用体制の整備</td><td>協働実施者 G</td><td>一般財団法人化等の運用主体の準備、定款・規約・収支計画の策定</td></tr>
+<tr><td>D-2 継続資金源の確保</td><td>コーディネーター</td><td>自治体委託費、社会的インパクト投資、財団助成等の調達</td></tr>
+<tr><td>D-3 ハンドブック・契約雛形の公開</td><td>全グループ</td><td>他地域展開のための運用マニュアル、契約雛形、技術文書の公開</td></tr>
+<tr><td>D-4 最終成果報告</td><td>全グループ</td><td>国内外関係者を招いた最終報告会</td></tr>
+</table>
+
+<ul>
+<li><strong>マイルストーン M10</strong>：2029.12 までに運用主体の準備完了</li>
+<li><strong>マイルストーン M11</strong>：2030.3 までに継続資金 3 年分の確保見込みを獲得</li>
+<li><strong>マイルストーン M12</strong>：2030.3 までにハンドブック等の公開、最終報告会の開催</li>
+</ul>
+
+<h4>4-1.4 各実施項目の担当主体（概念整理）</h4>
+
+<table>
+<tr><th>項目</th><th>研究代表者 G</th><th>協働実施者 G</th><th>コーディネーター</th><th>解決策定着主体</th><th>他地域展開主体</th></tr>
+<tr><td>A 基盤</td><td>◎主導</td><td>○協力</td><td>-</td><td>-</td><td>-</td></tr>
+<tr><td>B 三地域</td><td>○支援</td><td>◎主導</td><td>◎調整</td><td>各地域連携機関</td><td>-</td></tr>
+<tr><td>C 横展開</td><td>○支援</td><td>◎主導</td><td>◎調整</td><td>同上</td><td>◎全国支援団体ネットワーク</td></tr>
+<tr><td>D 事業計画</td><td>○支援</td><td>◎主導</td><td>◎調整</td><td>運用主体（法人化予定）</td><td>同左</td></tr>
+</table>
+
+<p>公募要領 Q&amp;amp;A 「コーディネーター、解決を定着させる担い手、他地域への展開の担い手」を概念上明示する。具体的な担い手は採択後の対話を通じて確定する。</p>
+
+<h4>4-1.5 提案段階で不足する研究部門と連携計画</h4>
+
+<ul>
+<li><strong>暗号応用研究</strong>：採択後、国内大学および OpenMined Japan 等のコミュニティと連携を計画</li>
+<li><strong>法令 RAG／LLM 応用研究</strong>：採択後、自然言語処理・法情報学の研究者と連携を計画</li>
+<li><strong>当事者参画研究の方法論</strong>：採択後、参加型アクションリサーチの研究者と連携を計画</li>
+<li><strong>疫学的評価</strong>：採択後、公衆衛生大学院と委託契約を計画</li>
+</ul>
+
+<p>---</p>
+
+<h3>2. 計画表（A4 1 ページ厳守）</h3>
+
+<pre>
+研究開発項目                  | 2026下 | 2027上 | 2027下 | 2028上 | 2028下 | 2029上 | 2029下 | 2030上
+================================================================================================
+A-1 倫理審査体制構築          | ████   | ███    |        |        |        |        |        |
+                                       ▲M1
+A-2 鍵分散運用設計            | ████   | ████   | ██     |        |        |        |        |
+A-3 共通基盤プロトタイプ      | ████   | ████   | ████   |        |        |        |        |
+                                                       ▲M3
+A-4 当事者・支援者対話        | ████   | ████   |        |        |        |        |        |
+                                       ▲M2
+B-1 高知パイロット            |        | █████  | █████  | ████   |        |        |        |
+                                                ▲M4
+B-2 東京パイロット            |        |        | █████  | █████  | ████   |        |        |
+B-3 秋田パイロット            |        |        | █████  | █████  | ████   |        |        |
+                                                                ▲M5
+B-4 領域横断機能検証          |        |        | ████   | █████  | ████   |        |        |
+                                                                       ▲M6
+C-1 国内他地域試験            |        |        |        | ████   | █████  | █████  | ████   |
+                                                                       ▲M7
+C-2 台湾 LASS 連携            |        |        |        |        | █████  | █████  | ████   |
+                                                                                ▲M8
+C-3 政策接続                  |        |        |        | ███    | ████   | █████  | ████   |
+                                                                                ▲M9
+C-4 学術成果公開              |        |        |        | ███    | ████   | █████  | ████   |
+D-1 運用主体準備              |        |        |        |        |        | █████  | █████  |
+                                                                                       ▲M10
+D-2 継続資金確保              |        |        |        |        |        | █████  | █████  |
+                                                                                              ▲M11
+D-3 ハンドブック公開          |        |        |        |        |        |        | █████  | ████
+D-4 最終報告会                |        |        |        |        |        |        |        | ████
+                                                                                              ▲M12
+</pre>
+
+<p>凡例：█ 実施期間／▲ マイルストーン／2026下＝2026.10-2027.3／……／2030上＝2029.10-2030.3</p>
+</details></section>
+<section id="draft_05"><details><summary>📋 様式 4-2 予算計画</summary><h2>様式4-2　予算計画</h2>
+
+<h3>1. プロジェクト全体の予算計画（直接経費、千円単位）</h3>
+
+<p>上限：<strong>1,900 万円/年（12 ヶ月換算）</strong>。初年度（6 ヶ月）と最終年度（6 ヶ月）は半額換算。</p>
+
+<table>
+<tr><th>直接経費</th><th>初年度&lt;br&gt;2026.10-2027.3&lt;br&gt;(6 ヶ月)</th><th>2 年度&lt;br&gt;2027.4-2028.3&lt;br&gt;(12 ヶ月)</th><th>3 年度&lt;br&gt;2028.4-2029.3&lt;br&gt;(12 ヶ月)</th><th>最終年度&lt;br&gt;2029.4-2029.9&lt;br&gt;(6 ヶ月)</th><th>合計 (千円)</th></tr>
+<tr><td>(1) 委託先研究機関合計</td><td><strong>9,500</strong></td><td><strong>17,500</strong></td><td><strong>18,000</strong></td><td><strong>9,500</strong></td><td><strong>54,500</strong></td></tr>
+<tr><td>(2) 研究代表者の所属機関：△△大学 大学院〇〇研究科</td><td>5,500</td><td>9,500</td><td>9,500</td><td>5,000</td><td>29,500</td></tr>
+<tr><td>(3) 協働実施者の所属機関：NPO 法人△△</td><td>3,000</td><td>6,000</td><td>6,500</td><td>3,500</td><td>19,000</td></tr>
+<tr><td>(4) 主たる実施者１（情報セキュリティG）の所属機関：△△大学</td><td>1,000</td><td>2,000</td><td>2,000</td><td>1,000</td><td>6,000</td></tr>
+</table>
+
+<p>研究開発期間の延長（公募要領 2.3）に基づき、2029.10 - 2030.3 までの 6 ヶ月延長分は最終年度に含む（合計 3 年 6 ヶ月）。</p>
+
+<p><strong>合計直接経費</strong>：<strong>約 5,450 万円</strong>（54,500 千円）／間接経費 30% 上限を加えて約 7,085 万円。</p>
+
+<p>---</p>
+
+<h3>2. 費目別の予算計画（千円単位）</h3>
+
+<h4>(2) 研究代表者所属機関：△△大学 大学院〇〇研究科</h4>
+
+<table>
+<tr><th>費目</th><th>初年度</th><th>2 年度</th><th>3 年度</th><th>最終年度</th><th>合計</th></tr>
+<tr><td>物品費</td><td>1,500</td><td>1,500</td><td>1,000</td><td>500</td><td>4,500</td></tr>
+<tr><td>旅費</td><td>500</td><td>1,000</td><td>1,500</td><td>800</td><td>3,800</td></tr>
+<tr><td>人件費・謝金</td><td>3,000</td><td>6,000</td><td>6,000</td><td>3,000</td><td>18,000</td></tr>
+<tr><td>その他</td><td>500</td><td>1,000</td><td>1,000</td><td>700</td><td>3,200</td></tr>
+<tr><td><strong>小計</strong></td><td><strong>5,500</strong></td><td><strong>9,500</strong></td><td><strong>9,500</strong></td><td><strong>5,000</strong></td><td><strong>29,500</strong></td></tr>
+</table>
+
+<p>費目内訳の補足：</p>
+<ul>
+<li>物品費：PC、暗号モジュール検証用サーバ、HSM（ハードウェアセキュリティモジュール）、図書</li>
+<li>旅費：3 地域実証地への調査・打合せ、台湾連携訪問、国際会議発表</li>
+<li>人件費・謝金：博士研究員 1 名（フル）、RA 2 名、外部倫理委員謝金、被害者経験者顧問謝金</li>
+<li>その他：論文投稿費、第三者セキュリティ監査費、IRB 諸経費、会議費</li>
+</ul>
+
+<h4>(3) 協働実施者所属機関：NPO 法人△△</h4>
+
+<table>
+<tr><th>費目</th><th>初年度</th><th>2 年度</th><th>3 年度</th><th>最終年度</th><th>合計</th></tr>
+<tr><td>物品費</td><td>500</td><td>500</td><td>500</td><td>300</td><td>1,800</td></tr>
+<tr><td>旅費</td><td>500</td><td>1,500</td><td>1,500</td><td>700</td><td>4,200</td></tr>
+<tr><td>人件費・謝金</td><td>1,500</td><td>3,500</td><td>4,000</td><td>2,000</td><td>11,000</td></tr>
+<tr><td>その他</td><td>500</td><td>500</td><td>500</td><td>500</td><td>2,000</td></tr>
+<tr><td><strong>小計</strong></td><td><strong>3,000</strong></td><td><strong>6,000</strong></td><td><strong>6,500</strong></td><td><strong>3,500</strong></td><td><strong>19,000</strong></td></tr>
+</table>
+
+<p>費目内訳の補足：</p>
+<ul>
+<li>物品費：相談者用 PC・タブレット、相談ルーム改修費（パイロット 3 地域）</li>
+<li>旅費：被害者宅訪問支援、3 地域間調整、台湾現代婦女基金會訪問</li>
+<li>人件費・謝金：コーディネーター 1 名（フル）、相談支援員 2 名（パートタイム）、弁護士アドバイザー謝金、被害者経験者顧問謝金</li>
+<li>その他：法人化諸費用、保険料、相談ホットライン運営費</li>
+</ul>
+
+<h4>(4) 主たる実施者１（情報セキュリティG）所属機関：△△大学</h4>
+
+<table>
+<tr><th>費目</th><th>初年度</th><th>2 年度</th><th>3 年度</th><th>最終年度</th><th>合計</th></tr>
+<tr><td>物品費</td><td>300</td><td>500</td><td>500</td><td>200</td><td>1,500</td></tr>
+<tr><td>旅費</td><td>100</td><td>200</td><td>200</td><td>100</td><td>600</td></tr>
+<tr><td>人件費・謝金</td><td>500</td><td>1,200</td><td>1,200</td><td>600</td><td>3,500</td></tr>
+<tr><td>その他</td><td>100</td><td>100</td><td>100</td><td>100</td><td>400</td></tr>
+<tr><td><strong>小計</strong></td><td><strong>1,000</strong></td><td><strong>2,000</strong></td><td><strong>2,000</strong></td><td><strong>1,000</strong></td><td><strong>6,000</strong></td></tr>
+</table>
+
+<p>---</p>
+
+<h3>3. 特記事項</h3>
+
+<ul>
+<li><strong>多額の人件費</strong>：3 つのフルタイム職（博士研究員、コーディネーター、暗号研究員）に加え、複数のパートタイム職を計上。性暴力・DV 領域の社会実装に必須の現場対応人員確保のため。</li>
+<li><strong>第三者セキュリティ監査費</strong>：年 100 万円規模で計上（Coordinator MVP の独立監査、運用後の継続監査）。受益者の安全保障に直結するため必須。</li>
+<li><strong>被害者経験者顧問謝金</strong>：研究設計に当事者視点を必須統合するため、3 名 × 半日 × 月 1 回 × 期間中継続を計上。</li>
+<li><strong>国際連携費</strong>：台湾現代婦女基金會・台北市立大學との往復、二拠点運用試験費（C-2 マイルストーン M10 のため）。</li>
+<li><strong>JST 出資先企業該当</strong>：なし（様式 8 で改めて申告）。</li>
+<li><strong>1,000 万円以上の設備購入予定</strong>：なし。</li>
+</ul>
+</details></section>
+<section id="draft_06"><details><summary>📋 様式 5 実施体制</summary><h2>様式5-1　実施体制（全体）</h2>
+
+<h3>1. 実施体制（概念）</h3>
+
+<p>本研究の実施体制は、研究代表者グループ（学術・倫理側）と協働実施者グループ（現場・運用側）を二本柱とし、これに地域別および機能別の主たる実施者グループを配する構成を構想している。具体的な所属機関名・氏名は、採択後の対話を経て確定する。</p>
+
+<table>
+<tr><th>グループ</th><th>想定する役割</th></tr>
+<tr><td><strong>研究代表者グループ（人文社会・倫理担当）</strong></td><td>全体マネジメント、倫理審査、論文化、政策提言</td></tr>
+<tr><td><strong>研究代表者グループ（情報セキュリティ担当・主たる実施者 1）</strong></td><td>共通基盤の設計、暗号応用、第三者監査窓口</td></tr>
+<tr><td><strong>協働実施者グループ</strong></td><td>現場運営、当事者対話、運用主体の準備</td></tr>
+<tr><td><strong>連携グループ（高知）</strong></td><td>西日本・地域実証拠点</td></tr>
+<tr><td><strong>連携グループ（東京）</strong></td><td>首都圏・支援機関連携拠点</td></tr>
+<tr><td><strong>連携グループ（秋田）</strong></td><td>東北・地域格差検証拠点</td></tr>
+<tr><td><strong>コーディネーターグループ</strong></td><td>各機関間の調整、政策接続</td></tr>
+<tr><td><strong>海外連携（台湾 LASS コミュニティ等）</strong></td><td>国際的な知見共有（JST との直接契約は希望しない）</td></tr>
+</table>
+
+<h3>2. その他の協力者・機関（候補）</h3>
+
+<p>採択後に対話を進めることを想定している連携先カテゴリーを以下に示す。具体的な機関名・人物名は、本フェーズの初期段階で順次確定していく。</p>
+
+<ul>
+<li>内閣府男女共同参画局、こども家庭庁、厚生労働省自殺総合対策推進センター等の関係省庁</li>
+<li>都道府県警察生活安全部門、自治体担当部局</li>
+<li>弁護士会（DV・性暴力・労働・消費者問題関係委員会）、法テラス</li>
+<li>性暴力・DV・ストーカー領域の支援団体</li>
+<li>ハラスメント・労働被害領域の支援団体（外国人支援団体を含む）</li>
+<li>消費者問題関連団体・消費生活センター</li>
+<li>全国規模の支援団体ネットワーク</li>
+<li>大学倫理委員会、外部倫理委員（弁護士・当事者経験者・情報倫理学者）</li>
+<li>国内外のオープンソースコミュニティ（OpenMined Japan、Code for Japan 等）</li>
+<li>台湾 LASS コミュニティ、現代婦女基金會、台北市立大學等</li>
+</ul>
+
+<p>---</p>
+
+<h2>様式5-2　実施体制（研究代表者グループ）（A4 2 ページ厳守）</h2>
+
+<h3>1. 研究代表者グループの構成（想定）</h3>
+
+<table>
+<tr><th>役割</th><th>概要</th><th>エフォート目安</th></tr>
+<tr><td>研究代表者</td><td>大学等所属の研究者。情報法／ジェンダー研究／犯罪学／公衆衛生／情報セキュリティ等のいずれかの分野で本テーマに関心を持つ研究者</td><td>40%</td></tr>
+<tr><td>博士研究員 1 名</td><td>倫理審査・文献整理・論文化を担当</td><td>100%</td></tr>
+<tr><td>RA 2 名</td><td>データ分析、ステークホルダー対話の記録整理</td><td>各 50%</td></tr>
+<tr><td>主たる実施者 1（情報セキュリティ分野）</td><td>共通基盤の設計と暗号応用を担当</td><td>25%</td></tr>
+<tr><td>暗号応用研究員 1 名</td><td>OpenMined PSI 統合、運用支援</td><td>100%</td></tr>
+<tr><td>外部倫理委員 3 名</td><td>弁護士、当事者経験者、情報倫理学者</td><td>委嘱</td></tr>
+</table>
+
+<h3>2. 構想における位置付け</h3>
+
+<p>研究代表者グループは、本プロジェクトの <strong>学術的・倫理的中核</strong> として、以下を担う。</p>
+
+<ol>
+<li>情報法・社会科学・人文知を統合した学際的研究設計</li>
+<li>大学倫理委員会への申請と継続的倫理審査</li>
+<li>プロトコルの理論的正当性検証と外部第三者によるセキュリティ評価の委託</li>
+<li>プログラム総括・アドバイザーとの対話、他 SOLVE 採択プロジェクトとの相互学習</li>
+</ol>
+
+<p>特に、公募要領 p.21 Q&amp;amp;A で指摘される「<strong>社会課題への取り組みよりも、技術シーズの研究開発が前面に出ている</strong>」という典型的な不採択理由を回避するため、研究代表者グループの活動は、常に協働実施者グループの現場ニーズに応じる位置付けとする。</p>
+
+<h3>3. 特記事項</h3>
+
+<ul>
+<li>安全保障輸出管理：研究代表者所属機関の既存規程に準じて運用する。</li>
+<li>異動予定がある場合は確定次第連絡する。</li>
+<li>研究代表者・主たる実施者の最終的な氏名・所属は、書類選考通過後または採択後の手続きにおいて速やかに更新する。</li>
+</ul>
+
+<p>---</p>
+
+<h2>様式5-3　実施体制（協働実施者グループ）（A4 2 ページ厳守）</h2>
+
+<h3>1. 協働実施者グループの構成（想定）</h3>
+
+<table>
+<tr><th>役割</th><th>概要</th><th>エフォート目安</th></tr>
+<tr><td>協働実施者</td><td>社会課題に取り組む団体・組織の代表者</td><td>35%</td></tr>
+<tr><td>コーディネーター 1 名（採択後雇用）</td><td>機関間調整、政策接続、事業計画素案</td><td>100%</td></tr>
+<tr><td>現場支援員 2 名</td><td>当事者対話、心理的応急処置、仲介対応</td><td>各 50%</td></tr>
+<tr><td>法務アドバイザー 2 名（委嘱）</td><td>法務監査、弁護士会との連携</td><td>委嘱</td></tr>
+<tr><td>当事者経験者顧問 3 名（委嘱）</td><td>研究設計への当事者視点の統合</td><td>委嘱</td></tr>
+</table>
+
+<h3>2. 構想における位置付け</h3>
+
+<p>協働実施者グループは、本プロジェクトの <strong>現場実装と事業継続性の中核</strong> である。</p>
+
+<ol>
+<li>当事者の声を実証研究の各段階で集約・反映</li>
+<li>NPO・自治体・弁護士会との連携を実務的に進める</li>
+<li>実証研究における倫理的運用</li>
+<li>プロジェクト終了後の継続運用主体としての準備</li>
+</ol>
+
+<p>公募要領 p.15「<strong>協働実施者は社会課題に直面し研究者と協力して課題を解決することを希望する団体・組織の代表</strong>」「<strong>団体・組織を実質的に代表し社会課題に実際に取り組むことを想定</strong>」に厳密に合致する。役職的な代表者である必要はないとされているが、本提案では実質的に代表する立場の方を協働実施者とすることを想定している。</p>
+
+<h3>3. 特記事項</h3>
+
+<ul>
+<li>採択後、運用主体としての法人化（一般財団法人または公益的運用主体）を見据えた組織体制強化を進める。</li>
+<li>安全保障輸出管理：研究代表者所属機関の規程に準じて運用する。</li>
+</ul>
+
+<p>---</p>
+
+<h3>主たる実施者 2〜4 グループ（地域別連携）</h3>
+
+<p>各地域における主たる実施者の所属機関・氏名は、採択後の対話を通じて確定する。以下に各地域における構成の想定を示す。</p>
+
+<h4>高知連携グループ（地域実証拠点）</h4>
+<ul>
+<li>高知大学関連機関、地域自治体、地域市民団体</li>
+<li>自伐型林業実践者ネットワーク（地域知の協力）</li>
+<li>地域に根差した支援者・専門職</li>
+</ul>
+
+<h4>東京連携グループ（首都圏連携拠点）</h4>
+<ul>
+<li>性暴力・DV 領域の支援団体</li>
+<li>ハラスメント・労働被害領域の支援団体</li>
+<li>消費者問題関連団体</li>
+<li>弁護士会の関連委員会</li>
+<li>政策接続のための関係省庁との対話拠点</li>
+</ul>
+
+<h4>秋田連携グループ（地域格差検証拠点）</h4>
+<ul>
+<li>秋田大学医学部等の学術連携</li>
+<li>自殺総合対策関連の地域団体</li>
+<li>孤独孤立対策関連の地域団体</li>
+<li>県内自治体との連携</li>
+</ul>
+
+<p>---</p>
+
+<h3>海外連携グループ（台湾 LASS コミュニティ等）</h3>
+
+<p>JST との直接契約は希望しない。連携費用は協働実施者所属機関を経由して執行する。本フェーズでは海外での実証試験は行わず、可能性試験・実証試験は国内 3 地域に限定する（公募要領 Q&amp;amp;A 遵守）。</p>
+
+<p>安全保障輸出管理に関わる懸念がある場合は、研究代表者所属機関の規程に基づき個別審査を経る。</p>
+</details></section>
+<section id="draft_07"><details><summary>📋 様式 6 実績</summary><h2>様式6-1　研究・活動実績（研究代表者）（A4 3 ページ厳守）</h2>
+
+<blockquote>このセクションは研究代表者が確定次第、本人実績で全面差し替えてください。以下は記載例とフォーマット指針です。</blockquote>
+
+<h3>1. 研究代表者：［氏名］</h3>
+
+<h4>(1) 研究者情報等</h4>
+<ul>
+<li>氏名：［氏名］</li>
+<li>所属・役職：△△大学 大学院〇〇研究科 准教授／教授</li>
+<li>ORCID：［任意］</li>
+<li>researchmap：［URL］</li>
+<li>学歴：［博士号取得年・分野］</li>
+<li>専門分野：情報法／ジェンダー研究／犯罪学／プライバシー法／法情報学／ヒューマンセキュリティ 等のうち提案に整合する組合せ</li>
+</ul>
+
+<h4>(2) 研究・活動・マネジメント実績（10 件以内）</h4>
+
+<blockquote><strong>記載指針</strong>：本研究の遂行に直結する実績を選び、各項目に簡潔な説明を付す。学術論文は論文名、著者名（全著者を記載し研究代表者に下線）、掲載誌名、DOI、巻号や頁等、発表年（西暦）を明記。著者は T.Gijyutsu 等の略記可。下記は雛形。</blockquote>
+
+<ol>
+<li><strong>［論文名］</strong>, ［共著者1, &lt;u&gt;研究代表者&lt;/u&gt;, 共著者3］, <em>［ジャーナル名］</em>, ［Vol(No), pp.］, ［年］. DOI: ［10.xxxx/xxxxx］</li>
+</ol>
+<p>   → 本研究関連性：性暴力／DV／プライバシー法／暗号応用 等のいずれかに直結</p>
+<ol>
+<li>［著書情報、研究代表者下線］</li>
+</ol>
+<p>   → 関連性：…</p>
+<ol>
+<li>［国際会議招待講演、研究代表者下線］</li>
+</ol>
+<p>   → 関連性：…</p>
+<ol>
+<li>［特許：出願番号、発明者、発明の名称、出願人、出願日］</li>
+</ol>
+<p>   → 関連性：…</p>
+<ol>
+<li>［受託研究・JST/JSPS 等の研究代表実績、期間、本人受給研究費、エフォート］</li>
+</ol>
+<p>   → マネジメント能力の根拠</p>
+<ol>
+<li>［受賞］</li>
+</ol>
+<p>   → …</p>
+<ol>
+<li>［社会実装・政策貢献活動（審議会委員、ガイドライン策定等）］</li>
+</ol>
+<p>   → 公募要領様式 6-1 注「研究開発に限らず、実社会での課題解決に貢献した活動実績」</p>
+<ol>
+<li>［データセット／ソフトウェア／標準化貢献］</li>
+<li>［起業実績（あれば）］</li>
+<li>［その他、提案の遂行能力を示す実績］</li>
+</ol>
+
+<h4>補足：マネジメント能力の説明</h4>
+
+<p>研究代表者は、以下の点で本研究提案を遂行するための能力と、研究チーム責任者としての全体牽引能力を有する：</p>
+
+<ul>
+<li>［過去の代表プロジェクトの規模・期間・成果］</li>
+<li>［学際チーム編成経験：自然科学／人文社会／NPO 連携の三者調整経験］</li>
+<li>［IRB 申請・倫理審査経験］</li>
+<li>［プログラム総括・アドバイザーレベルとの対話経験／審議会委員経験］</li>
+<li>［当事者参画型研究の経験（参加型アクションリサーチ等）］</li>
+</ul>
+
+<p>---</p>
+
+<h2>様式6-2　研究・活動実績（協働実施者）（A4 3 ページ厳守）</h2>
+
+<blockquote>このセクションは協働実施者が確定次第、本人実績で全面差し替えてください。</blockquote>
+
+<h3>1. 協働実施者：［氏名］</h3>
+
+<h4>(1) 研究者情報等</h4>
+<ul>
+<li>氏名：［氏名］</li>
+<li>所属・役職：NPO 法人△△ 代表理事</li>
+<li>所属法人 設立年：［年］</li>
+<li>専門領域：性暴力／DV／ストーカー被害者支援、心理的応急処置、ジェンダー暴力対策</li>
+</ul>
+
+<h4>(2) 研究・活動・マネジメント実績（10 件以内）</h4>
+
+<blockquote><strong>記載指針</strong>：研究開発に限らず、実社会での課題解決に貢献した活動実績を中心に。各項目に「提案の遂行への重要性」を簡潔に付す。</blockquote>
+
+<ol>
+<li><strong>［NPO の主要事業名・期間・実績数］</strong>：例「性暴力被害者ホットライン運営（〇〇年〜現在、累計相談 〇〇件、連携機関 〇〇）」</li>
+</ol>
+<p>   → 本研究関連性：B 三地域パイロットの直接基盤</p>
+<ol>
+<li>［政府・自治体審議会委員等の経験］</li>
+</ol>
+<p>   → 関連性：内閣府／自治体との協定締結の信頼基盤</p>
+<ol>
+<li>［MOU／協定締結実績（警察、弁護士会、自治体）］</li>
+</ol>
+<p>   → 関連性：採択後の協定締結の実証</p>
+<ol>
+<li>［受託事業・助成事業の代表実績、規模、成果］</li>
+</ol>
+<p>   → 関連性：本予算規模のマネジメント能力</p>
+<ol>
+<li>［論文・書籍・報告書（あれば。報告書ベースで構わない）］</li>
+</ol>
+<p>   → 関連性：当事者視点の発信能力</p>
+<ol>
+<li>［国際会議発表／国際 NGO 連携実績］</li>
+</ol>
+<p>   → 関連性：台湾連携の現場基盤</p>
+<ol>
+<li>［受賞・社会的評価］</li>
+</ol>
+<p>   → 関連性：協働実施者としての適格性</p>
+<ol>
+<li>［メディア出演・政策提言活動］</li>
+</ol>
+<p>   → 関連性：成果アウトリーチ能力</p>
+<ol>
+<li>［研修事業・人材育成実績］</li>
+</ol>
+<p>   → 関連性：他地域展開のためのキャパシティビルディング</p>
+<ol>
+<li>［その他、提案の遂行能力を示す実績］</li>
+</ol>
+
+<h4>補足：マネジメント能力の説明</h4>
+
+<p>協働実施者は、以下の点で本研究提案を遂行するための能力と、社会課題解決の現場代表者としての適格性を有する：</p>
+
+<ul>
+<li>［NPO 経営年数と組織規模］</li>
+<li>［累積相談件数・支援件数］</li>
+<li>［警察・自治体・弁護士会との連携実績］</li>
+<li>［当事者参画型運営の経験］</li>
+<li>［マルチステークホルダー調整経験（行政・学界・メディア・国際 NGO）］</li>
+<li>［プロジェクト終了後の事業継続意思と具体的計画］</li>
+</ul>
+</details></section>
+<section id="draft_08"><details><summary>📋 様式 7-8 その他</summary><h2>様式7　他制度での助成等の有無</h2>
+
+<blockquote>各研究代表者・協働実施者の受給状況／申請状況を、研究課題ごとに記入してください（国内外を問わず、競争的資金・財団助成金・受託研究費・共同研究費を全て含む）。</blockquote>
+
+<h3>研究代表者：［氏名］</h3>
+
+<table>
+<tr><th>受給状況</th><th>制度名</th><th>研究課題名</th><th>役割</th><th>期間</th><th>本人受給研究費（千円・期間総額／年度別）</th><th>エフォート (%)</th></tr>
+<tr><td>申請</td><td><strong>本提案（JST RISTEX SOLVE for SDGs ソリューション創出フェーズ）</strong></td><td>暗数の彼方の被害者をつなぐ — FEWN</td><td>代表</td><td>2026.10-2030.3</td><td>直接経費合計 約 29,500（うち本人受給分は採択後確定）</td><td>40</td></tr>
+<tr><td>受給</td><td>［例：JSPS 科研費 基盤研究(B)］</td><td>［課題名］</td><td>代表／分担</td><td>［年度］</td><td>［千円］</td><td>［%］</td></tr>
+<tr><td>受給</td><td>［その他研究費］</td><td>［課題名］</td><td>代表／分担</td><td>［年度］</td><td>［千円］</td><td>［%］</td></tr>
+<tr><td>申請</td><td>［申請中の他制度（あれば）］</td><td>［課題名］</td><td>代表／分担</td><td>［年度］</td><td>［千円］</td><td>記入不要（「申請」のためエフォート空欄）</td></tr>
+</table>
+
+<p><strong>エフォート合計</strong>：本提案 40% ＋ 受給中研究費合計 ＝ 100% を超えない範囲で記入する。</p>
+
+<h3>協働実施者：［氏名］</h3>
+
+<table>
+<tr><th>受給状況</th><th>制度名</th><th>研究課題名</th><th>役割</th><th>期間</th><th>本人受給研究費（千円）</th><th>エフォート (%)</th></tr>
+<tr><td>申請</td><td><strong>本提案（JST RISTEX SOLVE for SDGs ソリューション創出フェーズ）</strong></td><td>暗数の彼方の被害者をつなぐ — FEWN</td><td>協働実施者</td><td>2026.10-2030.3</td><td>約 19,000（うち本人受給分は採択後確定）</td><td>35</td></tr>
+<tr><td>受給</td><td>［内閣府委託事業／自治体委託事業／民間財団助成 等］</td><td>［事業名］</td><td>代表</td><td>［年度］</td><td>［千円］</td><td>［%］</td></tr>
+</table>
+
+<p><strong>外国資金の受入について</strong>：本研究代表者・協働実施者ともに、外国機関からの研究費受入はない（採択時点）。今後受入が発生する場合は速やかに JST に連絡する。</p>
+
+<p>---</p>
+
+<h2>様式8　特記事項（A4 2 ページ厳守）</h2>
+
+<h3>1. 利益相反マネジメントにかかる申告</h3>
+
+<p>公募要領（共通事項）「第 2 章 2.8.2 選考体制と利益相反マネジメントの実施」に基づき、以下のとおり申告する。</p>
+
+<p><strong>プログラム総括／プログラム総括補佐／プログラムアドバイザーとの利害関係</strong>：</p>
+<ul>
+<li>公表されているプログラム総括（奈良 由美子・放送大学 教授）、総括補佐、プログラムアドバイザーの一覧（https://www.jst.go.jp/ristex/solve/about/summary.html）を確認の上、</li>
+</ul>
+
+<blockquote><strong>該当なし</strong> （※研究代表者・協働実施者・主たる実施者・グループリーダー全員について、上記評価者との a〜g いずれの利害関係も該当しない）</blockquote>
+
+<p>該当する場合は以下の表に記載：</p>
+
+<table>
+<tr><th>対象者</th><th>評価者氏名</th><th>該当要件 (a-g)</th><th>詳細・理由</th></tr>
+<tr><td>該当なし</td><td>-</td><td>-</td><td>-</td></tr>
+</table>
+
+<h3>2. 研究代表者の利益相反マネジメント</h3>
+
+<p>研究代表者に関係する機関（公募要領 (2) a-d）に所属する協働実施者、主たる実施者及びグループリーダーの有無：</p>
+
+<blockquote><strong>該当なし</strong></blockquote>
+
+<p>具体的に：</p>
+<ul>
+<li>a. 研究代表者等の研究成果を基に設立した機関：該当なし</li>
+<li>b. 研究代表者等が役員（CTO 含む、技術顧問除く）に就任している機関：該当なし</li>
+<li>c. 研究代表者が株式を保有している機関：該当なし</li>
+<li>d. 研究代表者が実施料収入を得ている機関：該当なし</li>
+</ul>
+
+<h3>3. JST の利益相反マネジメント</h3>
+
+<p>研究代表者・協働実施者・主たる実施者の所属機関の JST 出資先企業該当：</p>
+
+<blockquote><strong>該当なし</strong></blockquote>
+
+<p>JST 出資先企業一覧（https://www.jst.go.jp/entre/result.html#M01）を本事業の公募開始日（2026 年 4 月 8 日）時点で確認。</p>
+
+<h3>4. その他特記事項</h3>
+
+<h4>(1) 所属機関の異動予定</h4>
+
+<ul>
+<li>研究代表者：［現時点で未定 ／ 異動予定なし ／ ［年月］に〇〇大学へ異動予定］</li>
+<li>協働実施者：［現時点で未定 ／ 異動予定なし ／ ［年月］に〇〇法人へ異動予定］</li>
+<li>主たる実施者：［同上、各人ごと記載］</li>
+</ul>
+
+<h4>(2) 特別の任務等</h4>
+
+<ul>
+<li>研究代表者：［研究科長・専攻長・学会長等の管理職または特別任務がある場合はその時間配分を記載。なければ「特になし」］</li>
+<li>協働実施者：［理事長業務・他団体役員 等。なければ「特になし」］</li>
+</ul>
+
+<h4>(3) 受益者・現場参画の倫理的留意事項</h4>
+
+<ul>
+<li>性暴力・DV・ストーカー被害という極めて機微な情報を扱う研究であることから、研究代表者所属大学の IRB 審査を必須とし、外部倫理委員（弁護士・被害者経験者・情報倫理学者）3 名を加えた独立倫理パネルを設置する。</li>
+<li>被害当事者の研究参加は完全に任意であり、いつでも撤回可能。撤回時には端末データ・サーバ集約データの両方を削除する。</li>
+<li>児童ポルノ禁止法、刑事訴訟法、個情法、ストーカー規制法、DV 防止法、児童虐待防止法の各遵守事項について、四半期ごとに弁連監査を受ける体制を初年度から構築する。</li>
+</ul>
+
+<h4>(4) 公募要領で求められる若手・女性・ダイバーシティ推進への取り組み</h4>
+
+<p>公募要領 p.13・p.18 加点要素「<strong>若手や女性の研究者・実施者の積極的登用</strong>」に対応：</p>
+<ul>
+<li>博士研究員・コーディネーター・相談支援員の採用において、若手・女性・性的マイノリティ・障害当事者・外国籍者を積極的に登用する。</li>
+<li>採用方針として、被害当事者経験者の雇用を最低 1 名確保する（合理的配慮を伴う採用）。</li>
+<li>国際連携（台湾）において、女性研究者・実務家との連携を中核に置く（現代婦女基金會は女性主導の歴史を持つ団体）。</li>
+</ul>
+</details></section>
+<section id="draft_09"><details><summary>📋 16 評価視点セルフチェック</summary><h2>提案書セルフチェックリスト</h2>
+
+<p>公募要領 p.16-18「2.7 選考にあたっての主な視点」16 項目への対応確認。</p>
+
+<h3>必須評価視点（書類選考）</h3>
+
+<table>
+<tr><th>#</th><th>視点</th><th>提案書での対応</th><th>状態</th></tr>
+<tr><td>(1)</td><td>本プログラム趣旨合致、社会課題と 2030 ビジョン明確</td><td>様式2 §2.1（沈黙率60%、ギャップ係数18.36、4%連続加害者の三事実→2030ビジョン明示）</td><td>✅</td></tr>
+<tr><td>(2)</td><td>SDGs 17 ゴール／169 ターゲット関連整理</td><td>様式2 §2.1 末尾の対応表（Goal 5.1/5.2/5.5、16.1/16.3/16.6、10.2/10.3）</td><td>✅</td></tr>
+<tr><td>(3)</td><td>「誰一人置き去りにしない」包摂的、人権関連ゴールとの関連明確</td><td>様式2 §2.1 直視すべき三事実が暗数（置き去り）を直接扱う</td><td>✅</td></tr>
+<tr><td>(4)</td><td>ステークホルダー参画の効果指標・PDCA</td><td>様式4-1 §4-1.1 KPI 10 項目、四半期透明性レポート</td><td>✅</td></tr>
+<tr><td>(5)</td><td>受益者含むステークホルダー参画、複数地域継続実践、共創的協働体制</td><td>様式2 §2.3 三地域＋台湾、様式5 で NPO・弁連・警察協力体制明示</td><td>✅</td></tr>
+<tr><td>(6)</td><td>複数地域明確、主要ステークホルダー現状分析、共創価値</td><td>様式2 §2.3 表で 4 地域の特性・連携機関明示</td><td>✅</td></tr>
+<tr><td>(7)</td><td>研究代表者・協働実施者の経験・動機・熱意、ガバナンス主体</td><td>様式2 §2.5 役割明示、様式6-1/6-2 で実績、様式8 で倫理体制</td><td>✅（実績は本人確定後充実）</td></tr>
+<tr><td>(8)</td><td>社会実装の主な担い手としての協働実施者配置</td><td>様式2 §2.5、様式5-3、様式6-2 で NPO 代表が中核</td><td>✅</td></tr>
+<tr><td>(9)</td><td>資金計画適切</td><td>様式4-2 直接経費 約 5,450 万円、3 機関配分、4 費目内訳</td><td>✅</td></tr>
+<tr><td>(10)</td><td>プロジェクト終了後も担い手が継続する計画・体制</td><td>様式2 §2.7 一般財団法人化、5 つの継続資金源</td><td>✅</td></tr>
+<tr><td>(11)</td><td>2030 ビジョン、事業構想、展開先候補地、展開方法、論理的・現実的筋道</td><td>様式2 §2.7 事業構想 3 要素、様式4-1 D 項目</td><td>✅</td></tr>
+<tr><td>(12)</td><td>技術シーズが課題解決の具体的手段として適切、実証段階</td><td>様式2 §2.4、様式3 §3.4 で 5 つの既存技術シーズと予備試験完了を明示</td><td>✅</td></tr>
+<tr><td>(13)</td><td>実証試験計画の具体性（規模・参画者・実施場所）</td><td>様式4-1 §4-1.3 B 項目で各地 50 名規模、運営機関明示</td><td>✅</td></tr>
+<tr><td>(14)</td><td>コーディネーター／定着担い手／展開担い手の明示</td><td>様式4-1 §4-1.4 表で明示、公募要領 Q&amp;A 兼務例にも対応</td><td>✅</td></tr>
+<tr><td>(15)</td><td>リスクヘッジ・マイルストーン、全国仕組み構想、事業計画見通し</td><td>様式4-1 §4-1.2 リスク 6 種＋対策、16 マイルストーン</td><td>✅</td></tr>
+<tr><td>(16)</td><td>受益者特定・効果明確、他地域展開可能性具体的</td><td>様式2 §2.2 直接／間接受益者、様式3 §3.2 Before/After 7 局面</td><td>✅</td></tr>
+</table>
+
+<h3>加点要素</h3>
+
+<table>
+<tr><th>加点</th><th>対応箇所</th></tr>
+<tr><td>海外機関との連携可能性（国際的活動の広がり）</td><td>様式2 §2.3 台湾連携、様式4-1 C-2、様式5-3 グループ 5</td></tr>
+<tr><td>若手・女性の積極登用</td><td>様式8 §4-(4) ダイバーシティ推進方針</td></tr>
+</table>
+
+<h3>典型的不採択理由（公募要領 p.21 Q&amp;A）への回避策</h3>
+
+<table>
+<tr><th>典型理由</th><th>本提案での回避策</th></tr>
+<tr><td>社会課題への取り組みより技術シーズが前面</td><td>様式2・3 で技術シーズ部分は §2.4 のみ、残りは社会課題・受益者・地域・継続性に集中。「技術シーズの独自性ではなく、受益者からみた効果」（様式3 §3.2 Before/After）として論じる</td></tr>
+<tr><td>プロジェクト終了後の他地域展開が視野に入らない</td><td>様式4-1 C 項目（国内 10 都道府県＋台湾 3 都市）、D 項目（一般財団法人化、ハンドブック公開、5 年継続資金計画）</td></tr>
+<tr><td>受益者など重要ステークホルダーの参画が見られない</td><td>A-4 ステークホルダー対話（被害当事者 30 名・NPO 10 団体・弁護士 20 名）、被害者経験者顧問 3 名委嘱、外部倫理委員 3 名</td></tr>
+</table>
+
+<h3>形式チェック</h3>
+
+<table>
+<tr><th>項目</th><th>確認</th></tr>
+<tr><td>様式1（A4 2P）</td><td>OK</td></tr>
+<tr><td>様式2（A4 4P）</td><td>字数 6,800 字程度 → 図表入れて 4P 厳守</td></tr>
+<tr><td>様式3（A4 2P）</td><td>字数 3,500 字程度 → 2P 厳守</td></tr>
+<tr><td>様式4-1 本文（A4 3P）</td><td>字数 4,800 字程度 → 3P 厳守</td></tr>
+<tr><td>様式4-1 計画表（A4 1P）</td><td>OK（ガントチャート 16 項目）</td></tr>
+<tr><td>様式5-2（A4 2P）</td><td>OK</td></tr>
+<tr><td>様式5-3 各（A4 2P）</td><td>OK</td></tr>
+<tr><td>様式6-1（A4 3P）</td><td>本人確定後充実</td></tr>
+<tr><td>様式6-2（A4 3P）</td><td>本人確定後充実</td></tr>
+<tr><td>様式8（A4 2P）</td><td>OK</td></tr>
+<tr><td>フォント 10.5pt 以上</td><td>Word 様式デフォルト準拠</td></tr>
+<tr><td>青字記載ガイド削除</td><td>Word 様式に貼り込み時に必ず削除</td></tr>
+<tr><td>PDF 化エラー確認</td><td>e-Rad アップロード前に必ず開いて確認</td></tr>
+</table>
+
+<h3>提出前 To-Do（締切：2026 年 6 月 3 日（水）正午）</h3>
+
+<ol>
+<li>☐ 研究代表者（大学等所属の研究者）確定 — 情報法／ジェンダー研究／情報セキュリティ等の分野で本提案に合致する研究者をリクルート</li>
+<li>☐ 協働実施者（NPO 代表）確定 — 性暴力・DV・ストーカー支援団体の代表（NPO ぱっぷす、関西女性シェルターネット、全国シェルターネット等が候補）</li>
+<li>☐ 主たる実施者 2-4（東京・大阪・沖縄の NPO 代表）確定</li>
+<li>☐ 情報セキュリティ G リーダー（暗号研究者）確定</li>
+<li>☐ 様式6-1/6-2 を実際の業績で全面差し替え</li>
+<li>☐ 様式7 受給中助成等の正確な記載</li>
+<li>☐ 様式8 利益相反の本人確認（プログラム総括＝奈良由美子教授等との関係）</li>
+<li>☐ 内諾取得：警視庁・大阪府警・沖縄県警／東京・大阪・沖縄弁護士会／全国シェルターネット／OpenMined Japan</li>
+<li>☐ e-Rad 登録（研究代表者）— 提案書受付期限 6 月 3 日（水）正午 厳守</li>
+<li>☐ PDF 化後の文字化けチェック必須</li>
+</ol>
+</details></section>
+<section id="out_00"><details><summary>📋 外聯戦略</summary><h2>同伴ネットワーキング戦略（2026.5 〜 2027.4）</h2>
+
+<h3>目的</h3>
+<p>2027 年度 RISTEX SOLVE 応募（2027 年 4-6 月見込み）に向けて、約 11 ヶ月で以下を構築する：</p>
+<ol>
+<li>大学側シニア研究代表者の確保（情報法／ジェンダー法／犯罪学／情報セキュリティのいずれか）</li>
+<li>高知・大阪・東京等の地域実証ネットワーク</li>
+<li>POSSE 等労働 NPO・人権派弁護士・Civic Tech 等の協力体制</li>
+<li>小規模助成での実績蓄積（こども家庭庁・内閣府・地方創生 SDGs 等）</li>
+</ol>
+
+<h3>5 月時点で送付する 3 種類の文書</h3>
+
+<table>
+<tr><th>種類</th><th>ファイル</th><th>用途</th></tr>
+<tr><td><strong>共通紹介書</strong></td><td><code>01_project_intro_jp.md</code></td><td>全宛先共通の 1-3 ページ紹介書（PDF 化想定）</td></tr>
+<tr><td><strong>宛先別 cover</strong></td><td><code>02_cover_*.md</code></td><td>6 種類の短い cover letter（メール本文向け）</td></tr>
+<tr><td><strong>鈴木先生相談メモ</strong></td><td><code>03_suzuki_consultation.md</code></td><td>指導教官相談用の状況整理メモ</td></tr>
+</table>
+
+<h3>宛先 6 種</h3>
+
+<table>
+<tr><th>#</th><th>宛先</th><th>関係性</th><th>求める協力</th></tr>
+<tr><td>1</td><td>鈴木保志 教授（高知大学・指導教官）</td><td>指導教官</td><td>大学等所属パートナーの紹介 / 共同提案者候補 / 推薦状</td></tr>
+<tr><td>2</td><td>梼原町立道齊 課長</td><td>地方創生キーパーソン</td><td>高知地域実証フィールド提供 / 自治体連携書簡</td></tr>
+<tr><td>3</td><td>橋本光治 氏</td><td>地域実践者</td><td>在地ネットワーク紹介 / 自伐林業流の被害者ネットワーク思想</td></tr>
+<tr><td>4</td><td>POSSE / 労働 NPO</td><td>法理戦友</td><td>外国人技能実習生・労働被害者領域の連携 / 試用フィードバック</td></tr>
+<tr><td>5</td><td>日弁連 改革派・人権派弁護士</td><td>法務戦友</td><td>法務監査 / 連名告訴受任プール / IRB 倫理委員候補</td></tr>
+<tr><td>6</td><td>Code for Japan / Civic Tech</td><td>技術戦友</td><td>OSS コントリビューター / 暗号モジュール協力 / 地方ハッカースペース連携</td></tr>
+</table>
+
+<h3>メッセージング原則</h3>
+
+<ul>
+<li><strong>正直に「独立開発者」「修士課程」「商業 NPO ではない」と宣言</strong>：体裁を取り繕わない方が同伴を得やすい</li>
+<li><strong>被害経験を 1 段落で開示</strong>：Mapry 案件・無人機代理商・台湾→日本の経緯</li>
+<li><strong>完成しているものを淡々と示す</strong>：JUDB／EVIDENCE_BASE／FEWN 設計／35 件文献基盤</li>
+<li><strong>求めるものを具体的に</strong>：「一緒に申請する」「試用する」「紹介する」「批判する」の 4 段階</li>
+<li><strong>断りやすい設計</strong>：「30 分のオンライン面談」を最初のアスクに</li>
+<li><strong>学位や肩書きで武装しない</strong>：「Mapry の事件で動けなかった一人として」という出発点を一貫して維持</li>
+</ul>
+</details></section>
+<section id="out_01"><details><summary>📋 汎用紹介書（PDF 化用）</summary><h2>LegalShield プロジェクト紹介書</h2>
+
+<h3>誰一人置き去りにしない安全社会の AI／IoT 共創 — 台湾 LASS のオープンソース精神に学び、現場のデータから法改正の基盤を育てる</h3>
+
+<blockquote><strong>発信者</strong>：［お名前］／高知大学大学院 修士課程在籍／高知県在住</blockquote>
+<blockquote><strong>所属法人</strong>：［光伊Forest 等の法人名］</blockquote>
+<blockquote><strong>連絡先</strong>：Email ［ ］／Tel ［ ］／Web ［GitHub・プロジェクトサイト］</blockquote>
+<blockquote><strong>本書の位置付け</strong>：協力者・パートナー候補の皆様に、本プロジェクトの全体像と、ご検討いただきたい協力の形を 3 ページでお伝えするものです（2026 年 5 月版）</blockquote>
+
+<p>---</p>
+
+<h3>1. 出発点</h3>
+
+<p>私は現在、高知大学大学院で森林工学を専攻する修士課程の学生です。指導教官は本学の鈴木保志教授（学会理事長）。同時に、台湾から日本に渡って事業を立ち上げ、その過程で困難も経験した一人の生活者でもあります。</p>
+
+<p>数年前、台湾で <strong>Mapry 株式会社の無人機代理店として活動していた際、上流からの一方的な契約打ち切り、債権処理を巡る紛争、名誉に関わる内部文書の流通</strong>に直面しました。被害金額・心理的負担も小さくありませんでしたが、最も応えたのは「<strong>一人では司法・行政・社会のどこにも声が届きにくい</strong>」という構造そのものでした。</p>
+
+<p>その経験から学んだのは、性暴力・労働・行政手続き・消費者契約など、領域を問わず、<strong>「制度のはざまにいる方が、まだ十分な支援につながれていない」</strong>という社会全体に共通する課題でした。代表的な公的統計を挙げると：</p>
+
+<ul>
+<li>性暴力被害について、女性の約 6 割・男性の約 7 割が誰にも相談していない（内閣府 令和 5 年度）</li>
+<li>ストーカー相談 19,843 件に対して検挙 1,081 件（警察庁 令和 5 年版）</li>
+<li>同じ加害者・同じ事業者による複数被害という構造の存在が国際的に確認されている（Lisak &amp;amp; Miller 2002）</li>
+</ul>
+
+<p>「<strong>同じ加害者・同じ事業者・同じ窓口で別の被害者と出会う仕組み</strong>」が社会のどこにもないため、当事者は単独で立証責任を負わされ、解決の選択肢が狭まりやすい構造があります。</p>
+
+<p>私はこの課題に、自分が持っている技術と経験で、少しでも貢献したいと考えました。</p>
+
+<p>---</p>
+
+<h3>2. 構築しているもの — LegalShield プラットフォーム</h3>
+
+<p>LegalShield は、AI／IoT を統合した社会安全基盤プラットフォームです。<strong>外部資金ゼロで、独立開発として 2 年以上にわたって設計と試作を進めてきました</strong>。</p>
+
+<h4>(A) 横断的法令検索基盤（JUDB / Legal RAG）</h4>
+<p>警察庁・内閣府・厚生労働省・衛福部（台湾）等の公開統計と、e-Gov 法令 API 等の法令データを集約する DuckDB ベースの分析基盤。47 都道府県別の各種指標を可視化済。</p>
+
+<h4>(B) 共通機能モジュール群（設計済・試作段階）</h4>
+<ul>
+<li><strong>法令検索・参照</strong>：民法・刑法・行政法・労働法・消費者契約法等を横断的に検索</li>
+<li><strong>端末側での記録取得</strong>：スマートフォンの GPS・センサー・音声・画像をオンデバイスで処理</li>
+<li><strong>証拠保全</strong>：SHA-256 ハッシュチェーン、タイムスタンプによる改ざん防止</li>
+<li><strong>音声から専門文書への自動整形</strong>：Whisper 等を用いた窓口対応の文書化</li>
+<li><strong>行政手続支援書類の作成補助</strong>：申請書・上申書・不服申立て等のドラフト生成補助</li>
+<li><strong>プライバシー保護型協調検知</strong>：顔特徴量・位置情報をサーバに送らずに共通性を確認</li>
+<li><strong>支援機関とのマッチング</strong>：地理・専門性・言語によるマルチパラメータ対応</li>
+<li><strong>位置情報を活用した緊急連絡</strong></li>
+<li><strong>検証型運用のためのフィードバック収集と AI 改善</strong></li>
+</ul>
+
+<p>基盤となる技術は全てオープンソースまたは確立された学術成果です：</p>
+<ul>
+<li>顔特徴量抽出（FaceNet / ArcFace, CVPR 2015 / 2019）</li>
+<li>局所性鋭敏ハッシュ（Datar et al. 2004）</li>
+<li>私的集合交差（Pinkas et al. 2018、OpenMined PSI）</li>
+<li>閾値秘密分散方式（Shamir 1979）</li>
+<li>Project Callisto モデル（米国 30 以上の大学等で 10 年運用）</li>
+<li>大規模言語モデル（LLM／SLM）、地理情報システム（PostGIS）、音声認識（Whisper）</li>
+</ul>
+
+<h4>(C) エビデンス基盤</h4>
+<p>35 件の一次資料を整備済。内閣府男女間暴力調査原典、警察庁ストーカー・DV 年次報告、衛福部統計、Callisto・Lisak・LASS／AirBox 等の査読論文、日本・台湾の関連法令・判例。</p>
+
+<h4>(D) 設計書群</h4>
+<p>SAFETY_GIS_DESIGN／FEWN_DESIGN／EVIDENCE_BASE／EXPANSION_AND_DISPATCH_DESIGN／PIPELINE_AND_RISK_ANALYSIS／USER_AGREEMENT — シナリオ創出フェーズに相当する準備の完了を示す資料群。</p>
+
+<p>---</p>
+
+<h3>3. 台湾 LASS のオープンソース精神を継承</h3>
+
+<p>本プロジェクトは、台湾の市民科学プロジェクト <strong>LASS（Location Aware Sensor System、2015 年〜）</strong>および <strong>AirBox プロジェクト</strong> の理念に学んでいます。LASS は、PM2.5 を計測する市民参加型センサー網を完全オープンソース・自発的参加・分散運用で構築し、その蓄積データが台湾の環境政策と研究（<em>Nature Humanities &amp;amp; Social Sciences Communications</em> 2022 査読）に大きく寄与しました。</p>
+
+<table>
+<tr><th>LASS／AirBox の理念</th><th>LegalShield での継承</th></tr>
+<tr><td>完全オープンソース</td><td>全コードを MIT または Apache 2.0 で公開</td></tr>
+<tr><td>自発的参加</td><td>当事者・支援者・市民開発者の任意参加</td></tr>
+<tr><td>分散運用</td><td>鍵分散方式による地域団体主導の運用</td></tr>
+<tr><td>市民の主体的参画</td><td>NPO・自治体・大学・市民の対等な共創</td></tr>
+<tr><td>PM2.5 データ → 環境政策の改善</td><td>制度のはざまの実態 → 法改正の基盤</td></tr>
+</table>
+
+<p>---</p>
+
+<h3>4. 2030 年に目指す姿（ビジョン）</h3>
+
+<blockquote><strong>2030 年までに、日本に暮らす全ての方が、自身のプライバシーと尊厳を守られたまま、必要なときに必要な支援機関と安全につながることができる社会基盤を整える。同時に、当事者・現場・データから蓄積されたエビデンスを政策提言と法改正の基盤とし、より公正で安心して暮らせる国づくりに貢献する。</strong></blockquote>
+
+<p>---</p>
+
+<h3>5. 直近の動き — JST RISTEX SOLVE 2026 年度応募</h3>
+
+<p>JST 社会技術研究開発事業（RISTEX）の <strong>「SDGs の達成に向けた共創的研究開発プログラム（ソリューション創出フェーズ）」</strong>に、<strong>2026 年 6 月 3 日締切</strong>で応募します。</p>
+
+<ul>
+<li>採択 2 件程度・3 年半・直接経費上限 1,900 万円／年</li>
+<li>応募要件として、研究代表者または協働実施者の少なくとも一方が大学等所属である必要がある</li>
+<li><strong>本フェーズで実証研究を行う範囲</strong>は、3 領域（性暴力・労働・消費者）× 3 地域（高知・東京・秋田）に厳選</li>
+<li><strong>製品としての射程</strong>は全法律領域・全地域で、プロジェクト終了後の段階的展開を計画</li>
+</ul>
+
+<p>応募の有無にかかわらず、本プロジェクトは独立に継続します。<strong>この応募準備のプロセスそのものが、ステークホルダーとの対話・現場知の蓄積・連携体制の構築という、本研究の中身そのもの</strong>だからです。</p>
+
+<p>---</p>
+
+<h3>6. ご検討いただきたい協力の形</h3>
+
+<table>
+<tr><th>レベル</th><th>内容</th><th>求めるリソース</th></tr>
+<tr><td><strong>① 30 分の対話</strong></td><td>プロジェクトを聞いていただき、率直なご批判・ご助言をいただく</td><td>30 分のオンラインまたは対面</td></tr>
+<tr><td><strong>② 紹介</strong></td><td>適切な研究者・実務家・NPO・自治体・弁護士をご紹介いただく</td><td>メールでのご紹介 1 件</td></tr>
+<tr><td><strong>③ 試用・フィードバック</strong></td><td>JUDB の暗数可視化レポートのご試用、設計書の批判的レビュー</td><td>1〜2 時間</td></tr>
+<tr><td><strong>④ 共同提案・連携</strong></td><td>RISTEX 応募の協働実施者・連携機関等としてご参加いただく可能性のご検討</td><td>機関同意プロセス</td></tr>
+</table>
+
+<p>最も多くの方には ① か ② をお願いしています。<strong>お断りいただきやすい設計</strong>にしているつもりです。ご関心がなければ、遠慮なくその旨お伝えください。</p>
+
+<p>---</p>
+
+<h3>7. 私の立ち位置 — 何ではないか</h3>
+
+<p>正直さが信頼の出発点だと考えていますので、明示しておきます：</p>
+
+<ul>
+<li><strong>大学教員でも研究機関職員でもありません</strong>：森林工学の修士課程に在籍しています。情報法・ジェンダー研究の専門教育は受けていません。だからこそ、大学側の研究代表者を必要としています</li>
+<li><strong>大手 NPO の代表でもありません</strong>：個人法人レベルでの独立開発者です</li>
+<li><strong>被害者支援の現場経験は限定的</strong>です：自身の被害経験から出発していますが、現場経験豊富な NPO のご指導を必要としています</li>
+<li><strong>商業化を主目的にしていません</strong>：暗号モジュールはオープンソース公開する設計です</li>
+<li><strong>政治的中立</strong>です：特定の政党・運動・思想に属していません</li>
+</ul>
+
+<p>3 ページお読みいただき、ありがとうございました。30 分の対話を一度だけお願いできれば、それで十分です。</p>
+
+<p>［日付・お名前・署名］</p>
+</details></section>
+<section id="out_02"><details><summary>📋 Cover ① 鈴木先生</summary><h2>Cover ① 鈴木保志 教授（指導教官・高知大学）</h2>
+
+<blockquote><strong>送信タイミング</strong>：5/22（明日朝）／対面で口頭フォロー</blockquote>
+<blockquote><strong>目的</strong>：(A) RISTEX 応募の研究代表者を引き受けていただくか、(B) 引き受けられなくとも適切な大学側パートナーをご紹介いただく</blockquote>
+<blockquote><strong>形式</strong>：メール本文 + 紹介書 PDF 添付</blockquote>
+
+<p>---</p>
+
+<p><strong>件名</strong>：【ご相談】JST 社会技術研究開発事業（RISTEX）応募についてのお願い／LegalShield プロジェクト</p>
+
+<p>鈴木先生</p>
+
+<p>いつもお世話になっております。森林工学専攻 修士課程の［氏名］です。</p>
+
+<p>突然のご相談で恐縮ですが、<strong>本日から 13 日後（2026 年 6 月 3 日正午）に締切が迫っている JST 社会技術研究開発事業（RISTEX）の「SDGs の達成に向けた共創的研究開発プログラム（ソリューション創出フェーズ）」に応募したく、先生のお力をお借りしたくお願い申し上げます。</strong></p>
+
+<p>応募テーマは、私が個人として 2 年以上開発してきた <strong>「LegalShield／FEWN」</strong> という被害者支援の暗号学的協調ネットワークです。私自身が台湾で代理商被害を経験したことを出発点とし、性暴力・DV・ストーカー・労働被害の被害者が「同じ加害者の別の被害者」と暗号学的にのみ出会える社会基盤を構築する研究開発です。詳細は添付の 3 ページ紹介書をご覧ください。</p>
+
+<p>ご相談したいのは以下の点です：</p>
+
+<p><strong>① 応募要件として、研究代表者または協働実施者の少なくとも一方が「大学等」所属である必要があります。</strong> 私自身は協働実施者（独立開発者・法人代表）として応募する想定ですが、<strong>研究代表者として鈴木先生にお名前を出させていただくことが可能か</strong> を伺いたく存じます。</p>
+
+<p>ご専門は森林工学・地域科学でいらっしゃいますが、本プロジェクトの根底には、先生方の自伐型林業に学んだ「<strong>重機を山に上げない、小さく回す、地域に主権を残す</strong>」という思想が分散型暗号ネットワーク設計に大きく流れ込んでいます。提案書の中でも、地方分散型のソリューション設計が中央集権モデルと根本的に異なる正当化として、この高知での実践哲学を引用させていただきたいと考えています。</p>
+
+<p><strong>② ご事情により困難な場合は、本学内または学会人脈から、情報法・ジェンダー法・犯罪学・情報セキュリティのいずれかの分野で本テーマに関心を持っていただけそうな研究者をご紹介いただけないでしょうか。</strong> RISTEX 採択は 2 件程度と極めて競争的ですが、本年度に応募準備のプロセスを通すこと自体が、共同研究者・地域 NPO・自治体との関係構築になると考えています。</p>
+
+<p>来週 5 月 26-29 日に東京出張（宇宙展参加と関連 NPO 訪問）を予定しているため、それまでに方針を固めたく、<strong>今週中に 30 分ほどお時間をいただけないでしょうか。</strong> 研究室で直接お話しできれば一番ありがたいです。</p>
+
+<p>提案書本体（様式 1-8）も既にほぼ完成しております。先生にご覧いただける状態です。</p>
+
+<p>ご無理のない範囲で、率直なご助言をいただければ幸いです。本テーマで応募できなくとも、先生の周囲に少しでも関心ある方がいらっしゃれば、それだけで十分前に進めます。</p>
+
+<p>何卒よろしくお願い申し上げます。</p>
+
+<p>［氏名］</p>
+<p>高知大学大学院 ○○科 修士課程</p>
+<p>Email：［ ］</p>
+<p>Tel：［ ］</p>
+
+<p>---</p>
+
+<h3>補足メモ（先生との対面会話用・送信しない）</h3>
+
+<h4>鈴木先生に予想される反応と対応</h4>
+
+<table>
+<tr><th>反応</th><th>こちらの返し</th></tr>
+<tr><td>「私の専門ではない」</td><td>「専門性は他の主たる実施者と地域 NPO で補います。先生には研究代表者として全体倫理と高知拠点性をご担保いただくのみ。実務は私が」</td></tr>
+<tr><td>「修士課程の学生がそんな規模の研究をやれるのか」</td><td>「だからこそ先生のお名前で『大学等所属』要件を満たすご相談。実務は私と協力 NPO で。先生のご負担を月 5 時間以下に抑えるマネジメント計画を提案書様式 5-2 に明示」</td></tr>
+<tr><td>「学会理事長として責任問題になる」</td><td>「IRB 申請を必須として外部倫理委員 3 名を置く設計。性暴力被害者データは一切扱わない（暗号学的非識別のため）。法務監査は弁連が行う」</td></tr>
+<tr><td>「他の先生を紹介する方が良い」</td><td>「ぜひお願いします。情報法・ジェンダー研究・犯罪学の高知大学内・他大学・学会人脈で 2-3 名紹介をお願いします」</td></tr>
+<tr><td>「6/3 は厳しいから来年で」</td><td>「正論です。ただし、応募準備プロセス自体が研究の中身（ステークホルダー対話）。本年度応募は事実上の予行演習として位置付けます」</td></tr>
+</table>
+
+<h4>持参するもの</h4>
+<ul>
+<li>紹介書 (3 ページ印刷)</li>
+<li>提案書様式 1-4 抜粋（10 ページ程度）</li>
+<li>13 日スプリント計画表</li>
+</ul>
+</details></section>
+<section id="out_03"><details><summary>📋 Cover ② 高知ローカル</summary><h2>Cover ② 高知ローカル：梼原町立道齊課長／橋本光治氏</h2>
+
+<p>---</p>
+
+<h3>②-A 梼原町 立道齊 課長 宛</h3>
+
+<blockquote><strong>送信タイミング</strong>：5/22-23</blockquote>
+<blockquote><strong>目的</strong>：高知地域実証フィールドとしての梼原町連携、自治体側の理解者として</blockquote>
+<blockquote><strong>形式</strong>：メール + 紹介書添付。可能なら 5/24-25 までに対面または電話</blockquote>
+
+<p><strong>件名</strong>：【ご相談】被害者支援の地域実証について／梼原町でのご助言のお願い</p>
+
+<p>立道齊 課長</p>
+
+<p>先日は貴重なお時間をいただき、誠にありがとうございました。森林工学修士課程の［氏名］です。</p>
+
+<p>梼原町の取り組みから学ばせていただいた「<strong>地域に主権を残し、小さく分散して回す</strong>」という思想が、私が個人で開発している被害者支援プロジェクト「<strong>LegalShield／FEWN</strong>」の根底設計に大きく流れ込んでおります。今回、JST 社会技術研究開発事業（RISTEX）への 6 月 3 日締切の応募準備にあたり、課長にご相談したいことがございます。</p>
+
+<p>私のプロジェクトは、性暴力・DV・ストーカー・労働被害の被害者が「同じ加害者の別の被害者」と暗号学的にのみ出会える分散型ネットワークです（添付 3 ページ紹介書ご参照）。<strong>中央集権的な巨大プラットフォームではなく、地域ごとに分散して運用される設計</strong>で、これは梼原町のような自治体が主体性をもって地域内被害者を守る仕組みになり得ます。</p>
+
+<p>ご相談したい点：</p>
+
+<p><strong>① 採択された場合の地域実証フィールドとして、梼原町（または高知県内自治体連携）でのパイロットの可能性について、お考えをお聞かせいただけませんでしょうか。</strong> 実証は 2027 年度以降になりますが、応募書類に「<strong>地域連携の可能性についての予備対話を実施済み</strong>」と書ける程度の方向性があれば、採択確率が大きく上がります。</p>
+
+<p><strong>② 自治体側から見て、本プロジェクトに対する懸念点・改善すべき点があれば率直にご指摘いただきたく。</strong> 採択された場合、当然ながら町長判断・議会説明・住民対話を経て初めて実証に進むものですので、現段階では「相談したことがある」「興味を持ってくださった」というだけで十分なステップです。</p>
+
+<p>来週 5 月 26-29 日は東京出張のため不在ですが、<strong>今週中（5/23-25）または 5/30 以降に 30 分ほどお時間いただけませんでしょうか。</strong> 役場にお伺いするのも、お電話でも結構です。</p>
+
+<p>突然の図々しいお願いで恐縮ですが、被害者の声を地域から立ち上げる試みとして、少しでもご関心いただければ幸いです。</p>
+
+<p>何卒よろしくお願い申し上げます。</p>
+
+<p>［氏名］</p>
+<p>高知大学大学院 修士課程</p>
+<p>Email：［ ］／Tel：［ ］</p>
+
+<p>---</p>
+
+<h3>②-B 橋本光治 氏 宛</h3>
+
+<blockquote><strong>送信タイミング</strong>：5/22-23</blockquote>
+<blockquote><strong>目的</strong>：自伐型林業実践者として、本プロジェクトの「分散・自立・小規模」思想への賛同と人脈紹介</blockquote>
+
+<p><strong>件名</strong>：【ご相談】自伐林業に学んだ思想で被害者支援を作っています／橋本さんへのご報告</p>
+
+<p>橋本光治 様</p>
+
+<p>ご無沙汰しております。森林工学修士課程の［氏名］です。</p>
+
+<p>以前お話を伺った折に、橋本さんから教えていただいた「<strong>重機を山に上げない、小さく分散して回す、自分の山は自分で守る</strong>」という自伐型林業の思想が、私が個人で開発している被害者支援プロジェクトの根底に流れています。今日はそのご報告と、ご相談を一つさせていただきたくメールいたしました。</p>
+
+<p>私のプロジェクト「LegalShield／FEWN」は、性暴力・DV・ストーカー・労働被害の被害者が「同じ加害者の別の被害者」と暗号学的に出会える仕組みです。<strong>中央集権的な巨大プラットフォームを作るのではなく、地域 NPO ごとに暗号鍵を分散保管し、それぞれの地域で自立して回せる設計</strong> にしています。これはまさに「自分の山は自分で守る」という考え方を、デジタル空間に翻訳したものです（添付 3 ページ紹介書ご参照）。</p>
+
+<p>JST 社会技術研究開発事業（RISTEX）に 6 月 3 日締切で応募準備中です。仮に採択されれば、高知を主要な実証地の一つにしたいと考えています。</p>
+
+<p>ご相談したいのは：</p>
+
+<p><strong>① この「分散・自立・小規模」という設計思想について、自伐林業の実践者の視点から率直なご批判をいただきたく。</strong> 大規模助成金で巨大プラットフォームを作ろうとする計画になっていないか、地域に主権が残る設計になっているか、目で見ていただきたいです。</p>
+
+<p><strong>② 高知県内で、被害者支援・人権・地域実践に関わっておられる方をご存知でしたら、ご紹介いただけませんでしょうか。</strong> 弁護士・NPO・地域起こし協力隊・支援員、どなたでも。</p>
+
+<p>今週中（5/22-25）または 5/30 以降に 30 分ほど、現場でお話しできれば一番ありがたいです。電話でも結構です。</p>
+
+<p>突然の連絡で恐縮ですが、橋本さんの実践から学んだことが本プロジェクトに息づいているという報告だけでも、お伝えできれば幸いです。</p>
+
+<p>［氏名］</p>
+<p>Email：［ ］／Tel：［ ］</p>
+</details></section>
+<section id="out_04"><details><summary>📋 Cover ③ 東京 NPO・弁連</summary><h2>Cover ③ 東京 NPO（5/26-29 訪問可能性）</h2>
+
+<p>東京出張期間中に対面 30 分のアポを取るための初回連絡メール。</p>
+<p>返信が来た時の絞り込みで対応可能件数を判断する。</p>
+
+<p>---</p>
+
+<h3>③-A NPO 法人ぱっぷす（性的搾取・性暴力被害支援）</h3>
+
+<p><strong>件名</strong>：【面談のお願い】被害者支援プロジェクトのご相談／5/26-29 東京滞在中</p>
+
+<p>NPO 法人ぱっぷす ご担当者様</p>
+
+<p>突然のご連絡失礼いたします。高知大学大学院 修士課程在籍の［氏名］と申します。台湾出身で、現在は高知県を拠点に独立開発者として被害者支援のデジタル基盤を構築しています。</p>
+
+<p>私自身が台湾で代理商被害（無人機企業からの不当な債権処理・名誉毀損）を経験したことを出発点に、<strong>性暴力・DV・ストーカー・労働搾取の被害者が、顔写真や位置情報を一切サーバに送らないまま、「同じ加害者を記録した別の被害者」と暗号学的に出会える分散型ネットワーク</strong> を 2 年以上独力で設計・開発してきました（添付 3 ページ紹介書ご参照）。</p>
+
+<p>米国 Project Callisto（30+ 大学で 10 年運用、ACM COMPASS 査読）の発展版で、テキスト依存ではなく <strong>顔エンベディング LSH</strong> を加えることで改名・別アカウントによる逃亡を貫通する世界初の社会実装を目指しています。基盤技術（PSI、閾値暗号、Callisto モデル）は全て既存の学術成果の組み合わせです。</p>
+
+<p>JST 社会技術研究開発事業（RISTEX SDGs ソリューション創出フェーズ）に 6 月 3 日締切で応募準備をしており、<strong>ぱっぷす様の現場知見・倫理基準・被害者中心アプローチをご教示いただきたく</strong>、連絡を差し上げました。</p>
+
+<p><strong>5 月 26 日（火）〜 29 日（金）に東京滞在予定</strong>（宇宙展参加のため）です。<strong>この期間中に 30 分ほど対面または近隣でのコーヒー面談をお願いできませんでしょうか。</strong> 難しければオンラインでも結構です。</p>
+
+<p>お願いしたいことは：</p>
+
+<table>
+<tr><th>レベル</th><th>内容</th></tr>
+<tr><td>①</td><td>30 分の対話 — プロジェクトをお聞きいただき、率直な批判をいただく</td></tr>
+<tr><td>②</td><td>ご教示 — 性暴力被害者支援の倫理基準・現場経験で見落としている点</td></tr>
+<tr><td>③</td><td>試用 — JUDB（暗数可視化レポート）と FEWN 設計書のレビュー</td></tr>
+<tr><td>④</td><td>連携 — RISTEX 採択時の協働実施者または連携機関としてご検討いただく</td></tr>
+</table>
+
+<p>私は独立開発者・修士課程の学生という非典型的な立場で、大手 NPO でも研究機関職員でもありません。だからこそ、ぱっぷす様のような現場経験のある団体のご批判を強く必要としています。<strong>ご関心がなければ遠慮なくお断りください。</strong> それでもこの紹介書だけでも目を通していただければ、十分です。</p>
+
+<p>ご検討よろしくお願い申し上げます。</p>
+
+<p>［氏名］</p>
+<p>高知大学大学院 修士課程</p>
+<p>Email：［ ］／Tel：［ ］／Web：［ ］</p>
+
+<p>---</p>
+
+<h3>③-B 一般社団法人 Lifelink / 全国シェルターネット（DV・自殺対策・女性支援）</h3>
+
+<blockquote>Lifelink は自殺対策・孤立対策。全国シェルターネットは DV・女性支援。</blockquote>
+<blockquote>どちらも同じテンプレで打診（送り分け）。</blockquote>
+
+<p><strong>件名</strong>：【面談のお願い】被害者支援の暗号学的協調ネットワーク／5/26-29 東京滞在中</p>
+
+<p>［団体名］ ご担当者様</p>
+
+<p>突然のご連絡失礼いたします。高知大学大学院 修士課程在籍の［氏名］と申します。</p>
+
+<p>台湾出身で、自身の代理商被害を出発点に、<strong>被害者が「同じ加害者の別の被害者」と暗号学的に出会える分散型ネットワーク「LegalShield／FEWN」</strong> を独力で設計・開発しています（添付 3 ページ紹介書ご参照）。</p>
+
+<p>ストーカー相談 19,843 件に対し検挙わずか 1,081 件（ギャップ係数 18.36 倍）、性暴力被害の沈黙率 60-70% という構造を直視するため、米国 Project Callisto（30+ 大学 10 年実証）の発展版として、<strong>プライバシーを完全に守ったまま複数被害者の連名告訴を可能にする</strong> 技術基盤を作っています。</p>
+
+<p>JST 社会技術研究開発事業（RISTEX）に 6 月 3 日締切で応募準備中です。<strong>［団体名］様の長年にわたる現場経験と被害者中心の倫理に学ばせていただきたく、面談をお願い致します。</strong></p>
+
+<p><strong>5 月 26 日（火）〜 29 日（金）東京滞在中</strong> に、30 分の対面または近隣面談をお願いできませんでしょうか。難しければオンラインでも。</p>
+
+<p>私は独立開発者・修士の立場で、大手研究機関でも全国組織でもありません。だからこそ、長年の現場をご存知の皆様のご批判を強く求めています。<strong>ご関心がなければ遠慮なくお断りください。</strong> 紹介書だけでも一読いただければ、十分です。</p>
+
+<p>何卒よろしくお願い申し上げます。</p>
+
+<p>［氏名］</p>
+<p>Email：［ ］／Tel：［ ］</p>
+
+<p>---</p>
+
+<h3>③-C 日本弁護士連合会（人権擁護委員会・両性の平等委員会）</h3>
+
+<p><strong>件名</strong>：【ご助言のお願い】被害者支援の暗号学的協調ネットワークと法務監査体制／5/26-29 東京滞在</p>
+
+<p>日本弁護士連合会 ［委員会名］ ご担当者様</p>
+
+<p>突然のご連絡失礼いたします。高知大学大学院 修士課程在籍の［氏名］と申します。</p>
+
+<p>台湾出身、代理商被害（Mapry 株式会社案件）の経験から、<strong>性暴力・DV・ストーカー・労働被害の被害者が暗号学的にのみ「同じ加害者の別の被害者」と出会える</strong> 分散型ネットワーク「LegalShield／FEWN」を独力で設計しています。基盤技術は全て既存の学術成果（PSI、閾値暗号、Callisto モデル等）の組み合わせです（添付 3 ページ紹介書）。</p>
+
+<p>JST 社会技術研究開発事業（RISTEX）に 6 月 3 日締切で応募準備中ですが、本プロジェクトは <strong>個情法、ストーカー規制法、DV 防止法、刑事訴訟法、児童ポルノ禁止法、名誉毀損、弁護士法 72 条</strong> 等、複合的な法的論点を内包しています。</p>
+
+<p><strong>そのため、研究開発期間中の継続的な法務監査と倫理審査体制が必須</strong> と考えており、日弁連の人権・両性平等関係委員会のご助言を強く必要としています。</p>
+
+<p><strong>5 月 26-29 日に東京滞在予定</strong> のため、この期間中に 30 分のご面談（個別委員の方でも、事務局のご紹介でも）をお願いできませんでしょうか。</p>
+
+<p>求めているのは：</p>
+<ul>
+<li>法的論点の事前点検と懸念点のご指摘</li>
+<li>採択時の継続的法務監査体制への協力打診（個別弁護士事務所・委員会経由）</li>
+<li>「連名告訴」運用設計への助言</li>
+</ul>
+
+<p>私は法律の素人ですので、根本的に誤った設計があれば早期にご指摘いただきたく存じます。</p>
+
+<p>何卒よろしくお願い申し上げます。</p>
+
+<p>［氏名］</p>
+<p>Email：［ ］／Tel：［ ］</p>
+</details></section>
+<section id="out_05"><details><summary>📋 Cover ④⑤ POSSE / Civic Tech</summary><h2>Cover ④ POSSE（労働 NPO）／⑤ Code for Japan（Civic Tech）</h2>
+
+<p>---</p>
+
+<h3>④ POSSE / 総合サポートユニオン（労働被害 NPO）</h3>
+
+<p><strong>件名</strong>：【ご相談】労働被害と性暴力被害をつなぐ暗号学的協調ネットワーク／5/26-29 東京滞在中</p>
+
+<p>NPO 法人 POSSE ご担当者様</p>
+
+<p>突然のご連絡失礼いたします。高知大学大学院 修士課程の［氏名］と申します。</p>
+
+<p>私は台湾出身で、台湾国内で <strong>Mapry 株式会社の無人機代理商として活動中に、上流企業からの不当な債権処理・名誉毀損文書の流通</strong> という被害を経験しました。「一人では司法・行政のどこにも声が届かない」という構造に直面し、その経験から <strong>被害者が「同じ加害者の別の被害者」と暗号学的に出会える分散型ネットワーク「LegalShield／FEWN」</strong> を独力で設計・開発しています（添付 3 ページ紹介書）。</p>
+
+<p>本プロジェクトは性暴力・DV・ストーカーを主な対象に設計していますが、<strong>同じ構造（沈黙率の高さ、ギャップ係数の大きさ、連続加害者の存在）は外国人技能実習生・労働搾取・代理商被害にも完全に当てはまります</strong>。POSSE 様が日々第一線で対峙されている、警察・労働基準監督署が動かない事案、企業による組織的な圧力、被害者が孤立する構造は、まさに本プロジェクトが想定する対象そのものです。</p>
+
+<p>JST 社会技術研究開発事業（RISTEX）に 6 月 3 日締切で応募準備中ですが、応募の有無にかかわらず、<strong>POSSE 様の現場経験から本プロジェクトの設計に決定的なご批判をいただきたく</strong> ご連絡しました。</p>
+
+<p><strong>5 月 26-29 日東京滞在中</strong> に、30 分のオンラインまたは対面面談をお願いできませんでしょうか。</p>
+
+<p>求めているのは：</p>
+
+<table>
+<tr><th>レベル</th><th>内容</th></tr>
+<tr><td>①</td><td>30 分の対話 — 労働被害領域での適用可能性についてのご批判</td></tr>
+<tr><td>②</td><td>紹介 — 外国人技能実習生支援・反企業犯罪領域の協力者紹介</td></tr>
+<tr><td>③</td><td>試用 — JUDB（暗数可視化）に労働被害統計を加える協働</td></tr>
+<tr><td>④</td><td>連携 — RISTEX 採択時の主たる実施者または連携機関</td></tr>
+</table>
+
+<p>私は政治的中立で、特定の運動・政党に属していません。被害者の救済という一点でのみ動いています。<strong>ご関心がなければ遠慮なくお断りください。</strong></p>
+
+<p>何卒よろしくお願い申し上げます。</p>
+
+<p>［氏名］</p>
+<p>高知大学大学院 修士課程</p>
+<p>Email：［ ］／Tel：［ ］</p>
+
+<p>---</p>
+
+<h3>⑤ Code for Japan / 地域 Civic Tech コミュニティ</h3>
+
+<p><strong>件名</strong>：【協力者募集】被害者支援の暗号学的協調ネットワーク（OSS）／5/26-29 東京滞在中</p>
+
+<p>Code for Japan ［担当部署 / ブリゲード］ご担当者様</p>
+
+<p>突然のご連絡失礼いたします。高知大学大学院 修士課程の［氏名］と申します。</p>
+
+<p>私は独立開発者として <strong>被害者が「同じ加害者の別の被害者」と暗号学的に出会える分散型ネットワーク「LegalShield／FEWN」</strong> を 2 年以上、外部資金ゼロで設計・開発しています（添付 3 ページ紹介書）。</p>
+
+<p>技術スタック：</p>
+<ul>
+<li><strong>基盤暗号</strong>：OpenMined PSI、SQLCipher、Threshold Cryptography（Shamir 1979）</li>
+<li><strong>顔エンベディング</strong>：FaceNet/ArcFace の端末ローカル推論</li>
+<li><strong>データ基盤</strong>：DuckDB ベースの暗数定量化データベース（JUDB）、47 都道府県別ギャップ係数の可視化</li>
+<li><strong>設計思想</strong>：中央集権プラットフォームではなく、<strong>地域 NPO ごとに暗号鍵を分散保管する自立分散型</strong></li>
+</ul>
+
+<p>ソースコードは将来的に <strong>完全 OSS 公開</strong> する計画です。MIT または Apache 2.0 を想定。商業化は目的ではなく、暗号モジュールは公益財産として公開し、運用主体（NPO 連合）のみが営業活動を行う構造です。</p>
+
+<p>JST 社会技術研究開発事業（RISTEX）に 6 月 3 日締切で応募準備中ですが、応募の有無にかかわらず、Code for Japan コミュニティの皆様にご相談したいことが 3 つあります：</p>
+
+<ol>
+<li><strong>技術レビュー</strong> — FEWN 設計書の暗号プロトコル・脅威モデル・実装パスを批判的にレビューしていただきたく</li>
+<li><strong>OSS コントリビューター募集</strong> — 特に PSI 統合・端末暗号化・GIS 可視化の実装パートに参加していただける方を募集</li>
+<li><strong>地域ブリゲード連携</strong> — 高知・大阪・東京等の地域ブリゲードで、本プロジェクトを話題にする勉強会の機会をいただけないか</li>
+</ol>
+
+<p><strong>5 月 26-29 日東京滞在中</strong> にどなたかと 30 分お話しできれば嬉しいです。Code for Japan Slack や Discord でのチャンネル開設も歓迎します。</p>
+
+<p>私は大企業エンジニアでも研究機関職員でもなく、<strong>「読空気を読まされる職場で疲弊した一人」「制度の隙間から落ちた被害者の一人」として始めた</strong>プロジェクトです。同じ問題意識を持つ技術者の皆さんと、対等に協働したいと思っています。</p>
+
+<p>何卒よろしくお願い申し上げます。</p>
+
+<p>［氏名］</p>
+<p>高知大学大学院 修士課程</p>
+<p>Email：［ ］／Tel：［ ］／GitHub：［ ］</p>
+</details></section>
+<section id="out_06"><details><summary>📋 13 日スプリント計画</summary><h2>13 日スプリント詳細計画（5/21 〜 6/3）</h2>
+
+<h3>全体クリティカルパス</h3>
+
+<pre>
+今日(5/21) → 鈴木先生メール送信準備
+        ↓
+明日(5/22) → 鈴木先生メール送信＋アポ取得（同日）
+        → 高知ローカル2件 + 東京NPO 3-4件 + POSSE + Civic Tech + 弁連 メール送信
+        ↓
+5/23-25 → 鈴木先生面談 → 研究代表者確定（または代替紹介先確定）
+        → 高知ローカル面談（梼原町・橋本氏）
+        → 東京NPOアポ確定
+        → e-Rad研究者番号取得手続き開始（大学事務）
+        ↓
+5/26-29 → 東京出張（宇宙展＋NPO/弁護士会 3-5件面談）
+        ↓
+5/30-31 → 面談フィードバック反映、連携内諾を書面化
+        → 様式6-1/6-2 を確定者実績で全面書換
+        → 様式5-2/5-3 確定者で書換
+        ↓
+6/1-2 → 提案書最終レビュー、PDF化エラーチェック
+        → e-Rad 機関承認手続き（最終）
+        ↓
+6/3正午 → e-Rad 提出
+</pre>
+
+<h3>必須クリア条件（落とすと即不採択）</h3>
+
+<table>
+<tr><th>#</th><th>条件</th><th>期限</th><th>状態</th></tr>
+<tr><td>1</td><td>研究代表者の確定（大学等所属）</td><td>5/24</td><td>⚠️ 最重要</td></tr>
+<tr><td>2</td><td>研究代表者の e-Rad 研究者番号</td><td>5/30</td><td>大学事務経由</td></tr>
+<tr><td>3</td><td>研究代表者所属機関の応募承認</td><td>6/2</td><td>機関事務</td></tr>
+<tr><td>4</td><td>協働実施者の身分書面（法人代表証明）</td><td>5/28</td><td>あなたの法人</td></tr>
+<tr><td>5</td><td>提案書 PDF 化文字化けなし</td><td>6/2</td><td>必ず実機確認</td></tr>
+</table>
+
+<h3>日別タスク詳細</h3>
+
+<h4>Day 1（5/21 水・今日残り）</h4>
+
+<ul>
+<li>[ ] 紹介書 <code>01_project_intro_jp.md</code> を PDF 化（ロゴ・氏名・連絡先記入）</li>
+<li>[ ] 鈴木先生宛メール <code>02_cover_suzuki.md</code> 個人化（敬称・関係性詳細）</li>
+<li>[ ] 「私の来歴」短文を 200 字で固定（全メールに使い回す）</li>
+<li>[ ] e-Rad 研究者番号の自身の有無確認（高知大学 学術情報課・研究協力課）</li>
+</ul>
+
+<h4>Day 2（5/22 木）</h4>
+
+<p><strong>朝一</strong>：</p>
+<ul>
+<li>[ ] 鈴木先生にメール送信 → <strong>同日中に面談アポ取得</strong>（電話で詰める）</li>
+<li>[ ] 大学事務に研究代表者用 e-Rad 番号取得スケジュール確認</li>
+</ul>
+
+<p><strong>午前</strong>：</p>
+<ul>
+<li>[ ] 梼原町 立道齊 課長メール送信＋電話フォロー</li>
+<li>[ ] 橋本光治氏 メール／電話</li>
+</ul>
+
+<p><strong>午後</strong>：</p>
+<ul>
+<li>[ ] 東京 NPO 3 先メール送信（ぱっぷす／全国シェルターネット／Lifelink）</li>
+<li>[ ] 日弁連 関連委員会メール送信</li>
+<li>[ ] POSSE / 総合サポートユニオン メール送信</li>
+<li>[ ] Code for Japan メール送信</li>
+</ul>
+
+<p><strong>夜</strong>：</p>
+<ul>
+<li>[ ] 返信状況集計、優先順位再配置</li>
+</ul>
+
+<h4>Day 3-5（5/23-25 金土日）</h4>
+
+<ul>
+<li>[ ] <strong>鈴木先生面談（最重要）</strong> — 結果次第で 2 シナリオ分岐：</li>
+<li><strong>シナリオ A</strong>：鈴木先生 = 研究代表者承諾 → 提案書様式 1/5-2/6-1 を先生情報で書換</li>
+<li><strong>シナリオ B</strong>：他の研究者紹介 → 紹介された研究者に即日連絡、5/27 までに面談</li>
+<li>[ ] 梼原町・橋本氏面談（土日含む）</li>
+<li>[ ] 東京 NPO 各先からの返信に対応、5/26-29 のアポ確定</li>
+<li>[ ] e-Rad 研究者番号取得手続き本格開始</li>
+</ul>
+
+<h4>Day 6-9（5/26-29 火-金 東京出張）</h4>
+
+<ul>
+<li>[ ] <strong>宇宙展</strong>（本来の出張目的）</li>
+<li>[ ] <strong>空き時間に NPO/弁護士面談 3-5 件</strong></li>
+<li>[ ] 各面談後、即日メモ化＋お礼メール（24h ルール）</li>
+<li>[ ] 紹介書を渡す／提案書様式 1-2 抜粋を見せる</li>
+</ul>
+
+<h4>Day 10-11（5/30-31 土日）</h4>
+
+<ul>
+<li>[ ] 東京での面談フィードバックを提案書に反映</li>
+<li>様式 2 §2.3 地域連携記述を「予備対話済み」レベルに更新</li>
+<li>様式 5-1 §2「その他の協力者・機関」表を実機関名で記入</li>
+<li>[ ] 様式 6-1（研究代表者実績）を確定者実績で全面書換</li>
+<li>[ ] 様式 6-2（協働実施者 = あなた）の実績を整理</li>
+<li>LegalShield 開発実績、Mapry 案件経験、OSS 実装、JUDB／FEWN 設計書、過去の社会的活動</li>
+<li>[ ] 連携内諾を取得した機関には書面同意（メール文言で OK）</li>
+</ul>
+
+<h4>Day 12-13（6/1-2 月火）</h4>
+
+<ul>
+<li>[ ] 提案書全 8 様式の最終整合チェック</li>
+<li>[ ] 様式 1〜8 を Word ファイルにまとめる</li>
+<li>[ ] <strong>PDF 化 → 必ず一度開いて文字化けゼロ確認</strong></li>
+<li>[ ] 青字記載ガイド全削除確認</li>
+<li>[ ] フォント 10.5pt 以上全頁確認</li>
+<li>[ ] e-Rad 機関承認最終手続き</li>
+<li>[ ] 提案書バックアップ 3 箇所（ローカル＋クラウド 2 種）</li>
+</ul>
+
+<h4>Day 14（6/3 水 締切日）</h4>
+
+<ul>
+<li>[ ] <strong>正午まで余裕を持って提出</strong>（前日中に完了が理想）</li>
+<li>[ ] e-Rad 受付完了通知メール保存</li>
+</ul>
+
+<p>---</p>
+
+<h3>落とせるなら落とすバックアップ計画</h3>
+
+<h4>落とせる項目（採択評価には影響あるが応募は可能）</h4>
+<ul>
+<li>東京 NPO 内諾の書面化 → 「予備対話中」記載で代替</li>
+<li>POSSE / Civic Tech 連携 → 加点要素なので必須ではない</li>
+<li>海外連携（台湾） → 加点要素のみ、なくても応募可</li>
+<li>様式 6-1 の充実度 → 確定者の業績で最低限を充足</li>
+</ul>
+
+<h4>絶対に落とせない項目</h4>
+<ul>
+<li>研究代表者の確定と所属機関の応募承認</li>
+<li>e-Rad 研究者番号</li>
+<li>様式 1〜5 の必須情報</li>
+<li>PDF 化エラーなし</li>
+</ul>
+
+<h3>想定リスクと逃げ道</h3>
+
+<table>
+<tr><th>リスク</th><th>確率</th><th>逃げ道</th></tr>
+<tr><td>鈴木先生が断る</td><td>40%</td><td>高知大学内・他大学（情報法・社会学・公衆衛生）の紹介を依頼。最悪、放送大学・通信制大学客員等の短期任用</td></tr>
+<tr><td>研究代表者候補全員が NG</td><td>20%</td><td><strong>6/3 諦めて 2027 応募に切替</strong>。今動いた人脈はそのまま生きる</td></tr>
+<tr><td>e-Rad 研究者番号が間に合わない</td><td>30%</td><td>既に番号を持つ研究者に絞り込む。鈴木先生は既に持っている可能性高</td></tr>
+<tr><td>機関承認が間に合わない</td><td>20%</td><td>大学事務に早急に相談、所属長の事前内諾を文書化</td></tr>
+<tr><td>提案書 PDF 化エラー</td><td>10%</td><td>早めに PDF 試行、外字使わない、特殊文字回避</td></tr>
+</table>
+
+<h3>採択されなかった場合の意義</h3>
+
+<p>仮に不採択でも、本プロセスで得られる無形資産：</p>
+<ul>
+<li>大学側研究者との関係構築</li>
+<li>高知・東京の NPO・自治体・弁護士との初回接触</li>
+<li>POSSE / Civic Tech 等技術コミュニティとの連携可能性</li>
+<li><strong>2027 年度応募の地盤</strong>（採択率が劇的に上がる）</li>
+<li>短期助成（こども家庭庁・内閣府・地方創生）への並行応募基盤</li>
+<li>メディア発信・GitHub 公開時の信頼性向上</li>
+</ul>
+
+<p><strong>「当年度に座って受ける、ダメでも来年。準備したのだから出す。」</strong> これが最も合理的な選択です。</p>
+</details></section>
+<section id="grant_landscape"><details><summary>📋 助成金カレンダー（並行応募戦略）</summary><h2>助成金応募カレンダー — LegalShield プロジェクト</h2>
+
+<blockquote>並行応募戦略（2026 年 5 月時点）。並行応募は原則可能。ただし同じ経費の二重受給は不可。</blockquote>
+
+<h3>戦略原則</h3>
+
+<ol>
+<li><strong>コア資料は 1 セットで使い回す</strong>：紹介書 PDF、JUDB データ、設計書群、35 件文献、エビデンス基盤、地域マップ。各助成ごとにフォーマット差替＋規模調整のみ。</li>
+<li><strong>目的・経費区分を分けて応募する</strong>：RISTEX は研究実証、トヨタ財団は地域共創、AWS は技術基盤等、応募目的が重ならないよう設計。</li>
+<li><strong>大学等所属要件の有無で振り分ける</strong>：要件ありの助成は研究代表者ベース、要件なしは協働実施者（あなた）ベースで応募。</li>
+<li><strong>採択後 → 次の助成、を意識する</strong>：1 つ採択されると次の応募の信用度が劇的に上がる。</li>
+</ol>
+
+<p>---</p>
+
+<h3>Tier 1：必投（本命・即着手）</h3>
+
+<h4>① JST RISTEX SOLVE for SDGs 2026</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>直接経費 5,450 万円・3.5 年（上限 1,900 万円／年）</td></tr>
+<tr><td><strong>締切</strong></td><td><strong>2026 年 6 月 3 日（水）正午 e-Rad</strong></td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★★（社会課題型・SDGs・複数地域・既存技術シーズ統合）</td></tr>
+<tr><td><strong>採択率</strong></td><td>5-10%</td></tr>
+<tr><td><strong>大学要件</strong></td><td>片方必須</td></tr>
+<tr><td><strong>状態</strong></td><td><strong>準備中</strong> — 提案書 8 様式ほぼ完成</td></tr>
+<tr><td><strong>クリティカルパス</strong></td><td>鈴木先生に研究代表者を依頼、明日朝メール送信</td></tr>
+</table>
+
+<h4>② トヨタ財団 2026 年度国内助成</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜1,000 万円・1-2 年</td></tr>
+<tr><td><strong>締切</strong></td><td>（年度内既存案件として準備中。トヨタ財団の通常スケジュール：例年 4-5 月）</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★★（地域共創・市民参画・社会課題）</td></tr>
+<tr><td><strong>採択率</strong></td><td>約 15%</td></tr>
+<tr><td><strong>大学要件</strong></td><td>不要</td></tr>
+<tr><td><strong>状態</strong></td><td><strong>既に準備進行中</strong></td></tr>
+<tr><td><strong>コア資料流用</strong></td><td>RISTEX 提案書から地域共創部分を抽出して再構成</td></tr>
+</table>
+
+<p>---</p>
+
+<h3>Tier 2：強推奨（中期）</h3>
+
+<h4>③ 日本財団 助成</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>500 万〜数千万円</td></tr>
+<tr><td><strong>締切</strong></td><td>通年・随時受付</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★★（性暴力・自殺対策・地方創生・障害者・外国人すべて強い領域）</td></tr>
+<tr><td><strong>大学要件</strong></td><td>不要</td></tr>
+<tr><td><strong>戦略</strong></td><td>RISTEX 結果を待たずに 6 月中に申請可能。性暴力被害者支援テーマで応募</td></tr>
+</table>
+
+<h4>④ 損保ジャパン福祉財団</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜300 万円</td></tr>
+<tr><td><strong>締切</strong></td><td>例年 8-9 月</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★（社会福祉、競争率低めで採択しやすい）</td></tr>
+<tr><td><strong>大学要件</strong></td><td>不要</td></tr>
+</table>
+
+<h4>⑤ 三菱財団 社会福祉事業助成</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜500 万円</td></tr>
+<tr><td><strong>締切</strong></td><td>例年 1 月</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★</td></tr>
+<tr><td><strong>大学要件</strong></td><td>不要</td></tr>
+</table>
+
+<h4>⑥ 厚労省 自殺総合対策推進センター 民間団体支援事業</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜500 万円</td></tr>
+<tr><td><strong>締切</strong></td><td>例年 1-2 月</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★（秋田での実証研究と接続が自然）</td></tr>
+<tr><td><strong>大学要件</strong></td><td>不要</td></tr>
+</table>
+
+<h4>⑦ 笹川平和財団 女性ネットワーク事業</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜数千万円</td></tr>
+<tr><td><strong>締切</strong></td><td>不定期公募</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★（ジェンダー・国際展開）</td></tr>
+</table>
+
+<h4>⑧ 第一生命財団 ヘルスケア研究助成</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜500 万円</td></tr>
+<tr><td><strong>締切</strong></td><td>例年 5-6 月</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★</td></tr>
+<tr><td><strong>大学要件</strong></td><td>望ましい</td></tr>
+</table>
+
+<p>---</p>
+
+<h3>Tier 3：国際（クラウド・テック系）</h3>
+
+<h4>⑨ Google.org Impact Challenge</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜数千万円</td></tr>
+<tr><td><strong>締切</strong></td><td>不定期</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★（AI for Social Good、ジェンダー暴力対策）</td></tr>
+<tr><td><strong>採択率</strong></td><td>低（応募者多数）</td></tr>
+<tr><td><strong>戦略</strong></td><td>公募開始を待ち、英語版資料で応募</td></tr>
+</table>
+
+<h4>⑩ AWS Imagine Grant（非営利向け）</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜$150,000＋AWS 利用枠</td></tr>
+<tr><td><strong>締切</strong></td><td>年 1 回（通常秋〜冬）</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★★（AWS Bedrock を使うのでクラウド経費を相殺できる）</td></tr>
+<tr><td><strong>大学要件</strong></td><td>不要</td></tr>
+</table>
+
+<h4>⑪ Mozilla Open Source Support（MOSS）</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜$25,000</td></tr>
+<tr><td><strong>締切</strong></td><td>通年</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★（オープンソース必須要件と完全合致）</td></tr>
+</table>
+
+<h4>⑫ Microsoft AI for Good</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>クラウド利用枠＋助成</td></tr>
+<tr><td><strong>締切</strong></td><td>通年</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★</td></tr>
+</table>
+
+<h4>⑬ GitHub Sponsor／OpenCollective</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>継続的・少額</td></tr>
+<tr><td><strong>締切</strong></td><td>通年</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★（OSS 公開後の継続資金として）</td></tr>
+</table>
+
+<p>---</p>
+
+<h3>Tier 4：台湾（LASS 精神継承の自然な接続）</h3>
+
+<h4>⑭ g0v 公民科技獎助計畫（台湾）</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜200 万 NTD</td></tr>
+<tr><td><strong>締切</strong></td><td>例年 9-10 月</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★★（LASS 直系・市民科学・オープンソース）</td></tr>
+<tr><td><strong>戦略</strong></td><td>RISTEX 採択後の台湾連携の自然な接続点</td></tr>
+</table>
+
+<h4>⑮ 數位發展部 開源計畫（台湾）</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>中規模</td></tr>
+<tr><td><strong>締切</strong></td><td>不定期</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★★</td></tr>
+</table>
+
+<h4>⑯ 國科會（科技部）國際合作計畫（日台共同）</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>〜1,000 万 NTD／年</td></tr>
+<tr><td><strong>締切</strong></td><td>例年 12 月</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★（国際共同枠で日本側機関と組成）</td></tr>
+</table>
+
+<p>---</p>
+
+<h3>Tier 5：長期視野・大型</h3>
+
+<h4>⑰ JST CREST</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>5 年 × 5 億円規模</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★（基礎研究中心、RISTEX 実績後の延長戦）</td></tr>
+</table>
+
+<h4>⑱ JST SICORP 日台共同</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>数千万円</td></tr>
+<tr><td><strong>適合度</strong></td><td>★★★（国際共同、LASS との発展形）</td></tr>
+</table>
+
+<h4>⑲ EU Horizon Europe（日本機関連携枠）</h4>
+
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><strong>規模</strong></td><td>数億円</td></tr>
+<tr><td><strong>適合度</strong></td><td>★（長期目標、JST 等の機関同伴必要）</td></tr>
+</table>
+
+<p>---</p>
+
+<h3>推奨実行順序</h3>
+
+<pre>
+今すぐ着手（5/21 - 6/3）
+├─ ① JST RISTEX SOLVE for SDGs（最優先・本命）
+└─ ② トヨタ財団（既に準備中、最終化）
+
+6 月以降（並行）
+├─ ③ 日本財団 — 通年随時、性暴力・地方創生・自殺対策
+├─ ⑩ AWS Imagine Grant — AWS Bedrock 経費の相殺
+├─ ⑪ Mozilla MOSS — OSS コミットメントの強化
+└─ ⑫ Microsoft AI for Good — クラウド経費代替
+
+採択結果出てから（10 月以降）
+├─ ⑤ 三菱財団 — 1 月締切
+├─ ④ 損保ジャパン福祉財団 — 8-9 月締切
+├─ ⑥ 厚労省自殺対策民間支援 — 1-2 月締切（秋田と接続）
+├─ ⑭ g0v 公民科技獎助 — 9-10 月（台湾 LASS 接続）
+└─ ⑨ Google.org Impact Challenge — 公募時期を待つ
+
+長期視野
+├─ ⑰ JST CREST — RISTEX 実績後
+├─ ⑱ JST SICORP 日台 — 国際展開時
+└─ ⑲ EU Horizon — 長期目標
+</pre>
+
+<p>---</p>
+
+<h3>共通コア資料（1 度作って全助成で使い回し）</h3>
+
+<p>すべての助成応募に共通して必要なもの。<strong>あなたは既に 80% を持っています</strong>。</p>
+
+<table>
+<tr><th>資料</th><th>状態</th><th>用途</th></tr>
+<tr><td>紹介書 PDF（3 ページ）</td><td>✅ 作成済（<code>outreach/01_project_intro_jp.md</code>）</td><td>全助成添付資料</td></tr>
+<tr><td>JUDB データ可視化</td><td>✅ 構築済</td><td>エビデンス提示</td></tr>
+<tr><td>設計書群（6 種）</td><td>✅ 完成</td><td>技術成熟度の証明</td></tr>
+<tr><td>35 件文献リスト</td><td>✅ 完成（<code>docs/refs/refs.bib</code>）</td><td>学術基盤の証明</td></tr>
+<tr><td>実証地域マップ（高知・東京・秋田＋将来展開）</td><td>✅ 提案書に含む</td><td>地域戦略の明示</td></tr>
+<tr><td>予算テンプレ（人件費 60%）</td><td>✅ 提案書に含む</td><td>規模調整で各助成に流用</td></tr>
+<tr><td>英語版紹介書 PDF</td><td>⚠️ 未作成</td><td>国際助成応募時に必要</td></tr>
+<tr><td>プロジェクトサイト／GitHub</td><td>⚠️ 公開準備</td><td>信頼性の補強</td></tr>
+</table>
+
+<p>---</p>
+
+<h3>次のアクション（5/21 夜〜）</h3>
+
+<ol>
+<li><strong>今夜</strong>：RISTEX 提案書最終化と PDF 化テスト</li>
+<li><strong>5/22 朝</strong>：鈴木先生メール送信＋アポ取得</li>
+<li><strong>5/22 午後</strong>：トヨタ財団応募書類の状態確認、コア資料の最終確認</li>
+<li><strong>5/24-25</strong>：日本財団・AWS Imagine Grant の応募開始時期確認</li>
+<li><strong>5/26-29 東京出張</strong>：宇宙展＋NPO 面談＋（可能なら）トヨタ財団訪問</li>
+<li><strong>6/3 RISTEX 提出後</strong>：英語版紹介書 PDF 作成、Google.org・Mozilla 等へ展開</li>
+</ol>
+</details></section>
+<footer>
+<p>RISTEX SOLVE 2026 提案パッケージ v1 / 生成: 2026-05-21<br>
+LegalShield / FEWN — 暗号学的協調による「誰一人置き去りにしない」安全社会の共創<br>
+本書は内部用ドラフト。提出版は Word 様式 form_solution_solve2026.docx に貼り込み・PDF 化のこと</p>
+</footer>
+</main></body></html>

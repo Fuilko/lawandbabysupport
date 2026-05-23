@@ -44,21 +44,9 @@ def embed_query(model: SentenceTransformer, text: str) -> list[float]:
     return vec.tolist()
 
 
-def retrieve(table, query_vec: list[float], k: int, *, dedupe_cases: bool = True) -> list[dict[str, Any]]:
-    """Retrieve top-K chunks. With dedupe_cases=True, return K unique cases
-    (over-fetch then keep best chunk per lawsuit_id)."""
-    if not dedupe_cases:
-        return table.search(query_vec).limit(k).to_list()
-    # Over-fetch ~5x to ensure we have K unique cases
-    raw = table.search(query_vec).limit(k * 5).to_list()
-    seen: dict[str, dict[str, Any]] = {}
-    for r in raw:
-        key = str(r.get("lawsuit_id") or r.get("case_number"))
-        if key not in seen:
-            seen[key] = r
-        if len(seen) >= k:
-            break
-    return list(seen.values())[:k]
+def retrieve(table, query_vec: list[float], k: int) -> list[dict[str, Any]]:
+    rows = table.search(query_vec).limit(k).to_list()
+    return rows
 
 
 def format_context(rows: list[dict[str, Any]]) -> str:
@@ -106,7 +94,7 @@ def call_ollama(model: str, system: str, user: str, *, stream: bool = True) -> s
     }
     if stream:
         full = []
-        with requests.post(OLLAMA_URL, json=payload, stream=True, timeout=1800) as r:
+        with requests.post(OLLAMA_URL, json=payload, stream=True, timeout=600) as r:
             r.raise_for_status()
             import json as _json
             for line in r.iter_lines():
@@ -121,7 +109,7 @@ def call_ollama(model: str, system: str, user: str, *, stream: bool = True) -> s
                     break
         print()
         return "".join(full)
-    r = requests.post(OLLAMA_URL, json={**payload, "stream": False}, timeout=1800)
+    r = requests.post(OLLAMA_URL, json={**payload, "stream": False}, timeout=600)
     r.raise_for_status()
     return r.json()["message"]["content"]
 

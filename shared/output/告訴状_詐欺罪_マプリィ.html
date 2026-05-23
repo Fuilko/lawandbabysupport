@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>告訴状</title>
+<style>
+  @page {
+    size: A4;
+    margin: 30mm 25mm 25mm 25mm;
+  }
+  body {
+    font-family: "Yu Mincho", "游明朝", "MS Mincho", "Noto Serif CJK JP", serif;
+    font-size: 12pt;
+    line-height: 2.2;
+    color: #000;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 20pt;
+    letter-spacing: 1em;
+    margin-bottom: 50px;
+  }
+  .header-info {
+    text-align: right;
+    margin-bottom: 30px;
+    line-height: 2;
+  }
+  .addressee {
+    margin-bottom: 40px;
+    font-size: 13pt;
+  }
+  .section-title {
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 13pt;
+    border-bottom: 1px solid #000;
+    padding-bottom: 3px;
+  }
+  .indent {
+    padding-left: 2em;
+  }
+  .indent2 {
+    padding-left: 4em;
+  }
+  .article {
+    margin-bottom: 20px;
+  }
+  .evidence-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 11pt;
+  }
+  .evidence-table th, .evidence-table td {
+    border: 1px solid #000;
+    padding: 5px 10px;
+    text-align: left;
+  }
+  .evidence-table th {
+    background: #f0f0f0;
+    font-weight: bold;
+  }
+  .seal-area {
+    margin-top: 80px;
+    text-align: right;
+    padding-right: 40px;
+  }
+  .seal-circle {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #c00;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #c00;
+    font-size: 9pt;
+    margin-left: 20px;
+  }
+  .note {
+    margin-top: 60px;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px dashed #999;
+    font-size: 10pt;
+    line-height: 1.8;
+  }
+  @media print {
+    body { padding: 0; }
+    .note { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<h1>告　訴　状</h1>
+
+<div class="header-info">
+令和＿＿年＿＿月＿＿日
+</div>
+
+<div class="addressee">
+<p>高知地方検察庁　検察官殿</p>
+</div>
+
+<!-- 告訴人 -->
+<div class="section-title">告訴人</div>
+<div class="indent">
+<p>住所: 高知県＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
+<p>氏名: 劉　建志（りゅう　けんし）</p>
+<p>生年月日: ＿＿年＿＿月＿＿日</p>
+<p>職業: 林業コンサルタント・光伊フォレスト代表</p>
+<p>電話: ＿＿＿＿＿＿＿＿＿＿</p>
+</div>
+
+<!-- 被告訴人 -->
+<div class="section-title">被告訴人</div>
+<div class="indent">
+<p>住所: ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿（本店所在地）</p>
+<p>名称: マプリィ株式会社</p>
+<p>代表者: 代表取締役 山口＿＿＿＿</p>
+<p>（その他関与者: 氏名不詳の開発担当者）</p>
+</div>
+
+<!-- 告訴の趣旨 -->
+<div class="section-title">第1　告訴の趣旨</div>
+<div class="article">
+<p>被告訴人の下記行為は、刑法第246条第1項（詐欺罪）に該当すると思料されるので、捜査の上、厳重に処罰されたく告訴いたします。</p>
+</div>
+
+<!-- 告訴事実 -->
+<div class="section-title">第2　告訴事実</div>
+<div class="article">
+<p>被告訴人は、令和7年（2025年）12月24日頃、告訴人に対し、林業用無人航空機「M4-0」（機体番号: M4-00001、以下「本件機体」という）を代金800万円で販売するに際し、以下の欺罔行為を行った。</p>
+
+<p class="indent"><strong>1. 開発版を完成品と偽った虚偽表示</strong></p>
+<p class="indent2">本件機体のソフトウェアバージョンは「0.0.0」であり、社内的にも開発段階の試作機であった。にもかかわらず、被告訴人は「完成品」として保証書（甲第2号証）を発行し、見積書・注文書（甲第3号証）にも「開発版」である旨の記載を一切せず、告訴人に完成品であると誤信させた。</p>
+
+<p class="indent"><strong>2. 重大な欠陥を認識しながら告知しなかった不利益事実の秘匿</strong></p>
+<p class="indent2">本件機体の SD カードに記録されたフライトログのフォレンジック分析（甲第1号証）により、出荷前の段階で以下の異常が記録されていたことが判明した:</p>
+<p class="indent2">・磁力計異常（compass variance）: 4,509回</p>
+<p class="indent2">・システムリブート: 54回（出荷6日前の12月18日だけで25回）</p>
+<p class="indent2">・PreArm 警告（飛行不適合警告）: 2,781回</p>
+<p class="indent2">被告訴人はこれらの異常を認識し得る立場にありながら、告訴人に一切告知せず販売した。</p>
+
+<p class="indent"><strong>3. バッテリー保護機能の意図的無効化</strong></p>
+<p class="indent2">本件機体のパラメータファイル（甲第16号証）の分析により、以下のバッテリー安全保護機能が全て意図的に無効化（= 0 に設定）されていたことが判明した:</p>
+<p class="indent2">・BATT_LOW_VOLT = 0（低電圧警告: 無効）</p>
+<p class="indent2">・BATT_CRT_VOLT = 0（緊急着陸: 無効）</p>
+<p class="indent2">・BATT_FS_LOW_ACT = 0（低電圧フェイルセーフ: 無効）</p>
+<p class="indent2">これは製造者として安全基準を意図的に回避する行為であり、飛行中のバッテリー切れによる墜落の危険を認識しながら、利益のために出荷したことを示す。</p>
+
+<p class="indent"><strong>4. 上記欺罔行為の結果</strong></p>
+<p class="indent2">告訴人は本件機体が完成品であり安全に飛行可能であると誤信し、代金800万円を被告訴人に支払った（甲第＿号証: 送金記録）。告訴人が上記欠陥を事前に知っていれば、本件機体を購入することは絶対になかった。</p>
+
+<p class="indent"><strong>5. 結果（損害の発生）</strong></p>
+<p class="indent2">令和8年（2026年）2月3日、台湾において被告訴人の社員・宮田氏自身が操縦中に本件機体は墜落し全損した。墜落地点の近傍に告訴人がおり、80メートルの高度から落下した機体が告訴人に衝突する危険があった。</p>
+</div>
+
+<!-- 故意の立証 -->
+<div class="section-title">第3　被告訴人の故意を示す事実</div>
+<div class="article">
+<p>以下の事実は、被告訴人が欠陥を認識しながら意図的に販売を推進した（未必の故意を含む）ことを示す:</p>
+
+<p class="indent">（1）出荷6日前（12月18日）に25回のシステムリブートが記録されており、この時点で機体の不安定性を認識していた。</p>
+
+<p class="indent">（2）出荷14日前（12月10日）、被告訴人代表・山口は告訴人に対し、PM契約の承認、鴻海・台塑との産業連携の承認、EV車両・ロボットへの展開希望を表明（甲第5号証）。台湾市場の巨大さを十分に認識しながら、14日後に欠陥品を出荷した。</p>
+
+<p class="indent">（3）バッテリー保護の無効化は、パラメータを手動で「0」に設定する必要があり、偶然や初期値ではなく、意図的な操作である。</p>
+
+<p class="indent">（4）バージョン「0.0.0」は業界標準において「開発初期版」を意味し、これに保証書を発行することは通常あり得ない。組織的な判断として虚偽表示が行われた。</p>
+
+<p class="indent">（5）事故後（2月7日）、被告訴人は告訴人に対し「成果物がないので報酬は払えない」と回答（甲第＿号証）。16ヶ月間の業務投入を全て認識しながら、欠陥品による事故の責任を告訴人に転嫁しようとした。</p>
+</div>
+
+<!-- 証拠 -->
+<div class="section-title">第4　証拠</div>
+<div class="article">
+<table class="evidence-table">
+<tr><th>号証</th><th>内容</th><th>立証事項</th></tr>
+<tr><td>甲1</td><td>SDカードフォレンジック報告書</td><td>出荷前の異常4,509件</td></tr>
+<tr><td>甲2</td><td>保証書</td><td>完成品として販売した事実</td></tr>
+<tr><td>甲3</td><td>見積書・注文書</td><td>「開発版」の記載なし</td></tr>
+<tr><td>甲5</td><td>12/10 メール（PM契約承認）</td><td>市場認識しながら出荷</td></tr>
+<tr><td>甲14</td><td>syslog（リブート記録）</td><td>出荷前の不安定性認識</td></tr>
+<tr><td>甲15</td><td>磁力計異常ログ</td><td>4,509回の安全異常</td></tr>
+<tr><td>甲16</td><td>パラメータファイル</td><td>バッテリー保護の意図的無効化</td></tr>
+<tr><td>甲＿</td><td>送金記録</td><td>800万円の支払い事実</td></tr>
+<tr><td>甲＿</td><td>2/7 メール（報酬拒否）</td><td>事故後の責任転嫁</td></tr>
+<tr><td>甲＿</td><td>墜落映像</td><td>80m墜落の危険性</td></tr>
+</table>
+</div>
+
+<!-- 処罰意思 -->
+<div class="section-title">第5　処罰を求める意思</div>
+<div class="article">
+<p>告訴人は、被告訴人の上記行為について厳重な処罰を求めます。</p>
+<p>なお、本件は単なる商取引上の紛争ではなく、以下の公益的観点からも捜査の必要性が高いと考えます:</p>
+
+<p class="indent">（1）本件機体は80メートルの高度から墜落しており、人命に関わる危険があった。</p>
+<p class="indent">（2）被告訴人は農林水産省 SBIR 補助金（約7.7億円）の受給企業であり、公金で開発した製品の品質管理体制に重大な疑義がある。</p>
+<p class="indent">（3）同種の機体が他にも販売されている可能性があり、同様の事故が発生するおそれがある。</p>
+</div>
+
+<!-- 署名 -->
+<div class="seal-area">
+<p>以上</p>
+<br><br>
+<p>告訴人</p>
+<p>住所: 高知県＿＿＿＿＿＿＿＿＿＿</p>
+<p>氏名: 劉　建志 <span class="seal-circle">印</span></p>
+</div>
+
+<!-- 備考（列印時隱藏） -->
+<div class="note">
+<p><strong>📋 提出メモ（印刷時は表示されません）:</strong></p>
+<p>■ 提出先: 高知地方検察庁（高知市丸ノ内1-4-1）告訴・告発係</p>
+<p>■ 部数: 2部（提出用 + 控え用。控えに受理印をもらう）</p>
+<p>■ 添付: 甲号証のコピー一式</p>
+<p>■ 持参: 身分証明書（在留カード）、印鑑</p>
+<br>
+<p><strong>⚠️ 提出時のポイント:</strong></p>
+<p>・「告訴状です。受理をお願いします」と明確に言う</p>
+<p>・「被害届」に格下げしようとされたら「告訴の意思です（刑訴法§230）」と言う</p>
+<p>・控えに「受付印」を必ずもらう（受理の証拠）</p>
+<p>・受理番号を聞いてメモする</p>
+<br>
+<p><strong>■ タイミング:</strong></p>
+<p>・ADR 不調 → 民事訴状提出（地裁）+ 行政通報 → 1-2週間後にこの告訴状提出</p>
+<p>・理由: 民事が先に動いていると検察が「社会的影響のある事件」と認識しやすい</p>
+<br>
+<p><strong>■ 和解時の使い方:</strong></p>
+<p>・告訴取下げを和解条件に含められる（刑訴法§237: 親告罪でなくても取下げ可能）</p>
+<p>・ただし詐欺罪は非親告罪なので、取下げ後も検察が独自に起訴する可能性あり</p>
+<p>・これは Mapry にとって「和解しても安心できない」= さらにプレッシャー</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1132 @@
+[
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "application/pdf",
+    "size": 585201,
+    "sha256": "db50e2be1ce8cbb74031d596d1980cef6dd87c0ac6c9df8cd2a54f4a494c1574",
+    "url": "https://www.npa.go.jp/bureau/safetylife/stalker/R5_STDVRPCAkouhousiryou_syuusei.pdf",
+    "path": "jp\\npa\\npa_stalker_dv_r5__R5_STDVRPCAkouhousiryou_syuusei.pdf",
+    "key": "npa_stalker_dv_r5",
+    "title": "令和5年におけるストーカー事案、配偶者からの暴力事案等",
+    "kind": "pdf",
+    "category": "jp",
+    "subcategory": "npa",
+    "year": 2024,
+    "publisher": "警察庁",
+    "necessity_for": [
+      "product",
+      "research",
+      "policy"
+    ],
+    "fetched_at": "2026-05-20T15:02:52.687805+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "application/pdf",
+    "size": 3262803,
+    "sha256": "078c9c597c68b6d92e3546b9e761ae159b5e78cf2efec5ca9a6709cba3edda9c",
+    "url": "https://www.npa.go.jp/publications/statistics/crime/situation/r5_report.pdf",
+    "path": "jp\\npa\\npa_crime_situation_r5__r5_report.pdf",
+    "key": "npa_crime_situation_r5",
+    "title": "令和5年の犯罪情勢",
+    "kind": "pdf",
+    "category": "jp",
+    "subcategory": "npa",
+    "year": 2024,
+    "publisher": "警察庁",
+    "necessity_for": [
+      "product",
+      "research"
+    ],
+    "fetched_at": "2026-05-20T15:02:56.787494+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "application/pdf",
+    "size": 668248,
+    "sha256": "15a9221bb740bd9fd174719bca96fbc124a215a8e3e05458075b0ea8c39681eb",
+    "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/h29danjokan-gaiyo.pdf",
+    "path": "jp\\cao\\cao_dv_h29_summary__h29danjokan-gaiyo.pdf",
+    "key": "cao_dv_h29_summary",
+    "title": "男女間における暴力に関する調査 (平成29年度) 概要",
+    "kind": "pdf",
+    "category": "jp",
+    "subcategory": "cao",
+    "year": 2018,
+    "publisher": "内閣府男女共同参画局",
+    "necessity_for": [
+      "product",
+      "research",
+      "policy"
+    ],
+    "fetched_at": "2026-05-20T15:02:58.794796+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html",
+    "size": 18241,
+    "sha256": "a25a92c2363c9e680684d50fdc06f1b1fd6b93cc36b4fcc65649850c5ca64755",
+    "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/r02_boryoku_cyousa.html",
+    "path": "jp\\cao\\cao_dv_r2_landing__r02_boryoku_cyousa.html",
+    "key": "cao_dv_r2_landing",
+    "title": "男女間における暴力に関する調査 (令和2年度) ランディング",
+    "kind": "html",
+    "category": "jp",
+    "subcategory": "cao",
+    "year": 2021,
+    "publisher": "内閣府男女共同参画局",
+    "necessity_for": [
+      "research"
+    ],
+    "fetched_at": "2026-05-20T15:02:59.867858+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 112658,
+        "sha256": "e8933e21a46b7a82faab7a376c2085b9e777590922e7b8ca7a67ff77f2bd3f3e",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r02/r02danjokan-1.pdf",
+        "path": "jp\\cao\\cao_dv_r2_landing__assets\\r02danjokan-1.pdf",
+        "from_landing": "cao_dv_r2_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 268684,
+        "sha256": "69d7cbaa32b2635897c7a85a77a14b27308590fdfb0c3b9481efb6f5a0efe691",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r02/r02danjokan-2.pdf",
+        "path": "jp\\cao\\cao_dv_r2_landing__assets\\r02danjokan-2.pdf",
+        "from_landing": "cao_dv_r2_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 182770,
+        "sha256": "ae0dfea46eb74f895cb6b2985cf3a442d13a06666293167ae5ee276afbd9b7c1",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r02/r02danjokan-3.pdf",
+        "path": "jp\\cao\\cao_dv_r2_landing__assets\\r02danjokan-3.pdf",
+        "from_landing": "cao_dv_r2_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 243730,
+        "sha256": "26ebffb9263f9ff39e5a72d02bb5b8c75519f88bcefe212a549c519c3c6403f9",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r02/r02danjokan-4.pdf",
+        "path": "jp\\cao\\cao_dv_r2_landing__assets\\r02danjokan-4.pdf",
+        "from_landing": "cao_dv_r2_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 219606,
+        "sha256": "9f6e61150ae3a63565d2a32ba77bd03bdcbd35b4723c01192491c9666a7aaa92",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r02/r02danjokan-5.pdf",
+        "path": "jp\\cao\\cao_dv_r2_landing__assets\\r02danjokan-5.pdf",
+        "from_landing": "cao_dv_r2_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 232299,
+        "sha256": "3e56eaeec2ead55bb732d2d0dad16b179993b41b6de1fcee21f19df9f89858fb",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r02/r02danjokan-6.pdf",
+        "path": "jp\\cao\\cao_dv_r2_landing__assets\\r02danjokan-6.pdf",
+        "from_landing": "cao_dv_r2_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 221833,
+        "sha256": "927e57c882cde5c358e32abb0f1c3419a3f112395ef82e904e0cef76476de995",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r02/r02danjokan-7.pdf",
+        "path": "jp\\cao\\cao_dv_r2_landing__assets\\r02danjokan-7.pdf",
+        "from_landing": "cao_dv_r2_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 512431,
+        "sha256": "3e1cf3fa55a2d1ac155ba82fd442a3bfb8d4a80a979e14aa685f49d1ebdb6164",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r02/r02danjokan-10.pdf",
+        "path": "jp\\cao\\cao_dv_r2_landing__assets\\r02danjokan-10.pdf",
+        "from_landing": "cao_dv_r2_landing"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html",
+    "size": 15687,
+    "sha256": "7361f542704925c90c27ca61a902c6d100f36e69ec9e5c6b2e0f481f3bf7a12a",
+    "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/r05_boryoku_cyousa.html",
+    "path": "jp\\cao\\cao_dv_r5_landing__r05_boryoku_cyousa.html",
+    "key": "cao_dv_r5_landing",
+    "title": "男女間における暴力に関する調査 (令和5年度) ランディング",
+    "kind": "html",
+    "category": "jp",
+    "subcategory": "cao",
+    "year": 2024,
+    "publisher": "内閣府男女共同参画局",
+    "necessity_for": [
+      "product",
+      "research",
+      "policy"
+    ],
+    "fetched_at": "2026-05-20T15:03:11.255001+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 159929,
+        "sha256": "5265ed1cb764e5fa8f81aa34cf3bbafd43b8d4d4e31ca327e8e56017dc97bd8f",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r05/r05danjokan-1.pdf",
+        "path": "jp\\cao\\cao_dv_r5_landing__assets\\r05danjokan-1.pdf",
+        "from_landing": "cao_dv_r5_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 517415,
+        "sha256": "8a14ec328dcdff7fe9f0a72827e7760907af9e75f694a384d3c735c7a88fa072",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r05/r05danjokan-2.pdf",
+        "path": "jp\\cao\\cao_dv_r5_landing__assets\\r05danjokan-2.pdf",
+        "from_landing": "cao_dv_r5_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 243235,
+        "sha256": "b954df787436421c70fd0b61f050a905c2e74f2e1c7756676a3a395a9d43a251",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r05/r05danjokan-3.pdf",
+        "path": "jp\\cao\\cao_dv_r5_landing__assets\\r05danjokan-3.pdf",
+        "from_landing": "cao_dv_r5_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 505214,
+        "sha256": "8b1df60a0947c8377e35ee058df64f60fd113b8eeb17675fd7f6a210fb477530",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r05/r05danjokan-4.pdf",
+        "path": "jp\\cao\\cao_dv_r5_landing__assets\\r05danjokan-4.pdf",
+        "from_landing": "cao_dv_r5_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 461110,
+        "sha256": "ff972db57d056abad5cf0a3fa6908e34a8ae5a94ec97836c3f1e213eb38cde00",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r05/r05danjokan-5.pdf",
+        "path": "jp\\cao\\cao_dv_r5_landing__assets\\r05danjokan-5.pdf",
+        "from_landing": "cao_dv_r5_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 459413,
+        "sha256": "5f3349a430eb473c4a9e9972eeb09167c18865d37c050cfee8645672529132d0",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r05/r05danjokan-6.pdf",
+        "path": "jp\\cao\\cao_dv_r5_landing__assets\\r05danjokan-6.pdf",
+        "from_landing": "cao_dv_r5_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 440074,
+        "sha256": "0e971e6ca62e2d5759fcb20d2a033c5aa128c18354c2c36ee4a07aa8eebdcd0b",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r05/r05danjokan-7.pdf",
+        "path": "jp\\cao\\cao_dv_r5_landing__assets\\r05danjokan-7.pdf",
+        "from_landing": "cao_dv_r5_landing"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 618008,
+        "sha256": "4a7a8b8453b0010742cde890ac85de4c761fe6a567f6f8748a2ffa9183ebf5c3",
+        "url": "https://www.gender.go.jp/policy/no_violence/e-vaw/chousa/pdf/r05/r05danjokan-8.pdf",
+        "path": "jp\\cao\\cao_dv_r5_landing__assets\\r05danjokan-8.pdf",
+        "from_landing": "cao_dv_r5_landing"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html",
+    "size": 13809,
+    "sha256": "d0a2fae7286a0040d9d3cbfb50526bbaefb2dbadab3b881a2e44984c7645d3f4",
+    "url": "https://www.gender.go.jp/about_danjo/whitepaper/r04/zentai/html/honpen/b1_s05_02.html",
+    "path": "jp\\cao\\cao_whitepaper_r4_sexcrime__b1_s05_02.html",
+    "key": "cao_whitepaper_r4_sexcrime",
+    "title": "男女共同参画白書 令和4年版 第1部第5章第2節 性犯罪・性暴力",
+    "kind": "html",
+    "category": "jp",
+    "subcategory": "cao",
+    "year": 2022,
+    "publisher": "内閣府男女共同参画局",
+    "necessity_for": [
+      "product",
+      "policy"
+    ],
+    "fetched_at": "2026-05-20T15:03:24.148134+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "text/csv",
+        "size": 1305,
+        "sha256": "96ec8177036fd409aadb2a093fe4c8169b5ae642af50953b61fa27c7017269dd",
+        "url": "https://www.gender.go.jp/about_danjo/whitepaper/r04/zentai/html/honpen/csv/zuhyo05-08.csv",
+        "path": "jp\\cao\\cao_whitepaper_r4_sexcrime__assets\\zuhyo05-08.csv",
+        "from_landing": "cao_whitepaper_r4_sexcrime"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "text/csv",
+        "size": 424,
+        "sha256": "ba306ad253d2408abe328c25f79bc988ea842b6f1c4b2680d43321ede00156ee",
+        "url": "https://www.gender.go.jp/about_danjo/whitepaper/r04/zentai/html/honpen/csv/zuhyo05-09.csv",
+        "path": "jp\\cao\\cao_whitepaper_r4_sexcrime__assets\\zuhyo05-09.csv",
+        "from_landing": "cao_whitepaper_r4_sexcrime"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "text/csv",
+        "size": 1468,
+        "sha256": "06383cebaa182f940eddf74eaf382d29a0dc0c28950e81250dc54b5fab8ee4b8",
+        "url": "https://www.gender.go.jp/about_danjo/whitepaper/r04/zentai/html/honpen/csv/zuhyo05-10.csv",
+        "path": "jp\\cao\\cao_whitepaper_r4_sexcrime__assets\\zuhyo05-10.csv",
+        "from_landing": "cao_whitepaper_r4_sexcrime"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "text/csv",
+        "size": 597,
+        "sha256": "705fcfb3e802188df33fb511690dec0ced5f0938aee9a8a340d7ef1b75d720a9",
+        "url": "https://www.gender.go.jp/about_danjo/whitepaper/r04/zentai/html/honpen/csv/zuhyo05-11.csv",
+        "path": "jp\\cao\\cao_whitepaper_r4_sexcrime__assets\\zuhyo05-11.csv",
+        "from_landing": "cao_whitepaper_r4_sexcrime"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "text/csv",
+        "size": 532,
+        "sha256": "33cb8d9a96647d1078387b80768507dcec7cc7c4ef85c55fb94e0db5fc5f6f8d",
+        "url": "https://www.gender.go.jp/about_danjo/whitepaper/r04/zentai/html/honpen/csv/zuhyo05-12.csv",
+        "path": "jp\\cao\\cao_whitepaper_r4_sexcrime__assets\\zuhyo05-12.csv",
+        "from_landing": "cao_whitepaper_r4_sexcrime"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "text/csv",
+        "size": 919,
+        "sha256": "805e89fecf17f81feb94f409e3ce7c1c2b933c08a01fd40b09dbb0427b3a44e5",
+        "url": "https://www.gender.go.jp/about_danjo/whitepaper/r04/zentai/html/honpen/csv/zuhyo05-13.csv",
+        "path": "jp\\cao\\cao_whitepaper_r4_sexcrime__assets\\zuhyo05-13.csv",
+        "from_landing": "cao_whitepaper_r4_sexcrime"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html",
+    "size": 800,
+    "sha256": "d0dcac291ef05897e663892cf0d4ac1cde3f8591ceba289fb16a13d2c2dac1f0",
+    "url": "https://laws.e-gov.go.jp/law/412AC1000000081",
+    "path": "laws\\jp\\law_jp_stalker_regulation__412AC1000000081",
+    "key": "law_jp_stalker_regulation",
+    "title": "ストーカー行為等の規制等に関する法律 (e-Gov)",
+    "kind": "html",
+    "category": "laws",
+    "subcategory": "jp",
+    "year": 2000,
+    "publisher": "e-Gov",
+    "necessity_for": [
+      "governance",
+      "product"
+    ],
+    "fetched_at": "2026-05-20T15:03:31.932641+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html",
+    "size": 800,
+    "sha256": "d0dcac291ef05897e663892cf0d4ac1cde3f8591ceba289fb16a13d2c2dac1f0",
+    "url": "https://laws.e-gov.go.jp/law/413AC1000000031",
+    "path": "laws\\jp\\law_jp_dv_prevention__413AC1000000031",
+    "key": "law_jp_dv_prevention",
+    "title": "配偶者からの暴力の防止及び被害者の保護等に関する法律",
+    "kind": "html",
+    "category": "laws",
+    "subcategory": "jp",
+    "year": 2001,
+    "publisher": "e-Gov",
+    "necessity_for": [
+      "governance"
+    ],
+    "fetched_at": "2026-05-20T15:03:33.176639+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html",
+    "size": 800,
+    "sha256": "d0dcac291ef05897e663892cf0d4ac1cde3f8591ceba289fb16a13d2c2dac1f0",
+    "url": "https://laws.e-gov.go.jp/law/415AC0000000057",
+    "path": "laws\\jp\\law_jp_pipa__415AC0000000057",
+    "key": "law_jp_pipa",
+    "title": "個人情報の保護に関する法律 (個人情報保護法)",
+    "kind": "html",
+    "category": "laws",
+    "subcategory": "jp",
+    "year": 2003,
+    "publisher": "e-Gov",
+    "necessity_for": [
+      "governance"
+    ],
+    "fetched_at": "2026-05-20T15:03:34.302491+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html",
+    "size": 800,
+    "sha256": "d0dcac291ef05897e663892cf0d4ac1cde3f8591ceba289fb16a13d2c2dac1f0",
+    "url": "https://laws.e-gov.go.jp/law/412AC1000000082",
+    "path": "laws\\jp\\law_jp_child_abuse_prevention__412AC1000000082",
+    "key": "law_jp_child_abuse_prevention",
+    "title": "児童虐待の防止等に関する法律",
+    "kind": "html",
+    "category": "laws",
+    "subcategory": "jp",
+    "year": 2000,
+    "publisher": "e-Gov",
+    "necessity_for": [
+      "governance"
+    ],
+    "fetched_at": "2026-05-20T15:03:35.407032+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=utf-8",
+    "size": 30710,
+    "sha256": "6840953d270f412f4a127bb7f0d6eed39e050a9401feef2508d59bd401d512dc",
+    "url": "https://dep.mohw.gov.tw/DOPS/lp-1303-105-xCat-cat01.html",
+    "path": "tw\\mohw\\mohw_dv_landing__lp-1303-105-xCat-cat01.html",
+    "key": "mohw_dv_landing",
+    "title": "家庭暴力防治統計專區 (衛福部保護服務司)",
+    "kind": "html",
+    "category": "tw",
+    "subcategory": "mohw",
+    "year": 2024,
+    "publisher": "衛生福利部保護服務司",
+    "necessity_for": [
+      "product",
+      "research",
+      "policy"
+    ],
+    "fetched_at": "2026-05-20T15:03:37.445622+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=utf-8",
+    "size": 32111,
+    "sha256": "7572115c69028e1c781142c3520fac3f076dc8d7dffd03588609a895c3310fac",
+    "url": "https://www.mohw.gov.tw/cp-2704-79175-1.html",
+    "path": "tw\\mohw\\mohw_dv_26th_anniversary__cp-2704-79175-1.html",
+    "key": "mohw_dv_26th_anniversary",
+    "title": "家庭暴力防治法26周年新聞稿",
+    "kind": "html",
+    "category": "tw",
+    "subcategory": "mohw",
+    "year": 2024,
+    "publisher": "衛生福利部",
+    "necessity_for": [
+      "product",
+      "policy"
+    ],
+    "fetched_at": "2026-05-20T15:03:39.602086+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=utf-8",
+    "size": 67409,
+    "sha256": "6292ac7606c7006f7614a994228cfc7e6c0a11dcffe56efad23490766761a400",
+    "url": "https://gec.ey.gov.tw/Page/C94CF37B935BEC9/0a15eedd-eb4c-447d-af9b-f02b1a392af4",
+    "path": "tw\\ey\\ey_gender_lgbt_dv__0a15eedd-eb4c-447d-af9b-f02b1a392af4",
+    "key": "ey_gender_lgbt_dv",
+    "title": "同性親密関係暴力相關統計",
+    "kind": "html",
+    "category": "tw",
+    "subcategory": "ey",
+    "year": 2024,
+    "publisher": "行政院性別平等會",
+    "necessity_for": [
+      "research",
+      "policy"
+    ],
+    "fetched_at": "2026-05-20T15:03:41.881666+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html",
+    "size": 70,
+    "sha256": "e39089b705cc48352be737d2983ae2868497eeeed55b6c50d73efd7d3ec4189b",
+    "url": "https://ba.npa.gov.tw/",
+    "path": "tw\\npa\\npa_tw_stat_query.html",
+    "key": "npa_tw_stat_query",
+    "title": "警政統計查詢網",
+    "kind": "html",
+    "category": "tw",
+    "subcategory": "npa",
+    "year": 2024,
+    "publisher": "內政部警政署",
+    "necessity_for": [
+      "research"
+    ],
+    "fetched_at": "2026-05-20T15:03:43.489381+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "size": 122380,
+    "sha256": "891f5dd3c8c5b5b18caba0b9d430dd8b5feeed012a004ede620b09c6cb552160",
+    "url": "https://www.npa.gov.tw/ch/app/data/list?module=wg203&id=18680",
+    "path": "tw\\npa\\npa_tw_anti_stalking__list",
+    "key": "npa_tw_anti_stalking",
+    "title": "防制跟蹤騷擾專區",
+    "kind": "html",
+    "category": "tw",
+    "subcategory": "npa",
+    "year": 2024,
+    "publisher": "內政部警政署",
+    "necessity_for": [
+      "product",
+      "policy"
+    ],
+    "fetched_at": "2026-05-20T15:03:50.118491+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=utf-8",
+    "size": 60498,
+    "sha256": "b1390fffa03576d1132290b7a765ac5568e00293e246c895ccabb15cead44cfe",
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0080211",
+    "path": "laws\\tw\\law_tw_anti_stalking__LawAll.aspx",
+    "key": "law_tw_anti_stalking",
+    "title": "跟蹤騷擾防制法",
+    "kind": "html",
+    "category": "laws",
+    "subcategory": "tw",
+    "year": 2022,
+    "publisher": "全國法規資料庫",
+    "necessity_for": [
+      "governance",
+      "product"
+    ],
+    "fetched_at": "2026-05-20T15:04:05.784465+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 3386087,
+        "sha256": "5c993768e6e835b693b8615594b588cbc207d72dde2718fed499a516608a70d6",
+        "url": "https://law.moj.gov.tw/Service/網站使用手冊.pdf",
+        "path": "laws\\tw\\law_tw_anti_stalking__assets\\_.pdf",
+        "from_landing": "law_tw_anti_stalking"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 698644,
+        "sha256": "738f2839b785ff365bfc5281f5841f10afd30926192ce76d05031d7d2b00debd",
+        "url": "https://law.moj.gov.tw/Service/全國法規資料庫會員服務介紹.pdf",
+        "path": "laws\\tw\\law_tw_anti_stalking__assets\\_.pdf",
+        "from_landing": "law_tw_anti_stalking"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=utf-8",
+    "size": 107768,
+    "sha256": "486ed9ec804fdf06a0fac4b0ccc2174e7eaf8bb91bcbd9bf71043ded2daf23ab",
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050071",
+    "path": "laws\\tw\\law_tw_dv_prevention__LawAll.aspx",
+    "key": "law_tw_dv_prevention",
+    "title": "家庭暴力防治法",
+    "kind": "html",
+    "category": "laws",
+    "subcategory": "tw",
+    "year": 1998,
+    "publisher": "全國法規資料庫",
+    "necessity_for": [
+      "governance"
+    ],
+    "fetched_at": "2026-05-20T15:04:12.186617+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 3386087,
+        "sha256": "5c993768e6e835b693b8615594b588cbc207d72dde2718fed499a516608a70d6",
+        "url": "https://law.moj.gov.tw/Service/網站使用手冊.pdf",
+        "path": "laws\\tw\\law_tw_dv_prevention__assets\\_.pdf",
+        "from_landing": "law_tw_dv_prevention"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 698644,
+        "sha256": "738f2839b785ff365bfc5281f5841f10afd30926192ce76d05031d7d2b00debd",
+        "url": "https://law.moj.gov.tw/Service/全國法規資料庫會員服務介紹.pdf",
+        "path": "laws\\tw\\law_tw_dv_prevention__assets\\_.pdf",
+        "from_landing": "law_tw_dv_prevention"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=utf-8",
+    "size": 96384,
+    "sha256": "b9be0b676457935accbc1970411a68d9fc4b9b628038a6b82fead8180689313f",
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0050021",
+    "path": "laws\\tw\\law_tw_personal_data__LawAll.aspx",
+    "key": "law_tw_personal_data",
+    "title": "個人資料保護法",
+    "kind": "html",
+    "category": "laws",
+    "subcategory": "tw",
+    "year": 1995,
+    "publisher": "全國法規資料庫",
+    "necessity_for": [
+      "governance"
+    ],
+    "fetched_at": "2026-05-20T15:04:21.391600+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 3386087,
+        "sha256": "5c993768e6e835b693b8615594b588cbc207d72dde2718fed499a516608a70d6",
+        "url": "https://law.moj.gov.tw/Service/網站使用手冊.pdf",
+        "path": "laws\\tw\\law_tw_personal_data__assets\\_.pdf",
+        "from_landing": "law_tw_personal_data"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 698644,
+        "sha256": "738f2839b785ff365bfc5281f5841f10afd30926192ce76d05031d7d2b00debd",
+        "url": "https://law.moj.gov.tw/Service/全國法規資料庫會員服務介紹.pdf",
+        "path": "laws\\tw\\law_tw_personal_data__assets\\_.pdf",
+        "from_landing": "law_tw_personal_data"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=utf-8",
+    "size": 65332,
+    "sha256": "1a1d607eb9e73c4da8ad92cd4cf093e0efa861be0bcd80394e90d21bcc6a10b6",
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050108",
+    "path": "laws\\tw\\law_tw_sexual_assault_prevention__LawAll.aspx",
+    "key": "law_tw_sexual_assault_prevention",
+    "title": "性侵害犯罪防治法",
+    "kind": "html",
+    "category": "laws",
+    "subcategory": "tw",
+    "year": 1997,
+    "publisher": "全國法規資料庫",
+    "necessity_for": [
+      "governance"
+    ],
+    "fetched_at": "2026-05-20T15:04:30.007932+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 3386087,
+        "sha256": "5c993768e6e835b693b8615594b588cbc207d72dde2718fed499a516608a70d6",
+        "url": "https://law.moj.gov.tw/Service/網站使用手冊.pdf",
+        "path": "laws\\tw\\law_tw_sexual_assault_prevention__assets\\_.pdf",
+        "from_landing": "law_tw_sexual_assault_prevention"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 698644,
+        "sha256": "738f2839b785ff365bfc5281f5841f10afd30926192ce76d05031d7d2b00debd",
+        "url": "https://law.moj.gov.tw/Service/全國法規資料庫會員服務介紹.pdf",
+        "path": "laws\\tw\\law_tw_sexual_assault_prevention__assets\\_.pdf",
+        "from_landing": "law_tw_sexual_assault_prevention"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html;charset=utf-8",
+    "size": 408727,
+    "sha256": "c1e2c74c14f4bfe55c7dfb878bbe93da9946a92da63460dfcb05a43944d0fa40",
+    "url": "https://www.projectcallisto.org/",
+    "path": "academic\\callisto\\callisto_landing.html",
+    "key": "callisto_landing",
+    "title": "Project Callisto - Ending serial sexual assault",
+    "kind": "html",
+    "category": "academic",
+    "subcategory": "callisto",
+    "year": 2024,
+    "publisher": "Project Callisto",
+    "necessity_for": [
+      "product"
+    ],
+    "fetched_at": "2026-05-20T15:04:42.435795+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "size": 84381,
+    "sha256": "c3bed976831fdaee23e07644e90a70b762c2009fde3677310e6561f2dbd5bfd9",
+    "url": "https://en.wikipedia.org/wiki/Callisto_(project)",
+    "path": "academic\\callisto\\callisto_wikipedia__Callisto__project_",
+    "key": "callisto_wikipedia",
+    "title": "Callisto (project) - Wikipedia",
+    "kind": "html",
+    "category": "academic",
+    "subcategory": "callisto",
+    "year": 2024,
+    "publisher": "Wikipedia",
+    "necessity_for": [
+      "product"
+    ],
+    "fetched_at": "2026-05-20T15:04:47.518412+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=utf-8",
+    "size": 354961,
+    "sha256": "2bd5f88b23d05d026bfff74cd1c3d5762cf7dd2b4efe7b4e9c4a0108a34e1373",
+    "url": "https://link.springer.com/article/10.1007/s41469-026-00202-1",
+    "path": "academic\\callisto\\callisto_2026_springer__s41469-026-00202-1",
+    "key": "callisto_2026_springer",
+    "title": "Callisto: justice for survivors of sexual assault through... (Springer)",
+    "kind": "html",
+    "category": "academic",
+    "subcategory": "callisto",
+    "year": 2026,
+    "publisher": "Journal of Organization Design",
+    "necessity_for": [
+      "product"
+    ],
+    "fetched_at": "2026-05-20T15:04:51.009079+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 684732,
+        "sha256": "86b8e8a535c82cc2961263fab4061868745e9cdc5c6fb8517e51423364b2f7f2",
+        "url": "https://link.springer.com/content/pdf/10.1007/s41469-026-00202-1.pdf",
+        "path": "academic\\callisto\\callisto_2026_springer__assets\\s41469-026-00202-1.pdf",
+        "from_landing": "callisto_2026_springer"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "text/html; charset=utf-8",
+        "size": 223530,
+        "sha256": "ae3db0a1f960acc8e02b040811dac5011522bbdadad6e126cfb5e738d98885a5",
+        "url": "https://github.com/project-callisto/projectcallisto-dot-org/blob/master/Callisto_Year_3_final.pdf",
+        "path": "academic\\callisto\\callisto_2026_springer__assets\\Callisto_Year_3_final.pdf",
+        "from_landing": "callisto_2026_springer"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=\"UTF-8\"",
+    "size": 505095,
+    "sha256": "fd85c1f7c292466feea6a29551f5bb1be5044f3d3c5af497b00adbe0f28026de",
+    "url": "https://www.nature.com/articles/s41599-022-01135-2",
+    "path": "academic\\airbox\\airbox_nature_2022__s41599-022-01135-2",
+    "key": "airbox_nature_2022",
+    "title": "Translating citizen-generated air quality data into evidence for policy",
+    "kind": "html",
+    "category": "academic",
+    "subcategory": "airbox",
+    "year": 2022,
+    "publisher": "Humanities and Social Sciences Communications (Nature)",
+    "necessity_for": [
+      "governance",
+      "policy"
+    ],
+    "fetched_at": "2026-05-20T15:05:01.103085+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 1209387,
+        "sha256": "09c3d13c9d1063f079f71e5b6b79c624e9e882f91df92d749d44a951a5890a9b",
+        "url": "https://www.nature.com/articles/s41599-022-01135-2.pdf",
+        "path": "academic\\airbox\\airbox_nature_2022__assets\\s41599-022-01135-2.pdf",
+        "from_landing": "airbox_nature_2022"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 261830,
+        "sha256": "d416b162080b4ecfff0de3f7ad585e4f0add76479006af96e9a32c1eac600632",
+        "url": "https://www.eufje.org/images/docConf/visio2020/REPORT_BELGIUM.pdf",
+        "path": "academic\\airbox\\airbox_nature_2022__assets\\REPORT_BELGIUM.pdf",
+        "from_landing": "airbox_nature_2022"
+      },
+      {
+        "ok": false,
+        "http": 404,
+        "error": "HTTP 404",
+        "url": "http://www.tropical-biology.org/wp-content/uploads/2016/09/Citizen-Science-Symposium-Report1.pdf",
+        "from_landing": "airbox_nature_2022"
+      },
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 9838835,
+        "sha256": "f102bb4b669c54d1048d30f5a570013729c06ff5ad70a90ea9b9b4199fffccd4",
+        "url": "https://shaktifoundation.in/wp-content/uploads/2020/01/Impacts_Respirer.pdf",
+        "path": "academic\\airbox\\airbox_nature_2022__assets\\Impacts_Respirer.pdf",
+        "from_landing": "airbox_nature_2022"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html",
+    "size": 26183,
+    "sha256": "7abf74bc27aaed36b5eda5d50cf7bbd7ac2b7becca6fbd18a8fd09607a5f85b0",
+    "url": "https://www.iis.sinica.edu.tw/en/page/report/9828.html",
+    "path": "academic\\airbox\\airbox_sinica__9828.html",
+    "key": "airbox_sinica",
+    "title": "AirBox: a participatory PM2.5 sensing system",
+    "kind": "html",
+    "category": "academic",
+    "subcategory": "airbox",
+    "year": 2017,
+    "publisher": "Academia Sinica IIS",
+    "necessity_for": [
+      "governance"
+    ],
+    "fetched_at": "2026-05-20T15:05:17.184301+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "size": 149807,
+    "sha256": "85ecc5162764a1d27983fd397daeede8268a21a11abc06d2035c6755c39e4184",
+    "url": "https://smart.ojp.gov/somapi/chapter-5-adult-sex-offender-recidivism",
+    "path": "academic\\underreporting\\ojp_sex_offender_recidivism__chapter-5-adult-sex-offender-recidivism",
+    "key": "ojp_sex_offender_recidivism",
+    "title": "Adult Sex Offender Recidivism (Chapter 5)",
+    "kind": "html",
+    "category": "academic",
+    "subcategory": "underreporting",
+    "year": 2017,
+    "publisher": "Office of Sex Offender Sentencing, Monitoring, Apprehending, Registering, and Tracking (SMART)",
+    "necessity_for": [
+      "product",
+      "research"
+    ],
+    "fetched_at": "2026-05-20T15:05:21.130258+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 321357,
+        "sha256": "fbe96fe8663b48280650d9c76ec9e4a7d6710d47d74e2eac30f29ef81ea7be2a",
+        "url": "https://smart.ojp.gov/sites/g/files/xyckuh231/files/media/document/recidivismofadultsexualoffenders.pdf",
+        "path": "academic\\underreporting\\ojp_sex_offender_recidivism__assets\\recidivismofadultsexualoffenders.pdf",
+        "from_landing": "ojp_sex_offender_recidivism"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html;charset=utf-8",
+    "size": 83497,
+    "sha256": "3a0db453aa964570aeb6c730c7531fdd21298cbb055192cd61d63775fa798744",
+    "url": "https://www.techsafety.org/privacymatters",
+    "path": "international\\nnedv\\nnedv_privacy_matters__privacymatters",
+    "key": "nnedv_privacy_matters",
+    "title": "Why Privacy and Confidentiality Matters for Victims",
+    "kind": "html",
+    "category": "international",
+    "subcategory": "nnedv",
+    "year": 2024,
+    "publisher": "NNEDV (Tech Safety)",
+    "necessity_for": [
+      "product",
+      "governance"
+    ],
+    "fetched_at": "2026-05-20T15:05:26.297936+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 73397,
+        "sha256": "6df8169a2cd8a5503384570495f9d714b2d723da68eebf3a0d67e96442003c21",
+        "url": "https://www.techsafety.org/s/NNEDV_Why-Privacy-Matters_2016-2sgw.pdf",
+        "path": "international\\nnedv\\nnedv_privacy_matters__assets\\NNEDV_Why-Privacy-Matters_2016-2sgw.pdf",
+        "from_landing": "nnedv_privacy_matters"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "size": 101131,
+    "sha256": "a84fc832cbe0aa6354a3c85c85bce0a6ac242772477a91ddede6fef6481a83e5",
+    "url": "https://nnedv.org/latest_update/intersections-of-stalking-and-domestic-violence/",
+    "path": "international\\nnedv\\nnedv_stalking_dv__intersections-of-stalking-and-domestic-violence",
+    "key": "nnedv_stalking_dv",
+    "title": "The Intersections of Stalking and Domestic Violence",
+    "kind": "html",
+    "category": "international",
+    "subcategory": "nnedv",
+    "year": 2024,
+    "publisher": "NNEDV",
+    "necessity_for": [
+      "product",
+      "research"
+    ],
+    "fetched_at": "2026-05-20T15:05:30.399085+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 3851112,
+        "sha256": "7471de7c383fa113f68b439d813a82c0edd85e891dd3312d96b41d4195a510b8",
+        "url": "https://www.cdc.gov/nisvs/documentation/nisvsStalkingReport.pdf",
+        "path": "international\\nnedv\\nnedv_stalking_dv__assets\\nisvsStalkingReport.pdf",
+        "from_landing": "nnedv_stalking_dv"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html;charset=utf-8",
+    "size": 87108,
+    "sha256": "37ded29eb2f05f125a6474747eecf3d108619db0a373b0677a217fd08064d014",
+    "url": "https://www.techsafety.org/guide-to-cameras",
+    "path": "international\\nnedv\\nnedv_camera_guide__guide-to-cameras",
+    "key": "nnedv_camera_guide",
+    "title": "A Survivor's Guide to Cameras",
+    "kind": "html",
+    "category": "international",
+    "subcategory": "nnedv",
+    "year": 2024,
+    "publisher": "NNEDV (Tech Safety)",
+    "necessity_for": [
+      "product"
+    ],
+    "fetched_at": "2026-05-20T15:05:34.185049+00:00",
+    "sub_assets": [
+      {
+        "ok": true,
+        "http": 200,
+        "content_type": "application/pdf",
+        "size": 763719,
+        "sha256": "24cf0fbe87e2ff5d0250753a728785de50d2456e6eed1ece52f7a7fe51203f47",
+        "url": "https://www.techsafety.org/s/NNEDV_Survivors-Guide-to-Cameras_2023.pdf",
+        "path": "international\\nnedv\\nnedv_camera_guide__assets\\NNEDV_Survivors-Guide-to-Cameras_2023.pdf",
+        "from_landing": "nnedv_camera_guide"
+      }
+    ]
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html",
+    "size": 9954,
+    "sha256": "85d80efc70825ec959dba56ccacbadb292caadf6b342e8af6fc4864068869442",
+    "url": "https://web.archive.org/web/20230928204858/https://www.npa.go.jp/bureau/safetylife/stalker/R4_STDVRPCAkouhousiryou.pdf",
+    "path": "jp\\npa\\npa_stalker_dv_r4__R4_STDVRPCAkouhousiryou.pdf",
+    "key": "npa_stalker_dv_r4",
+    "title": "令和4年におけるストーカー事案、配偶者からの暴力事案等",
+    "kind": "pdf",
+    "category": "jp",
+    "subcategory": "npa",
+    "year": 2023,
+    "publisher": "警察庁",
+    "necessity_for": [
+      "research"
+    ],
+    "fetched_at": "2026-05-20T15:10:55.049969+00:00"
+  },
+  {
+    "ok": false,
+    "http": 404,
+    "error": "HTTP 404",
+    "url": "https://web.archive.org/web/2023/https://www.npa.go.jp/bureau/safetylife/stalker/R3_STDVRPCAkouhousiryou.pdf",
+    "key": "npa_stalker_dv_r3",
+    "title": "令和3年におけるストーカー事案、配偶者からの暴力事案等",
+    "kind": "pdf",
+    "category": "jp",
+    "subcategory": "npa",
+    "year": 2022,
+    "publisher": "警察庁",
+    "necessity_for": [
+      "research"
+    ],
+    "fetched_at": "2026-05-20T15:10:58.317113+00:00"
+  },
+  {
+    "ok": false,
+    "http": 403,
+    "error": "HTTP 403",
+    "url": "https://www.researchgate.net/publication/11379469_Repeat_Rape_and_Multiple_Offending_Among_Undetected_Rapists",
+    "key": "lisak_miller_2002_landing",
+    "title": "Repeat Rape and Multiple Offending Among Undetected Rapists (landing)",
+    "kind": "html",
+    "category": "academic",
+    "subcategory": "underreporting",
+    "year": 2002,
+    "publisher": "ResearchGate",
+    "necessity_for": [
+      "product",
+      "research"
+    ],
+    "fetched_at": "2026-05-20T15:11:00.654236+00:00"
+  },
+  {
+    "ok": true,
+    "http": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "size": 21725,
+    "sha256": "1bc12f9aee93df44a17383bc45cbf379d9451e23c0853135bae72e945a879787",
+    "url": "https://www.nsvrc.org/publications/nsvrc-publications-research-briefs/key-findings-rethinking-serial-perpetration",
+    "path": "academic\\underreporting\\nsvrc_rethinking_serial_perpetration__key-findings-rethinking-serial-perpetration",
+    "key": "nsvrc_rethinking_serial_perpetration",
+    "title": "Rethinking Serial Perpetration: Key Findings",
+    "kind": "html",
+    "category": "academic",
+    "subcategory": "underreporting",
+    "year": 2015,
+    "publisher": "National Sexual Violence Resource Center",
+    "necessity_for": [
+      "product",
+      "research"
+    ],
+    "fetched_at": "2026-05-20T15:11:03.094094+00:00"
+  },
+  {
+    "ok": false,
+    "http": 403,
+    "error": "HTTP 403",
+    "url": "https://www.researchgate.net/publication/325889757_Callisto_A_Cryptographic_Approach_to_Detecting_Serial_Perpetrators_of_Sexual_Misconduct",
+    "key": "callisto_2018_landing",
+    "title": "Callisto: A Cryptographic Approach to Detecting Serial Perpetrators (landing)",
+    "kind": "html",
+    "category": "academic",
+    "subcategory": "callisto",
+    "year": 2018,
+    "publisher": "ResearchGate (Rajan et al. 2018, ACM COMPASS)",
+    "necessity_for": [
+      "product"
+    ],
+    "fetched_at": "2026-05-20T15:11:05.380201+00:00"
+  },
+  {
+    "ok": false,
+    "http": 403,
+    "error": "HTTP 403",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S2210670720308453",
+    "key": "diy_to_dit_2020",
+    "title": "From Do-It-Yourself (DIY) to Do-It-Together (DIT)",
+    "kind": "html",
+    "category": "academic",
+    "subcategory": "airbox",
+    "year": 2020,
+    "publisher": "Sustainable Cities and Society (Elsevier)",
+    "necessity_for": [
+      "governance"
+    ],
+    "fetched_at": "2026-05-20T15:11:07.751358+00:00"
+  },
+  {
+    "ok": false,
+    "http": 403,
+    "error": "HTTP 403",
+    "url": "https://rainn.org/facts-statistics-the-scope-of-the-problem/statistics-perpetrators-of-sexual-violence/",
+    "key": "rainn_perpetrator_stats",
+    "title": "Statistics: Perpetrators of Sexual Violence",
+    "kind": "html",
+    "category": "international",
+    "subcategory": "rainn",
+    "year": 2024,
+    "publisher": "RAINN",
+    "necessity_for": [
+      "product",
+      "research"
+    ],
+    "fetched_at": "2026-05-20T15:11:10.124524+00:00"
+  }
+]

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>AirBox: a participatory PM2.5 sensing system</title>
+    <link rel="stylesheet" href="/static/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/content.css">
+    <link rel ="alternate" href="/zh/page/report/9828.html" hreflang ="zh-TW"/>
+    <link rel ="alternate" href="/en/page/report/9828.html" hreflang ="en-US"/> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/static/js/common.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="/static/css/noscript.css">
+    </noscript>
+</head>
+
+<body>
+
+    <p class="noscript-msg">您的瀏覽器不支援JavaScript語法，網站的部份功能在JavaScript沒有啟用的狀態下無法正常使用。</p>    
+    <header class="header-area">
+        <div class="top-bar">
+            <div class="goto-center">
+                <a href="#anchor-main-content" class="goto-center-btn sr-only sr-only-focusable" title="Go to the main content block">Go to the main content block</a>
+            </div>
+            <ul class="top-bar__link-list main-container text-right">
+     <li><a href="#" title="Top menu links" accesskey="U">:::</a></li>     <li><a href="/en/index.html"  target="">Home</a></li>     <li><a href="http://www.sinica.edu.tw"  target="">Academia Sinica</a></li>     <li><a href="/en/sitemap.html"  target="">Site Map</a></li>     <li><a href="/en/page/AboutUs/NewsLetter.html"  target="">IIS Newsletter</a></li>     <li><a href="/en/page/Events/DistinguishedLectureSeries/2026.html"  target="">Distinguished Lecture Series</a></li>     <li><a href="/en/RSS.html"  target="">RSS</a></li>     <li><a href="/zh/page/report/9828.html" onclick="setLocale('zh');" target="">中文版</a></li></ul>
+        </div>
+        <div class="header-area__wrapper main-container">
+            <h1 class="logo">
+                <a href="/en/index.html"><span class="sr-only">Institute of Information Science, Academia Sinica</span></a>
+            </h1>
+            <div class="float-right">
+                <div class="search-block">
+                    <form action="/en/search.html" method="get">
+                        <div class="relative">
+                            <input id="input-search" class="search-block__input input" name="q" type="search" placeholder="search" aria-label="Keyword" />
+                            <button type="submit" name="search_submit" class="search-block__submit submit">
+                                <i class="fas fa-search"></i><span class="sr-only">Search</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="text-right mini-toggle-block">
+                    <button id="js-mini-toggle-block__btn" class="menu-btn" aria-expanded="false" aria-controls="js-mini-menu-area">
+                        <span id="js-mini-open-menu"><i class="fas fa-bars"></i><span class="sr-only">Expand</span></span>
+                        <span id="js-mini-close-menu" class="invisible"><i class="fas fa-times"></i><span class="sr-only">Close</span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <nav class="menu-area main-container">
+            <ul class="menu-area__list">
+                <li><a href="/en/page/AboutUs/Introduction.html">About Us</a>
+</li>
+<li><a href="/en/page/People/ResearchFellows.html">People</a>
+</li>
+<li><a href="/en/page/ResearchOverview/Publications/2026.html">Research</a>
+</li>
+<li><a href="/en/page/Events/seminar.html">Events</a>
+</li>
+<li><a href="/en/page/Recruitment/PostdoctoralFellows.html">Recruitment</a>
+</li>
+<li><a href="http://jise.iis.sinica.edu.tw">JISE</a></li>
+<li><a href="/en/page/Library/Information/Introduction.html">Library</a>
+</li>
+<li><a href="/en/page/ComputerCenter/Introduction.html">Computer Center</a>
+</li>
+<li><a href="/en/page/Internal/ForMembers/Rules.html">Internal</a>
+</li>
+
+            </ul>
+        </nav>
+    </header>
+    <div id="js-mini-menu-area" class="mini-menu-area invisible" hidden>
+        <div class="mini-search-block">
+            <form class="relative main-container" action="/en/search.html" method="get">
+                <input id="mini-input-search" class="mini-search-block__input full-width input" name="q" type="search" placeholder="search" aria-label="Keyword" />
+                <button type="submit" name="search_submit" class="mini-search-block__submit submit">
+                    <i class="fas fa-search"></i><span class="sr-only">Search</span>
+                </button>
+            </form>
+        </div>
+        <div class="mini-link-block">
+            <ul class="main-container mini-link-block__list">
+                <li><a href="/en/sitemap.html">Site Map</a></li>
+                <li><a href="/en/page/AboutUs/NewsLetter.html">IIS Newsletter</a></li>
+                <li><a href="/en/page/Events/DistinguishedLectureSeries/2026.html">Distinguished Lecture Series</a></li>
+            </ul>
+        </div>
+        <nav class="mini-menu-block">
+            <ul class="main-container mini-menu-block__list">
+                <li><a href="/en/page/AboutUs/Introduction.html">About Us</a>
+</li>
+<li><a href="/en/page/People/ResearchFellows.html">People</a>
+</li>
+<li><a href="/en/page/ResearchOverview/Publications/2026.html">Research</a>
+</li>
+<li><a href="/en/page/Events/seminar.html">Events</a>
+</li>
+<li><a href="/en/page/Recruitment/PostdoctoralFellows.html">Recruitment</a>
+</li>
+<li><a href="http://jise.iis.sinica.edu.tw">JISE</a></li>
+<li><a href="/en/page/Library/Information/Introduction.html">Library</a>
+</li>
+<li><a href="/en/page/ComputerCenter/Introduction.html">Computer Center</a>
+</li>
+<li><a href="/en/page/Internal/ForMembers/Rules.html">Internal</a>
+</li>
+
+            </ul>
+        </nav>
+        <div class="mini-icon-block">
+            <ul class="main-container mini-icon-block__list">
+                <li><a href="/en/index.html"><i class="fas fa-home"></i><span class="sr-only">Home</span></a></li>
+                <li><a href="http://www.facebook.com/iis.sinica"><i class="fab fa-facebook-f"></i><span class="sr-only">Facebook</span></a></li>
+                <li><a href="/en/RSS.html"><i class="fas fa-rss"></i><span class="sr-only">RSS</span></a></li>
+                <li><a href="/zh/page/report/9828.html" onclick="setLocale('zh');">中文</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="print-logo-area main-container">
+        <img src="/static/img/logo.png" alt="Institute of Information Science, Academia Sinica">
+    </div>
+    <div class="main-container page-layout-area">
+                            <ol class="breadcrumbs">
+            <li class="breadcrumbs__item"><i class="fas fa-map-marker-alt"></i>&nbsp;<a href="/index.html">Home</a></li>
+<li class="breadcrumbs__item"><a href="/en/focus.html" >Special Reports</a></li>
+<li class="breadcrumbs__item">AirBox: a participatory PM2.5 sensing system</li>            </ol>
+        <div class="single-page">
+            <p class="noscript-msg mt-xs">Press Ctrl+P to print from browser</p>
+        </div>        
+        <div class="item-heading">
+            <h2 class="item-heading__title"><span>AirBox: a participatory PM2.5 sensing system</span></h2>
+        </div>
+        <div class="page-content">
+            <p class="mt-0 mb-0"><a class="main-access-key" id="anchor-main-content" href="#anchor-main-content" title="Main content" accesskey="C">:::</a></p>
+            <div class="focus-area"><!--p class="text-right">2020/06/24</p-->
+<p class="focus-area__photo-block">
+    <img class="mw-100 focus-area__photo" src="/file/specialReport/9828/b1.jpg" alt="AirBox: a participatory PM2.5 sensing system">
+</p>
+<p>Micro air quality sensing is an emerging sensing paradigm that combines the advances in low-cost air sensors, long-range low-power communication, and big data analysis for environmental monitoring. Comparing to conventional environmental monitoring systems, it is more affordable for large-scale and dense deployment, and it can provide measurements at a finer spatio-temporal granularity. In recent years, a number of large-scale micro air quality sensing systems have been deployed worldwide by different governments, industry, and communities.</p>
+
+<p>We have been devoting to micro air quality sensing research since 2013. In 2015, we launched the AirBox project, which engages citizens to participate in fine particulate matter (a.k.a. PM2.5) sensing and empowers participants to make low-cost PM2.5 sensing devices on their own. The projects grew rapidly with supports from local governments, domestic IT companies, and citizen communities. In 2019, the project also received a 4-year government grant to deploy AirBox devices in every K12 school in Taiwan. By March 2020, we have deployed more than 15,000 devices in 58 countries, and our open data portal has become the largest and most popular repository of micro PM2.5 sensing data in the world.</p>
+
+<p>In addition, we have investigated the inner properties of micro air quality sensing data and conducted a number of algorithms for data analysis. For instance, we designed an anomaly detection framework (ADF) to detect anomalous devices/events in sensing data streams, and we proposed a hybrid model for short-term air quality forecast by incorporating data clustering and neural networks. Moreover, by combining real-time sensing data and short-term forecast results, we proposed a clean air routing (CAR) algorithm to provide the route recommendation of minimal air pollution exposure. Our research results are of both theoretical and practical values and have been published in prestigious journals. The proposed algorithms have been implemented in the AirBox system, and the results have been used by governments and research communities.</p>
+
+<p>The project has also received extensive attention from the media, the public, and international research community. In addition to domestic media coverage, it was covered in &ldquo;Dust Island &ndash; Particulate Matters&rdquo;, the first documentary focusing on air pollution in Taiwan, in 2019; and it was featured by CBS (USA) and BBC News (UK) in 2018 and 2019 respectively. The project has good international visibility in the community, in terms of tight collaboration with top research teams and government agencies, such as Array of Things project (Argonne National Lab, USA), The COGfx Study (Harvard University, USA), AQ&amp;U project (University of Utah, USA), SmartAQNet project (Karlsruhe Institute of Technology, Germany), DustBoy project (Chiang Mai University, Thailand), and AirBox Korea project (Gyeongsangnam-do Provincial Government, Korea).</p>
+
+<p>Finally, by exploiting the finer-grained data resolution of micro air quality sensing, the AirBox project not only benefits researches in computer science and environmental science, but it also stimulates interdisciplinary innovation in public health, risk management, urban planning, atmospheric science, and science and technology studies. The project has created a positive ecosystem involving academia, industry, governments, and citizens; and it has potential to facilitate smart city, smart environmental governance, and public-private partnership for common good in the future.</p>
+</div>
+        </div>
+    </div>
+
+    <div class="bottom-toggle main-container text-right">
+        <button id="js-toggle-btn" class="toggle-btn" aria-expanded="false" aria-controls="js-bottom-nav">
+            <span id="js-bottom-nav-open">Expand</span><span id="js-bottom-nav-close" class="invisible">Close</span>
+            <i id="js-fa-caret-down" class="fas fa-caret-down"></i>
+            <i id="js-fa-caret-up" class="fas fa-caret-up invisible"></i>
+        </button>
+    </div>
+    <div class="bottom-nav-area">
+            <ul id="js-bottom-nav" class="main-container bnl1-list bnl1-list_invisible" hidden>
+    <li class="bnl1-list__item">
+        <a class="bnl1-list__title" href="/en/page/AboutUs/Introduction.html">About Us</a>
+        <ul class="bnl2-list">    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/AboutUs/AdvisoryCommittee/AdvisoryCommittee2026.html">Advisory Committee</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/AboutUs/Introduction.html">Introduction</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/AboutUs/Brochure.html">Brochure</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/AboutUs/History/PastPresentDirectors.html">History</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/AboutUs/Organization.html">Organization Chart</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/AboutUs/DirectorsMessage.html">Director's Message</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/AboutUs/PlanningCommittee/2026.html">Planning Committee</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/AboutUs/HonorsAwards.html">Honors & Awards</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/AboutUs/ContactInformation.html">Contact Information</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/AboutUs/Directions.html">Directions</a></li>
+</ul>
+
+    </li>
+
+    <li class="bnl1-list__item">
+        <a class="bnl1-list__title" href="/en/page/People/ResearchFellows.html">People</a>
+        <ul class="bnl2-list">    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/People/ResearchFellows.html">Research Fellows</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/People/JointAdjunctResearchFellows.html">Joint & Adjunct Research Fellows</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/People/ResearchEngineers.html">Research Engineers</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/People/PostdoctoralFellows.html">Postdoctoral Fellows</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/People/ResearchAssistants.html">Research Assistants</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/People/TIGPStudent.html">TIGP Students</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/People/VisitingScholars/2026.html">Visiting Scholars</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/People/EmeritusFormerResearchFellows.html">Emeritus & Former Research Fellows</a></li>
+</ul>
+
+    </li>
+
+    <li class="bnl1-list__item">
+        <a class="bnl1-list__title" href="/en/page/ResearchOverview/Publications/2026.html">Research</a>
+        <ul class="bnl2-list">    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ResearchOverview/Groups/IntelligentComputing.html">Research Groups</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ResearchOverview/KeyProjects/index.html">Key Projects</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ResearchOverview/RecentResearchResults.html">Recent Research Results</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ResearchOverview/Publications/2026.html">Publication Lists</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ResearchOverview/ResearchProjects/2026.html">Research Projects</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ResearchOverview/ExternalProjects/2026.html">External Projects</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ResearchOverview/Achievements/Achievements_2024.html">Achievements</a></li>
+</ul>
+
+    </li>
+
+    <li class="bnl1-list__item">
+        <a class="bnl1-list__title" href="/en/page/Events/seminar.html">Events</a>
+        <ul class="bnl2-list">    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Events/seminar.html">Seminars</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Events/announcement/2026.html">Announcements</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Events/DistinguishedLectureSeries/2026.html">Distinguished Lecture Series</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Events/workshop.html">Workshops & Conferences</a></li>
+</ul>
+
+    </li>
+
+    <li class="bnl1-list__item">
+        <a class="bnl1-list__title" href="/en/page/Recruitment/PostdoctoralFellows.html">Recruitment</a>
+        <ul class="bnl2-list">    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Recruitment/ResearchFellows.html">Research Fellows</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Recruitment/PostdoctoralFellows.html">Postdoctoral Fellows</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Recruitment/Assistants.html">Assistants</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Recruitment/ReservedOfficers.html">Reserved Officers</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Recruitment/SummerInterns/SummerInterns_2026.html">Summer Interns</a></li>
+</ul>
+
+    </li>
+
+    <li class="bnl1-list__item">
+        <a class="bnl1-list__title" href="http://jise.iis.sinica.edu.tw">JISE</a>
+        
+    </li>
+
+    <li class="bnl1-list__item">
+        <a class="bnl1-list__title" href="/en/page/Library/Information/Introduction.html">Library</a>
+        <ul class="bnl2-list">    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Library/Information/Introduction.html">Library Information</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Library/NewsEvents.html">News & Events</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Library/specialBookList.html">Windows to See the World</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="https://aslib.sinica.edu.tw/?locale=en">Academia Sinica Library Service</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="https://aslib.on.worldcat.org/discovery">Search Library Catalog</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="https://aslib.account.worldcat.org/account/checkouts">Patron Information</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="https://iis.sinica.edu.tw/en/page/Library/Information/LibraryCard.html">Library Card Application</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Library/EResources/EbooksIIS.html">Electronic Resources</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Library/DocumentDeliveryServices.html">Document Delivery Services</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Library/InternetResources.html">Internet Resources</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Library/TechReport/2025.html">Technical Report</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Library/ConferenceProceedings/ConferenceProceedings2010.html">Conference Proceedings</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Library/Internal/Recommendation.html">Internal Affairs</a></li>
+</ul>
+
+    </li>
+
+    <li class="bnl1-list__item">
+        <a class="bnl1-list__title" href="/en/page/ComputerCenter/Introduction.html">Computer Center</a>
+        <ul class="bnl2-list">    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/Introduction.html">Introduction</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/SecurityInfo.html"> Information and Communication Security</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/MaintenanceNotices.html">Maintenance Notice</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/ComputerAndInternet/IISNetworks.html">Computer and Internet</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/EmailSystems/AccountSystem.html">Account and Email Systems</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/PhoneSystem/Regulation.html">Phone System</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/Printers/NetworkPrinter.html">Printers</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/SeminarRoomAndOnlineMeeting/SeminarRoom.html">Seminar Room and Online Meeting</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/BorrowSoftwaresorEquipments/BorrowSoftwaresorEquipments.html">Borrow Softwares or Equipments</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/FAQandOtherServices/FAQ.html">FAQ and Other Services</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/ComputerCenter/Contact.html">Contact Information</a></li>
+</ul>
+
+    </li>
+
+    <li class="bnl1-list__item">
+        <a class="bnl1-list__title" href="/en/page/Internal/ForMembers/Rules.html">Internal</a>
+        <ul class="bnl2-list">    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Internal/ForMembers/Rules.html">For Members</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Internal/Announcements.html">Announcements</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="https://staffwww.iis.sinica.edu.tw/CCS/staff/personnel/index.html">Administrative Affairs</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Internal/ReportSystem.html">Report System</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Internal/ApplicationForms.html">Application Forms</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Internal/IPandMachineRoom.html">IP & Machine Room</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Internal/ServiceSystems.html">Service Systems</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Internal/ForResearchers.html">For Researchers</a></li>
+    <li class="bnl2-list__item"><a class="bnl2-list__title" href="/en/page/Internal/ForAdministrativeStaff.html">For Administrative Staff</a></li>
+</ul>
+
+    </li>
+
+</ul>
+    </div>
+    <footer class="footer-area">
+        <div class="main-container">
+            <a id="anchor-bottom-content" class="footer-area__accesskey" href="#anchor-bottom-content" title="Bottom menu links" accesskey="B">:::</a>
+        </div>
+        <div class="main-container footer-area__container">
+            <div class="footer-area__col">
+                <p class="footer-area__heading">Institute of Information Science<br/>Academia Sinica</p>
+                <p class="footer-area__contact-info text-secondary text-line-height">
+                    128 Academia Road, Section 2, Nankang, Taipei 115, Taiwan. <br />Tel: +886-2-27883799 <br />Fax: +886-2-27824814
+                </p>
+                <p><a href="https://accessibility.moda.gov.tw/Applications/Detail?category=20240408113123" target="_blank" title="Accessibility2.0 AA(open in new window)" rel="noreferrer noopener"><img src="/static/img/web_accessibility_0aa.png" alt="Accessibility2.0 AA" />
+    </a></p>
+            </div>
+            <div class="footer-area__col">
+                <p class="footer-area__heading"> Links </p>
+                <ul class="footer-area__links">     <li><a class="text-secondary" href="/en/Domestic_Programs.html" ><i class="fas fa-caret-right"></i>  Domestic Ph.D. Program</a></li>     <li><a class="text-secondary" href="/en/TIGP_Programs.html" ><i class="fas fa-caret-right"></i>  TIGP Ph.D. Program</a></li>     <li><a class="text-secondary" href="/en/privacy.html" ><i class="fas fa-caret-right"></i>  Privacy Policy</a></li>     <li><a class="text-secondary" href="/en/page/AboutUs/ContactInformation.html" ><i class="fas fa-caret-right"></i>  Contact Information</a></li></ul>
+            </div>
+            <div class="footer-area__icons-col">
+                <ul class="footer-area__icons">
+                    <li><a href="/en/index.html"><i class="fas fa-home"></i><span class="sr-only">Home</span></a></li>
+                    <!-- <li><a href="http://www.facebook.com/iis.sinica"><i class="fab fa-facebook-f"></i><span class="sr-only">Facebook</span></a></li> -->
+                    <li><a href="/zh/page/report/9828.html" onclick="setLocale('zh');">中文</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-container footer-area__bottom">
+            <hr class="inset-line">
+            <p class="text-secondary"> 2020-2026 © Institute of Information Science, Academia Sinica. All Rights Reserved. </p>
+        </div>
+        <div class="main-container print-footer-area">
+            <p> 2020-2026 © Institute of Information Science, Academia Sinica. All Rights Reserved. </p>
+            <p> Academia Road, Section 2, Nankang, Taipei 115, Taiwan. +886-2-27883799</p>
+        </div>
+    </footer>
+</body>
+
+</html>

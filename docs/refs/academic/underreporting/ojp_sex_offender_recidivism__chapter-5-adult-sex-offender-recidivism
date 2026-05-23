@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+<link rel="preload" href="/themes/custom/ojp/assets/fonts/roboto/Roboto-Regular.woff2" as="font" type="font/woff2" crossorigin="" />
+<link rel="preload" href="/themes/custom/ojp/assets/fonts/roboto/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin="" />
+<link rel="preload" href="/themes/custom/ojp/assets/fonts/roboto/Roboto-Italic.woff2" as="font" type="font/woff2" crossorigin="" />
+<link rel="preload" href="/themes/custom/ojp/assets/fonts/roboto/Roboto-BlackItalic.woff2" as="font" type="font/woff2" crossorigin="" />
+<link rel="preload" href="/themes/custom/ojp/assets/fonts/merriweather/Latin-Merriweather-Regular.woff2" as="font" type="font/woff2" crossorigin="" />
+<link rel="preload" href="/themes/custom/ojp/assets/fonts/merriweather/Latin-Merriweather-Bold.woff2" as="font" type="font/woff2" crossorigin="" />
+<noscript><style>form.antibot * :not(.antibot-message) { display: none !important; }</style>
+</noscript><meta name="description" content="" />
+<link rel="canonical" href="https://smart.ojp.gov/somapi/chapter-5-adult-sex-offender-recidivism" />
+<meta property="og:site_name" content="Office of Sex Offender Sentencing, Monitoring, Apprehending, Registering, and Tracking" />
+<meta property="og:url" content="https://smart.ojp.gov/somapi/chapter-5-adult-sex-offender-recidivism" />
+<meta property="og:title" content="Chapter 5: Adult Sex Offender Recidivism" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://smart.ojp.gov/themes/custom/ojp/assets/images/ojp/archival-notice-sq.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:title" content="Chapter 5: Adult Sex Offender Recidivism | Office of Sex Offender Sentencing, Monitoring, Apprehending, Registering, and Tracking" />
+<meta name="twitter:image" content="https://smart.ojp.gov/sites/g/files/xyckuh231/files/images/2020-10/meta_SMART-blue_tw.jpg" />
+<meta name="google-site-verification" content="4PLVTsyCm3--uca8rMAYrsLAAEJtRBtpZWm-kh9pr0g" />
+<meta name="Generator" content="Drupal 10 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="/themes/custom/ojp/assets/images/ojp/favicon.png" type="image/png" />
+<link rel="alternate" hreflang="en" href="https://smart.ojp.gov/somapi/chapter-5-adult-sex-offender-recidivism" />
+
+    <title>Archived | Chapter 5: Adult Sex Offender Recidivism | Office of Sex Offender Sentencing, Monitoring, Apprehending, Registering, and Tracking</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/xyckuh231/files/css/css_AWAvGPs91mF8YostnF28j4LTsWOWBYWPx4yfQwgyXG4.css?delta=0&amp;language=en&amp;theme=ojp&amp;include=eJxVUEGOwzAI_JC9PMnCNkpJiKkMydb7-k3aRmoPiGEGAUNZqLJrT9wqNc-iZYEPHIqg2YCVzHAiC0U7Qe3bHeUHZ3x8EY5Z6EZYqb_4pn1F4T8KVedkN-zcJvjAgR4u3JZrwrsMgkM3T3ljOYaB_2pRSUbFWdulVraiO_UB2ujQg853OOLKMaNRNB9yHH5yO-9cY5aNIrYap47j5FN5fwEukLCUwzFnFvZXT0XHpz-D7zLYMKcVzmX_G9qDJQ" />
+<link rel="stylesheet" media="all" href="/sites/g/files/xyckuh231/files/css/css_hkJujY97BqjJeFOyDJ18YV_KBEyZn9XWolJLShU-rf8.css?delta=1&amp;language=en&amp;theme=ojp&amp;include=eJxVUEGOwzAI_JC9PMnCNkpJiKkMydb7-k3aRmoPiGEGAUNZqLJrT9wqNc-iZYEPHIqg2YCVzHAiC0U7Qe3bHeUHZ3x8EY5Z6EZYqb_4pn1F4T8KVedkN-zcJvjAgR4u3JZrwrsMgkM3T3ljOYaB_2pRSUbFWdulVraiO_UB2ujQg853OOLKMaNRNB9yHH5yO-9cY5aNIrYap47j5FN5fwEukLCUwzFnFvZXT0XHpz-D7zLYMKcVzmX_G9qDJQ" />
+<link rel="stylesheet" media="print" href="/sites/g/files/xyckuh231/files/css/css_zxEGTDXeP9ngdNso24-Bomoquys4mkHkVPDlu-SLlg8.css?delta=2&amp;language=en&amp;theme=ojp&amp;include=eJxVUEGOwzAI_JC9PMnCNkpJiKkMydb7-k3aRmoPiGEGAUNZqLJrT9wqNc-iZYEPHIqg2YCVzHAiC0U7Qe3bHeUHZ3x8EY5Z6EZYqb_4pn1F4T8KVedkN-zcJvjAgR4u3JZrwrsMgkM3T3ljOYaB_2pRSUbFWdulVraiO_UB2ujQg853OOLKMaNRNB9yHH5yO-9cY5aNIrYap47j5FN5fwEukLCUwzFnFvZXT0XHpz-D7zLYMKcVzmX_G9qDJQ" />
+<link rel="stylesheet" media="all" href="/sites/g/files/xyckuh231/files/css/css__OMvw7VzKzukKVnHFF84vCJSG6OK9cSTc6rhZb9mbyQ.css?delta=3&amp;language=en&amp;theme=ojp&amp;include=eJxVUEGOwzAI_JC9PMnCNkpJiKkMydb7-k3aRmoPiGEGAUNZqLJrT9wqNc-iZYEPHIqg2YCVzHAiC0U7Qe3bHeUHZ3x8EY5Z6EZYqb_4pn1F4T8KVedkN-zcJvjAgR4u3JZrwrsMgkM3T3ljOYaB_2pRSUbFWdulVraiO_UB2ujQg853OOLKMaNRNB9yHH5yO-9cY5aNIrYap47j5FN5fwEukLCUwzFnFvZXT0XHpz-D7zLYMKcVzmX_G9qDJQ" />
+
+    
+  </head>
+  <body class="page-with-hero path-node page-node-type-landing-page">
+        <a href="#main-content" class="visually-hidden focusable skip-link">
+      Skip to main content
+    </a>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3NMP5N"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+      <section class="usa-banner" aria-label="Official government website">
+
+    <div class="usa-accordion">
+  <header class="usa-banner__header">
+    <div class="usa-banner__inner">
+      <div class="grid-col-auto">
+        <img class="usa-banner__header-flag" src="/themes/custom/ojp/assets/images/us_flag_small.png" alt="U.S. flag">
+      </div>
+      <div class="grid-col-fill tablet:grid-col-auto">
+        <p class="usa-banner__header-text">An official website of the United States government, Department of Justice.</p>
+        <p class="usa-banner__header-action" aria-hidden="true">Here's how you know</p>
+      </div>
+      <button class="usa-accordion__button usa-banner__button"
+              aria-expanded="false" aria-controls="gov-banner">
+        <span class="usa-banner__button-text">Here's how you know</span>
+      </button>
+    </div>
+  </header>
+  <div class="usa-banner__content usa-accordion__content" id="gov-banner" hidden>
+    <div class="grid-row grid-gap-lg">
+      <div class="usa-banner__guidance tablet:grid-col-6">
+        <img class="usa-banner__icon usa-media-block__img" src="/themes/custom/ojp/assets/images/icon-dot-gov.svg" role="img" alt="" aria-hidden="true">
+        <div class="usa-media-block__body">
+          <p>
+            <strong>Official websites use .gov</strong>
+            <br>
+            A <strong>.gov</strong> website belongs to an official government organization in the United States.
+          </p>
+        </div>
+      </div>
+      <div class="usa-banner__guidance tablet:grid-col-6">
+        <img class="usa-banner__icon usa-media-block__img" src="/themes/custom/ojp/assets/images/icon-https.svg" role="img" alt="" aria-hidden="true">
+        <div class="usa-media-block__body">
+          <p>
+            <strong>Secure .gov websites use HTTPS</strong>
+            <br>
+            A <strong>lock</strong> (
+            <span class="icon-lock"><svg xmlns="http://www.w3.org/2000/svg" width="52" height="64" viewBox="0 0 52 64" class="usa-banner__lock-image" role="img" aria-labelledby="banner-lock-title-default banner-lock-description-default" focusable="false"><title id="banner-lock-title-default">Lock</title><desc id="banner-lock-description-default">A locked padlock</desc><path fill="#000000" fill-rule="evenodd" d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"/></svg></span>
+            ) or <strong>https://</strong> means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    
+  </section>
+
+  <header class="usa-header usa-header--extended" id="header">
+
+    
+      <div class="usa-navbar">
+                <button class="usa-menu-btn usa-button">Menu</button>
+                  <div class="region region-header">
+    <div class="usa-logo" id="logo">
+      <div class="ojp-seal">
+      <a href="https://www.ojp.gov" accesskey="1" title="Office of Justice Programs" aria-label="Office of Justice Programs">
+                <img src="/themes/custom/ojp/assets/images/ojp/OJP-seal.svg" alt="Office of Justice Programs seal" height="98" width="98" />
+              </a>
+    </div>
+        <div class="ojp-office-logo">
+      <a href="/" accesskey="2" title="Home" aria-label="Home">
+        <img src="/themes/custom/ojp/assets/images/ojp/smart-logo-no-seal.svg?v=1" alt="Home" />
+      </a>
+    </div>
+  </div>
+
+  </div>
+
+      </div>
+
+      <div class="usa-overlay"></div>
+        <nav class="usa-nav" aria-label="site navigation">
+          <div class="usa-nav__inner">
+
+            <button class="usa-nav__close">
+              <img src="/themes/custom/ojp/assets/images/close-white.svg" alt="close" />
+            </button>
+
+            
+            
+                                              <div class="region region-primary-menu">
+    
+
+
+  
+  
+          <ul class="usa-nav__primary usa-accordion" aria-label="primary navigation">
+    
+          <li class="usa-nav__primary-item" >
+
+        
+                  <a href="/about" class="link usa-nav__link">
+            <span class="">About</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__primary-item" >
+
+                  <button class="usa-accordion__button usa-nav__link" aria-expanded="false" aria-controls="extended-nav-section-2">
+            <span>SORNA</span>
+          </button>
+        
+                    
+  
+          <ul id="extended-nav-section-2" class="usa-nav__submenu" hidden>
+
+            <li class="usa-nav__submenu-item">
+        <a href="/sorna">
+          <span>SORNA</span>
+        </a>
+      </li>
+      
+    
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/sorna/current-law" class="link">
+            <span class="">Current Law</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/sorna/substantial-implementation" class="link">
+            <span class="">Substantial Implementation</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/sorna/sorna-implementation-status" class="link">
+            <span class="">Implementation Status</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/sorna/indian-country" class="link">
+            <span class="">Indian Country</span>
+          </a>
+        
+      </li>
+        </ul>
+  
+        
+      </li>
+          <li class="usa-nav__primary-item" >
+
+        
+                  <a href="/programs" class="link usa-nav__link">
+            <span class="">Programs</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__primary-item" >
+
+                  <button class="usa-accordion__button usa-nav__link" aria-expanded="false" aria-controls="extended-nav-section-4">
+            <span>Funding</span>
+          </button>
+        
+                    
+  
+          <ul id="extended-nav-section-4" class="usa-nav__submenu" hidden>
+
+            <li class="usa-nav__submenu-item">
+        <a href="/funding">
+          <span>Funding</span>
+        </a>
+      </li>
+      
+    
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/funding/current" class="link">
+            <span class="">Open Funding</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/funding/past" class="link">
+            <span class="">Past Funding</span>
+          </a>
+        
+      </li>
+        </ul>
+  
+        
+      </li>
+          <li class="usa-nav__primary-item" >
+
+                  <button class="usa-accordion__button usa-nav__link" aria-expanded="false" aria-controls="extended-nav-section-5">
+            <span>Research &amp; Publications</span>
+          </button>
+        
+                    
+  
+          <ul id="extended-nav-section-5" class="usa-nav__submenu" hidden>
+
+            <li class="usa-nav__submenu-item">
+        <a href="/research-publications">
+          <span>Research &amp; Publications</span>
+        </a>
+      </li>
+      
+    
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/sorna/current-law/case-law" class="link">
+            <span class="">Case Law</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/publications" class="link">
+            <span class="">Publications</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/library/multimedia" class="link">
+            <span class="">Multimedia</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/somapi/initiative-home" class="link">
+            <span class="">SOMAPI</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/research" class="link">
+            <span class="">Research</span>
+          </a>
+        
+      </li>
+        </ul>
+  
+        
+      </li>
+          <li class="usa-nav__primary-item" >
+
+                  <button class="usa-accordion__button usa-nav__link" aria-expanded="false" aria-controls="extended-nav-section-6">
+            <span>News &amp; Events</span>
+          </button>
+        
+                    
+  
+          <ul id="extended-nav-section-6" class="usa-nav__submenu" hidden>
+
+            <li class="usa-nav__submenu-item">
+        <a href="/news">
+          <span>News &amp; Events</span>
+        </a>
+      </li>
+      
+    
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/news/blogs" class="link">
+            <span class="">Blogs</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/press-releases" class="link">
+            <span class="">Press Releases</span>
+          </a>
+        
+      </li>
+          <li class="usa-nav__submenu-item">
+
+        
+                  <a href="/symposium" class="link">
+            <span class="">Symposia &amp; Workshops</span>
+          </a>
+        
+      </li>
+        </ul>
+  
+        
+      </li>
+        </ul>
+  
+
+
+
+  </div>
+
+                            
+                              <div class="default">
+                    <div class="region region-secondary-menu">
+    <div class="usa-nav__secondary">
+      <ul class="usa-nav__secondary-links">
+
+          <li class="usa-nav__secondary-item">
+        <a href="/contact">
+          Contact Us
+        </a>
+      </li>
+          <li class="usa-nav__secondary-item">
+        <a href="/faqs">
+          FAQs
+        </a>
+      </li>
+          <li class="usa-nav__secondary-item">
+        <a href="/subscribe">
+          Subscribe
+        </a>
+      </li>
+                  <li class="usa-nav__secondary-item">
+        <div class="doj-sharing">
+  <button id="doj-sharing-toggle" class="doj-sharing__toggle" tabindex="0" title="Choose a social sharing platform" aria-haspopup="true" aria-controls="doj-sharing-links" aria-expanded="false">Share</button>
+<ul id="doj-sharing-links" class="doj-sharing__list" tabindex="0" aria-label="Choose a social sharing platform"><li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//smart.ojp.gov/somapi/chapter-5-adult-sex-offender-recidivism" title="Share on Facebook" data-event-label="Share on Facebook" target="_blank">Facebook</a></li><li><a href="https://twitter.com/intent/tweet?url=https%3A//smart.ojp.gov/somapi/chapter-5-adult-sex-offender-recidivism&amp;text=Chapter%205%3A%20Adult%20Sex%20Offender%20Recidivism" title="Share on X" data-event-label="Share on X" target="_blank">X</a></li><li><a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A//smart.ojp.gov/somapi/chapter-5-adult-sex-offender-recidivism&amp;title=Chapter%205%3A%20Adult%20Sex%20Offender%20Recidivism" title="Share on LinkedIn" data-event-label="Share on LinkedIn" target="_blank">LinkedIn</a></li><li><a href="https://reddit.com/submit?url=https%3A//smart.ojp.gov/somapi/chapter-5-adult-sex-offender-recidivism&amp;title=Chapter%205%3A%20Adult%20Sex%20Offender%20Recidivism" title="Share on Reddit" data-event-label="Share on Reddit" target="_blank">Reddit</a></li><li><a href="https://pinterest.com/pin/create/button?url=https%3A//smart.ojp.gov/somapi/chapter-5-adult-sex-offender-recidivism&amp;media=https%3A//smart.ojp.gov/themes/custom/ojp/assets/images/ojp/archival-notice-sq.png&amp;description=Chapter%205%3A%20Adult%20Sex%20Offender%20Recidivism" title="Share on Pinterest" data-event-label="Share on Pinterest" target="_blank">Pinterest</a></li><li><a href="/cdn-cgi/l/email-protection#a29dc0cdc6db9fcad6d6d2d18791e38d8dd1cfc3d0d68ccdc8d28cc5cdd48dd1cdcfc3d2cb8dc1cac3d2d6c7d08f978fc3c6d7ced68fd1c7da8fcdc4c4c7ccc6c7d08fd0c7c1cbc6cbd4cbd1cf84c3cfd299d1d7c0c8c7c1d69fe1cac3d2d6c7d0879092978791e3879092e3c6d7ced6879092f1c7da879092edc4c4c7ccc6c7d0879092f0c7c1cbc6cbd4cbd1cf" title="Share on Email" data-event-label="Share on Email">Email</a></li></ul>
+</div>
+      </li>
+        </ul>
+  
+</div>
+
+<div id="block-ojp-searchblock" data-block-plugin-id="ojp_search_block" class="block block-ojp-search block-ojp-search-block">
+  
+    
+      
+<div class="usa-search usa-search--small">
+  <div role="search">
+    
+<div data-gname="ojp-search" data-queryParameterName="keys" class="gcse-searchbox-only" data-resultsUrl="/search/results">
+  
+</div>
+
+  </div>
+</div>
+  </div>
+
+  </div>
+
+                </div>
+              
+            
+          </div>
+        </nav>
+
+      
+  </header>
+
+  <div class="grid-container">
+    <div class="grid-col-fill">
+        <div class="region region-breadcrumb">
+    <div id="block-ojp-breadcrumbs" data-block-plugin-id="system_breadcrumb_block" class="block block-system block-system-breadcrumb-block">
+  
+    
+       <nav id="system-breadcrumb" aria-label="breadcrumb">
+        <ol class="add-list-reset uswds-breadcrumbs uswds-horizontal-list">
+                            <li>
+                                            <a href="/">Home</a>
+                                    </li>
+                            <li>
+                                            <a href="/somapi">Sex Offender Management Assessment and Planning Initiative</a>
+                                    </li>
+                    </ol>
+    </nav>
+
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+  <section class="clearfix" aria-label="hero">
+      <div class="region region-hero">
+    <div class="hero hero--no_image hero--primary">
+  <div class="hero-container">
+        <div class="hero__no_image-container  clearfix">
+            <div class="hero__text-container ">
+                
+        <h1 class="hero__title">Chapter 5: Adult Sex Offender Recidivism</h1>
+        
+
+                          <div class="hero__subtitle">by Roger Przybylski</div>
+        
+                                        <a href="https://smart.ojp.gov/sites/g/files/xyckuh231/files/media/document/recidivismofadultsexualoffenders.pdf" class="usa-button usa-button--big usa-button--hero ">Download Report</a>
+                        </div>
+
+                </div>
+  </div>
+
+    </div>
+
+
+  </div>
+
+  </section>
+
+<div class="usa-section uswds-middle-section " aria-label="primary content">
+  <div class="grid-container ">
+    <div class="grid-col-fill">
+        <div class="region region-highlighted">
+    <div data-drupal-messages-fallback class="hidden"></div>
+
+  </div>
+
+
+      
+    </div>
+  </div>
+
+  
+  
+  <main class="uswds-main-content-wrapper grid-container ">
+    <a id="main-content" tabindex="-1"></a>
+    <div class = "grid-row grid-gap-2">
+
+      <div class="region-content tablet:grid-col-12">
+          <div class="region region-content">
+    <div id="block-ojp-content" data-block-plugin-id="system_main_block" class="block block-system block-system-main-block">
+  
+    
+      
+
+<article>
+
+  
+    
+
+  
+  <div>
+
+    
+      
+  <div class="layout layout--twocol-section layout--twocol-section--75-25 layout--node-landing_page">
+                    <div  class="layout__region layout__region--first">
+        <div data-block-plugin-id="extra_field_block:node:landing_page:field_content_archival_notice" class="block--field-content-archival-notice block block-layout-builder block-extra-field-blocknodelanding-pagefield-content-archival-notice">
+  
+    
+                <div role="contentinfo"  class="usa-alert usa-alert--info" aria-label="Info Alert">
+    <div class="usa-alert__body">
+                                        <h3 class="usa-alert__heading">Archival Notice</h3>
+              <p class="usa-alert__text">This is an archive page that is no longer being updated. It may contain outdated information and links may no longer function as originally intended.</p>
+          </div>
+  </div>
+
+  </div>
+
+  
+  
+<div     data-block-plugin-id="inline_block:text"
+      data-inline-block-uuid="10ee0466-d2d8-419e-b438-dab76223f8cd"
+      class="block block-layout-builder block-inline-blocktext cta"
+  >
+    <div>
+    
+        
+          <div  class="use-float-friendly-lists field field--name-body field--type-text-with-summary field--label-hidden long-text"><h2>Findings</h2>
+
+<ul>
+	<li>Observed recidivism rates of sex offenders are underestimates of actual reoffending.</li>
+	<li>Measurement variations across studies (operational definitions, length of the follow-up period, populations being studied, methods used) often produce disparate findings.</li>
+	<li>Sexual recidivism rates range from 5 percent after three years to 24 percent after 15 years.</li>
+	<li>The rates of recidivism for general crime are higher than those for sex crimes.</li>
+	<li>Different types of sex offenders have different rates of recidivism.</li>
+</ul></div>
+
+          </div>
+</div>
+
+<div data-block-plugin-id="field_block:node:landing_page:body" class="block--body block block-layout-builder block-field-blocknodelanding-pagebody">
+  
+    
+      
+  <div class="use-float-friendly-lists clearfix text-formatted field field--name-body field--type-text-with-summary field--label-visually_hidden">
+    <div class="field__label visually-hidden">Description</div>
+              <div class="field__item"><p><a id="intr" name="intr"></a></p>
+
+<h2>Introduction</h2>
+
+<p>Recidivism has been conceptually defined as the reversion to criminal behavior by an individual who was previously convicted of a criminal offense (Maltz, 2001). It reflects both the individual's recurrent failure to abide by society's laws and the failure of the criminal justice system to "correct" the individual's law-breaking behavior (Maltz, 2001). While the etiology of criminal behavior is complex (<a href="https://smart.gov/SOMAPI/sec1/ch2_etiology.html">see Chapter 2</a>, "Etiology of Adult Sexual Offending," in the Adult section) and recidivism results from a range of personal and social factors, it is important to recognize that recidivism is not simply another term for repeat offending. Rather, it refers to the recurrence of illegal behavior after an individual experiences legal consequences or correctional interventions imposed, at least in part, to eliminate that behavior or prevent it from occurring again (Henslin, 2008).<a aria-labelledby="footnote_1" href="#_edn1" name="_ednref1" title><sup>1</sup></a>&nbsp;</p>
+
+<p>While recidivism has long been a concern of criminal justice practitioners and policymakers, it has received renewed attention in recent years due to the record number of convicted offenders living in our communities.<a aria-labelledby="footnote_2" href="#_edn2" name="_ednref2" title><sup>2</sup></a>&nbsp;Research has demonstrated that repeat offenders account for a disproportionate amount of crime and that offenders released from prison are arrested at rates 30 to 45 times higher than the general population (Rosenfeld, Wallman, &amp; Formango, 2005). As a result, there is widespread recognition that recidivism has a direct impact on public safety and that recidivism reduction should be a key goal of the criminal justice system. This is particularly true with regard to crimes that are sexual in nature, given their impact on individual victims and the larger community (<a href="https://smart.gov/SOMAPI/sec1/ch1_incidence.html">see Chapter 1</a>, "Incidence and Prevalence of Sexual Offending," in the Adult section).</p>
+
+<p>Unfortunately, recidivism remains a difficult concept to measure, especially in the context of sex offenders. The surreptitious nature of sex crimes, the fact that few sexual offenses are reported to authorities and variation in the ways researchers calculate recidivism rates all contribute to the problem.</p>
+
+<p>The measurement problems found in sex offender recidivism research no doubt have contributed to a lack of consensus among researchers regarding the proper interpretation of some research findings and the validity of certain conclusions. While there is broad agreement that observed recidivism rates are not true reoffense rates, the magnitude of the gap between observed and actual reoffending, the propensity of sex offenders to reoffend over the life course and whether it is valid to characterize sex offender recidivism rates as low or high are examples of key issues that are subject to divergent viewpoints.<a aria-labelledby="footnote_3" href="#_edn3" name="_ednref3" title><sup>3</sup></a>&nbsp;While debate concerning the interpretation and policy implications of research findings occurs in many public safety areas, it is both pronounced and ongoing in the context of sex offender recidivism.</p>
+
+<p>Despite the limitations and controversies outlined above, research findings on the extent of sex offender recidivism can help policymakers and practitioners in several meaningful ways: 1) they can provide an empirical basis for better understanding the differential public safety risks posed by different types of convicted sex offenders, 2) they can help identify the risk factors that are related to recidivism and 3) they can help policymakers and practitioners design and deliver more tailored and effective recidivism reduction strategies. (For a discussion of adult "Sex Offender Risk Assessment,"&nbsp;<a href="https://smart.gov/SOMAPI/sec1/ch6_risk.html">see Chapter 6</a>&nbsp;in the Adult section.)</p>
+
+<p>Knowledge about general recidivism, in addition to sexual recidivism specifically, is important because&nbsp;<strong>many sex offenders engage in both sexual and nonsexual criminal behavior.&nbsp;</strong>Research has shown that sex offenders are more likely to recidivate with a nonsexual offense than a sexual offense (see, e.g., Hanson &amp; Bussière, 1998). Studies have also shown that some crimes legally labeled as nonsexual in the criminal histories of sex offenders may indeed be sexual in their underlying behavior (Doren, 2010; Rice et al., 2006; Heil et al., 2009). Rice and colleagues, for example, reported that "Murder and kidnapping are clear examples of apparently nonsexual violent crimes that, when perpetrated by sex offenders, are usually sexually motivated" (2006, p. 526). In addition, a charge or conviction that appears in a criminal history record might not reflect underlying sexual motivation for the crime due to plea bargaining.&nbsp;&nbsp;&nbsp;</p>
+
+<p>Information about the recidivism rates of different types of sex offenders is equally important. Although sex offenders are often viewed as a homogenous group by the public, they are in reality a diverse mixture of individuals who have committed an array of illegal acts, ranging from noncontact offenses such as exhibitionism to violent sexual assaults (Center for Sex Offender Management [CSOM], 2001). Disaggregating sex offenders in recidivism research unmasks important differences in both the propensity to reoffend and the factors associated with reoffending for different types of individuals who have committed sexual crimes.&nbsp;&nbsp;</p>
+
+<p><a id="issu_cons" name="issu_cons"></a></p>
+
+<h2>Issues To Consider</h2>
+
+<p>Numerous scholars have described the key measurement issues that can affect findings from sex offender recidivism research. Rather than reviewing these issues in their entirety or discussing them in depth, the most important matters that policymakers and practitioners should be concerned with are briefly summarized below.</p>
+
+<p><a id="resi_rate" name="resi_rate"></a></p>
+
+<h3>Recidivism Rates Are Not True Reoffense Rates</h3>
+
+<p>Recidivism rates are typically based on officially recorded information, such as an arrest, criminal conviction or incarceration. Because these official statistics reflect only offenses that come to the attention of authorities, they are a diluted measure of reoffending.&nbsp;<strong>Research has clearly demonstrated that many sex offenses are never reported to authorities.</strong>&nbsp;For example, Bachman (1998) found that only about one in four rapes or sexual assaults were reported to police. More recently, Tjaden and Thoennes (2006) found that only 19 percent of women and 13 percent of men who were raped since their 18th birthday reported the rape to the police. Several studies of victims have shown that the likelihood that a sexual assault will be reported to law enforcement decreases with the victim's age (Kilpatrick, Saunders &amp; Smith, 2003; Sorenson &amp; Snow, 1991).<a aria-labelledby="footnote_4" href="#_edn4" name="_ednref4" title><sup>4</sup></a></p>
+
+<p>It is also important to recognize that, once reported to law enforcement, only a subset of sex offenses result in the arrest of the perpetrator. Grotpeter and Elliot (2002) found that only 2.5 percent of sexual assaults and 10 percent of serious sexual assaults resulted in an arrest and Snyder (2000) found that an arrest was made in only 29 percent of reported juvenile sexual assaults. In addition, a number of studies have found that sex offenders disclose in treatment or in surveys that they had committed a large number of sex crimes before they were first caught or arrested. Abel and his colleagues interviewed paraphiliacs (i.e., those with a diagnosed psychosexual disorder) under conditions of guaranteed confidentiality and found that only 3.3 percent of their self-admitted hands-on sex offenses, such as rape and child molestation, resulted in an arrest (Abel et al., 1988). Simons, Heil and English (2004) found that only 5 percent of rapes and child sexual assaults self-reported during prison treatment were identified in official records. Likewise, another study found that only 1 percent of contact and noncontact sexual offenses self-reported during treatment were identified in official records (Ahlmeyer et al., 2000).</p>
+
+<p>Studies also have demonstrated a "disproportionate and patterned attrition of sexual offenses and sexual offenders from the criminal justice process" (Larcombe, 2012, p. 482). While case attrition (the dropping of a legal case by authorities, for various reasons) occurs for all types of offenses, it appears to be particularly pronounced for sexual crime and offenders (Gelb, 2007). Moreover, certain types of sexual crimes and offenders are more likely to be subject to criminal justice system processing and ultimately conviction, and these cases are not representative of sexual offenses or sexual offenders overall (Lievore, 2004; Kelly, Lovett &amp; Regan, 2005). As Larcombe (2012, p. 482) points out, police, prosecutors, jurors and the community tend to take more seriously those assaults that are "clearly interpretable as violence" and "least similar to potentially appropriate sex." Further, among all sexual offenders, those who have had "prior contact with the police" and those who have assaulted "children, male victims and female victims who are strangers" are most likely to be arrested, charged and prosecuted (Larcombe, 2012, p. 493; Statewide Steering Committee to Reduce Sexual Assault [SSCRSA], 2006; Kelly, Lovett &amp; Regan, 2005; Temkin &amp; Krahé, 2008). Research indicates that victim characteristics can also play a role in attrition. For example, females who are young, who have disabilities or who are members of other vulnerable populations have been found to be "proportionally overrepresented as victims of rape" yet underrepresented among rape cases processed in the criminal justice system (Larcombe, 2012, p. 489; SSCRSA, 2006). This systematic and patterned attrition of sexual offenses within the criminal justice system ensures that the relatively small number of sex crimes that are reported, prosecuted and ultimately result in conviction do not reflect "the most common or injurious forms of sexual violence experienced by women and children" (Larcombe, 2012, p. 483). Hence, findings from recidivism studies need to be interpreted within the context of sexual assault incidence, prevalence and attrition research.&nbsp;</p>
+
+<p>Due to the frequency with which sex crimes are not reported to police, the disparity between the number of sex offenses reported and those solved by arrest and the disproportionate attrition of certain sex offenses and sex offenders within the criminal justice system,&nbsp;<strong>researchers widely agree that observed recidivism rates are underestimates of the true reoffense rates of sex offenders.</strong>&nbsp;Hidden offending presents significant challenges for professionals working in sex offender management as it is difficult to know whether offenders who appear to be nonrecidivists based on official records are truly offense free. (For more on "Sex Offender Management Strategies,"<a href="https://smart.gov/SOMAPI/sec1/ch8_strategies.html">&nbsp;see Chapter 8</a>&nbsp;in the Adult section.) In addition, perceptions of the public safety risk associated with sex crimes and certain sexual offenders may be distorted when they are based solely on crime and on offender profiles identified in official records.</p>
+
+<p><a id="resi_ratm" name="resi_ratm"></a></p>
+
+<h3>Recidivism Rate Measurements Vary by Study</h3>
+
+<p>Even though the basic meaning of recidivism is clear cut, recidivism rates are often measured differently from one study to the next. Different ways of measuring recidivism rates can produce substantially different results, and comparing rates that were derived in different ways can lead to inaccurate conclusions. Some of the most common ways in which measurement variation occurs in recidivism research are summarized below.</p>
+
+<blockquote>
+<p>"Measurement variation across studies can produce disparate findings regarding the recidivism rates of sex offenders."</p>
+</blockquote>
+
+<p><a id="oper_def1" name="oper_def1"></a></p>
+
+<h4>Operational Definition of Recidivism</h4>
+
+<p>An operational definition states in very concrete terms precisely how something is to be measured. When researchers operationally define recidivism for a study, they must specify the event that constitutes recidivism — such as an arrest, a conviction or a return to prison. In some studies, recidivism is defined as an arrest during the follow-up period; in others, recidivism may be defined as a conviction for a criminal offense or a return to prison for a new crime.<a aria-labelledby="footnote_5" href="#_edn5" name="_ednref5" title><sup>5</sup></a>&nbsp;There are various reasons why one definition might be used in lieu of others in a particular study, but it is critically important to recognize that different operational definitions of recidivism produce different research findings (CSOM, 2001).</p>
+
+<p><a id="leng_foll" name="leng_foll"></a></p>
+
+<h4>Length of Followup Period</h4>
+
+<p>The length of time an offender is tracked to determine if recidivism occurred also can vary from one study to the next. Recidivism rates will naturally increase as offenders are followed for longer time periods because there is more time when they are at risk to reoffend and more time for recidivism to be detected. Hence, policymakers and practitioners should always be cognizant of the length of the follow-up period when interpreting recidivism rate research findings. They also should recognize that analyses that fail to standardize the time at risk for everyone in a given group of offenders being studied may further undercount recidivism because some offenders will not have been at risk for the entire follow-up period.<a aria-labelledby="footnote_6" href="#_edn6" name="_ednref6" title><sup>6</sup></a>&nbsp;&nbsp;</p>
+
+<p><a id="popu_stud" name="popu_stud"></a></p>
+
+<h4>Populations Studied</h4>
+
+<p>Variation in the types of offenders studied is common in recidivism research, and studies of sex offender recidivism are no exception (Maltz, 2001). For example, some recidivism studies focus on offenders released or paroled from prison, while others focus on offenders discharged from probation. Because offenders released from prison typically have a more serious criminal history than probationers, and criminal history is related to recidivism, recidivism rates are likely to be higher for prison releasees than for probationers (Przybylski, 1986). In addition, parolees may be subject to more behavioral constraints than probationers, resulting in higher recidivism rates due to technical violations of the conditions of release (Maltz, 2001). Additionally, some prisoners are released without parole supervision. Because differences such as these can affect observed recidivism rates, policymakers and practitioners who use findings from recidivism rate research should exercise caution when comparing the recidivism rates of markedly different populations (Maltz, 2001).</p>
+
+<p><a id="meth_used" name="meth_used"></a></p>
+
+<h4>Methods Used</h4>
+
+<p>Most recidivism studies search for new recorded criminal events and place offenders without the new events in the nonrecidivism category. Heil and colleagues (2009) conducted a recidivism study that accounted for every offender and excluded from the final calculations those who moved out of state, who died or whose residence could not be verified. This reduced the sample size by more than 17 percent, all of whom would have been calculated as "nonrecidivists" in traditional studies. Not surprisingly, one- and five-year recidivism rates for this group of 1,124 prisoners were higher than those reported in many other studies that used follow-up periods that were similar in length. The one- and five-year recidivism rates found by the researchers were, respectively: 3.9 percent and 10.8 percent for a sex crime rearrest, 26.3 percent and 38.1 percent for a violent crime rearrest and 52.6 percent and 77.7 percent for any arrest.</p>
+
+<p><a id="recr_find" name="recr_find"></a></p>
+
+<h2>Recidivism Research Findings</h2>
+
+<p>Empirical data on the recidivism rates of sex offenders come from two broad categories of research: single studies and meta-analysis. Single studies typically track one or more cohorts of sex offenders following an arrest, discharge from probation or release from prison to determine the proportion rearrested, reconvicted or returned to prison within a specified period of time.<a aria-labelledby="footnote_7" href="#_edn7" name="_ednref7" title><sup>7</sup></a>&nbsp;Meta-analysis is fundamentally different. It employs statistical procedures that combine the results of many single studies into one large study with many subjects. By pooling the original studies, meta-analysis counteracts a common methodological problem in research — small sample sizes — thereby helping the analyst to draw more accurate conclusions. Meta-analysis is especially useful when synthesizing the results of studies that use different types of measures, which is a common occurrence in recidivism research, because one of the summary statistics meta-analysis can generate in recidivism research is the average recidivism rate across studies. This can help make sense of single-study findings derived from different operational definitions of recidivism or different follow-up period lengths. While these two types of research ― individual studies and meta-analysis — are fundamentally different, they both have produced useful information on the recidivism rates of sex offenders, and findings from both types of research are presented below<a aria-labelledby="footnote_8" href="#_edn8" name="_ednref8" title><sup>8</sup></a></p>
+
+<p><a id="recr_all" name="recr_all"></a></p>
+
+<h3>Recidivism Rates: All Sex Offenders</h3>
+
+<p>Perhaps the largest single study of sex offender recidivism conducted to date was carried out by Langan, Schmitt and Durose (2003). The study, which was published by the U.S. Department of Justice, Bureau of Justice Statistics, examined the recidivism patterns of 9,691 male sex offenders released from prisons in 15 states in 1994. These offenders accounted for about two-thirds of all male sex offenders released from state prisons in the United States that year. Using a three-year postrelease follow-up period, rearrest and reconviction rates for sexual and other crimes were reported for the entire sample of sex offenders as well as for different categories of sex offenders.</p>
+
+<p>The researchers found a sexual recidivism rate of 5.3 percent for the entire sample of sex offenders based on an arrest during the three-year follow-up period. The violent and overall arrest recidivism rates for the entire sample of sex offenders were much higher; 17.1 percent of sex offenders were rearrested for a violent crime and 43 percent were rearrested for a crime of any kind during the follow-up period. Of the 9,691 sex offenders released from prison in 1994, 3.5 percent were reconvicted for a sex crime and about one-quarter (24 percent) were reconvicted for an offense of any kind during the follow-up period. Nearly four out of every 10 (38.6 percent) sex offenders in the study were returned to prison within three years of their release due to the commission of a new crime or a technical violation of their release conditions.</p>
+
+<p>As part of their study, Langan, Schmitt and Durose (2003) conducted a comparative analysis of recidivism among sex offenders and non-sex offenders. Findings were based on the three-year postrelease offending of 9,691 sex offenders and 262,420 non-sex offenders released from prison in 1994. The analysis revealed that once released, the sex offenders had a lower&nbsp;<strong>overall</strong>&nbsp;rearrest rate than non-sex offenders (43 percent compared to 68 percent), but their&nbsp;<strong>sex crime&nbsp;</strong>rearrest rate was four times higher than the rate for non-sex offenders (5.3 percent compared to 1.3 percent). Similar patterns are consistently found in other studies that compare sex offender and non-sex offender recidivism (see, e.g., Sample &amp; Bray, 2003; Hanson, Scott &amp; Steffy, 1995).</p>
+
+<p>Another important study, because of its large sample size, was conducted by Sample and Bray (2003). The researchers examined the arrest recidivism of 146,918 offenders who were originally arrested in Illinois in 1990. Arrestees categorized as sex offenders (based on their most serious charge in 1990 being a sex offense) had one-year, three-year and five-year rearrest rates for a new sexual offense of 2.2 percent, 4.8 percent and 6.5 percent, respectively.<a aria-labelledby="footnote_9" href="#_edn9" name="_ednref9" title><sup>9</sup></a>&nbsp;The three-year sexual recidivism rate of 4.8 percent for these sex offender arrestees was similar to the three-year rate (5.3 percent) that Langan, Schmitt and Durose (2003) reported for sex offenders released from prison in 1994.</p>
+
+<p>Sex offenders in the Sample and Bray study had one-year, three-year and five-year rearrest rates for any new offense of 21.3 percent, 37.4 percent and 45.1 percent, respectively. These overall recidivism rates were lower than those found for all other categories of offenders in the analysis, except homicide and property damage offenders. But like Langan, Schmitt and Durose (2003), Sample and Bray found that sex offenders had a higher sexual recidivism rate than all other categories of offenders. Sample and Bray (2003, p. 72) concluded —</p>
+
+<blockquote>
+<p>Sex offenders in Illinois do not appear to commit future offenses, in general, at a higher rate than do other offenders. However, they may have higher levels of recidivism for their crimes than other types of offenders exhibit for their particular offenses.</p>
+</blockquote>
+
+<p>Another important study because of its large sample size&nbsp;<strong>and</strong>&nbsp;extended follow-up period was conducted by Harris and Hanson (2004). The research employed a combined sample of 4,724 sex offenders drawn from 10 prior studies; seven of the studies involved sex offenders in Canada, two involved sex offenders in the United States and one involved sex offenders in the United Kingdom. All of the 4,724 sex offenders in the Harris and Hanson analysis were released from correctional institutions, except for 202 Canadian sex offenders who were placed on probation and 287 American sex offenders who received community-based sentences in Washington state.</p>
+
+<p>Harris and Hanson generated recidivism estimates based on new charges or convictions for sexual offenses using five-, 10- and 15-year follow-up periods for several categories of sex offenders. The five-year sexual recidivism estimate for all sex offenders in the analysis was 14 percent. The 10- and 15-year sexual recidivism rate estimates for all sex offenders were 20 percent and 24 percent, respectively. Using the same data set, Hanson, Morton and Harris (2003) reported that the 20-year sexual recidivism rate for the sample was 27 percent.</p>
+
+<p>One of the most important findings that emerged from the Harris and Hanson (2004) analysis was that the 15-year sexual recidivism rate for offenders who already had a prior conviction for a sexual offense was nearly twice that for first-time sex offenders (37 percent compared to 19 percent). Another important finding was that the rate of reoffending decreased the longer offenders had been offense-free. While 14 percent of the offenders in the analysis were sexual recidivists after five years of follow-up, only 7 percent of the offenders who were offense-free at that time sexually recidivated during the next five follow-up years. For offenders who were offense-free after 15 years, the observed sexual recidivism rate was only 4 percent over an additional five years of follow-up.</p>
+
+<p>Hanson and colleagues (2009) conducted a meta-analysis of 23 recidivism outcome studies to determine whether the risk, need and responsivity principles associated with effective interventions for general offenders also apply to sex offender treatment.<a aria-labelledby="footnote_10" href="#_edn10" name="_ednref10" title><sup>10</sup></a>&nbsp;(For more on intervention principles,&nbsp;<a href="https://smart.gov/SOMAPI/sec1/ch7_treatment.html">see Chapter 7</a>, "Effectiveness of Treatment for Adult Sex Offenders," in the Adult section.) This meta-analysis produced an average sexual recidivism rate of 10.9 percent for treated offenders and 19.2 percent for untreated comparison offenders, based on an average followup period of 4.7 years.<a aria-labelledby="footnote_11" href="#_edn11" name="_ednref11" title><sup>11</sup></a>&nbsp;The average overall recidivism rate (for any crime) was 31.8 percent for treated sex offenders and 48.3 percent for untreated comparison subjects.</p>
+
+<p>An earlier meta-analysis of 43 sex offender treatment effectiveness studies found somewhat similar results (Hanson et al., 2002).<a aria-labelledby="footnote_12" href="#_edn12" name="_ednref12" title><sup>12</sup></a>&nbsp;The average sexual recidivism rate based on an average follow-up period of 46 months was 12.3 percent for treated sex offenders and 16.8 percent for untreated sex offenders. The average overall recidivism rate was 27.9 percent for treated sex offenders and 39.2 percent for untreated sex offenders.</p>
+
+<p>One of the largest meta-analyses of studies of the effectiveness of sex offender treatment was conducted by Lösel and Schmucker (2005). The analysis included 69 independent studies and a combined total of 22,181 subjects.<a aria-labelledby="footnote_13" href="#_edn13" name="_ednref13" title><sup>13</sup></a>&nbsp;The researchers found an average sexual recidivism rate of 11.1 percent for treated sex offenders and 17.5 percent for untreated sex offenders based on an average follow-up period of slightly more than five years.<a aria-labelledby="footnote_14" href="#_edn14" name="_ednref14" title><sup>14</sup></a>&nbsp;The average recidivism rate for any crime was 22.4 percent for treated sex offenders and 32.5 percent for untreated sex offenders.</p>
+
+<p>In 2015, Schmucker and Lösel published an update of their original study using more recent research and a slightly different, but arguably more robust methodology. Overall, 29 independent comparisons containing a total of 4,939 treated and 5,448 untreated sexual offenders were included in the analysis and all of the comparisons were based on equivalent treatment and control groups. The researchers found that treated offenders had a mean sexual recidivism rate of 10.1 percent, and that without treatment the recidivism rate would have been 13.7 percent. Treated offenders in the analysis had a general recidivism rate of 32.6 percent on average compared to an expected general recidivism rate of 41.2 percent without treatment.<a aria-labelledby="footnote_15" href="#_edn15" name="_ednref15" title><sup>15</sup></a>&nbsp;Finally, it should be noted that of the 29 studies, five involved adolescents, while the specific population (adult or juvenile) was unclear in 10 studies.</p>
+
+<p>Each of the meta-analyses highlighted above was undertaken to assess the effectiveness of sex offender treatment. (For a discussion of "Effectiveness of Treatment for Adult Sex Offenders,"&nbsp;<a href="https://smart.gov/SOMAPI/sec1/ch7_treatment.html">see Chapter 7</a>&nbsp;in the Adult section.) All of these studies found positive treatment effects, but what is most relevant is the consistent finding across studies that sex offenders are far more likely to recidivate with a nonsexual rather than a sexual crime. Several single studies that have been undertaken to evaluate treatment effectiveness, and several meta-analyses that have been undertaken for other reasons, have produced similar findings.</p>
+
+<p>For example, McGrath and colleagues (2007) compared a group of 104 adult male sex offenders who received treatment, supervision and periodic polygraph exams with a matched group of 104 sex offenders who received the same type of treatment and supervision services but no polygraph exams. Based on a five-year follow-up period, 5.8 percent of the offenders in the group that received polygraph testing and 6.7 percent of the offenders in the group that did not receive polygraph testing were charged with a new sex offense. The general recidivism rates for the polygraph and nonpolygraph groups (39.4 percent and 34.6 percent, respectively) were more than five times higher than each group's sexual recidivism rate.</p>
+
+<p>In a study employing an even larger sample (403 treated and 321 untreated sex offenders) and an average follow-up period of 12 years, Hanson, Broom and Stephenson (2004) reported sexual recidivism rates of 21.1 percent for the treated offenders and 21.8 percent for the untreated offenders. The general and violent recidivism rates for both groups were more than double their sexual recidivism rates. Treated sex offenders had a violent crime recidivism rate of 42.9 percent and an overall recidivism rate of 56.6 percent. Untreated sex offenders in the study had a violent crime recidivism rate of 44.5 percent and an overall recidivism rate of 60.4 percent.</p>
+
+<p>Olver, Nicholaichuk, Gu and Wong (2012, p.406) also reported sexual and violent crime recidivism rates in their study of sex offender treatment outcomes in a cohort of sex offenders released from prison in Canada. Based on a mean post-release follow-up period of 11.7 years, the researchers reported sexual recidivism rates of 10.7 percent for treated sex offenders (n=616) and 20.2 for untreated sex offenders (n=104). Violent crime recidivism rates for the treated and untreated groups were 26.5 percent and 44.2 percent, respectively. Again, these rates are more than two times higher than those found for sexual recidivism.</p>
+
+<p>Tewksbury, Jennings and Zgoba (2012) examined sexual and general recidivism as part of a larger study primarily focused on the impact of sex offender registration and notification (SORN). The study involved a sample of 247 sex offenders released from prison in New Jersey from 1990–94 (prior to the implementation of SORN) and 248 sex offenders released during the years 1995–99 (after SORN implementation). Based on an eight-year follow-up period, the researchers reported sexual recidivism rates of 13 percent and 9.7 percent for the pre- and post-SORN releasees, respectively. General recidivism rates of 51.4 percent for the pre-SORN releasees and 48 percent for the post-SORN releasees were also reported. The researchers also found "two distinct general recidivism trajectories" for the entire study sample: a "low-risk trajectory group and a high-risk trajectory group." The low-risk trajectory was by far the most prevalent trajectory for both pre- and post-SORN releasees, as it applied to roughly eight out of every 10 in both release groups. In discussing their findings, Tewksbury and colleagues (2012, p. 32, 35–36) stated —</p>
+
+<blockquote>
+<p>&nbsp;</p>
+</blockquote>
+
+<p>More recently, Mercado and colleagues (2013) examined the recidivism rates of sexual offenders as part of a larger study of sex offender management, treatment effectiveness and civil commitment. The researchers reported that both treated and untreated offenders in the study had recidivism rates of 5 percent based on reconviction for a new sexual offense over an average 6.5 year follow-up period. By comparison, the general recidivism rates reported for treated and untreated sex offenders in the study were 25 percent and 51.7 percent, respectively.</p>
+
+<p>Several studies that have examined the recidivism rates of sex offenders across multiple time periods also are worth noting. Olver, Wong and Nicholaichuk (2008), for example, conducted a treatment outcome study that examined sexual reconviction rates for 472 treated and 282 untreated sex offenders using three-, five- and 10-year follow-up periods. For the treated sex offenders, the researchers found sexual reconviction rates of 11.1 percent after three years of follow-up, 16.9 percent after five years of follow-up and 21.8 percent after 10 years of follow-up. Sexual reconviction rates for the untreated sex offenders were 17.7 percent after three years, 24.5 percent after five years and 32.3 percent after 10 years of follow-up.</p>
+
+<p>Durose, Cooper and Snyder (2014) reported a similar pattern for overall recidivism rates in their large scale recidivism analysis involving 404,638 inmates released from state prisons in 2005 in 30 states. Durose and colleagues reported that inmates who had been incarcerated specifically for rape or sexual assault had an overall recidivism rate based on a new arrest of 21.9 percent one year after release. By comparison, the overall recidivism rate for these sex offenders was 50.9 percent three years after release and 60.1 percent five years after release.</p>
+
+<p>Findings from these studies, like those from the Harris and Hanson (2004) analysis, demonstrate how the&nbsp;<strong>recidivism rates of sex offenders increase as follow-up periods become longer.&nbsp;</strong>In the study conducted by Harris and Hanson (2004), sexual recidivism rates increased from 14 percent after five years of follow-up to 24 percent after 15 years of follow-up. In the study conducted by Olver, Wong and Nicholaichuk (2008), sexual recidivism rates for treated offenders increased from 11.1 percent after three years of follow-up to 21.8 percent after 10 years of follow-up. In a somewhat older study, Hanson, Scott and Steffy (1995) found that first-time recidivism for a sexual/violent crime occurred between 10 and 31 years into follow-up for 10 percent of a sample of 191 child molesters released from a Canadian prison<a aria-labelledby="footnote_16" href="#_edn16" name="_ednref16" title><sup>16</sup></a></p>
+
+<p>While higher recidivism rates should be expected with longer follow-up periods because there is more time for reoffending to occur and to be detected, findings from these studies illustrate how important follow-up periods of longer than three or five years are for understanding the absolute risk of reoffending in sex offender populations.</p>
+
+<p>Findings from two other large-scale studies of sex offender recidivism are reported below. Both studies are meta-analyses that undertaken specifically to identify factors related to the recidivism of sex offenders, and their findings regarding recidivism rates are quite consistent.</p>
+
+<p>Hanson and Bussière's (1998) meta-analysis involved 61 studies and a combined sample of 28,972 sex offenders. The researchers found an average sexual recidivism rate of 13.4 percent based on an average follow-up period of four to five years, and an average overall recidivism rate of 36.3 percent.<a aria-labelledby="footnote_17" href="#_edn17" name="_ednref17" title><sup>17</sup></a>&nbsp;More recently, Hanson and Morton-Bourgon (2004) conducted a meta-analysis of 95 studies involving a combined sample of 31,216 sex offenders. The average sexual recidivism rate found was 13.7 percent and the average overall recidivism rate was 36.9 percent, based on an average follow-up period of five to six years.<a aria-labelledby="footnote_18" href="#_edn18" name="_ednref18" title><sup>18</sup></a></p>
+
+<p><a id="recr_fema" name="recr_fema"></a></p>
+
+<h3>Recidivism Rates: Female and Male Sex Offenders</h3>
+
+<p>Recent research has begun to shed light on the differential rates of recidivism displayed by female and male sex offenders.&nbsp;<strong>While the vast majority of known sex offenders are male, estimates suggest that females commit between 4 and 5 percent of all sexual offenses&nbsp;</strong>(Sandler &amp; Freeman, 2009; Cortoni &amp; Hanson, 2005).<a aria-labelledby="footnote_19" href="#_edn19" name="_ednref19" title><sup>19</sup></a></p>
+
+<p>Cortoni and Hanson (2005) conducted a study involving 6 sources of recidivism data and a combined sample of 380 female sex offenders. Based on an average follow-up period of 5 years, the researchers found an average sexual recidivism rate for female sex offenders of 1 percent. The observed violent recidivism rate was 6.3 percent and the overall recidivism rate was 20.2 percent.<a aria-labelledby="footnote_20" href="#_edn20" name="_ednref20" title><sup>20</sup></a>&nbsp;The researchers compared these recidivism rates for female sex offenders to five-year sexual, violent and overall recidivism estimates for male sex offenders derived from other studies.<a aria-labelledby="footnote_21" href="#_edn21" name="_ednref21" title><sup>21</sup></a>&nbsp;The comparison revealed statistically significant differences between the recidivism rates for male and female sex offenders for each type of recidivism measure.<a aria-labelledby="footnote_22" href="#_edn22" name="_ednref22" title><sup>22</sup></a>&nbsp;Table 1 presents a summary of the differential male and female recidivism rates reported in the analysis.</p>
+
+<p><a id="tab1" name="tab1"></a></p>
+
+<table>
+	<caption><strong>Table 1. Recidivism Rates for Male and Female Sex Offenders</strong></caption>
+	<thead>
+		<tr>
+			<th rowspan="2" scope="col">&nbsp;</th>
+			<th colspan="3" scope="col">Percentage of Offenders Who Recidivate<br>
+			(Five-Year Follow-up)</th>
+		</tr>
+		<tr>
+			<th scope="col">Sexual Recidivism</th>
+			<th scope="col">Violent Recidivism</th>
+			<th scope="col">Any Recidivism</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">Male sex offenders</th>
+			<td>13–14</td>
+			<td>25</td>
+			<td>36–37</td>
+		</tr>
+		<tr>
+			<th scope="row">Female sex offenders</th>
+			<td>1</td>
+			<td>6.3</td>
+			<td>20.2</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="4">
+			<p>Note: The recidivism rate differences between male and female sex offenders were statistically significant for each type of recidivism (<em>p&nbsp;</em>&lt; .001).<br>
+			Source: Cortoni &amp; Hanson (2005).</p>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+
+<p>More recently, Sandler and Freeman (2009) examined the recidivism patterns of female sex offenders using a sample of 1,466 females convicted of a sexual offense in New York State. They found sexual recidivism rates (based on rearrest) of 0.8 percent, 1.3 percent and 1.8 percent, based on follow-up periods of one, three and five years, respectively. The five-year rearrest rate found for a violent felony offense was 5.2 percent and the five-year rearrest rate found for any offense was 26.6 percent.<a aria-labelledby="footnote_23" href="#_edn23" name="_ednref23" title><sup>23</sup></a>&nbsp;Sandler and Freeman compared the recidivism rates found for female sex offenders after five years of follow-up with five-year recidivism rates for male sex offenders drawn from other studies. The comparison indicated that female sex offenders had far lower rates of sexual recidivism (1.8 percent compared to 10–15 percent), violent recidivism (5.2 percent compared to 25 percent) and overall recidivism (26.6 percent compared to 36 percent) than male sex offenders.<a aria-labelledby="footnote_24" href="#_edn24" name="_ednref24" title><sup>24</sup></a></p>
+
+<p>"Research indicates that female sex offenders reoffend at significantly lower rates than male sex offenders."</p>
+
+<p>Further evidence that female sex offenders reoffend at significantly lower rates than male sex offenders comes from a recent meta-analysis of 10 studies conducted by Cortoni, Hanson and Coache (2010).<a aria-labelledby="footnote_25" href="#_edn25" name="_ednref25" title><sup>25</sup></a>&nbsp;The study included a combined sample of 2,490 female sex offenders. The researchers found an average sexual recidivism rate of about 3 percent for female sex offenders based on an average follow-up period of 6.5 years.<a aria-labelledby="footnote_26" href="#_edn26" name="_ednref26" title><sup>26</sup></a>&nbsp;The study included a combined sample of 2,490 female sex offenders. The researchers found an average sexual recidivism rate of about 3 percent for female sex offenders based on an average follow-up period of 6.5 years.</p>
+
+<p><a id="recr_dif3" name="recr_dif3"></a></p>
+
+<h3>Recidivism Rates: Different Types of Sex Offenders</h3>
+
+<p>While researchers have identified a variety of sex offender typologies (<a href="https://smart.gov/SOMAPI/sec1/ch3_typology.html">see Chapter 3</a>, , "Sex Offender Typologies," in the Adult section), sex offenders are often classified by their crime type or victim age preference in recidivism research. Individuals involved in rape behavior and those involved in child molesting behavior are the two principal categories of sex offenders that emerge from this approach, and studies that examine the recidivism of specific types of sex offenders frequently report recidivism rates for one or both of these categories. Incest offenders are sometimes distinguished from other child molesters in recidivism research. A limited body of research has also examined the recidivism rates of "hands off" — or noncontact — sex offenders, such as exhibitionists. When reviewing recidivism rates for different types of sex offenders, however, it is important to keep in mind that research has documented a significant amount of crossover offending among sex offenders. Estimates suggest that 32–64 percent of rapists have molested children and that many child molesters have assaulted adults (English and colleagues, 2000; Heil, Ahlmeyer &amp; Simons, 2003); Wilcox and colleagues, 2005).</p>
+
+<p>While the knowledge base regarding recidivism rates is less extensive for specific types of sex offenders than it is for sex offenders overall, several important studies on the recidivism rates of rapists and child molesters have been published in recent years. Key findings from these studies — and from studies on recidivism among exhibitionists — are presented below.</p>
+
+<p><a id="rapi5" name="rapi5"></a></p>
+
+<h4>Rapists</h4>
+
+<p>Researchers studying the recidivism of sex offenders are increasingly reporting recidivism rates specifically for rapists. Two studies previously discussed in this report — Langan, Schmitt and Durose (2003) and Harris and Hanson (2004) — examined the recidivism of rapists using a relatively large sample size. The Harris and Hanson analysis included a sample of 1,038 rapists. Recidivism estimates were reported for three distinct follow-up periods: five years, 10 years and 15 years. Sexual recidivism rates for rapists, based on new charges or convictions, were 14 percent at five years, 21 percent at 10 years and 24 percent at 15 years.<a aria-labelledby="footnote_27" href="#_edn27" name="_ednref27" title><sup>27</sup></a>&nbsp;</p>
+
+<p>The Langan, Schmitt and Durose (2003) study of male sex offenders released from state prisons in 1994 is arguably one of the largest individual recidivism studies of rapists undertaken to date. The study included a sample of 3,115 rapists.&nbsp;<a aria-labelledby="footnote_28" href="#_edn28" name="_ednref28" title><sup>28</sup></a>&nbsp;The researchers found that 5 percent of the 3,115 rapists released from state prison in 1994 were arrested for a new sex offense during the three-year follow-up period. Of these 3,115 rapists, 78 (2.5 percent) were charged specifically with another rape. The violent crime and overall recidivism rates found for rapists were 18.7 percent and 46 percent, respectively. Like sex offenders overall, rapists had a lower overall recidivism rate than non-sex offenders in the study (46 percent compared to 68 percent), but a higher sexual recidivism rate (5 percent compared to 1.3 percent). One of the important findings that emerged from the study was that about half of the rapists with more than one prior arrest were rearrested within three years of their release, a rearrest rate nearly double (49.6 percent compared to 28.3 percent) that of rapists with just one prior arrest.</p>
+
+<p>Another important study because of its lengthy follow-up period―25 years — was conducted by Prentky and colleagues (1997). Generalizing some of the study's findings to offenders engaged in rape behavior today is problematic because the study period began in 1959 and ended in 1985 and sex offender treatment and management practices were far different then than they are today. In addition, the study sample consisted of individuals who were sexually dangerous and civilly committed, so the sample is not representative of all rapists or all sex offenders. Still, the 25-year follow-up period employed in the research is arguably one of the longest used to examine the recidivism of rapists,&nbsp;<a aria-labelledby="footnote_29" href="#_edn29" name="_ednref29" title><sup>29</sup></a>&nbsp;and certain findings concerning the variability of recidivism rates over time may have significance for the measurement and interpretation of recidivism rates today.<a aria-labelledby="footnote_30" href="#_edn30" name="_ednref30" title><sup>30</sup></a></p>
+
+<p>The study conducted by Prentky and colleagues (1997) examined both short- and long-term sexual and general recidivism within a population of 136 rapists who had been committed to the Massachusetts Treatment Center for Sexually Dangerous Persons. The researchers found sexual recidivism rates (based on a new charge) of 9 percent after one year of follow-up, 19 percent after five years of follow-up and 31 percent after 15 years of follow-up.<a aria-labelledby="footnote_31" href="#_edn31" name="_ednref31" title><sup>31</sup></a>&nbsp;Based on the 25-year follow-up period, the researchers found a sexual recidivism rate of 39 percent. The overall recidivism rate for any charge by the end of the 25-year follow-up period was 74 percent. Prentky and colleagues (1997, p. 656) acknowledged that generalizing the recidivism rates found in the study to other samples of sex offenders was problematic due to the "marked heterogeneity of sex offenders," but they also suggested that the "crucial point to be gleaned from this study is the potential variability of the rates" and not the specific rates themselves. Thus, it is worth noting that despite the study's inherent limitations, some rapists remain at risk to reoffend long after their discharge and that conventional follow-up periods of three or five years would have missed roughly half of the first-time recidivists identified after 25 years of follow-up (Prentky et al., 1997).</p>
+
+<p>Using a sample of sex offenders similar to the one employed in the Prentky et al. (1997) study, Knight and Thornton (2007) examined the recidivism rates of rapists as part of a larger study aimed at evaluating and improving risk assessment schemes for sex offenders. As in the Prentky et al. study, everyone in the sample had been referred to the Massachusetts Treatment Center for civil commitment evaluation between 1959 and 1984. But unlike in the Prentky et al. study, not everyone in the sample had been civilly committed. Still, generalizing findings from the analysis to rapists overall may be problematic given the high-risk nature of the sex offenders in the study and the length of time that has passed since these individuals committed their referral offense. Two broad findings are worth noting. First, based on a new charge for a serious sexual crime (those involving physical contact with a victim), Knight and Thornton found that rapists in their study recidivated at a rate of 12 percent after three years of follow-up and 20 percent after 15 years of follow-up).<a aria-labelledby="footnote_32" href="#_edn32" name="_ednref32" title><sup>32</sup></a>&nbsp;Second, when the researchers examined the pace of recidivism in a comparative analysis involving rapists and child molesters, "consistent with the hypothesis that rapists are criminologically more generalists than child molesters," rapists were found to have faster rates of recidivism than child molesters for non-sexual victim-involved and victimless crimes" (Knight and Thornton, 2007, p.77).</p>
+
+<p>The long-term propensity for convicted rapists to sexually reoffend also has been examined by Doren (1998). His analysis, which aimed at estimating the true base rate for sexual recidivism among rapists, led him to conclude that the 39-percent long-term sexual recidivism rate for rapists found by Prentky and colleagues (1997) was consistent with findings from other research. Doren (1998, p. 107) further suggested that "rapist sexual recidivism should be considered to have a conservative approximation of its true base rate at about 39 percent."</p>
+
+<p>The accuracy of Doren's (1998) estimate regarding the long-term propensity of rapists to reoffend and the contention that any nontrivial proportion of sex offenders may show first-time recidivism 20 years or more following release from incarceration or discharge from probation, both remain subject to debate. Harris and Hanson (2004, p. 11), for example, in discussing their findings concerning the long-term sexual recidivism rates of rapists and child molesters, stated, "The decreasing rate of offending with age suggests that the rates observed after 15 to 20 years are likely to approximate the rates that would be observed if offenders were followed for the rest of their lives."</p>
+
+<p>While a review of the literature on the relationship between age and sexual recidivism is beyond the scope of this chapter, it is worthwhile noting that findings from several recent studies support the conclusion that age is inversely related to sexual recidivism (Prentky &amp; Lee, 2007; Thornton, 2006); that is, as the age of the offender increases, the likelihood of sexual recidivism tends to diminish (Prentky &amp; Lee, 2007).<a aria-labelledby="footnote_33" href="#_edn33" name="_ednref33" title><sup>33</sup></a>&nbsp;Doren (2010), however, has suggested that drawing meaningful conclusions from the available data about an&nbsp;<strong>age threshold for low risk</strong>&nbsp;is difficult. While the type of offender may matter, the data are too few and too conditional to arrive at a valid conclusion (Doren, 2010). Findings regarding the relationship between age and sexual recidivism reported by Knight and Thornton (2007, p. 9–10) in an earlier study designed primarily to evaluate and improve risk assessment schemes for sexual offenders offer support for this position. As Knight and Thornton stated —</p>
+
+<blockquote>The present results suggest that age at discharge should not be introduced as a weighting factor for the actuarials. Strikingly, when age on index offense was controlled, increasing age on discharge was associated with increased rates of sexual recidivism., Those discharged after the age of 60, however, did have lower sexual recidivism rates, but the size of this sample was too small to make any firm recommendations. Nonetheless, the present results are consistent with adjusting expected recidivism rates down only for those discharged after the age of 60. The complexity of these results demand replication before too much weight is placed on them, but they are certainly inconsistent with the hypothesis that merely holding someone in prison will enable them to age out of risk.</blockquote>
+
+<p>The 2012 study referenced above by Olver et al., however, once again found support for the thesis that the propensity for sex offenders to recidivate declines with advancing age. In their Canadian study that examined how treatment outcomes for adult sex offenders released from prison might be moderated by factors such as the offender's age and risk level, the researchers found that older sex offenders had significantly lower sexual and violent recidivism rates than younger sex offenders.</p>
+
+<p><a id="chil_d5" name="chil_d5"></a></p>
+
+<h4>Child Molesters</h4>
+
+<p>A relatively large body of research exists on the recidivism rates of child molesters. While unreported crime affects all recidivism research, it is particularly problematic in recidivism studies of child-molesting offenders as several studies have demonstrated that the likelihood that a sexual assault will be reported to law enforcement decreases with the victim's age (Kilpatrick, Saunders &amp; Smith, 2003; Smith et al., 2000; Sorenson &amp; Snow, 1991).</p>
+
+<p>The study of sex offenders released from state prisons in 1994 by Langan, Schmitt and Durose (2003) included a large sample (4,295) of child molesters. The researchers reported that 5.1 percent of the 4,295 child molesters released from prison in 1994 were rearrested for a new sex crime within three years of their release, 14.1 percent were rearrested for a violent crime and 39.4 percent were rearrested for a crime of any kind. Similar to the pattern for rapists in the study, child molesters with more than one prior arrest had an overall recidivism rate nearly double (44.3 percent compared to 23.3 percent) that of child molesters with only one prior arrest.</p>
+
+<p>As might be expected, child molesters were more likely than any other type of offender — sexual or nonsexual — to be arrested for a sex a crime against a child following release from prison. During the three-year postrelease follow-up period, 3.3 percent of the child molesters, 2.2 percent of all sex offenders and less than one-half of 1 percent of the non-sex offenders were arrested for child molestation.<a aria-labelledby="footnote_34" href="#_edn34" name="_ednref34" title><sup>34</sup></a>&nbsp;Released child molesters with more than one prior arrest for child molesting were three times more likely to be rearrested for child molesting than released child molesters with no more than one prior arrest (7.3 percent compared to 2.4 percent).</p>
+
+<p>Three other studies mentioned in the prior discussion about the recidivism of rapists also make contributions to the knowledge base about the recidivism patterns of child molesters. As part of their larger study designed to evaluate risk assessment schemes for sexual offenders, Knight and Thornton (2007) examined the recidivism rates of child molesters. Their analysis examined the recidivism of child molesters who had been referred to the Massachusetts Treatment Center for evaluation between 1959 and 1984. Again, given the high-risk nature of these offenders and the length of time that has passed since these individuals committed their referral offense, findings from the analysis may have limited application to child molesters today. Still, several findings from the analysis are worth noting. First, Knight and Thornton (2007, p. 7) found a recidivism rate for child molesters of 12 percent after three years of follow-up (24 of 97 offenders recidivated) and 20 percent after 15 years of follow-up (18 of 91 offenders recidivated) based on a new serious sexual charge.<a aria-labelledby="footnote_35" href="#_edn35" name="_ednref35" title><sup>35</sup></a>&nbsp;Second, when the researchers examined the pace of recidivism in a comparative analysis involving child molesters and rapists, they found no difference in the speed of sexual recidivism between these two types of sex offenders. However, they did find that child molesters recidivated at a slower pace than rapists for both non-sexual victim-involved and victimless crimes."</p>
+
+<p>Findings from Harris and Hanson's (2004) analysis are particularly compelling because they document differential rates of recidivism for different types of child molesters based on follow-up periods of five, 10 and 15 years. For all child molesters in the analysis, the researchers found five-, 10- and 15-year sexual recidivism rates based on new charges or convictions of 13 percent, 18 percent and 23 percent, respectively. Table 2 presents the study's recidivism estimates (based on new charges or convictions) for five-, 10- and 15-year follow-up periods for molesters of boys, molesters of girls and incest offenders.</p>
+
+<p><a id="tbl2" name="tbl2"></a></p>
+
+<table>
+	<caption><strong>Table 2. Sexual Recidivism Rates of Child Molesters</strong></caption>
+	<thead>
+		<tr>
+			<th rowspan="2" scope="col">Type of Offense</th>
+			<th colspan="3" scope="col">Recidivism Rate, by Follow-up Period (%)</th>
+		</tr>
+		<tr>
+			<th scope="col">5 years</th>
+			<th scope="col">10 years</th>
+			<th scope="col">15 years</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row">Molested boys</th>
+			<td>23.0<br>
+			(<em>N</em>=315)</td>
+			<td>27.8<br>
+			(<em>N</em>=105)</td>
+			<td>35.4<br>
+			(<em>N</em>=95)</td>
+		</tr>
+		<tr>
+			<th scope="row">Molested girls</th>
+			<td>9.2<br>
+			(<em>N</em>=766)</td>
+			<td>13.1<br>
+			(<em>N</em>=218)</td>
+			<td>16.3<br>
+			(<em>N</em>=208)</td>
+		</tr>
+		<tr>
+			<th scope="row">Committed incest</th>
+			<td>6.4<br>
+			(<em>N</em>=416)</td>
+			<td>9.4<br>
+			(<em>N</em>=73)</td>
+			<td>13.2<br>
+			(<em>N</em>=69)</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="4">
+			<p>Recidivism estimates are based on new convictions and charges.<br>
+			Source: Harris &amp; Hanson (2004).</p>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+
+<p>Table 2 shows that molesters of boys had the highest rates of sexual recidivism. Different patterns of reoffending within child molester populations have been found in other studies as well, with molesters of boys having higher recidivism rates than other types of child molesters (see, e.g., Seto, 2008). It is important to keep in mind that the recidivism rates observed for child molesters, and for incest offenders particularly, are impacted by underreporting even more so than recidivism rates for other types of sex offenders, as research has shown that child victims who knew their perpetrator were the least likely to report their victimization (Smith et al., 2000).</p>
+
+<p>In a study that examined the recidivism of 191 child molesters and 137 non-sex offenders 15 to 30 years after their release from a Canadian prison, Hanson, Scott and Steffy (1995) found that child molesters had lower rates of overall recidivism (based on reconviction) than non-sex offenders (61 percent compared to 83.2 percent), but much higher rates of sexual recidivism (35 percent compared to 1.5 percent). Not all child molesters in the study, however, recidivated at the same rate. The highest rate of recidivism among child molesters in the study (77 percent) was found for child molesters with previous sexual offenses, those who were never married and those who selected extrafamilial boy victims. In contrast, the long-term recidivism rate for child molesters categorized as low risk was less than 20 percent.</p>
+
+<p>One study that did not find different rates of recidivism for child molesters based on victim gender was Prentky and colleagues' (1997) analysis of child molesters who were civilly committed in Massachusetts. The researchers cautioned, however, that this specific departure in their findings from other research may have been an artifact of the study sample's extensive prior criminal history for sexual offenses. The sample consisted of 115 child molesters who were discharged from civil commitment in Massachusetts between 1960 and 1984. Again, generalizing certain findings from the analysis to other samples of sex offenders could be problematic because the offenders in the study were very high risk and the study period ended more than 25 years ago. Nonetheless, the research is still important because of its lengthy follow-up period. Based on the 25-year follow-up period, Prentky and his colleagues (1997) found a sexual recidivism rate of 52 percent (defined as those charged with a subsequent sexual offense) for the 115 child molesters in the study. The overall new crime recidivism rate found after 25 years of follow-up was 75 percent.<a aria-labelledby="footnote_36" href="#_edn36" name="_ednref36" title><sup>36</sup></a></p>
+
+<p>While the difference between the sexual recidivism rates for child molesters found by Prentky and colleagues (1997) using a 25-year follow-up period (52 percent) and Harris and Hanson (2004) using a 15-year follow-up period (23 percent) is striking, the nature and substantive significance of the difference can be interpreted in fundamentally different ways. One interpretation is that first-time recidivism may occur for some child molesters 20 or more years after criminal justice intervention and that recidivism estimates derived from shorter follow-up periods are likely to underestimate the lifetime risk of child molester reoffending (Doren, 1998). Analyzing data from Prentky and colleagues (1997) and other studies, Doren (1998, p. 105) concluded that the lifetime prevalence of sexual recidivism for extrafamilial child molesters "should be thought of as having a conservative approximation of about 52 percent." An alternative interpretation is that the difference between Prentky and colleagues' 25-year estimate and Harris and Hanson's 15-year estimate is primarily an artifact of sampling — Harris and Hanson's findings are based on a larger, more diverse sample of child molesters, including some serving community sentences — and that the lifetime prevalence of sexual recidivism for child molesters overall is lower than the 52 percent suggested by Doren and based, at least in part, on the findings of Prentky and colleagues.&nbsp;<strong>While the rate at which child molesters are likely to sexually recidivate over the life course may be subject to further debate, current empirical evidence suggests that molesters of boys have higher short- and long-term recidivism rates than other types of sex offenders.</strong>&nbsp;It is important to keep in mind, however, that both gender-crossover and age-crossover offending are not uncommon and that far more research on the recidivism patterns of crossover offenders is needed (Wilcox et al., 2005; Heil, Ahlmeyer &amp; Simons, 2003; English et al., 2000).&nbsp;<a aria-labelledby="footnote_37" href="#_edn37" name="_ednref37" title><sup>37</sup></a>&nbsp;Additionally, recidivism is highly variable even within subtypes of sex offenders and the propensity of child molesters and other sex offenders to reoffend can best be understood in the context of both historical — or static — and dynamic risk factors empirically associated with recidivism.</p>
+
+<p><a id="exhi5" name="exhi5"></a></p>
+
+<h4>Exhibitionists</h4>
+
+<p>A limited body of research exists on the recidivism rates of exhibitionists. Marshall, Eccles, and Barbaree (1991) reported recidivism data from two studies that examined the effectiveness of specific treatment approaches for exhibitionists. Both studies were based on samples that were small in size.<a aria-labelledby="footnote_38" href="#_edn38" name="_ednref38" title><sup>38</sup></a>&nbsp;The first study examined recidivism for 23 exhibitionists who participated in study treatment and 21 exhibitionists who served as comparison offenders.<a aria-labelledby="footnote_39" href="#_edn39" name="_ednref39" title><sup>39</sup></a>&nbsp;The follow-up period was just under nine years for both groups. The researchers found that nine of the 23 (39.1 percent) treated exhibitionists and 12 of the 21 (57.1 percent) comparison exhibitionists recidivated during the follow-up period. The second study examined recidivism for 17 males charged with exhibitionism and treated between 1984 and 1987. Based on a follow-up period of almost four years, the researchers found that four of the 17 (23.6 percent) exhibitionists recidivated.</p>
+
+<p>Sugarman and colleagues (1994) examined recidivism for exhibitionists with a larger sample (210 exhibitionists) and a follow-up period of 17 years. The researchers reported a 32-percent recidivism rate based on a conviction for a contact sexual offense during the follow-up period, and a 75-percent recidivism rate based on a conviction for any type of crime other than exposing. More recently, Rabinowitz-Greenberg and colleagues (2002) examined the recidivism of 221 exhibitionists assessed at the Royal Ottawa Hospital Sexual Behaviors Clinic between 1983 and 1996. Based on an average follow-up period of 6.8 years, the researchers found a sexual recidivism rate of 11.7 percent (based on a new charge or conviction), a violent crime recidivism rate of 16.8 percent and an overall recidivism rate of 32.7 percent. Building upon the analysis, Firestone and colleagues (2006) examined recidivism for 208 of the exhibitionists in the analysis conducted by Rabinowitz-Greenberg and colleagues, extending the follow-up period to an average of 13.2 years. The researchers found that 23.6 percent of the offenders in the study sample were charged with or convicted of a sex crime (based on the 13.2-year average follow-up period), 31.3 percent were charged with or convicted of a violent crime and 38.9 percent were charged with or convicted of any criminal offense. Sexual recidivists who were charged with or convicted of a hands-on sex crime during the 13.2-year average follow-up period were found to have a more extensive prior criminal history for violent crime and any type of crime than the exhibitionists who sexually recidivated with a hands-off offense.</p>
+
+<p><a id="summary" name="summary"></a></p>
+
+<h2>Summary</h2>
+
+<p>Drawing firm conclusions about the extent of sex offender recidivism can be difficult due to a number of factors. First, although there is universal agreement that the observed recidivism rates of sex offenders are underestimates of actual reoffending, the magnitude of the gap between observed and actual reoffending remains subject to debate. As a result, conclusions about the extent of sex offender recidivism and the propensity of sex offenders to reoffend over the life course inherently involve some uncertainty. Second, measurement variation across studies often produces disparate findings that can be difficult to interpret. Comparing and corroborating findings can be difficult for the same reason. Third, short follow-up periods and small sample sizes limit the generalization of certain findings. Drawing firm conclusions about the propensity of specific subgroups of sex offenders to reoffend over the life course is particularly difficult, as sample sizes often fall to unrepresentative levels as follow-up periods grow longer.<a aria-labelledby="footnote_40" href="#_edn40" name="_ednref40" title><sup>40</sup></a>&nbsp;Both individually and collectively, these factors present considerable challenges for anyone wanting to synthesize research findings for the purpose of drawing valid, widely accepted conclusions. Still, recent research has produced several trustworthy findings concerning the recidivism rates of child molesters, rapists and sex offenders overall.</p>
+
+<ul>
+	<li><strong>Official records underestimate recidivism.&nbsp;</strong>Studies of sexual assault victims and studies of sex offenders in treatment demonstrate that actual offending rates are poorly reflected by official records. Simons, Heil and English (2004) found that only 5 percent of rapes and child sexual assaults self-reported during prison treatment were identified in official records; Tjaden and Thonnes (2006) found that only 17 percent of victim reports resulted in the perpetrator's conviction. While the magnitude of the difference between observed and actual reoffending needs to be better understood, there is universal agreement in the scientific community that the observed recidivism rates of sex offenders are underestimates of actual reoffending.</li>
+	<li><strong>The observed sexual recidivism rates of sex offenders range from about 5 percent after three years to about 24 percent after 15 years.&nbsp;</strong>Relatively low rates of recidivism ― particularly sexual recidivism — are reported in studies using follow-up periods shorter than five years. Langan, Schmitt and Durose (2003), for example, found a sexual recidivism rate of 5.3 percent using a three-year follow-up period for a large sample of sex offenders released from prison in 1994. Sample and Bray (2003) reported a sexual recidivism rate of 4.8 percent for a large sample of sex offenders in Illinois based on a three-year follow-up period. Studies employing longer follow-up periods consistently report higher rates of recidivism. Harris and Hanson (2004), for example, reported sexual recidivism rates of 20 percent and 24 percent for a sample of sex offenders based on a 10- and 15-year follow-up period, respectively. While observed recidivism rates will naturally increase as the length of the follow-up period increases, it is important to recognize that recidivism rates derived from follow-up periods of five years or less may mislabel a considerable proportion of repeat offenders as nonrecidivists, resulting in a significant underestimation of the absolute risk to public safety that sex offenders pose.</li>
+	<li><strong>Sex offenders—regardless of type—have higher rates of general recidivism than sexual recidivism.&nbsp;</strong>Although this basic reoffending pattern would naturally be expected to occur, the magnitude of the difference found in research is somewhat striking. It suggests that sex offenders are far more likely to reoffend for a nonsexual crime than a sexual crime and, as Hanson and Morton-Bourgon (2004, p. 4) have aptly stated, "policies aimed at public protection should also be concerned with the likelihood of any form of serious recidivism, not just sexual recidivism." It is important to keep in mind, however, that nonsexual offenses are more likely than sexual offenses to be reported to law enforcement, and that some crimes legally labeled as nonsexual in the criminal histories of sex offenders may indeed be sexual in their underlying behavior.</li>
+	<li><strong>Sex offenders have lower rates of general recidivism but higher rates of sexual recidivism than non-sex offenders.&nbsp;</strong>Research comparing the recidivism rates of sex offenders with non-sex offenders consistently finds that sex offenders have lower overall recidivism rates than non-sex offenders. Child molesters, rapists and sex offenders overall, however, are far more likely than non-sex offenders to recidivate sexually. Langan, Schmitt and Durose (2003), for example, found sexual recidivism rates that are four times higher for sex offenders compared to non-sex offenders in their study of about two-thirds of all sex offenders released from state prisons in 1994.</li>
+	<li><strong>Female sex offenders have lower rates of sexual and general recidivism than male sex offenders.&nbsp;</strong>Five- to six-year rates of sexual recidivism for female sex offenders may be as low as 1 to 3 percent. The empirical evidence regarding the differential recidivism rates of female and male sex offenders suggests that intervention and management practices need to differentiate between female and male sex offenders, and that procedures for assessing risk developed for male sex offenders are unlikely to be accurate when applied to female sex offenders (Cortoni, Hanson &amp; Coache, 2010). In addition, until stronger empirical evidence is assembled concerning the factors associated with female sex offender recidivism, assessment and intervention practices for female sex offenders should be driven by scientific evidence on female offenders overall rather than by knowledge about male sex offenders (Cortoni &amp; Hanson, 2005; Public Safety Canada, 2006).</li>
+	<li><strong>Different types of sex offenders have markedly different rates of recidivism.&nbsp;</strong>Research that examines the recidivism of rapists and child molesters indicates that the highest observed recidivism rates are found among child molesters who offend against boys. Harris and Hanson's (2004) analysis, for example, found a five-year sexual recidivism rate of 23 percent and a 15-year sexual recidivism rate of 35 percent for molesters of boys. Comparatively lower recidivism rates are found for rapists, child molesters who victimize girls and incest offenders. In the Harris and Hanson (2004) analysis, rapists were found to have a five-year sexual recidivism rate of 14 percent and a 15-year sexual recidivism rate of 24 percent. Child molesters who victimize girls were found to have a five-year sexual recidivism rate of 9 percent and a 15-year sexual recidivism rate of 16 percent. While differential rates of recidivism between opposite-sex and same-sex child molesters have not always been found in research, the weight of the evidence suggests that contact offenders who target boys are more likely to sexually reoffend than those who target girls (Seto, 2008).<a href="#_edn41" name="_ednref41" title><sup>41</sup></a>&nbsp;Incest offenders appear to have lower sexual recidivism rates than rapists or other child molesters. In the Harris and Hanson (2004) analysis, incest offenders were found to have a five-year sexual recidivism rate of 6 percent and a 15-year sexual recidivism rate of 13 percent. It is important to keep in mind, however, that the recidivism rates observed for child molesters, and for incest offenders particularly, are artificially depressed by underreporting even more so than recidivism rates for other types of sex offenders, as research indicates that child victims who know their perpetrator are the least likely to report their victimization. In addition, both gender-crossover and age-crossover offending are not uncommon, and far more research on the recidivism patterns of crossover offenders is needed.<br>
+	<br>
+	Still, the empirical evidence clearly demonstrates that different types of sex offenders have a different propensity to reoffend. This suggests that different recidivism-reduction policies and practices are needed for different types of sex offenders. Policies and practices that take into account the differential reoffending risks posed by different types of sex offenders are likely to be more effective and cost-beneficial than those that treat sex offenders as a largely homogenous group.</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<blockquote>
+<p>Different types of sex offenders have a different propensity to reoffend.</p>
+</blockquote>
+
+<p>While a sound foundation of knowledge on the extent of sex offender recidivism has been produced in recent years, significant knowledge gaps and unresolved controversies remain. Variations across studies in the operational definition of recidivism, the length of the follow-up period employed and other measurement factors continue to make it difficult to make cross-study comparisons of observed recidivism rates. Interpreting disparate findings and their implications for policy and practice also remains a challenge.</p>
+
+<blockquote>
+<p>Research documenting the recidivism patterns of crossover offenders and other specific sex offender subtypes is needed.</p>
+</blockquote>
+
+<p>While the operational definitions and follow-up periods employed in sex offender recidivism research will largely be dictated by the available data, studies that produce more readily comparable findings are greatly needed, as are those that employ follow-up periods longer than five years. Analyses that standardize the time at risk for all offenders in a given study using survival analysis also are needed. Future research should also attempt to build a stronger evidence base on the differential recidivism patterns of different types of sex offenders. While important information on the recidivism of rapists and child molesters has been produced, far more evidence regarding the recidivism patterns of crossover offenders and other specific sex offender subtypes is needed.</p>
+
+<blockquote>
+<p>We must develop a way to bridge the gap between the perspective that "few sex offenders reoffend" and the evidence that few victims report their victimization.</p>
+</blockquote>
+
+<p>Finally, far more&nbsp;<strong>policy-relevant</strong>&nbsp;research is needed on the absolute and relative risks that different types of sex offenders pose. The extant literature on sex offender recidivism has thus far been unable to decisively resolve the readily apparent controversy that exists in the field about the proper interpretation of recidivism data and its meaning for public policy. On one hand, some researchers interpret the observed recidivism rates of sex offenders as low, and hence argue for revisions to the current sex offender policy framework. Other researchers are more reticent to interpret recidivism data in the same way, pointing out that the true reoffense rates of sex offenders remain largely unknown due to underreporting and other factors. There is little question that policies and practices aimed at the reduction of sex offender recidivism would be far more effective and cost-beneficial if they better aligned with the empirical evidence, but bridging the gap is plagued by measurement problems and conflicting interpretations of the existing scientific evidence. Individual and community safety would no doubt be served by a redoubling of efforts to break down victim reporting barriers, improve research and build more meaningful collaborations between researchers, policymakers, practitioners and the public.</p>
+
+<p><a id="note" name="note"></a></p>
+
+<table>
+	<caption>Notes</caption>
+	<tbody>
+		<tr>
+			<td>
+			<p><a href="#_ednref1" id="footnote_1" name="_edn1" title><sup>1</sup></a>Also see the definition for recidivism in Public Safety Canada's Glossary of Key Terms in Crime Prevention.</p>
+
+			<p><a href="#_ednref2" id="footnote_2" name="_edn2" title><sup>2</sup></a>&nbsp;This includes offenders returning to the community upon release from incarceration as well as offenders who are serving or who have been discharged from community-based sentences.</p>
+
+			<p><a href="#_ednref3" id="footnote_3" name="_edn3" title><sup>3</sup></a>&nbsp;Some researchers interpret the observed recidivism rates of sex offenders as relatively low or conclude that most sex offenders do not recidivate. Others are more reticent to interpret recidivism data in the same way, arguing that the true reoffense rates of sex offenders are high or unknown or that observed recidivism rates can be misleading because the propensity of sex offenders to reoffend is poorly reflected in officially recorded recidivism, particularly when short follow-up periods are involved.</p>
+
+			<p><a href="#_ednref4" id="footnote_4" name="_edn4" title><sup>4</sup></a>&nbsp;See Pipe and colleagues (2007) for more information about childhood disclosure of sexual abuse.</p>
+
+			<p><a href="#_ednref5" id="footnote_5" name="_edn5" title><sup>5</sup></a>&nbsp;Some studies that examine the recidivism of offenders on parole or probation include in their definition of recidivism imprisonment that results from a technical violation of the conditions of release or supervision.</p>
+
+			<p><a href="#_ednref6" id="footnote_6" name="_edn6" title><sup>6</sup></a>&nbsp;For example, some offenders found to be nonrecidivists may have moved out of state before the end of the follow-up period, or some may have spent a portion of the follow-up period in jail. Had these offenders actually been at risk in the community for the entire follow-up period, recidivism may have been detected, resulting in a higher observed recidivism rate for the entire group of offenders being studied.</p>
+
+			<p><a href="#_ednref7" id="footnote_7" name="_edn7" title><sup>7</sup></a>&nbsp;Some single studies do not simply calculate the proportion rearrested, reconvicted or returned to prison; rather, they employ a technique called survival analysis, which standardizes the at-risk time for everyone in the analysis. See endnote 37.</p>
+
+			<p><a href="#_ednref8" id="footnote_8" name="_edn8" title><sup>8</sup></a>&nbsp;Meta-analysis has been criticized by some researchers, primarily for mixing very different studies together or for including studies of questionable quality in the analysis. Advances in methods regarding heterogeneity and methodological variability can successfully address these criticisms. See, for example, Petrosino and Lavenberg (2007); Wilson and Lipsey (2001); and Lipsey (2002). Meta-analyses that are based on prudent exclusionary criteria, incorporate statistical tests of homogeneity and explore how methodological and contextual variations impact treatment effects are uniquely equipped to provide policymakers and practitioners with highly trustworthy and credible evidence.</p>
+
+			<p><a href="#_ednref9" id="footnote_9" name="_edn9" title><sup>9</sup></a>&nbsp;Sample and Bray (2003) did not report the number of 1990 arrestees who were categorized as sex offenders.</p>
+
+			<p><a href="#_ednref10" id="footnote_10" name="_edn10" title><sup>10</sup></a>&nbsp;Twenty-two of the studies examined sexual recidivism (3,121 treated sex offenders and 3,625 comparison offenders) and 13 studies examined general recidivism (1,979 treated sex offenders and 2,822 comparison offenders).</p>
+
+			<p><a href="#_ednref11" id="footnote_11" name="_edn11" title><sup>11</sup></a>&nbsp;Recidivism was defined as reconviction in 10 studies and rearrest in 12 studies. In one study, the criterion for recidivism was not specified. Average follow-up periods ranged from one to 21 years, with a median of 4.7 years.</p>
+
+			<p><a href="#_ednref12" id="footnote_12" name="_edn12" title><sup>12</sup></a>&nbsp;The 43 studies examined 5,078 treated offenders and 4,376 untreated offenders. Thirty-eight studies reported sexual recidivism (4,321 treated sex offenders and 3,591 comparison offenders) and 30 studies reported general recidivism (3,356 treated sex offenders and 2,475 comparison offenders). Recidivism was defined as reconviction in eight studies and rearrest in 11 studies. In 20 studies, broad definitions of recidivism were used, including parole violations, readmissions to institutions or community reports. Average follow-up periods ranged from one to 16 years, with a median of 46 months.</p>
+
+			<p><a href="#_ednref13" id="footnote_13" name="_edn13" title><sup>13</sup></a>&nbsp;The 22,181 study subjects included 9,512 treated sexual offenders and 12,669 untreated sexual offenders.</p>
+
+			<p><a href="#_ednref14" id="footnote_14" name="_edn14" title><sup>14</sup></a>&nbsp;These recidivism rates are based on the n-weighted average for the treatment and comparison groups. The unweighted average recidivism rates were 12 percent for the treatment group and 24 percent for the comparison group. The average follow-up period for treated sex offenders was 63.54 months (5.3 years) and the average follow-up period for untreated offenders was 62.41 months (5.2 years).</p>
+
+			<p><a href="#_ednref15" id="footnote_15" name="_edn15" title><sup>15</sup></a>&nbsp;Only 13 of the studies in the meta-analysis reported data on general recidivism.</p>
+
+			<p><a href="#_ednref16" id="footnote_16" name="_edn16" title><sup>16</sup></a>&nbsp;A handful of other studies have employed follow-up periods of 20 or more years. Prentky and colleagues (1997), for example, examined the recidivism rates of rapists and child molesters at various follow-up points; the longest was 25 years after the offenders' release from confinement. The observed sexual recidivism rate after five years of follow-up was 19 percent for both rapists and child molesters. By comparison, the observed sexual recidivism rates after 25 years of follow-up were 39 percent for rapists and 52 percent for child molesters. These analyses are discussed in greater detail in the&nbsp;<a href="#recidivism">"Recidivism Rates: Different Types of Sex Offenders"</a>&nbsp;section in this chapter.</p>
+
+			<p><a href="#_ednref17" id="footnote_17" name="_edn17" title><sup>17</sup></a>&nbsp;The sexual recidivism analysis was based on a combined sample of 23,393 offenders; the general recidivism analysis was based on a combined sample of 19,374 offenders.</p>
+
+			<p><a href="#_ednref18" id="footnote_18" name="_edn18" title><sup>18</sup></a>&nbsp;The sexual recidivism analysis was based on a combined sample of 20,440 offenders; the general recidivism analysis was based on a combined sample of 13,196 offenders.</p>
+
+			<p><a href="#_ednref19" id="footnote_19" name="_edn19" title><sup>19</sup></a>&nbsp;Reliable estimates on the prevalence of female sexual offending are difficult to obtain, as a number of factors can affect the recognition of female perpetrated sex offenses (CSOM, 2007). According to the Federal Bureau of Investigation's Uniform Crime Reports (UCR), only about 1 percent of the offenders arrested for rape in 2009 were female. (For more on UCR, see the see the&nbsp;<a href="https://smart.gov/SOMAPI/sec1/ch1_incidence.html#unif">"Uniform Crime Report" section of chapter 1</a>. A recent Safer Society survey of sex offender treatment programs in the United States and Canada found that females accounted for about 5 percent of the clients treated in U.S. programs in 2008 (McGrath et al., 2010).</p>
+
+			<p><a href="#_ednref20" id="footnote_20" name="_edn20" title><sup>20</sup></a>&nbsp;The definition of recidivism varied widely, ranging from arrests to convictions and reports provided by probation officers.</p>
+
+			<p><a href="#_ednref21" id="footnote_21" name="_edn21" title><sup>21</sup></a>&nbsp;Recidivism rates for males sex offenders were derived from Hanson and Bussière (1998) and Hanson and Morton-Bourgon (2004).</p>
+
+			<p><a href="#_ednref22" id="footnote_22" name="_edn22" title><sup>22</sup></a>&nbsp;p &lt; .001.</p>
+
+			<p><a href="#_ednref23" id="footnote_23" name="_edn23" title><sup>23</sup></a>&nbsp;Five-year recidivism rates were based on 1,041 female offenders.</p>
+
+			<p><a href="#_ednref24" id="footnote_24" name="_edn24" title><sup>24</sup></a>&nbsp;The sexual, violent and overall recidivism rates for male sex offenders were drawn from Hanson and Bussiere (1998) and Hanson and Morton-Bourgon (2004).</p>
+
+			<p><a href="#_ednref25" id="footnote_25" name="_edn25" title><sup>25</sup></a>&nbsp;Recidivism was defined as an arrest, charge, conviction or incarceration for a new offense.</p>
+
+			<p><a href="#_ednref26" id="footnote_26" name="_edn26" title><sup>26</sup></a>&nbsp;As a comparison, the researchers reported a sexual recidivism rate of 13.7 percent for male sex offenders based on an average follow-up period of 5.5 years. The average sexual recidivism rate reported for male sex offenders was derived from a previous meta-analysis (Hanson &amp; Morton-Bourgon, 2004) of 84 studies involving 20,440 sex offenders, the majority of whom were males. Hanson and Morton-Bourgon (2004) reported that one of the 84 studies in the meta-analysis focused on female sex offenders. Based on the N-size reported in that study of female offenders, fewer than 100 of the 20,440 sex offenders in the Hanson and Morton-Bourgon (2004) meta-analysis were female.</p>
+
+			<p><a href="#_ednref27" id="footnote_27" name="_edn27" title><sup>27</sup></a>&nbsp;The five-year recidivism rate estimate is based on 514 offenders, the 10-year estimate is based on 261 offenders and the 15-year estimate is based on 157 offenders.</p>
+
+			<p><a href="#_ednref28" id="footnote_28" name="_edn28" title><sup>28</sup></a>&nbsp;The study conducted by Langan, Schmitt and Durose (2003) separated "violent sex crimes" into two categories: "rape" and "other sexual assault." The term "rapist" was used to refer to a released sex offender whose imprisonment offense was defined by state law as forcible intercourse with a female or male. The "rape" category excluded statutory rape or any other nonforcible sexual act with a minor or with someone unable to give legal or factual consent. Sex offenders whose imprisonment offense was a violent sex crime that could not be positively identified as "rape" were placed in the "sexual assault" category. The three-year recidivism rates reported for the 6,576 sex offenders categorized as sexual assaulters follow: 5.5 percent were rearrested for a new sex crime, 16.4 percent were rearrested for a violent crime and 41.5 percent were rearrested for a crime of any kind.</p>
+
+			<p><a href="#_ednref29" id="footnote_29" name="_edn29" title><sup>29</sup></a>&nbsp;Maletzky and Steinhauser (2002) conducted a study of 7,275 sexual offenders, including 448 rapists, who entered a treatment program between 1973 and 1997. Although the follow-up period for some offenders was as long as 25 years, the failure rates reported in the study were based on self-admission of covert and/or overt deviant behaviors or the presence of deviant sexual arousal (which is not a crime), in addition to reoffending.</p>
+
+			<p><a href="#_ednref30" id="footnote_30" name="_edn30" title><sup>30</sup></a>&nbsp;Prentky and his colleagues also employed a statistical technique called survival analysis, which takes into account the amount of time each offender has been on the street and is thus able to reoffend. Recidivism is reported as the failure rate, which is the proportion of individuals who recidivated (or failed) based on a standardized time at risk for all study subjects. Determining the simple proportion of individuals who reoffended during the follow-up period — the most common method of calculating a recidivism rate — can underestimate the rate of recidivism because some of the nonrecidivists may not have been at risk in the community for the entire follow-up period. Had they been, recidivism may have been detected, resulting in a higher observed recidivism rate for the entire group of offenders being studied. By standardizing the at-risk time for all study subjects, survival analysis yields a more accurate estimate of recidivism.</p>
+
+			<p><a href="#_ednref31" id="footnote_31" name="_edn31" title><sup>31</sup></a>&nbsp;These recidivism rates are the failure rates generated by survival analysis and reported in the study.</p>
+
+			<p><a href="#_ednref32" id="footnote_32" name="_edn32" title><sup>32</sup></a>&nbsp;Serious sexual charges consisted of 15 sexual charges that involved physical contact with a victim (e.g., carnal abuse, accosting, unnatural acts, indecent assault, assault with intent to rape, rape, sodomy, statutory rape, incest).</p>
+
+			<p><a href="#_ednref33" id="footnote_33" name="_edn33" title><sup>33</sup></a>&nbsp;Prentky and Lee's 2007 analysis of the relationship between age at release and age at recidivism used the same sample of 136 civilly committed rapists used in their 1997 research.</p>
+
+			<p><a href="#_ednref34" id="footnote_34" name="_edn34" title><sup>34</sup></a>&nbsp;Of the approximately 141 children allegedly molested by these child molesters during the postrelease follow-up, 79 percent were age 13 or younger.</p>
+
+			<p><a href="#_ednref35" id="footnote_35" name="_edn35" title><sup>35</sup></a>&nbsp;Serious sexual charges consisted of 15 sexual charges that involved physical contact with a victim (e.g., carnal abuse, accosting, unnatural acts, indecent assault, assault with intent to rape, rape, sodomy, statutory rape, incest).</p>
+
+			<p><a href="#_ednref36" id="footnote_36" name="_edn36" title><sup>36</sup></a>&nbsp;The sexual and overall recidivism rates reported here are failure rates reported by Prentky and colleagues (1997) based on survival analysis.</p>
+
+			<p><a href="#_ednref37" id="footnote_37" name="_edn37" title><sup>37</sup></a>&nbsp;With respect to gender crossover, research suggests that the majority of offenders who assault males have also assaulted females (63–92 percent), but not the reverse (23–37 percent) (Abel &amp; Osborn, 1992; English et al., 2000; Heil, Ahlmeyer &amp; Simons, 2003). (For more information on "Sex Offender Typologies,"&nbsp;<a href="https://smart.gov/SOMAPI/sec1/ch3_typology.html">see chapter 3</a>.</p>
+
+			<p><a href="#_ednref38" id="footnote_38" name="_edn38" title><sup>38</sup></a>&nbsp;Outcome data for both studies were obtained from official records and police reports, and recidivism was defined as a new charge or conviction or an incident where exposing behavior was reported to law enforcement and the offender was identified in the police report, even if the alleged incident did not lead to a criminal charge.</p>
+
+			<p><a href="#_ednref39" id="footnote_39" name="_edn39" title><sup>39</sup></a>&nbsp;All of the treated and comparison offenders were charged with exhibitionism and psychologically assessed between 1976 and 1984. The 23 treated offenders participated in the treatment program being studied. The 21 comparison offenders were referred to counseling in their local community.</p>
+
+			<p><a href="#_ednref40" id="footnote_40" name="_edn40" title><sup>40</sup></a>&nbsp;Variation in sex offender management practices over time or across jurisdictions may also limit the transferability of findings. Some researchers, for example, have expressed concern about generalizing recidivism findings derived from lengthy follow-up periods to present-day sex offenders because sex offender management strategies have changed and improved over time (see, e.g., Wilson, 2011). See, for example, Maletzky and Steinhauser (2002) for a discussion of treatment improvement over time and see, for example, Lösel and Schmucker (2005) for an alternative finding. Also, some researchers have questioned the comparability of findings from studies of domestic and foreign sex offenders on the grounds that U.S. offenders are often subject to polygraph testing, whereas foreign offenders are not.</p>
+
+			<p><a href="#_ednref41" id="footnote_41" name="_edn41" title><sup>41</sup></a>&nbsp;Studies that have not found a difference in recidivism between opposite-sex and same-sex child molesters include Barbaree and Marshall (1988) and Prentky and colleagues (1997).</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p><a id="refe" name="refe"></a></p>
+
+<div aria-label="accordion-group" class="usa-accordion">
+<h2 class="usa-accordion__heading"><button aria-controls="ld5ors" aria-expanded="false" class="usa-accordion__button">References</button></h2>
+
+<div class="usa-accordion__content usa-prose ui-widget-content" id="ld5ors">
+<p>Abel, G.G., Mittelman, M., Becker, J.B., Rathner, J. &amp; Rouleau, J.L. (1988). Predicting child molesters' response to treatment.&nbsp;<em>Annals of the New York Academy of Sciences, 528</em>, 223–234.</p>
+
+<p>Abel, G.G. &amp; Osborn, C.A. (1992). The paraphilias: The extent and nature of sexually deviant and criminal behavior. In J.M.W. Bradford (Ed.),&nbsp;<em>Psychiatric Clinics of North America</em>, 15 (pp. 675–687). Philadelphia, PA: W.B. Saunders Company.</p>
+
+<p>Ahlmeyer, S., Heil, P., McKee, B. &amp; English, K. (2000). The impact of polygraphy on admissions of victims and offenses of adult sex offenders.&nbsp;<em>Sexual Abuse: A Journal of Research and Treatment, 12</em>, 123–138.</p>
+
+<p>Bachman, R. (1998). Factors related to rape reporting behavior and arrest: New evidence from the National Crime Victimization Survey.&nbsp;<em>Criminal Justice and Behavior, 25</em>, 8–29.</p>
+
+<p>Barbaree, H.E. &amp; Marshall, W.L. (1988). Deviant sexual arousal, demographic and offense history variables as predictors of reoffense among child molesters and incest offenders.&nbsp;<em>Behavioral Sciences &amp; the Law, 6</em>, 267–280.</p>
+
+<p>Center for Sex Offender Management (CSOM) (2001).&nbsp;<em>Recidivism of Sex Offenders</em>. Silver Spring, MD: Center for Sex Offender Management.</p>
+
+<p>Center for Sex Offender Management (CSOM) (2007).&nbsp;<em>Female Sex Offenders</em>. Silver Spring, MD: Center for Sex Offender Management.</p>
+
+<p>Cortoni, F. &amp; Hanson, R.K. (2005).&nbsp;<em>A Review of the Recidivism Rates of Adult Female Sex Offenders</em>. Research Report No. R-169. Ottawa, ON: Correctional Service of Canada.</p>
+
+<p>Cortoni, F., Hanson, R.K. &amp; Coache, M.È. (2010). The recidivism rates of female sex offenders are low: A meta-analysis.<em>&nbsp;Sexual Abuse: A Journal of Research and Treatment, 22</em>, 387–401.</p>
+
+<p>Doren, D. (1998). Recidivism base rates, predictions of sex offender recidivism and the "sexual predator" commitment laws.&nbsp;<em>Behavioral Sciences and the Law, 16</em>, 97–114.</p>
+
+<p>Doren, D. (2010). Empirically based recidivism risk assessment estimate extrapolations across time and outcome measure. In A. Schlank (Ed.),&nbsp;<em>The Sexual Predator, Legal Issues, Assessment, Treatment</em>. Kingston, NJ: Civic Research Institute.</p>
+
+<p>Durose, M., Cooper, A. &amp; Snyder, H. (2014).&nbsp;<em>Special Report, Recidivism of Prisoners Released in 30 States in 2005: Patterns from 2005 to 2010</em>. Washington, DC: U.S. Department of Justice, Office of Justice Programs, Bureau of Justice Statistics.</p>
+
+<p>English, K., Jones, L., Pasini-Hill, D., Patrick, D. &amp; Cooley-Towell, S. (2000).<em>&nbsp;The Value of Polygraph Testing in Sex Offender Management</em>. Final research report submitted to the National Institute of Justice for grant number D97LBVX0034. Denver, CO: Colorado Division of Criminal Justice, Office of Research and Statistics.</p>
+
+<p>Firestone, P., Kingston, D.A., Wexler, A. &amp; Bradford, J.M. (2006). Long-term follow-up of exhibitionists: Psychological, phallometric and offense characteristics.&nbsp;<em>Journal of the American Academy of Psychiatry and the Law, 34</em>, 349–59.</p>
+
+<p>Gelb, K. (2007). Recidivism of Sex Offenders Research Paper. Melbourne, Australia: Sentencing Advisory Council.</p>
+
+<p>Grotpeter, J.K. &amp; Elliot, D.S. (2002).&nbsp;<em>Violent Sexual Offending</em>. Boulder, CO: University of Colorado, Center for the Study and Prevention of Violence, Institute of Behavioral Science.</p>
+
+<p>Hanson, R.K., Bourgon, G., Helmus, L. &amp; Hodgson, S. (2009).&nbsp;<em>A Meta-Analysis of the Effectiveness of Treatment for Sex Offenders: Risk, Need and Responsivity</em>. Ottawa, ON: Public Safety Canada.</p>
+
+<p>Hanson, R.K., Broom, I. &amp; Stephenson, M. (2004). Evaluating community sex offender treatment programs: A 12-year follow-up of 724 offenders.<em>&nbsp;Canadian Journal of Behavioural Science, 36</em>, 87–96.</p>
+
+<p>Hanson, R.K. &amp; Bussière, M.T. (1998). Predicting relapse: A meta-analysis of sex offender recidivism studies.&nbsp;<em>Journal of Consulting and Clinical Psychology, 66</em>, 348–362.</p>
+
+<p>Hanson, R.K., Gordon, A., Harris, A.J.R., Marques, J., Murphy, W., Quinsey, V. &amp; Seto, M. (2002). First report of the collaborative outcome data project on the effectiveness of psychological treatment for sex offenders.&nbsp;<em>Sexual Abuse: A Journal of Research and Treatment, 14</em>, 169–194.</p>
+
+<p>Hanson, R.K. &amp; Morton-Bourgon, K. (2004).&nbsp;<em>Predictors of Sexual Recidivism: An Updated Meta-Analysis</em>. Ottawa, ON: Public Safety and Emergency Preparedness Canada.</p>
+
+<p>Hanson, R.K., Morton, K.E. &amp; Harris, A.J.R. (2003). Sex offender recidivism risk: What we know and what we need to know. Annals of the&nbsp;<em>New York Academy of Sciences, 989</em>, 154–166.</p>
+
+<p>Hanson, R.K., Scott, H. &amp; Steffy, R.A. (1995). A comparison of child molesters and non-sexual criminals: Risk predictors and long-term recidivism.&nbsp;<em>Journal of Research in Crime and Delinquency, 32</em>, 325–337.</p>
+
+<p>Harris, A.J.R. &amp; Hanson, R.K. (2004).&nbsp;<em>Sex Offender Recidivism: A Simple Question</em>. Ottawa, ON: Public Safety and Emergency Preparedness Canada.</p>
+
+<p>Heil, P., Ahlmeyer, S. &amp; Simons, D. (2003). Crossover sexual offenses.&nbsp;<em>Sexual Abuse: A Journal of Research and Treatment, 15</em>, 221–236.</p>
+
+<p>Heil, P., Harrison, L., English, K. &amp; Ahlmeyer, S. (2009). Is prison sex offending indicative of community risk?<em>&nbsp;Criminal Justice and Behavior, 36</em>, 892–908.</p>
+
+<p>Henslin, J.M. (2008).<em>&nbsp;Essentials of Sociology: A Down-to-Earth Approach (8th Edition)</em>. Boston, MA: Allyn and Bacon.</p>
+
+<p>Kelly, L., Lovett, J. &amp; Regan, L. (2005).&nbsp;<em>A Gap or a Chasm</em>? Attrition in Reported Rape Cases. London, England: Home Office Research, Development and Statistics Directorate.</p>
+
+<p>Kilpatrick, D.G., Saunders, B.E. &amp; Smith, D.W. (2003).&nbsp;<em>Youth Victimization: Prevalence and Implications</em>. Washington, DC: U.S. Department of Justice, Office of Justice Programs, National Institute of Justice.</p>
+
+<p>Knight, R. &amp; Thornton, D. (2007).&nbsp;<em>Evaluating and Improving Risk Assessment Schemes for Sexual Recidivism: A Long-Term Follow-Up of Convicted Sexual Offenders</em>. Washington, DC. U.S. Department of Justice.</p>
+
+<p>Langan, P., Schmitt, E. &amp; Durose, M. (2003).&nbsp;<em>Recidivism of Sex Offenders Released From Prison in 1994</em>. Washington, DC: U.S. Department of Justice, Office of Justice Programs, Bureau of Justice Statistics.</p>
+
+<p>Larcombe, W. (2012). Sex offender risk assessment: The need to place recidivism research in the context of attrition in the criminal justice system.&nbsp;<em>Violence Against Women, 18(4)</em>, 482–501.</p>
+
+<p>Lievore, D. (2004).&nbsp;<em>Prosecutorial Decisions in Adult Sexual Assault Cases: An Australian Study</em>. Canberra, Australia: Office of the Status of Women.</p>
+
+<p>Lipsey, M.W. (2002). Meta-analysis and program evaluation.&nbsp;<em>Socialvetenskaplig Tidskirft, 9</em>, 194–208. (Translated.)</p>
+
+<p>Lösel, F. &amp; Schmucker, M. (2005). The effectiveness of treatment for sex offenders: A comprehensive meta-analysis.&nbsp;<em>Journal of Experimental Criminology, 1</em>, 117–146.</p>
+
+<p>Maletzky, B. &amp; Steinhauser, C. (2002). A 25-year follow-up of cognitive/behavioral therapy with 7,275 sexual offenders.&nbsp;<em>Behavior Modification, 26</em>, 123–147.</p>
+
+<p>Maltz, M.D. (2001). Recidivism. Orlando, FL: Originally published by Academic Press. Retrieved from&nbsp;<a href="https://indigo.uic.edu/bitstream/handle/10027/87/recidivism.pdf?sequence=1">https://indigo.uic.edu/bitstream/handle/10027/87/recidivism.pdf?sequence=1</a>.</p>
+
+<p>Marshall, W.L., Eccles, A. &amp; Barbaree, H.E. (1991). The treatment of exhibitionists: A focus on sexual deviance versus cognitive and relationship features.<em>&nbsp;Behavioural Research and Therapy, 29,</em>&nbsp;129–135.</p>
+
+<p>McGrath, R., Cumming, G., Burchard, B., Zeoli, S. &amp; Ellerby, L. (2010).&nbsp;<em>Current Practices and Emerging Trends in Sexual Abuser Management: The Safer Society 2009 North American Survey</em>. Brandon, VT: Safer Society Press.</p>
+
+<p>McGrath, R.J., Cumming, G., Hoke, S.E. &amp; Bonn-Miller, M.O. (2007). Outcomes in a community sex offender treatment program: A comparison between polygraphed and matched non-polygraphed offenders.&nbsp;<em>Sexual Abuse: A Journal of Research and Treatment, 19</em>, 381–393.</p>
+
+<p>Mercado, C., Jeglic, E., Markus, K., Hanson, R.K. &amp; Levenson, J. (2013).<em>&nbsp;Sex Offender Management, Treatment and Civil Commitment: An Evidence Based Analysis Aimed at Reducing Sexual Violence</em>. Washington, DC. U.S. Department of Justice, Office of Justice Programs, National Institute of Justice.</p>
+
+<p>Olver, M., Nicholaichuk, T., Gu, D. &amp; Wong, S. (2012). Sex Offender Treatment Outcome, Actuarial Risk and the Aging Sex Offender in Canadian Corrections: A Long-Term Follow-up.&nbsp;<em>Sexual Abuse: A Journal of Research and Treatment 25(4)</em>&nbsp;396–422.</p>
+
+<p>Olver, M., Wong, S. &amp; Nicholaichuk, T.P. (2008). Outcome evaluation of a high-intensity inpatient sex offender treatment program.&nbsp;<em>Journal of Interpersonal Violence, 24,</em>&nbsp;522–536.</p>
+
+<p>Petrosino, A. &amp; Lavenberg, J. (2007). Systematic reviews and metal-analytic best evidence on "what works" for criminal justice decisionmakers.&nbsp;<em>Western Criminology Review, 8</em>, 1–15.</p>
+
+<p>Pipe, M.E., Lamb, M.E., Orbach, Y. &amp; Cederborg, A.C. (Eds.). (2007).<em>&nbsp;Child Sexual Abuse: Disclosure, Delay and Denial</em>. Mahwah, NJ: Lawrence Erlbaum Associates.</p>
+
+<p>Prentky, R. &amp; Lee, A. (2007). Effect of age-at-release on long term sexual re-offense rates in civilly committed sex offenders.<em>&nbsp;Sexual Abuse: A Journal of Research and Treatment, 19</em>, 43–59.</p>
+
+<p>Prentky, R., Lee, A., Knight, R. &amp; Cerce, D. (1997). Recidivism rates among child molesters and rapists: A methodological analysis.<em>&nbsp;Law and Human Behavior, 21</em>, 635–659.</p>
+
+<p>Przybylski, R. (1986).&nbsp;<em>The Impact of Prior Criminal History on Recidivism</em>. Chicago, IL: Illinois Criminal Justice Information Authority.</p>
+
+<p>Public Safety Canada (2006).&nbsp;<em>Recidivism Rates of Female Sexual Offenders</em>. Research Summary, vol. 11, no. 3. Retrieved from&nbsp;<a href="https://www.publicsafety.gc.ca/cnt/rsrcs/pblctns/rcvdsm-fmlffndrs/index-en.aspx">https://www.publicsafety.gc.ca/cnt/rsrcs/pblctns/rcvdsm-fmlffndrs/index-en.aspx</a>.</p>
+
+<p>Rabinowitz-Greenberg, S., Firestone, P., Bradford, J. &amp; Greenberg, D. (2002). Prediction of recidivism in exhibitionists: Psychological, phallometric and offense factors.&nbsp;<em>Sexual Abuse: A Journal of Research and Treatment, 14,</em>&nbsp;329–347.</p>
+
+<p>Rice, M.E., Harris, G.T., Lang, C. &amp; Cormier, C.A. (2006). Violent sex offenses: How are they best measured from official records?&nbsp;<em>Law and Human Behavior; 30</em>, 525–541.</p>
+
+<p>Rosenfeld, R., Wallman, J. &amp; Formango, R. (2005). The contribution of ex-prisoners to crime rates. In J. Travis and C. Visher (Eds.),&nbsp;<em>Prisoner Reentry and Crime in America&nbsp;</em>(pp. 80–104). New York, NY: Cambridge University Press.</p>
+
+<p>Sample, L.L. &amp; Bray, T.M. (2003). Are sex offenders dangerous?&nbsp;<em>Criminology and Public Policy, 3</em>, 59–82.</p>
+
+<p>Sandler, J.C. &amp; Freeman, N.J. (2009). Female sex offender recidivism: A large-scale empirical analysis.<em>&nbsp;Sexual Abuse: A Journal of Research and Treatment, 21</em>, 455–473.</p>
+
+<p>Schmucker, M. &amp; Lösel, F. (2015). The effects of sexual offender treatment on recidivism: An international analysis of sound quality evaluations.&nbsp;<em>Journal of Experimental Criminology December 2015, Volume 11, Issue 4</em>, pp 597-630.</p>
+
+<p>Seto, M.C. (2008).&nbsp;<em>Pedophilia and Sexual Offending Against Children: Theory, Assessment and Intervention</em>. Washington, DC: American Psychological Association.</p>
+
+<p>Simons, D., Heil, P. &amp; English, K. (2004). Utilizing polygraph as a risk prediction/treatment progress assessment tool. Paper presented at the Association for the Treatment of Sexual Abusers 23d Annual Research and Treatment Conference, Albuquerque, NM.</p>
+
+<p>Smith, D., Letourneau, E., Saunders, B., Kilpatrick, D., Resnick, H. &amp; Best, C. (2000). Delay in disclosure of childhood rape: Results from a national survey.&nbsp;<em>Child Abuse &amp; Neglect, 24</em>, 273–287.</p>
+
+<p>Sorenson, T. &amp; Snow, B. (1991). How children tell: The process of disclosure in child sexual abuse.&nbsp;<em>Child Welfare, 70</em>, 3–15.</p>
+
+<p>Snyder, H.N. (2000).&nbsp;<em>Sexual Assault of Young Children as Reported to Law Enforcement: Victim, Incident and Offender Characteristics</em>. Washington, DC: U.S. Department of Justice, Office of Justice Programs, Bureau of Justice Statistics.</p>
+
+<p>Statewide Steering Committee to Reduce Sexual Assault, Victoria (SSCRSA) (2006).&nbsp;<em>A Study of Reported Rapes in Victoria 2000–2003: Summary Research Report (based on a study by Dr. Melanie Heenan &amp; Dr. Suellen Murray)</em>. Melbourne, Australia: Office of Women's Policy, Department of Victorian Communities.</p>
+
+<p>Sugarman, P., Dumughn, C., Saad, K., Hinder, S. &amp; Bluglass, R. (1994). Dangerousness in exhibitionists.&nbsp;<em>Journal of Forensic Psychiatry, 5</em>, 287–296.</p>
+
+<p>Temkin, J. &amp; Krahé, B. (2008).&nbsp;<em>Sexual Assault and the Justice Gap: A Question of Attitude</em>. London: Hart Publishing.</p>
+
+<p>Tewksbury, R., Jennings, W. &amp; Zgoba, K. (2012). Sex Offenders: Recidivism and Collateral Consequences. Washington, DC: U.S. Department of Justice, Office of Justice Programs, National Institute of Justice.</p>
+
+<p>Thornton, D. (2006). Age and sexual recidivism: A variable connection.&nbsp;<em>Sexual Abuse: A Journal of Research and Treatment, 1</em>8, 123–135.</p>
+
+<p>Tjaden, P. &amp; Thoennes, N. (2006).&nbsp;<em>Extent, Nature and Consequences of Rape Victimization: Findings From the National Violence Against Women Survey</em>. Washington, DC: U.S. Department of Justice, Office of Justice Programs, National Institute of Justice.</p>
+
+<p>Wilcox, D., Sosnowski, D., Warberg, B. &amp; Beech, A. (2005). Sexual history disclosure using the polygraph in a sample of British sex offenders in treatment.&nbsp;<em>Polygraph, 34</em>, 171–181.</p>
+
+<p>Wilson, D.B. &amp; Lipsey, M.W. (2001). The role of method in treatment effectiveness research: Evidence from meta-analysis.&nbsp;<em>Psychological Methods, 6</em>, 413–429.</p>
+
+<p>Wilson, R.J. (2011).<em>&nbsp;Long-Term Management of Risk Posed by Sex Offenders</em>. Washington, DC: National Criminal Justice Association and U.S. Department of Justice, Office of Justice Programs, Office of Sex Offender Sentencing, Monitoring, Apprehending, Registering, and Tracking.</p>
+</div>
+</div></div>
+          </div>
+
+  </div>
+
+      </div>
+    
+          <div  class="layout__region layout__region--second">
+        
+  
+  
+<div     data-block-plugin-id="inline_block:text"
+      data-inline-block-uuid="b5fb3b8f-2c83-44a8-87e8-4d821764d1cb"
+      class="block block-layout-builder block-inline-blocktext cta"
+  >
+    <div>
+    
+          <h3  class="cta__headline">In This Chapter</h3>
+        
+          <div  class="use-float-friendly-lists field field--name-body field--type-text-with-summary field--label-hidden long-text"><aside>
+<p><a href="#intr">Introduction</a></p>
+
+<p><a href="#issu_cons">Issues To Consider</a></p>
+
+<p><a href="#recr_find">Recidivism Research Findings</a></p>
+
+<p><a href="#summary">Summary</a></p>
+
+<p><a href="#note">Notes</a></p>
+
+<p><a href="#refe">References</a></p>
+
+<hr>
+<p><a href="/somapi/chapter-4-internet-facilitated-sexual-offending">&lt; Previous Chapter&nbsp;</a></p>
+
+<p><a href="/somapi/chapter-6-sex-offender-risk-assessment">Next Chapter &gt;</a></p>
+
+<hr>
+<p><a href="/somapi/contents">Back to Contents</a></p>
+</aside></div>
+
+          </div>
+</div>
+
+
+      </div>
+      
+      </div>
+
+  <div class="layout--node-landing_page layout layout--onecol">
+    <div >
+      
+    </div>
+  </div>
+
+  </div>
+
+</article>
+
+  </div>
+
+  </div>
+
+      </div>
+
+      
+
+      
+    </div>
+  </main>
+</div>
+
+<footer class="usa-footer usa-footer--big">
+  <div class="grid-container usa-footer-return-to-top">
+    <a id="return-to-top" class="hide" href="#">Top</a>
+  </div>
+
+      <div class="usa-footer__primary-section">
+      <div class="grid-container footer__wrapper">
+        <div class="usa-footer-primary__top padding-bottom-5">
+                      <h3 class="usa-footer__agency-heading tablet:display-inline-block">Office of Sex Offender Sentencing, Monitoring, Apprehending, Registering, and Tracking</h3>
+                  </div>
+
+        
+        
+                        <nav class="usa-footer-nav mobile-lg:grid-col-12" aria-label="footer navigation">
+
+                        <div class="region region-footer-menu">
+    
+
+    
+                <div class="grid-row grid-gap">
+        
+                  
+    
+                  <div class="mobile-lg:grid-col-6 desktop:grid-col-3">
+        <section aria-labelledby="section-about-smart" class="usa-footer__primary-content usa-footer__primary-content--collapsible display-block">
+          <h4 id="section-about-smart" class="usa-footer__primary-link">About SMART</h4>
+                    <ul class="add-list-reset usa-list--unstyled">
+                
+        
+                  
+    
+                  <li class="usa-footer__secondary-link">
+        <a href="/contact">Contact Us</a>
+      </li>
+      
+    
+                  <li class="usa-footer__secondary-link">
+        <a href="/about">About SMART</a>
+      </li>
+      
+    
+        
+  
+          </ul>
+                  </section>
+      </div>
+      
+    
+                  <div class="mobile-lg:grid-col-6 desktop:grid-col-3">
+        <section aria-labelledby="section-key-resources" class="usa-footer__primary-content usa-footer__primary-content--collapsible display-block">
+          <h4 id="section-key-resources" class="usa-footer__primary-link">Key Resources</h4>
+                    <ul class="add-list-reset usa-list--unstyled">
+                
+        
+                  
+    
+                  <li class="usa-footer__secondary-link">
+        <a href="/sorna">SORNA</a>
+      </li>
+      
+    
+                  <li class="usa-footer__secondary-link">
+        <a href="/sorna/indian-country">Indian  Country</a>
+      </li>
+      
+    
+                  <li class="usa-footer__secondary-link">
+        <a href="https://www.nsopw.gov/">NSOPW.gov</a>
+      </li>
+      
+    
+                  <li class="usa-footer__secondary-link">
+        <a href="https://www.ojp.gov/program/civil-rights-office/filing-civil-rights-complaint">File a Civil Rights Complaint</a>
+      </li>
+      
+    
+        
+  
+          </ul>
+                  </section>
+      </div>
+      
+    
+                  <div class="mobile-lg:grid-col-6 desktop:grid-col-3">
+        <section aria-labelledby="section-publications" class="usa-footer__primary-content usa-footer__primary-content--collapsible display-block">
+          <h4 id="section-publications" class="usa-footer__primary-link">Publications</h4>
+                    <ul class="add-list-reset usa-list--unstyled">
+                
+        
+                  
+    
+                  <li class="usa-footer__secondary-link">
+        <a href="/somapi/initiative-home">SOMAPI</a>
+      </li>
+      
+    
+                  <li class="usa-footer__secondary-link">
+        <a href="/sorna/current-law/case-law/contents">Case Law</a>
+      </li>
+      
+    
+        
+  
+          </ul>
+                  </section>
+      </div>
+      
+    
+                  <div class="mobile-lg:grid-col-6 desktop:grid-col-3">
+        <section aria-labelledby="section-funding-awards" class="usa-footer__primary-content usa-footer__primary-content--collapsible display-block">
+          <h4 id="section-funding-awards" class="usa-footer__primary-link">Funding &amp; Awards</h4>
+                    <ul class="add-list-reset usa-list--unstyled">
+                
+        
+                  
+    
+                  <li class="usa-footer__secondary-link">
+        <a href="/funding">Funding</a>
+      </li>
+      
+    
+                  <li class="usa-footer__secondary-link">
+        <a href="/funding/current">Open Funding</a>
+      </li>
+      
+    
+        
+  
+          </ul>
+                  </section>
+      </div>
+      
+    
+                </div>
+        
+  
+
+
+
+  </div>
+
+          
+        </nav>
+
+        <div class="footer__social">
+                      <a class="usa-link-facebook margin-right-2" href="https://www.facebook.com/DOJOJP">
+              <span class="usa-sr-only">Facebook</span><span class="f">&nbsp;</span>
+            </a>
+          
+                      <a class="usa-link-twitter margin-right-2" href="https://x.com/ojpgov">
+              <span class="usa-sr-only">X</span><span class="t">&nbsp;</span>
+            </a>
+          
+                      <a class="usa-link-youtube" href="https://www.youtube.com/user/OJPOCOM">
+              <span class="usa-sr-only">YouTube</span>
+              <span class="yt"> </span>
+            </a>
+          
+                  </div>
+
+      </div>
+    </div>
+  
+
+      <div class="usa-footer__secondary-section">
+
+              <div class="grid-container">
+          <div class="grid-row usa-footer__logos-container ">
+                                              <div class="usa-footer-logo usa-width-one-half  desktop:grid-col-6 desktop:border-right border-base-dark">
+
+                            <a href="https://www.ojp.gov">
+                                                <img class="" src="/themes/custom/ojp/assets/images/ojp/ojp-full.svg" alt="U.S. Department of Justice, Office of Justice Programs Logo">
+                                            </a>
+                          </div>
+          
+                                            <div class="desktop:grid-col-6">
+              <div class="usa-footer__partner-logos 1">
+                <div class="grid-row">
+                  <div class="grid-col-4 flex-align-center usa-footer__partner-logo margin-bottom-3">
+                    <a href="https://bja.ojp.gov" aria-label="Bureau of Justice Administration">
+                      <img src="/themes/custom/ojp/assets/images/ojp/bja.svg" alt="Bureau of Justice Administration Logo" />
+                    </a>
+                  </div>
+                  <div class="grid-col-4 flex-align-center usa-footer__partner-logo margin-bottom-3">
+                    <a href="https://bjs.ojp.gov" aria-label="Bureau of Justice Statistics">
+                      <img src="/themes/custom/ojp/assets/images/ojp/bjs.svg" alt="Bureau of Justice Statistics Logo" />
+                    </a>
+                  </div>
+                  <div class="grid-col-4 flex-align-center usa-footer__partner-logo margin-bottom-3">
+                    <a href=" https://nij.ojp.gov" aria-label="National Institute of Justice">
+                      <img src="/themes/custom/ojp/assets/images/ojp/nij.svg" alt="National Institute of Justice Logo" />
+                    </a>
+                  </div>
+                  <div class="grid-col-4 flex-align-center usa-footer__partner-logo">
+                    <a href="https://ojjdp.ojp.gov" aria-label="Office of Juvenile Justice and Delinquency Prevention">
+                      <img src="/themes/custom/ojp/assets/images/ojp/ojjdp.svg" alt="Office of Juvenile Justice and Delinquency Prevention Logo" />
+                    </a>
+                  </div>
+                  <div class="grid-col-4 flex-align-center usa-footer__partner-logo">
+                    <a href="https://ovc.ojp.gov" aria-label="Office for Victims of Crime">
+                      <img src="/themes/custom/ojp/assets/images/ojp/ovc.svg" alt="Office for Victims of Crime Logo" />
+                    </a>
+                  </div>
+                  <div class="grid-col-4 flex-align-center usa-footer__partner-logo">
+                    <a href="https://smart.ojp.gov" aria-label="Office of Sex Offender Sentencing, Monitoring, Apprehending, Registering, and Tracking">
+                      <img src="/themes/custom/ojp/assets/images/ojp/smart.svg" alt="Office of Sex Offender Sentencing, Monitoring, Apprehending, Registering, and Tracking Logo" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+                    </div>
+
+                      <div class="usa-footer-contact-links usa-width-one-half">
+
+              <address>
+
+                                  <p class="usa-footer-contact-heading">999 N. Capitol St., NE, Washington, DC  20531</p>
+                
+                
+                
+              </address>
+            </div>
+          
+        </div>
+      
+              <div class="wide-nav">
+          <nav aria-labelledby="block-bja-secondaryfooterlinkmenu-menu" id="block-bja-secondaryfooterlinkmenu" class="navigation menu--secondary-footer-link-menu">
+            <h2 class="visually-hidden" id="block-bja-secondaryfooterlinkmenu-menu">Secondary Footer link menu</h2>
+            <ul class="menu">
+              <li class="menu-item">
+                <a href="https://www.justice.gov/accessibility/accessibility-statement">Accessibility</a>
+              </li>
+              <li class="menu-item">
+                <a href="https://www.osc.gov">File Whistleblower Complaint</a>
+              </li>
+              <li class="menu-item">
+                <a href="https://www.justice.gov/open/plain-writing-act">Plain Language</a>
+              </li>
+              <li class="menu-item">
+                <a href="https://www.justice.gov/doj/privacy-policy">Privacy Policy</a>
+              </li>
+              <li class="menu-item">
+                <a href="https://www.justice.gov/legalpolicies">Legal Policies and Disclaimer</a>
+              </li>
+              <li class="menu-item">
+                <a href="https://www.justice.gov/jmd/eeo-program-status-report">No FEAR Act</a>
+              </li>
+              <li class="menu-item">
+                <a href="https://www.ojp.gov/program/freedom-information-act/foia-overview">Freedom of Information Act</a>
+              </li>
+              <li class="menu-item">
+                <a href="https://www.usa.gov/">USA.gov</a>
+              </li>
+              <li class="menu-item">
+                <a href="https://www.justice.gov/">Justice.gov</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+                </div>
+  
+</footer>
+
+  </div>
+
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"node\/32826","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"gtag":{"tagId":"","otherIds":[],"events":[],"additionalConfigInfo":[]},"ajaxPageState":{"libraries":"eJxdUVGWwyAIvJCJX3seHwJrTI30ibbNnr4mm3Tb_RAHRnnMABknKbNaOMCITassxjfr24gT44WL6YFilfLlePFMxORQcuVcbdM7qQNEKRQlj99lJ-j1x8VM_aFPghf7hg0mUF2tB-UTL6wKgdX0bmyptCuksYJPPDHQNshWz1IWSPGHDcnsdIISc7Bv2PCjppgvZ4cjNUEkJHYVgg09_M9HmOHxWVxMglVadb7F1Aew9S4oySlj7WpPlqKi3LisVjJ33sh8tf2c97CJHLSuqWvbard4izT41HiATEMosG51d5p27OPP10_25W3nu2XRxxTrbweCCrtjaj_TnVWGgpM9NGJ3XletvOxbeAJvQsz2","theme":"ojp","theme_token":null},"ajaxTrustedUrl":[],"gtm":{"tagId":null,"settings":{"GTM-N3NMP5N":{"data_layer":"dataLayer","include_environment":false}},"tagIds":["GTM-N3NMP5N"]},"anchorjs":{"selector":".block--body.block-layout-builder h2:not(.usa-accordion__heading), .block--body.block-layout-builder h3, .block--body.block-layout-builder h4, .block--body.block-layout-builder h5, .block-inline-blocktext.block-layout-builder h3, .block-inline-blocktext.block-layout-builder h4, .block-inline-blocktext.block-layout-builder h5, .block-ojp-taxonomy h3, .block-ojp-core h3, .block--field-faq-sections h3, .block-crimesolutions-content-block h3, .block-ojp-core h3, .view-program-practices-listing-alpha h2, .page-node-type-microsite-subpage .block-page-title-block h1, .block-views-blockvideos-multimedia-block h2, .block-inline-blocktext.block-layout-builder h2:not(.usa-accordion__heading), .block-crimesolutions-content-block h3"},"bu":{"_core":{"default_config_hash":"hHRgRa8uaUJPBEvzD2uaerY4Z9xdbV4glRDRNp8euEE"},"notify_ie":12,"notify_firefox":56,"notify_opera":49,"notify_safari":10,"notify_chrome":62,"insecure":false,"unsupported":false,"mobile":false,"visibility_type":"hide","visibility_pages":"admin\/*","source":"\/\/browser-update.org\/update.min.js","show_source":"","position":"top","text_override":"{brow_name} is no longer supported. Some features of this site may not display correctly.","reminder":null,"reminder_closed":null,"new_window":false,"url":"","no_close":false,"test_mode":false},"ojp_search":{"search_no_query_text":"Your search yielded no results."},"ajax":[],"user":{"uid":0,"permissionsHash":"4ddc63bd9ee968789fdf5cecbeb2f134463dfafbbbebf50f5ffff7afc742b911"}}</script>
+<script src="/sites/g/files/xyckuh231/files/js/js_NcQsaeQxBC6IPN7yK1XSA9ePWCYE6QKbH1E0y0PIqKw.js?scope=footer&amp;delta=0&amp;language=en&amp;theme=ojp&amp;include=eJxdT-0OwyAIfCEjv_Y8hgJTWyuNH9kef65x2boQjjsuIQdmClrWCjiJpV6b7mbpsHRLQWiTYgZwbFpuTvZFmIUdaW6SG_T64OqQSAtHzfZeToMN6-pqwBKzhx9u5NlSzBtw6QcmO6Xxqj6Ja-jBD_jXFld8Xpe70fWA0e_pPhHnJ99Ep8vYRi1JKlzl6VbBQgHmdaryAm-4bLs"></script>
+<script src="/libraries/anchor-js/anchor.min.js?v=4.3.0" defer></script>
+<script src="/libraries/clipboard/dist/clipboard.min.js?v=2.0.6" defer></script>
+<script src="/modules/custom/anchorjs/js/anchorjs.custom.js?v=0.1.0" defer></script>
+<script src="/sites/g/files/xyckuh231/files/js/js_MDrcoE0NRDnHvssqeZzn0X1om5TXtbE2p5z6LENvcvk.js?scope=footer&amp;delta=4&amp;language=en&amp;theme=ojp&amp;include=eJxdT-0OwyAIfCEjv_Y8hgJTWyuNH9kef65x2boQjjsuIQdmClrWCjiJpV6b7mbpsHRLQWiTYgZwbFpuTvZFmIUdaW6SG_T64OqQSAtHzfZeToMN6-pqwBKzhx9u5NlSzBtw6QcmO6Xxqj6Ja-jBD_jXFld8Xpe70fWA0e_pPhHnJ99Ep8vYRi1JKlzl6VbBQgHmdaryAm-4bLs"></script>
+<script src="/modules/custom/ckeditor5_embedded_content/js/aftermarket/uswds_accordion.js?texb7o"></script>
+<script src="/sites/g/files/xyckuh231/files/js/js_bCYTci8oNamnhWSzfFRR_Wd5PA67fMu9rbDDMQADrHo.js?scope=footer&amp;delta=6&amp;language=en&amp;theme=ojp&amp;include=eJxdT-0OwyAIfCEjv_Y8hgJTWyuNH9kef65x2boQjjsuIQdmClrWCjiJpV6b7mbpsHRLQWiTYgZwbFpuTvZFmIUdaW6SG_T64OqQSAtHzfZeToMN6-pqwBKzhx9u5NlSzBtw6QcmO6Xxqj6Ja-jBD_jXFld8Xpe70fWA0e_pPhHnJ99Ep8vYRi1JKlzl6VbBQgHmdaryAm-4bLs"></script>
+<script src="/extlink/settings.js"></script>
+<script src="/sites/g/files/xyckuh231/files/js/js_xgZrggXlFB2BQrKodH0YO_xPH5y-fKsiDP8eBRbW2wE.js?scope=footer&amp;delta=8&amp;language=en&amp;theme=ojp&amp;include=eJxdT-0OwyAIfCEjv_Y8hgJTWyuNH9kef65x2boQjjsuIQdmClrWCjiJpV6b7mbpsHRLQWiTYgZwbFpuTvZFmIUdaW6SG_T64OqQSAtHzfZeToMN6-pqwBKzhx9u5NlSzBtw6QcmO6Xxqj6Ja-jBD_jXFld8Xpe70fWA0e_pPhHnJ99Ep8vYRi1JKlzl6VbBQgHmdaryAm-4bLs"></script>
+<script src="/modules/contrib/google_tag/js/gtag.js?texb7o"></script>
+<script src="/sites/g/files/xyckuh231/files/js/js_U7zRgRlS8bKtMvN164qqxD3sl-38UBYPQ2FTNTgKIoU.js?scope=footer&amp;delta=10&amp;language=en&amp;theme=ojp&amp;include=eJxdT-0OwyAIfCEjv_Y8hgJTWyuNH9kef65x2boQjjsuIQdmClrWCjiJpV6b7mbpsHRLQWiTYgZwbFpuTvZFmIUdaW6SG_T64OqQSAtHzfZeToMN6-pqwBKzhx9u5NlSzBtw6QcmO6Xxqj6Ja-jBD_jXFld8Xpe70fWA0e_pPhHnJ99Ep8vYRi1JKlzl6VbBQgHmdaryAm-4bLs"></script>
+<script src="/modules/contrib/google_tag/js/gtm.js?texb7o"></script>
+<script src="/sites/g/files/xyckuh231/files/js/js_yMNS7fdEyC3A41gPFRJDPXcRhr9-Hf_EyTcaXnOkk4o.js?scope=footer&amp;delta=12&amp;language=en&amp;theme=ojp&amp;include=eJxdT-0OwyAIfCEjv_Y8hgJTWyuNH9kef65x2boQjjsuIQdmClrWCjiJpV6b7mbpsHRLQWiTYgZwbFpuTvZFmIUdaW6SG_T64OqQSAtHzfZeToMN6-pqwBKzhx9u5NlSzBtw6QcmO6Xxqj6Ja-jBD_jXFld8Xpe70fWA0e_pPhHnJ99Ep8vYRi1JKlzl6VbBQgHmdaryAm-4bLs"></script>
+<script src="/libraries/datatables.net/js/jquery.dataTables.js?v=1.x" defer></script>
+<script src="/libraries/datatables.net-responsive/js/dataTables.responsive.min.js?v=1.x" defer></script>
+<script src="/modules/custom/ojp_datatables/js/ojp_datatables.js?v=1.x" defer></script>
+<script src="/sites/g/files/xyckuh231/files/js/js_xsF5Pv0XYTSsGpdz2CUh_QIibF3oqZgTqNQzxpBNyTA.js?scope=footer&amp;delta=16&amp;language=en&amp;theme=ojp&amp;include=eJxdT-0OwyAIfCEjv_Y8hgJTWyuNH9kef65x2boQjjsuIQdmClrWCjiJpV6b7mbpsHRLQWiTYgZwbFpuTvZFmIUdaW6SG_T64OqQSAtHzfZeToMN6-pqwBKzhx9u5NlSzBtw6QcmO6Xxqj6Ja-jBD_jXFld8Xpe70fWA0e_pPhHnJ99Ep8vYRi1JKlzl6VbBQgHmdaryAm-4bLs"></script>
+<script src="https://cse.google.com/cse.js?cx=015849196504226064512:2g3ksf0kpap"></script>
+
+  </body>
+</html>
