@@ -1,42 +1,81 @@
 # Python
+
 __pycache__/
+
 *.py[cod]
+
 .venv/
+
 venv/
+
 *.egg-info/
+
 dist/
+
 build/
 
+
+
 # Node
+
 node_modules/
+
 .next/
 
+
+
 # Environment
+
 .env
+
 .env.local
+
 .env.*.local
 
+
+
 # IDE
+
 .vscode/
+
 .idea/
+
 *.swp
+
 *.swo
+
 .DS_Store
 
+
+
 # Data (sensitive)
+
 *.db
+
 *.sqlite
+
 knowledge/raw/
+
 models/*.pt
+
 models/*.mlpackage
+
 models/*.mlmodel
 
+
+
 # Vendor (cloned repos - too large for git)
+
 vendor/
 
+
+
 # Logs
+
 *.log
+
 logs/
+
 
 # LegalShield ingest infrastructure
 legalshield/knowledge/lancedb/
@@ -50,16 +89,33 @@ ingest.logpath
 legalshield/backend/dry_run.py
 legalshield/backend/verify_defects.py
 
-# Sensitive: Grant applications & internal strategy (do NOT commit to public repo)
-legalshield/docs/TOYOTA_FOUNDATION_PROPOSAL_2026.html
-legalshield/docs/GRANT_INQUIRY_TEMPLATES.md
-legalshield/docs/GRANT_APPLICATION_TEMPLATE.md
-legalshield/docs/GRANT_READINESS.md
-legalshield/docs/SCENARIO_ANALYSIS.md
-legalshield/docs/LEGALSHIELD_PITCH_STRATEGY.md
+# ============================================================
+# PRIVATE CASE DATA - Mapry case & personal litigation AI
+# 絶対に GitHub にコミットしてはいけない領域
+# README とコード本体のみ追跡可能、データは全て除外
+# ============================================================
+# 敏感資料の完全除外
+private/mapry_ai/knowledge_base/raw/
+private/mapry_ai/knowledge_base/processed/
+private/mapry_ai/models/base/
+private/mapry_ai/models/fine_tuned/
+private/mapry_ai/drafts/
+private/**/lawyer_consultations/
+private/**/*.duckdb
+private/**/*.lance
+private/**/*.jsonl
+private/**/*.pdf
+private/**/*.docx
+private/**/*.eml
+private/**/*.msg
+private/**/*.png
+private/**/*.jpg
+private/**/*.jpeg
+private/**/*.encrypted
+private/**/*.vault
+private/**/*.veracrypt
 
-# Private case data (ADR/litigation)
-legalshield/case_studies/mapry_M4_0/
+# どこでも秘匿系
+**/*_PRIVATE.md
+**/*_CONFIDENTIAL.*
 
-# Generated research outputs (keep .md, ignore large .jsonl)
-docs/research/precedents/*.jsonl
