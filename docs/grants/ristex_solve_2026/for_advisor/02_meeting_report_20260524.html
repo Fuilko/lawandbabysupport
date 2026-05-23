@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>02_meeting_report_20260524</title>
+<style>
+@page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+* { box-sizing: border-box; }
+html, body {
+  font-family: "Hiragino Kaku Gothic ProN", "游ゴシック", "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.7;
+  color: #1a1a1a;
+  background: #f1f1f4;
+}
+body { margin: 0; padding: 18px; }
+.sheet {
+  max-width: 210mm;
+  margin: 0 auto;
+  background: white;
+  padding: 18mm 16mm 22mm 16mm;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 1px solid #e2e2e6;
+}
+h1 {
+  font-size: 22pt;
+  font-weight: 800;
+  color: #142d52;
+  border-bottom: 3px solid #2c4a7e;
+  padding-bottom: 6px;
+  margin: 0 0 12px 0;
+}
+h2 {
+  font-size: 15pt;
+  color: #1c3a66;
+  border-left: 5px solid #2c4a7e;
+  padding-left: 10px;
+  margin-top: 22px;
+  margin-bottom: 8px;
+}
+h3 {
+  font-size: 12.5pt;
+  color: #243d63;
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+p { margin: 4px 0 8px 0; }
+ul, ol { margin: 4px 0 8px 0; padding-left: 24px; }
+li { margin-bottom: 2px; }
+hr { border: 0; border-top: 1px dashed #b7b7c0; margin: 16px 0; }
+table {
+  border-collapse: collapse;
+  margin: 8px 0 12px 0;
+  width: 100%;
+  font-size: 10pt;
+}
+th, td {
+  border: 1px solid #c5c9d2;
+  padding: 5px 9px;
+  vertical-align: top;
+}
+th {
+  background: #2c4a7e;
+  color: white;
+  font-weight: 600;
+  text-align: left;
+}
+tr:nth-child(even) td { background: #f7f8fb; }
+code {
+  background: #f1f1f4;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: "Cascadia Code", "Consolas", "Menlo", monospace;
+  font-size: 9.5pt;
+  color: #c0392b;
+}
+pre {
+  background: #1c1c20;
+  color: #e8e8ec;
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-family: "Cascadia Code", "Consolas", "Menlo", monospace;
+  font-size: 9pt;
+  line-height: 1.55;
+  overflow-x: auto;
+  margin: 6px 0 12px 0;
+}
+pre code { background: transparent; color: inherit; padding: 0; }
+blockquote {
+  border-left: 4px solid #2c4a7e;
+  background: #f0f4fb;
+  padding: 8px 14px;
+  margin: 6px 0 12px 0;
+  color: #1c2e50;
+  font-style: italic;
+}
+strong { color: #142d52; }
+a { color: #2c4a7e; text-decoration: none; border-bottom: 1px dotted #2c4a7e; }
+.header-meta {
+  background: linear-gradient(135deg, #2c4a7e 0%, #4a6fa8 100%);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 10pt;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.header-meta strong { color: white; }
+.footer-note {
+  text-align: center;
+  color: #888;
+  font-size: 9pt;
+  margin-top: 24px;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+<h1 id="legalshield">LegalShield プロジェクト 進捗報告書</h1>
+<h2 id="2026-5-24-1300">鈴木保志 教授 面談用（2026 年 5 月 24 日 13:00〜）</h2>
+<p><strong>提出者</strong>：劉 建志（リュウ ケンシ）
+<strong>所属</strong>：高知大学大学院 農林海洋科学専攻 森林工学研究室 修士課程
+<strong>連絡先</strong>：kenji@hiiforest.com ／ 080-8475-2122
+<strong>GitHub</strong>：<a href="https://github.com/Fuilko/lawandbabysupport">https://github.com/Fuilko/lawandbabysupport</a>
+<strong>最新コミット</strong>：<code>2063575</code>（2026-05-24 02:48 JST 同期完了）</p>
+<hr />
+<h2 id="1">第 1 章　ご面談の目的</h2>
+<p>本日のご面談では、以下の 3 点について先生のご助言を賜りたく存じます。</p>
+<ol>
+<li><strong>JST RISTEX SOLVE 2026 への応募</strong> に関するご助言と、共同提案者（アドバイザー／共同研究者）としてのご検討</li>
+<li><strong>LegalShield iOS プロトタイプの実演</strong> — Xcode 上での動作確認</li>
+<li><strong>既存 RAG コーパス（CALL4 76 件 + 裁判所書式 166 件 = 3,837 chunks）</strong> の研究的活用可能性のご検討</li>
+</ol>
+<hr />
+<h2 id="2-30">第 2 章　プロジェクト概要（30 秒サマリー）</h2>
+<blockquote>
+<p><strong>LegalShield は、社会的弱者（DV 被害者・ストーキング被害者・フリーランス被害者・外国籍研究者）が、
+弁護士費用ゼロで「自己防衛」「証拠保全」「法的書面起案」を可能にする AI 駆動の本人訴訟支援プラットフォームです。</strong></p>
+</blockquote>
+<p>技術スタック:
+- <strong>フロントエンド</strong>：iOS Native (SwiftUI, iOS 17+)
+- <strong>バックエンド</strong>：Python (FastAPI), DuckDB, LanceDB（ベクトル検索）
+- <strong>AI</strong>：sentence-transformers 多言語埋め込み + LLM (Ollama Llama 3) on-device
+- <strong>OSS</strong>：MIT License、フル公開</p>
+<hr />
+<h2 id="3">第 3 章　本日までの進捗（実装済）</h2>
+<h3 id="31-ios-34-swift">3.1　iOS プロトタイプ（34 Swift ファイル）</h3>
+<table>
+<thead>
+<tr>
+<th>モジュール</th>
+<th>機能</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evidence Vault</td>
+<td>SHA-256 ハッシュチェーン付き写真・録音・ログ保管</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>Anti-Surveillance</td>
+<td>反偵察ツール（Bluetooth デバイス検出等）</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>Anomaly Detection</td>
+<td>心率異常・位置異常検出</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>防誘導取証 Copilot</td>
+<td>質問内容のリアルタイム法的アドバイス</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>Administrative Law Module</td>
+<td>行政法サポート（DV 防止法等）</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>Audit Log</td>
+<td>全アクション改ざん不可ログ</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>法律文書ジェネレーター</td>
+<td>訴状・準備書面・陳述書のテンプレ起案</td>
+<td>✅ 実装済</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-rag-6">3.2　バックエンド・RAG コーパス（最終 6 時間で構築完了）</h3>
+<table>
+<thead>
+<tr>
+<th>データソース</th>
+<th>件数</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CALL4 公共訴訟事例</strong></td>
+<td>76 件全件（1,447,928 字）</td>
+<td>公益訴訟の戦略・論述パターン</td>
+</tr>
+<tr>
+<td><strong>裁判所公式書式（民訴・調停・少額・労動）</strong></td>
+<td>166 件 PDF/DOCX</td>
+<td>答弁書・訴状・準備書面の正式テンプレ</td>
+</tr>
+<tr>
+<td><strong>判例データセット</strong>（既存）</td>
+<td>ドローン・契約不適合・瑕疵担保 etc.</td>
+<td>民法判例 RAG</td>
+</tr>
+<tr>
+<td><strong>法令データセット</strong>（既存）</td>
+<td>日本法・台湾法（DV/ストーキング/個人情報保護）</td>
+<td>法令 RAG</td>
+</tr>
+<tr>
+<td><strong>計</strong></td>
+<td><strong>3,837 chunks</strong> (384-dim ベクトル)</td>
+<td>全文検索・RAG 統合済</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33">3.3　社会連携・実証実験</h3>
+<table>
+<thead>
+<tr>
+<th>案件</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mapry M4-0 ドローン品質欠陥事件 仲裁手続</td>
+<td>第二東京弁護士会 仲裁センター 受理（令和8年（仲）第129号）</td>
+</tr>
+<tr>
+<td>フリーランス・トラブル110番（厚労省委託）</td>
+<td>連携継続中</td>
+</tr>
+<tr>
+<td>6/30〜7/9 第 1 回期日（仲裁）</td>
+<td>準備書面（第 1）ドラフト完成済</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-jst-ristex-solve-2026">第 4 章　JST RISTEX SOLVE 2026 応募計画</h2>
+<h3 id="41">4.1　応募スケジュール</h3>
+<table>
+<thead>
+<tr>
+<th>日付</th>
+<th>マイルストーン</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2026-05-24（本日）</strong></td>
+<td>鈴木教授ご面談・ご助言</td>
+</tr>
+<tr>
+<td>2026-05-26〜29</td>
+<td>東京出張（フリーランス・トラブル110番、NPO ヒアリング）</td>
+</tr>
+<tr>
+<td>2026-05-30〜06-02</td>
+<td>提案書最終化（アドバイザー欄を含む）</td>
+</tr>
+<tr>
+<td><strong>2026-06-03（水）正午</strong></td>
+<td>JST 応募締切</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42">4.2　研究テーマ案</h3>
+<blockquote>
+<p><strong>「データ駆動型・本人訴訟支援システムによる SDGs 5・10・16 目標達成 ─
+地方在住・外国籍・経済的弱者の司法アクセス権保障に関する社会実装研究」</strong></p>
+</blockquote>
+<p>ターゲット SDGs:
+- <strong>5（ジェンダー平等）</strong> — DV/ストーキング被害者支援
+- <strong>10（不平等の是正）</strong> — 経済的弱者・外国籍被害者の司法アクセス
+- <strong>16（平和と公正）</strong> — 制度的レイシズム・暴力的支配構造からの解放</p>
+<h3 id="43">4.3　共同研究組織（案）</h3>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>候補機関</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>代表機関</td>
+<td>高知大学（鈴木研究室 / 別研究室）</td>
+</tr>
+<tr>
+<td>共同機関</td>
+<td>フリーランス・トラブル110番（厚労省委託 NPO）／第二東京弁護士会 仲裁センター</td>
+</tr>
+<tr>
+<td>国際協力</td>
+<td>台湾現代婦女基金会／NNEDV (米国 NPO)</td>
+</tr>
+<tr>
+<td>技術検証</td>
+<td>TeamT5（台湾サイバーセキュリティ）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-xcode">第 5 章　本日の Xcode 実演について</h2>
+<p>GitHub から最新版をクローン後、以下の手順で iPhone Simulator 上で起動できます。</p>
+<pre><code class="language-bash"># 1. クローン (任意の場所で)
+git clone https://github.com/Fuilko/lawandbabysupport.git
+cd lawandbabysupport/ios/LegalShield
+
+# 2. XcodeGen（初回のみ）
+brew install xcodegen
+
+# 3. .xcodeproj 生成
+xcodegen generate
+
+# 4. Xcode で開く
+open LegalShield.xcodeproj
+
+# 5. Simulator (iPhone 15 Pro) を選択して ⌘R
+</code></pre>
+<p>実演内容:
+1. <strong>Evidence Vault</strong> — 証拠写真の即時 SHA-256 ハッシュ生成
+2. <strong>防誘導取証 Copilot</strong> — マイクで質問内容をキャプチャし、リアルタイムで法的助言を表示
+3. <strong>法律文書ジェネレーター</strong> — Mapry 仲裁案件用「準備書面（第 1）」のリアル生成デモ
+4. <strong>Audit Log</strong> — 全アクションが改ざん不可な形で記録される様子</p>
+<hr />
+<h2 id="6">第 6 章　先生にお願いしたいこと（優先順位順）</h2>
+<ol>
+<li>
+<p><strong>【最優先】RISTEX 応募書類の「研究代表者の推薦・指導体制」欄</strong> にご署名いただけるか
+   （または、共同研究者として一段深いご関与をご検討いただけるか）</p>
+</li>
+<li>
+<p><strong>本プロジェクトの研究的意義</strong> について、森林工学・地域社会学的観点からのご意見</p>
+</li>
+<li>
+<p><strong>高知大学内の関連部署（人権 / 法務 / 留学生センター 等）</strong> へのご紹介の可能性</p>
+</li>
+<li>
+<p><strong>本日 Xcode 実演</strong> の率直なフィードバック（UX、研究的価値、社会実装可能性）</p>
+</li>
+</ol>
+<hr />
+<h2 id="7">第 7 章　補足資料（持参 / 別添）</h2>
+<p>すべて GitHub リポジトリ <a href="https://github.com/Fuilko/lawandbabysupport">https://github.com/Fuilko/lawandbabysupport</a> から取得可能です。</p>
+<table>
+<thead>
+<tr>
+<th>資料</th>
+<th>パス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>プロジェクト紹介書</td>
+<td><code>docs/grants/ristex_solve_2026/outreach/pdf/LegalShield_紹介書_20260522.html</code></td>
+</tr>
+<tr>
+<td>提案パッケージ</td>
+<td><code>docs/grants/ristex_solve_2026/PROPOSAL_PACKAGE.html</code></td>
+</tr>
+<tr>
+<td>Mapry 案件公開可能部分</td>
+<td><code>legalshield/case_studies/mapry_M4_0/README.md</code></td>
+</tr>
+<tr>
+<td>iOS プロジェクト</td>
+<td><code>ios/LegalShield/</code></td>
+</tr>
+<tr>
+<td>RAG 検索 CLI</td>
+<td><code>legalshield/backend/litigation_rag.py</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8">第 8 章　お時間を頂戴することへの謝意</h2>
+<p>鈴木先生が、本来のご研究や指導にお忙しいなかで、私のこのような相談に時間を割いてくださることへの感謝は、
+言葉では尽くせません。</p>
+<p>LegalShield は、私自身が外国籍研究者として、また Mapry 事案を含む複数の不当な扱いの当事者として直面した
+「弁護士費用が払えなければ司法は機能しない」という壁から生まれたプロジェクトです。</p>
+<p>先生のご助言は、技術と社会の橋渡しを志す私にとって、何物にも代えがたい指針となります。
+本日はどうぞよろしくお願いいたします。</p>
+<hr />
+<p>劉　建志
+2026 年 5 月 24 日</p>
+<div class="footer-note">— Generated by LegalShield Document Pipeline / 02_meeting_report_20260524.md —</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>QUICK_START_FOR_DEMO</title>
+<style>
+@page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+* { box-sizing: border-box; }
+html, body {
+  font-family: "Hiragino Kaku Gothic ProN", "游ゴシック", "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.7;
+  color: #1a1a1a;
+  background: #f1f1f4;
+}
+body { margin: 0; padding: 18px; }
+.sheet {
+  max-width: 210mm;
+  margin: 0 auto;
+  background: white;
+  padding: 18mm 16mm 22mm 16mm;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 1px solid #e2e2e6;
+}
+h1 {
+  font-size: 22pt;
+  font-weight: 800;
+  color: #142d52;
+  border-bottom: 3px solid #2c4a7e;
+  padding-bottom: 6px;
+  margin: 0 0 12px 0;
+}
+h2 {
+  font-size: 15pt;
+  color: #1c3a66;
+  border-left: 5px solid #2c4a7e;
+  padding-left: 10px;
+  margin-top: 22px;
+  margin-bottom: 8px;
+}
+h3 {
+  font-size: 12.5pt;
+  color: #243d63;
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+p { margin: 4px 0 8px 0; }
+ul, ol { margin: 4px 0 8px 0; padding-left: 24px; }
+li { margin-bottom: 2px; }
+hr { border: 0; border-top: 1px dashed #b7b7c0; margin: 16px 0; }
+table {
+  border-collapse: collapse;
+  margin: 8px 0 12px 0;
+  width: 100%;
+  font-size: 10pt;
+}
+th, td {
+  border: 1px solid #c5c9d2;
+  padding: 5px 9px;
+  vertical-align: top;
+}
+th {
+  background: #2c4a7e;
+  color: white;
+  font-weight: 600;
+  text-align: left;
+}
+tr:nth-child(even) td { background: #f7f8fb; }
+code {
+  background: #f1f1f4;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: "Cascadia Code", "Consolas", "Menlo", monospace;
+  font-size: 9.5pt;
+  color: #c0392b;
+}
+pre {
+  background: #1c1c20;
+  color: #e8e8ec;
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-family: "Cascadia Code", "Consolas", "Menlo", monospace;
+  font-size: 9pt;
+  line-height: 1.55;
+  overflow-x: auto;
+  margin: 6px 0 12px 0;
+}
+pre code { background: transparent; color: inherit; padding: 0; }
+blockquote {
+  border-left: 4px solid #2c4a7e;
+  background: #f0f4fb;
+  padding: 8px 14px;
+  margin: 6px 0 12px 0;
+  color: #1c2e50;
+  font-style: italic;
+}
+strong { color: #142d52; }
+a { color: #2c4a7e; text-decoration: none; border-bottom: 1px dotted #2c4a7e; }
+.header-meta {
+  background: linear-gradient(135deg, #2c4a7e 0%, #4a6fa8 100%);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 10pt;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.header-meta strong { color: white; }
+.footer-note {
+  text-align: center;
+  color: #888;
+  font-size: 9pt;
+  margin-top: 24px;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+<h1 id="legalshield-ios-5">LegalShield iOS — 5 分鐘快速部署（演示用）</h1>
+<blockquote>
+<p>鈴木教授面談 / 任何展示場合用。<strong>從零到 iPhone Simulator 跑起來只需 5 分鐘。</strong></p>
+</blockquote>
+<hr />
+<h2 id="0">0. 前提條件</h2>
+<ul>
+<li>macOS（推薦 macOS 14 Sonoma 以上）</li>
+<li>Xcode 15 以上（從 App Store 安裝）</li>
+<li>Homebrew（從 https://brew.sh 安裝）</li>
+</ul>
+<hr />
+<h2 id="1-github">1. 從 GitHub 取得最新版本</h2>
+<pre><code class="language-bash">cd ~/Desktop   # 或任何您喜歡的位置
+git clone https://github.com/Fuilko/lawandbabysupport.git
+cd lawandbabysupport
+</code></pre>
+<blockquote>
+<p>⚠ 注意：repo 名稱是 <code>lawandbabysupport</code>，不是 <code>LegalShield</code>。</p>
+</blockquote>
+<hr />
+<h2 id="2-xcodegen-30">2. 安裝 XcodeGen（首次需要，約 30 秒）</h2>
+<pre><code class="language-bash">brew install xcodegen
+</code></pre>
+<hr />
+<h2 id="3-xcode">3. 產生 Xcode 專案</h2>
+<pre><code class="language-bash">cd ios/LegalShield
+xcodegen generate
+</code></pre>
+<p>成功時會出現：</p>
+<pre><code>Loaded project:
+  Name: LegalShield
+  Targets: 2
+  Schemes: 0
+Generated project successfully
+</code></pre>
+<p>並產生 <code>LegalShield.xcodeproj</code>。</p>
+<hr />
+<h2 id="4-xcode">4. 開啟 Xcode 並執行</h2>
+<pre><code class="language-bash">open LegalShield.xcodeproj
+</code></pre>
+<p>在 Xcode 內：
+1. 左上角選擇 <strong>Scheme：LegalShield</strong>
+2. 旁邊選擇 <strong>iPhone 15 Pro Simulator</strong>（或任何 iOS 17+ 模擬器）
+3. 按 <strong>⌘R</strong>（Cmd + R）執行</p>
+<p>首次編譯約 30~60 秒，之後 Simulator 會自動啟動 LegalShield app。</p>
+<hr />
+<h2 id="5">5. 演示功能巡禮（推薦順序）</h2>
+<table>
+<thead>
+<tr>
+<th>順序</th>
+<th>功能</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td><strong>Evidence Vault</strong></td>
+<td>點主畫面「証拠保管庫」→ 拍一張照片 → 觀察 SHA-256 立即生成</td>
+</tr>
+<tr>
+<td>②</td>
+<td><strong>防誘導取證 Copilot</strong></td>
+<td>點「取調支援」→ 按 🎤 錄音 → 模擬被問問題 → 觀察 AI 即時提示「該問題可能違法」</td>
+</tr>
+<tr>
+<td>③</td>
+<td><strong>Anomaly Detection</strong></td>
+<td>點「異常監視」→ 觀察心率、位置 mock 資料 → 模擬壓力升高</td>
+</tr>
+<tr>
+<td>④</td>
+<td><strong>法律文書生成</strong></td>
+<td>點「書類起案」→ 選「準備書面」→ 觀察自動填入 Mapry 案件範本</td>
+</tr>
+<tr>
+<td>⑤</td>
+<td><strong>Audit Log</strong></td>
+<td>點「監査ログ」→ 觀察所有上述操作以 hash chain 形式記錄</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6">6. 給審查者的「亮點」說明</h2>
+<p><strong>技術亮點</strong>
+- ✅ 純 SwiftUI 原生實作，無第三方框架（除標準 iOS SDK）
+- ✅ 證據鏈使用 SHA-256 + 時間戳 + GPS 三重綁定
+- ✅ AI 採 <strong>on-device 優先</strong>（隱私保護）
+- ✅ 全部 OSS（MIT License）</p>
+<p><strong>社會價值亮點</strong>
+- ✅ 弁護士費用ゼロで本人訴訟が可能
+- ✅ DV/ストーキング/フリーランス被害者全員対応
+- ✅ 外国籍研究者・地方在住者も使いやすい多言語 UI
+- ✅ 既に <strong>Mapry 仲裁手続</strong>（第二東京弁護士会）で実証実験中</p>
+<p><strong>研究亮点</strong>
+- ✅ CALL4 76 件 + 裁判所書式 166 件 = 3,837 chunks RAG 語料庫
+- ✅ 多言語 sentence-embedding + LanceDB vector search
+- ✅ 民法・民訴・消費者契約法・労動審判の自動論述支援</p>
+<hr />
+<h2 id="7">7. 故障排除</h2>
+<table>
+<thead>
+<tr>
+<th>問題</th>
+<th>解決</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xcodegen: command not found</code></td>
+<td><code>brew install xcodegen</code> 再試</td>
+</tr>
+<tr>
+<td>Xcode 編譯錯誤「No such module 'X'」</td>
+<td>Xcode → Product → Clean Build Folder → 再 ⌘R</td>
+</tr>
+<tr>
+<td>Simulator 無法啟動</td>
+<td>Xcode → Window → Devices and Simulators → 重新建立</td>
+</tr>
+<tr>
+<td>Git clone 失敗</td>
+<td>確認網路、確認 GitHub 帳號權限</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-rag">8. 進階：拉最新 RAG 後端</h2>
+<pre><code class="language-bash"># 從 repo 根目錄
+cd ~/Desktop/lawandbabysupport
+python -m pip install -r requirements.txt  # 如果有
+python -m legalshield.crawlers.litigation_docs.call4_scraper  # 爬 CALL4 (~4 分鐘)
+python -m legalshield.crawlers.litigation_docs.courts_jp_forms priority  # 下載書式 (~5 分鐘)
+python -m legalshield.crawlers.litigation_docs.extract_text  # 抽文本
+python -m legalshield.crawlers.litigation_docs.vectorize  # 向量化
+python -m legalshield.backend.litigation_rag &quot;答弁書 書き方&quot;  # 測試 RAG
+</code></pre>
+<hr />
+<p><strong>作成日</strong>：2026 年 5 月 24 日
+<strong>作成者</strong>：劉 建志（kenji@hiiforest.com）
+<strong>GitHub</strong>：https://github.com/Fuilko/lawandbabysupport</p>
+<div class="footer-note">— Generated by LegalShield Document Pipeline / QUICK_START_FOR_DEMO.md —</div>
+</div>
+</body>
+</html>
