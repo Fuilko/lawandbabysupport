@@ -55,6 +55,8 @@ node_modules/
 *.sqlite
 
 knowledge/raw/
+legalshield/knowledge/raw/
+**/knowledge/raw/
 
 models/*.pt
 
