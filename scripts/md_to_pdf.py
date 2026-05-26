@@ -176,19 +176,30 @@ def render(md_path: Path, out_basename: str | None = None) -> tuple[Path, Path |
     html_path.write_text(html, encoding="utf-8")
     print(f"[html] {html_path}")
 
-    edge_candidates = [
+    browser_candidates = [
+        # Windows
         r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
         r"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+        # macOS
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "/Applications/Chromium.app/Contents/MacOS/Chromium",
+        # Linux
+        "/usr/bin/google-chrome",
+        "/usr/bin/chromium",
+        "/usr/bin/microsoft-edge",
     ]
-    edge = next((c for c in edge_candidates if os.path.exists(c)), None)
-    if not edge:
-        print("[warn] Edge not found; PDF skipped.")
+    browser = next((c for c in browser_candidates if os.path.exists(c)), None)
+    if not browser:
+        print("[warn] No Chromium-based browser found; PDF skipped.")
         return html_path, None
 
+    file_url = html_path.as_uri()
     subprocess.run(
-        [edge, "--headless", "--disable-gpu",
+        [browser, "--headless", "--disable-gpu",
          f"--print-to-pdf={pdf_path}",
-         f"file:///{html_path.as_posix()}"],
+         "--no-pdf-header-footer",
+         file_url],
         check=True, capture_output=True,
     )
     for _ in range(20):
@@ -214,13 +225,16 @@ def main() -> None:
     out = sys.argv[2] if len(sys.argv) > 2 else None
     html_path, pdf_path = render(md, out)
 
+    target = pdf_path or html_path
     if sys.platform.startswith("win"):
-        if pdf_path:
-            os.startfile(str(pdf_path))  # noqa
-            print(f"[open] PDF opened")
-        else:
-            os.startfile(str(html_path))  # noqa
-            print(f"[open] HTML opened (PDF unavailable)")
+        os.startfile(str(target))  # noqa
+        print(f"[open] {target.name} opened")
+    elif sys.platform == "darwin":
+        subprocess.run(["open", str(target)], check=False)
+        print(f"[open] {target.name} opened")
+    else:
+        subprocess.run(["xdg-open", str(target)], check=False)
+        print(f"[open] {target.name} opened")
 
 
 if __name__ == "__main__":
