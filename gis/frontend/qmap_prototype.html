@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LegalShield Q-Map（仮想都市・去識別化プロトタイプ）</title>
+<link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<style>
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", sans-serif; }
+  #map { position: absolute; top: 0; bottom: 0; width: 70%; }
+  #panel {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 30%;
+    background: #fafafa; padding: 16px; overflow-y: auto;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+  }
+  h2 { margin-top: 0; color: #2c3e50; }
+  .legend-item { display: flex; align-items: center; padding: 6px 0; border-bottom: 1px solid #eee; }
+  .legend-icon { width: 32px; height: 32px; margin-right: 12px; }
+  .legend-text { flex: 1; }
+  .legend-name { font-weight: 600; }
+  .legend-desc { font-size: 12px; color: #666; }
+  .controls { background: #fff; padding: 12px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #ddd; }
+  .controls label { display: block; margin: 6px 0; font-size: 13px; }
+  .controls input[type=range] { width: 100%; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; color: white; margin-left: 6px; }
+  .badge-critical { background: #c0392b; }
+  .badge-high { background: #e67e22; }
+  .badge-medium { background: #f39c12; }
+  .note { font-size: 12px; color: #888; margin-top: 12px; padding: 8px; background: #fff7e6; border-left: 3px solid #f39c12; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="panel">
+  <h2>🛡️ LegalShield Q-Map</h2>
+  <p style="color:#555;font-size:13px;margin-top:-8px">
+    去識別化された緊急事案の集計表示。実地名・住所は表示されません（仮想都市モード）。
+  </p>
+
+  <div class="controls">
+    <label>k-匿名性閾値: <span id="kVal">5</span> 件以上で描画
+      <input id="kSlider" type="range" min="1" max="20" value="5" />
+    </label>
+    <label>ヘックス解像度: <span id="resVal">460</span> m
+      <input id="resSlider" type="range" min="100" max="2000" step="50" value="460" />
+    </label>
+    <label>
+      <input id="virtualCity" type="checkbox" checked />
+      仮想都市モード（地名ラベル非表示）
+    </label>
+  </div>
+
+  <h3>🎭 アイコン凡例（Q版）</h3>
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-icon">🐺</div>
+      <div class="legend-text">
+        <div class="legend-name">変態・性犯罪者出没<span class="badge badge-critical">緊急</span></div>
+        <div class="legend-desc">大野狼アイコン。集計エリアのみ。</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon">😎</div>
+      <div class="legend-text">
+        <div class="legend-name">盗撮・スリ容疑<span class="badge badge-high">高</span></div>
+        <div class="legend-desc">サングラス + 大袋（仮装）</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon">💼</div>
+      <div class="legend-text">
+        <div class="legend-name">詐欺グループ容疑<span class="badge badge-high">高</span></div>
+        <div class="legend-desc">スーツ姿の謎の人物</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon">🏚️</div>
+      <div class="legend-text">
+        <div class="legend-name">児童虐待検知<span class="badge badge-critical">緊急</span></div>
+        <div class="legend-desc">通報集計エリア</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon">🚓</div>
+      <div class="legend-text">
+        <div class="legend-name">警察署</div>
+        <div class="legend-desc">110番・最寄</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon">🏥</div>
+      <div class="legend-text">
+        <div class="legend-name">NGO 支援センター</div>
+        <div class="legend-desc">配偶者暴力相談・性暴力ワンストップ</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon">🧸</div>
+      <div class="legend-text">
+        <div class="legend-name">児童相談所 189</div>
+        <div class="legend-desc">24h 通告ホットライン</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon">🌸</div>
+      <div class="legend-text">
+        <div class="legend-name">性暴力ワンストップ #8891</div>
+        <div class="legend-desc">医療連携・証拠保全</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon">⚖️</div>
+      <div class="legend-text">
+        <div class="legend-name">弁護士・法テラス</div>
+        <div class="legend-desc">無料相談</div>
+      </div>
+    </div>
+    <div class="legend-item">
+      <div class="legend-icon">🌐</div>
+      <div class="legend-text">
+        <div class="legend-name">外国人相談センター</div>
+        <div class="legend-desc">多言語対応</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    ⚠️ 「変態 → 大野狼」等のラベル化は集計エリア（H3 hexagon）に限定し、特定個人を指す描画は行いません（名誉毀損リスク回避）。
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────
+// 仮想都市スタイル（地名・住所ラベル全消去）
+// MapTiler / Stadia などの公開タイル + label hide
+// ─────────────────────────────────────────
+const VIRTUAL_STYLE = {
+  version: 8,
+  glyphs: 'https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf',
+  sources: {
+    osm: {
+      type: 'raster',
+      tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+      tileSize: 256,
+      attribution: '© OpenStreetMap',
+      maxzoom: 19
+    }
+  },
+  layers: [
+    { id: 'osm-base', type: 'raster', source: 'osm', paint: { 'raster-saturation': -0.6, 'raster-brightness-min': 0.7 } }
+  ]
+};
+
+const map = new maplibregl.Map({
+  container: 'map',
+  style: VIRTUAL_STYLE,
+  center: [133.5311, 33.5597],   // 高知市庁舎
+  zoom: 12
+});
+
+// ─────────────────────────────────────────
+// ダミーデータ：去識別化済イベント（k>=5 の hex のみ）
+// 本番は FastAPI /api/incidents/aggregate から取得
+// ─────────────────────────────────────────
+const incidents = {
+  type: 'FeatureCollection',
+  features: [
+    { type:'Feature', properties:{kind:'predator',  count:8,  emoji:'🐺', urgency:4}, geometry:{type:'Point', coordinates:[133.534, 33.561]} },
+    { type:'Feature', properties:{kind:'thief',     count:6,  emoji:'😎', urgency:3}, geometry:{type:'Point', coordinates:[133.529, 33.557]} },
+    { type:'Feature', properties:{kind:'fraud',     count:7,  emoji:'💼', urgency:3}, geometry:{type:'Point', coordinates:[133.541, 33.554]} },
+    { type:'Feature', properties:{kind:'abuse',     count:12, emoji:'🏚️', urgency:4}, geometry:{type:'Point', coordinates:[133.526, 33.563]} }
+  ]
+};
+const supports = {
+  type: 'FeatureCollection',
+  features: [
+    { type:'Feature', properties:{kind:'police',  emoji:'🚓'}, geometry:{type:'Point', coordinates:[133.531, 33.560]} },
+    { type:'Feature', properties:{kind:'ngo',     emoji:'🏥'}, geometry:{type:'Point', coordinates:[133.535, 33.555]} },
+    { type:'Feature', properties:{kind:'jidoso',  emoji:'🧸'}, geometry:{type:'Point', coordinates:[133.545, 33.562]} },
+    { type:'Feature', properties:{kind:'onestop', emoji:'🌸'}, geometry:{type:'Point', coordinates:[133.524, 33.558]} },
+    { type:'Feature', properties:{kind:'lawyer',  emoji:'⚖️'}, geometry:{type:'Point', coordinates:[133.539, 33.565]} },
+    { type:'Feature', properties:{kind:'foreign', emoji:'🌐'}, geometry:{type:'Point', coordinates:[133.528, 33.553]} }
+  ]
+};
+
+map.on('load', () => {
+  map.addSource('incidents', { type: 'geojson', data: incidents });
+  map.addSource('supports',  { type: 'geojson', data: supports });
+
+  // インシデント heat circle（urgency 4 は赤・大）
+  map.addLayer({
+    id: 'incidents-circle',
+    type: 'circle',
+    source: 'incidents',
+    paint: {
+      'circle-radius': [
+        'interpolate', ['linear'], ['get', 'count'],
+        1, 12, 20, 36
+      ],
+      'circle-color': [
+        'match', ['get', 'urgency'],
+        4, '#c0392b',
+        3, '#e67e22',
+        2, '#f39c12',
+        '#3498db'
+      ],
+      'circle-opacity': 0.45,
+      'circle-stroke-width': 2,
+      'circle-stroke-color': '#fff'
+    }
+  });
+
+  // インシデント絵文字（symbol layer）
+  map.addLayer({
+    id: 'incidents-icon',
+    type: 'symbol',
+    source: 'incidents',
+    layout: {
+      'text-field': ['get', 'emoji'],
+      'text-size': 24,
+      'text-allow-overlap': true,
+      'text-ignore-placement': true
+    }
+  });
+
+  // 件数ラベル
+  map.addLayer({
+    id: 'incidents-label',
+    type: 'symbol',
+    source: 'incidents',
+    layout: {
+      'text-field': ['concat', ['get', 'count'], ' 件'],
+      'text-size': 11,
+      'text-offset': [0, 1.6],
+      'text-allow-overlap': true
+    },
+    paint: {
+      'text-color': '#fff',
+      'text-halo-color': '#000',
+      'text-halo-width': 1.5
+    }
+  });
+
+  // 支援機関 emoji
+  map.addLayer({
+    id: 'supports-icon',
+    type: 'symbol',
+    source: 'supports',
+    layout: {
+      'text-field': ['get', 'emoji'],
+      'text-size': 28,
+      'text-allow-overlap': true,
+      'text-ignore-placement': true
+    }
+  });
+
+  // クリック → ポップアップ
+  map.on('click', 'incidents-icon', (e) => {
+    const f = e.features[0];
+    new maplibregl.Popup()
+      .setLngLat(f.geometry.coordinates)
+      .setHTML(`
+        <strong>${f.properties.emoji} ${labelOf(f.properties.kind)}</strong><br/>
+        集計件数: ${f.properties.count} 件<br/>
+        緊急度: ${urgencyLabel(f.properties.urgency)}<br/>
+        <small>※ 個別位置は半径 500m 内でランダムオフセット済</small>
+      `)
+      .addTo(map);
+  });
+});
+
+function labelOf(k) {
+  return ({
+    predator: '変態・性犯罪者出没',
+    thief: '盗撮・スリ容疑',
+    fraud: '詐欺グループ容疑',
+    abuse: '児童虐待検知',
+    police: '警察署',
+    ngo: 'NGO 支援センター',
+    jidoso: '児童相談所 189',
+    onestop: '性暴力ワンストップ #8891',
+    lawyer: '弁護士・法テラス',
+    foreign: '外国人相談センター'
+  })[k] || k;
+}
+function urgencyLabel(u) {
+  return ({4:'🔴 危急', 3:'🟠 高', 2:'🟡 中', 1:'🔵 低'})[u] || '-';
+}
+
+// ─────────────────────────────────────────
+// コントロール（k-匿名性 / 解像度 / 仮想都市）
+// ─────────────────────────────────────────
+document.getElementById('kSlider').addEventListener('input', (e) => {
+  const k = parseInt(e.target.value);
+  document.getElementById('kVal').textContent = k;
+  // k 未満の incidents をフィルタ
+  map.setFilter('incidents-circle', ['>=', ['get', 'count'], k]);
+  map.setFilter('incidents-icon',   ['>=', ['get', 'count'], k]);
+  map.setFilter('incidents-label',  ['>=', ['get', 'count'], k]);
+});
+
+document.getElementById('resSlider').addEventListener('input', (e) => {
+  document.getElementById('resVal').textContent = e.target.value;
+  // 本番ではここでサーバ /aggregate?res=... を再叩き
+});
+
+document.getElementById('virtualCity').addEventListener('change', (e) => {
+  // 仮想都市 OFF にしたら通常 OSM スタイルに（ラベル復活）
+  if (e.target.checked) {
+    map.setPaintProperty('osm-base', 'raster-saturation', -0.6);
+  } else {
+    map.setPaintProperty('osm-base', 'raster-saturation', 0);
+  }
+});
+</script>
+</body>
+</html>

@@ -75,6 +75,38 @@ public final class VoiceTriageSettings: ObservableObject {
         didSet { UserDefaults.standard.set(defaultAnonymizationLevel, forKey: "vt.anonymizationLevel") }
     }
 
+    // MARK: - 位置情報の去識別化
+
+    /// オフセット半径 [m]（被害者位置の保護）
+    @Published public var locationOffsetRadiusM: Double {
+        didSet { UserDefaults.standard.set(locationOffsetRadiusM, forKey: "vt.locOffsetRadius") }
+    }
+
+    /// H3 風ヘックス解像度 [m]
+    @Published public var locationHexResolutionM: Double {
+        didSet { UserDefaults.standard.set(locationHexResolutionM, forKey: "vt.locHexRes") }
+    }
+
+    /// k-匿名性閾値（同 hex に何人いれば描画するか）
+    @Published public var kAnonymityThreshold: Int {
+        didSet { UserDefaults.standard.set(kAnonymityThreshold, forKey: "vt.kAnonymity") }
+    }
+
+    /// 仮想都市変換（実地名・住所ラベルを地図に出さない）
+    @Published public var useVirtualCity: Bool {
+        didSet { UserDefaults.standard.set(useVirtualCity, forKey: "vt.useVirtualCity") }
+    }
+
+    /// 現在設定から LocationAnonymizer Config を構築
+    public func anonymizerConfig() -> LocationAnonymizer.Config {
+        LocationAnonymizer.Config(
+            offsetRadiusMeters: locationOffsetRadiusM,
+            hexResolutionMeters: locationHexResolutionM,
+            kAnonymityThreshold: kAnonymityThreshold,
+            useVirtualCity: useVirtualCity
+        )
+    }
+
     // MARK: - Init (UserDefaults からロード)
 
     private init() {
@@ -105,6 +137,12 @@ public final class VoiceTriageSettings: ObservableObject {
         }
 
         self.defaultAnonymizationLevel = ud.string(forKey: "vt.anonymizationLevel") ?? "partial"
+
+        // 位置情報の去識別化（既定：500m オフセット、460m hex、k=5、仮想都市 ON）
+        self.locationOffsetRadiusM = ud.object(forKey: "vt.locOffsetRadius") as? Double ?? 500.0
+        self.locationHexResolutionM = ud.object(forKey: "vt.locHexRes") as? Double ?? 460.0
+        self.kAnonymityThreshold = ud.object(forKey: "vt.kAnonymity") as? Int ?? 5
+        self.useVirtualCity = ud.object(forKey: "vt.useVirtualCity") as? Bool ?? true
     }
 
     // MARK: - VoiceTriageService への適用
