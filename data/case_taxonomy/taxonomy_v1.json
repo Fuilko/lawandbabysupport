@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0",
+  "generated_at": "2026-05-26",
+  "language": "ja-JP / zh-TW",
+  "purpose": "LegalShield 案件分類の正規スキーマ。iOS 内部の CaseCategory enum と外部 agent / バックエンド の双方が同じ taxonomy を共有する単一の真実源（single source of truth）。",
+  "external_consumers": [
+    "iOS App (LegalShield/Models/Case.swift)",
+    "FastAPI backend (legalshield/backend/api.py)",
+    "GIS triage (gis/services/legalshield-api/)",
+    "外部 agent (Python / Node / 他言語) は本 JSON を直接読込めば全 taxonomy を取得可能"
+  ],
+  "phases": {
+    "phase_1": "核心 (児少 + 盗撮 + DV + 校園いじめ + 職場ハラ)",
+    "phase_2": "労働 + 消費者 + 契約 + PL",
+    "phase_3": "高齢 + 行政",
+    "phase_4": "ドローン + 環境",
+    "phase_5": "民事領域拡張"
+  },
+  "urgency_levels": [
+    {"level": 1, "id": "low",      "label_jp": "一般",   "label_zh": "一般",   "color": "blue"},
+    {"level": 2, "id": "medium",   "label_jp": "注意",   "label_zh": "注意",   "color": "yellow"},
+    {"level": 3, "id": "high",     "label_jp": "緊急",   "label_zh": "緊急",   "color": "orange"},
+    {"level": 4, "id": "critical", "label_jp": "危急",   "label_zh": "危急",   "color": "red"}
+  ],
+  "case_statuses": [
+    {"id": "active",    "label_jp": "進行中",       "label_zh": "進行中"},
+    {"id": "pending",   "label_jp": "応答待ち",     "label_zh": "等待回應"},
+    {"id": "resolved",  "label_jp": "解決済",       "label_zh": "已解決"},
+    {"id": "escalated", "label_jp": "エスカレート", "label_zh": "已升級"},
+    {"id": "archived",  "label_jp": "アーカイブ",   "label_zh": "封存"}
+  ],
+  "categories": [
+    {
+      "id": "child_abuse", "phase": 1, "default_urgency": "critical",
+      "label_jp": "児童虐待", "label_zh": "兒少保護",
+      "icon_sf": "figure.child", "color": "red",
+      "japanese_legal_domains": ["childAbuse", "criminal"],
+      "key_statutes": ["児童虐待防止法 6 条", "児童福祉法 25 条", "刑法 218 条"],
+      "default_partners": ["児童相談所 189", "警察 110", "子どもの権利擁護センター"],
+      "evidence_priority": ["写真", "音声", "医師診断書", "目撃証言"],
+      "rag_query_seeds": ["児童虐待 通告", "児相 一時保護", "教師 不適切指導"]
+    },
+    {
+      "id": "sexual_harassment", "phase": 1, "default_urgency": "critical",
+      "label_jp": "性ハラスメント・性暴力", "label_zh": "性騷擾/性侵",
+      "icon_sf": "exclamationmark.shield.fill", "color": "red",
+      "japanese_legal_domains": ["stalking", "criminal"],
+      "key_statutes": ["刑法 176 条 (不同意わいせつ)", "刑法 177 条", "性犯罪被害者支援法"],
+      "default_partners": ["性犯罪被害者支援センター", "警察生活安全課", "ワンストップ支援センター"]
+    },
+    {
+      "id": "domestic_violence", "phase": 1, "default_urgency": "critical",
+      "label_jp": "家庭内暴力 (DV)", "label_zh": "家庭暴力",
+      "icon_sf": "house.fill", "color": "red",
+      "japanese_legal_domains": ["criminal", "childAbuse"],
+      "key_statutes": ["DV 防止法 6 条", "DV 防止法 10 条 (保護命令)", "刑法 204 条"],
+      "default_partners": ["配偶者暴力相談支援センター", "警察 110", "婦人保護施設"]
+    },
+    {
+      "id": "school_bullying", "phase": 1, "default_urgency": "high",
+      "label_jp": "校園いじめ", "label_zh": "校園霸凌",
+      "icon_sf": "building.columns.fill", "color": "orange",
+      "japanese_legal_domains": ["childAbuse", "criminal"],
+      "key_statutes": ["いじめ防止対策推進法", "学校教育法 11 条"]
+    },
+    {
+      "id": "workplace_harassment", "phase": 1, "default_urgency": "high",
+      "label_jp": "職場ハラスメント", "label_zh": "職場霸凌",
+      "icon_sf": "briefcase.fill", "color": "orange",
+      "japanese_legal_domains": ["labor", "laborContract"],
+      "key_statutes": ["労働施策総合推進法 30 条の 2", "労働基準法 5 条"]
+    },
+    {
+      "id": "hidden_camera", "phase": 1, "default_urgency": "high",
+      "label_jp": "盗撮・プライバシー侵害", "label_zh": "偷拍/隱私侵害",
+      "icon_sf": "eye.slash.fill", "color": "purple",
+      "japanese_legal_domains": ["stalking", "criminal"],
+      "key_statutes": ["軽犯罪法 1 条 23 号", "迷惑防止条例", "刑法 130 条"]
+    },
+    {
+      "id": "labor_exploitation", "phase": 2, "default_urgency": "medium",
+      "label_jp": "労働搾取", "label_zh": "勞動剝削/過勞",
+      "icon_sf": "person.fill.badge.minus", "color": "yellow",
+      "japanese_legal_domains": ["labor", "laborContract"],
+      "key_statutes": ["労働基準法", "最低賃金法", "労働安全衛生法 65 条 (過労)"]
+    },
+    {
+      "id": "consumer_fraud", "phase": 2, "default_urgency": "medium",
+      "label_jp": "消費詐欺", "label_zh": "消費詐欺",
+      "icon_sf": "creditcard.trianglebadge.exclamationmark", "color": "yellow",
+      "japanese_legal_domains": ["consumer", "specificCommercial"],
+      "key_statutes": ["消費者契約法 4 条", "特定商取引法", "刑法 246 条"]
+    },
+    {
+      "id": "contract_trap", "phase": 2, "default_urgency": "medium",
+      "label_jp": "契約陥穽", "label_zh": "契約陷阱",
+      "icon_sf": "doc.fill.badge.ellipsis", "color": "yellow",
+      "japanese_legal_domains": ["consumer", "specificCommercial"],
+      "key_statutes": ["消費者契約法 8〜10 条", "民法 90 条"]
+    },
+    {
+      "id": "product_liability", "phase": 2, "default_urgency": "high",
+      "label_jp": "製造物責任 (PL)", "label_zh": "製造物責任",
+      "icon_sf": "shippingbox.fill", "color": "orange",
+      "japanese_legal_domains": ["consumer", "criminal"],
+      "key_statutes": ["製造物責任法 3 条", "民法 415 条 / 562 条"]
+    },
+    {
+      "id": "elder_abuse", "phase": 3, "default_urgency": "critical",
+      "label_jp": "高齢者虐待", "label_zh": "高齡者虐待",
+      "icon_sf": "person.crop.circle.fill.badge.exclamationmark", "color": "red",
+      "japanese_legal_domains": ["elderAbuse", "longTermCare"],
+      "key_statutes": ["高齢者虐待防止法", "介護保険法"]
+    },
+    {
+      "id": "institutional_neglect", "phase": 3, "default_urgency": "high",
+      "label_jp": "施設ネグレクト", "label_zh": "機構疏忽",
+      "icon_sf": "building.fill", "color": "orange",
+      "japanese_legal_domains": ["elderAbuse", "longTermCare"]
+    },
+    {
+      "id": "administrative_complaint", "phase": 3, "default_urgency": "medium",
+      "label_jp": "行政救済", "label_zh": "行政救濟",
+      "icon_sf": "building.2.fill", "color": "blue",
+      "japanese_legal_domains": ["administrative", "adminLitigation"],
+      "key_statutes": ["行政不服審査法", "行政事件訴訟法"]
+    },
+    {
+      "id": "drone_violation", "phase": 4, "default_urgency": "high",
+      "label_jp": "ドローン違法", "label_zh": "無人機違法",
+      "icon_sf": "airplane", "color": "orange",
+      "japanese_legal_domains": ["aviation", "criminal"],
+      "key_statutes": ["航空法 132 条", "小型無人機等飛行禁止法"]
+    },
+    {
+      "id": "privacy_by_drone", "phase": 4, "default_urgency": "high",
+      "label_jp": "ドローン盗撮", "label_zh": "無人機偷拍",
+      "icon_sf": "airplane.circle.fill", "color": "purple",
+      "japanese_legal_domains": ["aviation", "criminal"]
+    },
+    {
+      "id": "environmental_crime", "phase": 4, "default_urgency": "medium",
+      "label_jp": "環境犯罪", "label_zh": "環境犯罪",
+      "icon_sf": "leaf.fill", "color": "green",
+      "japanese_legal_domains": ["environmental", "soilPollution"]
+    },
+    {
+      "id": "contract_dispute", "phase": 5, "default_urgency": "medium",
+      "label_jp": "契約紛争", "label_zh": "契約糾紛",
+      "icon_sf": "doc.text.magnifyingglass", "color": "yellow",
+      "japanese_legal_domains": ["civil", "consumer"],
+      "key_statutes": ["民法 415 条", "民法 562 条以下"]
+    },
+    {
+      "id": "product_defect", "phase": 5, "default_urgency": "high",
+      "label_jp": "製品欠陥・アフターサービス不履行", "label_zh": "產品缺陷/售後",
+      "icon_sf": "exclamationmark.triangle.fill", "color": "orange",
+      "japanese_legal_domains": ["consumer", "productLiabilityLaw"],
+      "key_statutes": ["製造物責任法 3 条", "民法 562 条"],
+      "case_studies": ["legalshield/case_studies/mapry_M4_0/"]
+    },
+    {
+      "id": "police_inaction", "phase": 5, "default_urgency": "high",
+      "label_jp": "警察不作為", "label_zh": "警察不作為",
+      "icon_sf": "shield.lefthalf.filled.slash", "color": "orange",
+      "japanese_legal_domains": ["administrative", "adminLitigation", "criminal"],
+      "key_statutes": ["国家賠償法 1 条", "警察法 2 条"]
+    },
+    {
+      "id": "defamation", "phase": 5, "default_urgency": "high",
+      "label_jp": "名誉毀損", "label_zh": "名譽毀損",
+      "icon_sf": "person.fill.questionmark", "color": "orange",
+      "japanese_legal_domains": ["civil", "criminal"],
+      "key_statutes": ["刑法 230 条", "民法 710 条"]
+    },
+    {
+      "id": "unjust_enrichment", "phase": 5, "default_urgency": "low",
+      "label_jp": "不当利得", "label_zh": "不當得利",
+      "icon_sf": "yensign.circle", "color": "blue",
+      "japanese_legal_domains": ["civil"],
+      "key_statutes": ["民法 703 条"]
+    },
+    {
+      "id": "neighbor_dispute", "phase": 5, "default_urgency": "low",
+      "label_jp": "近隣紛争", "label_zh": "鄰居糾紛",
+      "icon_sf": "house.lodge", "color": "blue",
+      "japanese_legal_domains": ["civil"]
+    },
+    {
+      "id": "traffic_accident", "phase": 5, "default_urgency": "high",
+      "label_jp": "交通事故", "label_zh": "交通事故",
+      "icon_sf": "car.fill", "color": "orange",
+      "japanese_legal_domains": ["civil", "criminal"],
+      "key_statutes": ["自動車損害賠償保障法 3 条", "道路交通法"]
+    },
+    {
+      "id": "medical_malpractice", "phase": 5, "default_urgency": "high",
+      "label_jp": "医療過誤", "label_zh": "醫療過失",
+      "icon_sf": "cross.case.fill", "color": "orange",
+      "japanese_legal_domains": ["civil", "criminal"],
+      "key_statutes": ["医師法", "医療法", "民法 415 条"]
+    },
+    {
+      "id": "stalking", "phase": 1, "default_urgency": "critical",
+      "label_jp": "ストーカー行為", "label_zh": "跟蹤騷擾",
+      "icon_sf": "figure.walk.motion", "color": "red",
+      "japanese_legal_domains": ["stalking", "criminal"],
+      "key_statutes": ["ストーカー規制法"]
+    },
+    {
+      "id": "general", "phase": 0, "default_urgency": "low",
+      "label_jp": "一般法律相談", "label_zh": "一般法律諮詢",
+      "icon_sf": "questionmark.circle", "color": "blue",
+      "japanese_legal_domains": ["criminal", "consumer"]
+    },
+    {
+      "id": "other", "phase": 0, "default_urgency": "low",
+      "label_jp": "その他", "label_zh": "其他",
+      "icon_sf": "ellipsis.circle", "color": "blue",
+      "japanese_legal_domains": []
+    }
+  ]
+}

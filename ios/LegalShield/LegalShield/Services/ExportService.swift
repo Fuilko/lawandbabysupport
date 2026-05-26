@@ -194,6 +194,9 @@ enum AnonymizationLevel: String, Codable {
 
     var maskGPS: Bool { self != .none }
     var maskDeviceId: Bool { self == .full }
+    /// `partial` 以上で被害者氏名・住所等のテキストもマスク（PortableDB 用）
+    var maskName: Bool { self == .full }
+    var maskLocation: Bool { self == .full }
 }
 
 struct EmergencyPackage {

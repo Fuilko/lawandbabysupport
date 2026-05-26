@@ -2,6 +2,19 @@
 # Usage: brew install xcodegen && xcodegen generate
 
 name: LegalShield
+packages:
+  WhisperKit:
+    url: https://github.com/argmaxinc/WhisperKit
+    from: 0.9.0
+  MLXSwift:
+    url: https://github.com/ml-explore/mlx-swift
+    from: 0.21.2
+  MLXSwiftExamples:
+    url: https://github.com/ml-explore/mlx-swift-examples
+    from: 1.18.1
+  ZIPFoundation:
+    url: https://github.com/weichsel/ZIPFoundation
+    from: 0.9.19
 targets:
   LegalShield:
     type: application
@@ -9,6 +22,22 @@ targets:
     deploymentTarget: "17.0"
     sources:
       - path: LegalShield
+      - path: LegalShield/Resources
+        type: folder
+        buildPhase: resources
+    dependencies:
+      - package: WhisperKit
+        product: WhisperKit
+      - package: MLXSwift
+        product: MLX
+      - package: MLXSwift
+        product: MLXNN
+      - package: MLXSwift
+        product: MLXRandom
+      - package: MLXSwiftExamples
+        product: MLXLLM
+      - package: ZIPFoundation
+        product: ZIPFoundation
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.legalshield.ios
