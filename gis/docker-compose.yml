@@ -1,0 +1,55 @@
+# Production compose for the shared EC2 (hiiforest co-tenant).
+# Connects to hiiforest's postgres via host.docker.internal (no own postgres).
+# Frontend is served by host nginx via vhost legalshield.jp.conf — this stack
+# only exposes ports on 127.0.0.1 so nginx can proxy them.
+
+services:
+  legalshield-api:
+    build:
+      context: ./services/legalshield-api
+      dockerfile: Dockerfile
+    image: legalshield-api:latest
+    container_name: legalshield_api
+    environment:
+      - APP_ENV=ec2
+      - DATABASE_URL=${DATABASE_URL}
+      - CORS_ORIGINS=${CORS_ORIGINS:-https://legalshield.jp}
+      - INCIDENT_OBFUSCATE_MIN_M=${INCIDENT_OBFUSCATE_MIN_M:-100}
+      - INCIDENT_OBFUSCATE_MAX_M=${INCIDENT_OBFUSCATE_MAX_M:-300}
+      - SITE_BASE_URL=${SITE_BASE_URL:-https://legalshield.jp}
+    ports:
+      - "127.0.0.1:8090:8080"        # only loopback; host nginx proxies
+    volumes:
+      - ./services/legalshield-api/app:/app/app:ro
+      - ./ingest:/app/ingest:ro
+      - ./data:/app/data
+    extra_hosts:
+      # Lets the container reach hiiforest's postgres on the host network
+      # without sharing the docker network. host.docker.internal works on
+      # Linux Docker 20.10+ when this entry is present.
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8080/health', timeout=3)\" || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8080 --workers 2
+
+  legalshield-frontend:
+    image: nginx:1.27-alpine
+    container_name: legalshield_frontend
+    ports:
+      - "127.0.0.1:8092:80"          # only loopback
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+      - ./frontend/nginx.local.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - legalshield-api
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped

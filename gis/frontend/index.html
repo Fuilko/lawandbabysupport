@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LegalShield-jp — 困った時、ひとりじゃない</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>LegalShield<span class="jp">-jp</span></h1>
+    <p class="tagline">困った時、誰に・何を・どう伝えるか — <strong>6 つの質問</strong>でご案内します。</p>
+  </header>
+
+  <!-- ─── 緊急バンド（常時表示） ─── -->
+  <div id="emergency-band">
+    <button id="btn-emergency" type="button">
+      🚨 命の危険があります — 今すぐ緊急モード
+    </button>
+  </div>
+
+  <!-- ─── タブ切替 ─── -->
+  <nav id="tabs">
+    <button class="tab is-active" data-tab="consult">🛟 相談する</button>
+    <button class="tab" data-tab="map">🗺️ 地図で探す</button>
+  </nav>
+
+  <main>
+    <!-- ─── TAB: 相談する（6 問問診） ─── -->
+    <section id="tab-consult" class="tab-panel is-active">
+      <div id="intake-wrap">
+        <div id="intake-form">
+          <p class="intake-intro">
+            匿名でご利用いただけます。記録は端末内のみで、あなたの個人情報は私たちのサーバには保存されません。
+          </p>
+
+          <!-- Q1 -->
+          <div class="q is-active" data-q="1">
+            <h3>Q1. いま、すぐに身の安全が脅かされていますか？</h3>
+            <div class="opts">
+              <button class="opt opt-danger" data-q="1" data-val="yes">はい — 命の危険があります</button>
+              <button class="opt" data-q="1" data-val="no">いいえ、落ち着いて相談したい</button>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="q" data-q="2" hidden>
+            <h3>Q2. 困りごとを最も近いカテゴリで選んでください</h3>
+            <div class="opts opts-grid">
+              <button class="opt" data-q="2" data-val="interpersonal_violence">👥 人間関係の暴力<br><small>DV・ストーカー・性暴力</small></button>
+              <button class="opt" data-q="2" data-val="work">💼 仕事の問題<br><small>ハラスメント・残業代・解雇</small></button>
+              <button class="opt" data-q="2" data-val="product_service">🛍️ 製品・サービス<br><small>欠陥・詐欺・契約</small></button>
+              <button class="opt" data-q="2" data-val="admin_welfare">🏛️ 行政・福祉<br><small>役所対応・生活保護・高齢者</small></button>
+              <button class="opt" data-q="2" data-val="child_school">🧒 子ども・学校<br><small>いじめ・虐待</small></button>
+              <button class="opt" data-q="2" data-val="other">❓ その他</button>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="q" data-q="3" hidden>
+            <h3>Q3. いつ頃から続いていますか？</h3>
+            <div class="opts">
+              <button class="opt" data-q="3" data-val="today">今日</button>
+              <button class="opt" data-q="3" data-val="days">数日</button>
+              <button class="opt" data-q="3" data-val="weeks">数週間</button>
+              <button class="opt" data-q="3" data-val="months_plus">数ヶ月以上</button>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="q" data-q="4" hidden>
+            <h3>Q4. 自由に書いていただけますか？<small>（書かなくても OK）</small></h3>
+            <textarea id="q4-text" placeholder="状況・相手・覚えていること...&#10;個人情報は書かないでください（電話番号・住所は自動で伏せ字になります）" rows="4"></textarea>
+            <div class="opts">
+              <button class="opt opt-primary" data-q="4" data-val="next">次へ</button>
+              <button class="opt opt-secondary" data-q="4" data-val="skip">スキップ</button>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="q" data-q="5" hidden>
+            <h3>Q5. これまで、どこかに相談したことはありますか？</h3>
+            <div class="opts">
+              <button class="opt" data-q="5" data-val="police">警察</button>
+              <button class="opt" data-q="5" data-val="lawyer">弁護士</button>
+              <button class="opt" data-q="5" data-val="npo">NPO・支援団体</button>
+              <button class="opt" data-q="5" data-val="family_friends">家族・友人</button>
+              <button class="opt" data-q="5" data-val="none">どこにもない</button>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="q" data-q="6" hidden>
+            <h3>Q6. 今、何が一番欲しいですか？</h3>
+            <div class="opts">
+              <button class="opt" data-q="6" data-val="info">📚 情報がほしい</button>
+              <button class="opt" data-q="6" data-val="listen">👂 話を聞いてほしい</button>
+              <button class="opt" data-q="6" data-val="act_with_me">🤝 一緒に動いてほしい</button>
+              <button class="opt" data-q="6" data-val="legal_resolution">⚖️ 法的に解決したい</button>
+            </div>
+          </div>
+
+          <div id="intake-progress">
+            <span class="step is-current">1</span>
+            <span class="step">2</span>
+            <span class="step">3</span>
+            <span class="step">4</span>
+            <span class="step">5</span>
+            <span class="step">6</span>
+          </div>
+        </div>
+
+        <!-- ─── 推奨ルート表示 ─── -->
+        <div id="intake-result" hidden>
+          <div id="emergency-banner" hidden>
+            <h2>🚨 今すぐ電話してください</h2>
+            <p id="emergency-msg"></p>
+            <a id="emergency-tel" href="#" class="dial-btn dial-btn-xl">📞 番号をタップで発信</a>
+          </div>
+
+          <div id="result-summary">
+            <h2>あなたへの推奨ルート</h2>
+            <p class="meta">
+              検出カテゴリ：<strong id="det-cat"></strong>
+              <span id="det-conf-wrap">（確度 <span id="det-conf"></span>%）</span>
+            </p>
+          </div>
+
+          <div id="tier-cards"></div>
+
+          <div class="disclaimer">
+            ℹ️ 本サービスは一般的な法律情報・窓口案内を提供するものであり、特定事案に対する法的助言ではありません。
+            最終的なご判断は弁護士など専門家にご相談ください。
+          </div>
+
+          <div class="result-actions">
+            <button id="btn-restart" class="opt-secondary">もう一度はじめから</button>
+            <button id="btn-show-map" class="opt-secondary">地図で見る</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── TAB: 地図で探す（既存機能） ─── -->
+    <section id="tab-map" class="tab-panel">
+      <aside id="panel">
+      <section id="risk">
+        <h2>📍 現在地のリスク</h2>
+        <div id="risk-loading">位置情報取得中…</div>
+        <div id="risk-content" hidden>
+          <div class="metric">
+            <span class="label">過去12ヶ月犯罪件数</span>
+            <span id="risk-count" class="value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">全国における順位</span>
+            <span id="risk-pct" class="value">—</span>
+          </div>
+          <div id="risk-badge" class="badge">—</div>
+        </div>
+      </section>
+
+      <section id="filter">
+        <h2>🔍 検索フィルタ</h2>
+        <label>半径
+          <select id="radius">
+            <option value="3">3 km</option>
+            <option value="5" selected>5 km</option>
+            <option value="10">10 km</option>
+            <option value="25">25 km</option>
+          </select>
+        </label>
+        <label>種別
+          <select id="org-type">
+            <option value="">すべて</option>
+            <option value="law_terrace">法テラス</option>
+            <option value="bar_association">弁護士会</option>
+            <option value="npo">NPO</option>
+            <option value="ngo">NGO</option>
+          </select>
+        </label>
+      </section>
+
+      <section id="results">
+        <h2>🛟 近くの支援リソース</h2>
+        <ul id="result-list"></ul>
+      </section>
+
+      <section id="report">
+        <h2>📝 匿名で被害を共有</h2>
+        <p class="hint">あなたの位置情報は <strong>100〜300 m ランダムに偏移</strong> されてから保存されます。元の座標は表示されません。</p>
+        <select id="rep-type">
+          <option value="harassment">嫌がらせ・ハラスメント</option>
+          <option value="dv">DV / 家庭内暴力</option>
+          <option value="stalking">ストーキング</option>
+          <option value="fraud">詐欺・悪徳商法</option>
+          <option value="other">その他</option>
+        </select>
+        <textarea id="rep-desc" placeholder="任意：状況の説明 (公開されません)" rows="3"></textarea>
+        <button id="rep-submit">匿名で送信</button>
+        <div id="rep-status"></div>
+      </section>
+    </aside>
+
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>
+      公開データソース: 警察庁オープンデータ / e-Stat / 法テラス / 内閣府NPO / 国土数値情報.
+      コード Apache-2.0. データは各提供元の利用規約に従います。
+    </small>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="./intake.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

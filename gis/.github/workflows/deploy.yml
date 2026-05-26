@@ -1,0 +1,136 @@
+name: Deploy LegalShield-jp to EC2 via SSM
+
+on:
+  push:
+    branches: [research, main]
+  workflow_dispatch:
+
+jobs:
+  # ─── Preflight: catch import errors BEFORE wasting an SSM round trip ──
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install minimal subset for import smoke
+        run: |
+          python -m pip install --upgrade pip
+          pip install fastapi uvicorn sqlalchemy "asyncpg==0.29.0" \
+                      "geoalchemy2==0.14.7" "pydantic==2.6.4" \
+                      "pydantic-settings==2.2.1" httpx mapbox-vector-tile shapely
+
+      - name: Import smoke — main.py must load
+        working-directory: services/legalshield-api
+        run: |
+          python -c "from app import main; print(f'OK — {len(main.app.routes)} routes registered')"
+
+  deploy:
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+
+      - name: Send deploy command via SSM
+        id: ssm
+        run: |
+          BRANCH="${GITHUB_REF##*/}"
+          echo "Deploying branch: $BRANCH"
+          # NOTE: first deploy on the EC2 must be:
+          #   sudo -u ubuntu git clone https://github.com/Fuilko/LegalShield-jp.git /home/ubuntu/LegalShield_jp
+          # subsequent deploys re-use that working tree.
+          cat > /tmp/ssm-params.json <<EOF
+          {
+            "commands": [
+              "set -e",
+              "cd /home/ubuntu/LegalShield_jp",
+              "sudo -u ubuntu git fetch origin ${BRANCH}",
+              "sudo -u ubuntu git reset --hard origin/${BRANCH}",
+              "sudo -u ubuntu docker compose pull || true",
+              "sudo -u ubuntu docker compose up -d --build",
+              "sudo -u ubuntu docker compose ps"
+            ]
+          }
+          EOF
+          cat /tmp/ssm-params.json
+          CMD_ID=$(aws ssm send-command \
+            --instance-ids "${{ secrets.EC2_INSTANCE_ID }}" \
+            --document-name "AWS-RunShellScript" \
+            --comment "GH Actions LegalShield deploy $BRANCH @ ${GITHUB_SHA::7}" \
+            --parameters file:///tmp/ssm-params.json \
+            --timeout-seconds 1800 \
+            --cloud-watch-output-config "CloudWatchOutputEnabled=true" \
+            --query "Command.CommandId" --output text)
+          echo "command_id=$CMD_ID" >> "$GITHUB_OUTPUT"
+          echo "SSM Command ID: $CMD_ID"
+
+      - name: Wait for SSM command
+        run: |
+          CMD_ID="${{ steps.ssm.outputs.command_id }}"
+          INSTANCE="${{ secrets.EC2_INSTANCE_ID }}"
+          for i in $(seq 1 60); do
+            STATUS=$(aws ssm get-command-invocation \
+              --command-id "$CMD_ID" --instance-id "$INSTANCE" \
+              --query "Status" --output text 2>/dev/null || echo "Pending")
+            echo "[$i] Status: $STATUS"
+            case "$STATUS" in
+              Success) exit 0 ;;
+              Failed|Cancelled|TimedOut)
+                echo "--- stdout ---"
+                aws ssm get-command-invocation --command-id "$CMD_ID" --instance-id "$INSTANCE" \
+                  --query "StandardOutputContent" --output text || true
+                echo "--- stderr ---"
+                aws ssm get-command-invocation --command-id "$CMD_ID" --instance-id "$INSTANCE" \
+                  --query "StandardErrorContent" --output text || true
+                exit 1 ;;
+            esac
+            sleep 30
+          done
+          echo "Timed out after 30 min"
+          exit 1
+
+      - name: Print deploy output
+        if: always()
+        run: |
+          CMD_ID="${{ steps.ssm.outputs.command_id }}"
+          INSTANCE="${{ secrets.EC2_INSTANCE_ID }}"
+          echo "=== stdout ==="
+          aws ssm get-command-invocation --command-id "$CMD_ID" --instance-id "$INSTANCE" \
+            --query "StandardOutputContent" --output text || true
+
+      # ─── Post-deploy smoke test ─────────────────────────────────
+      - name: Verify backend is healthy
+        run: |
+          echo "Waiting 25s for containers to settle..."
+          sleep 25
+          # Until DNS for legalshield.jp is live, hit the EC2 IP via Host header.
+          BASE="${{ vars.LEGALSHIELD_BASE_URL || 'https://legalshield.jp' }}"
+          ENDPOINTS=(
+            "$BASE/health"
+            "$BASE/api/v1/legalshield/region-stats/13"
+          )
+          FAILED=0
+          for url in "${ENDPOINTS[@]}"; do
+            CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 10 "$url" || echo "000")
+            if [[ "$CODE" =~ ^(200|304|404)$ ]]; then
+              # 404 acceptable for region-stats before data is loaded
+              echo "  ✅ $CODE  $url"
+            else
+              echo "  ❌ $CODE  $url"
+              FAILED=1
+            fi
+          done
+          if [[ $FAILED -eq 1 ]]; then
+            echo "::error::Health check failed — see SSM output and 'docker compose logs --tail=80 legalshield-api'"
+            exit 1
+          fi
+          echo "All endpoints reachable."

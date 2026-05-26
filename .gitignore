@@ -121,3 +121,18 @@ private/**/*.veracrypt
 **/*_PRIVATE.md
 **/*_CONFIDENTIAL.*
 
+# ============================================================
+# GIS subsystem — exclude raw downloads / processed binaries
+# ============================================================
+gis/data/raw/
+gis/data/processed/
+gis/data/cache/
+gis/services/**/__pycache__/
+gis/**/*.pyc
+gis/**/.pytest_cache/
+gis/**/node_modules/
+
+# Temp / staging artifacts
+.tmp_status.txt
+*.tmp
+

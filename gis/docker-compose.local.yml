@@ -1,0 +1,77 @@
+# Standalone local-dev compose: own postgres + api + frontend.
+# For production on the shared EC2 use docker-compose.yml (no postgres service —
+# connects to hiiforest's postgres via host.docker.internal).
+#
+# Usage:
+#   docker compose -f docker-compose.local.yml up -d --build
+
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+    container_name: legalshield_postgres
+    environment:
+      POSTGRES_USER: ${DB_USER:-legalshield}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-legalshield}
+      POSTGRES_DB: ${DB_NAME:-legalshield}
+    ports:
+      - "${DB_HOST_PORT:-5434}:5432"
+    volumes:
+      - legalshield_pg_data:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-legalshield} -d ${DB_NAME:-legalshield}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  legalshield-api:
+    build:
+      context: ./services/legalshield-api
+      dockerfile: Dockerfile
+    container_name: legalshield_api
+    environment:
+      - APP_ENV=${APP_ENV:-local}
+      - DATABASE_URL=postgresql+asyncpg://${DB_USER:-legalshield}:${DB_PASSWORD:-legalshield}@postgres:5432/${DB_NAME:-legalshield}
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:8092,http://127.0.0.1:8092}
+      - INCIDENT_OBFUSCATE_MIN_M=${INCIDENT_OBFUSCATE_MIN_M:-100}
+      - INCIDENT_OBFUSCATE_MAX_M=${INCIDENT_OBFUSCATE_MAX_M:-300}
+    ports:
+      - "${API_HOST_PORT:-8090}:8080"
+    volumes:
+      - ./services/legalshield-api/app:/app/app
+      - ./ingest:/app/ingest
+      - ./data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      # Without this an import-time crash leaves the container in `restarting`
+      # loop and `docker compose ps` still misleadingly reports "Up".
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8080/health', timeout=3)\" || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
+
+  frontend:
+    image: nginx:1.27-alpine
+    container_name: legalshield_frontend
+    ports:
+      - "${FRONTEND_HOST_PORT:-8092}:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+      - ./frontend/nginx.local.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - legalshield-api
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  legalshield_pg_data:

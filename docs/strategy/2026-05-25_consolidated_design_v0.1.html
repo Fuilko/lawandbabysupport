@@ -1,0 +1,2195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<title>2026-05-25_consolidated_design_v0.1</title>
+<style>
+@page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+* { box-sizing: border-box; }
+html, body {
+  font-family: "Hiragino Kaku Gothic ProN", "游ゴシック", "Yu Gothic UI", "Meiryo", system-ui, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.7;
+  color: #1a1a1a;
+  background: #f1f1f4;
+}
+body { margin: 0; padding: 18px; }
+.sheet {
+  max-width: 210mm;
+  margin: 0 auto;
+  background: white;
+  padding: 18mm 16mm 22mm 16mm;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 1px solid #e2e2e6;
+}
+h1 {
+  font-size: 22pt;
+  font-weight: 800;
+  color: #142d52;
+  border-bottom: 3px solid #2c4a7e;
+  padding-bottom: 6px;
+  margin: 0 0 12px 0;
+}
+h2 {
+  font-size: 15pt;
+  color: #1c3a66;
+  border-left: 5px solid #2c4a7e;
+  padding-left: 10px;
+  margin-top: 22px;
+  margin-bottom: 8px;
+}
+h3 {
+  font-size: 12.5pt;
+  color: #243d63;
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+p { margin: 4px 0 8px 0; }
+ul, ol { margin: 4px 0 8px 0; padding-left: 24px; }
+li { margin-bottom: 2px; }
+hr { border: 0; border-top: 1px dashed #b7b7c0; margin: 16px 0; }
+table {
+  border-collapse: collapse;
+  margin: 8px 0 12px 0;
+  width: 100%;
+  font-size: 10pt;
+}
+th, td {
+  border: 1px solid #c5c9d2;
+  padding: 5px 9px;
+  vertical-align: top;
+}
+th {
+  background: #2c4a7e;
+  color: white;
+  font-weight: 600;
+  text-align: left;
+}
+tr:nth-child(even) td { background: #f7f8fb; }
+code {
+  background: #f1f1f4;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: "Cascadia Code", "Consolas", "Menlo", monospace;
+  font-size: 9.5pt;
+  color: #c0392b;
+}
+pre {
+  background: #1c1c20;
+  color: #e8e8ec;
+  padding: 12px 14px;
+  border-radius: 6px;
+  font-family: "Cascadia Code", "Consolas", "Menlo", monospace;
+  font-size: 9pt;
+  line-height: 1.55;
+  overflow-x: auto;
+  margin: 6px 0 12px 0;
+}
+pre code { background: transparent; color: inherit; padding: 0; }
+blockquote {
+  border-left: 4px solid #2c4a7e;
+  background: #f0f4fb;
+  padding: 8px 14px;
+  margin: 6px 0 12px 0;
+  color: #1c2e50;
+  font-style: italic;
+}
+strong { color: #142d52; }
+a { color: #2c4a7e; text-decoration: none; border-bottom: 1px dotted #2c4a7e; }
+.header-meta {
+  background: linear-gradient(135deg, #2c4a7e 0%, #4a6fa8 100%);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 10pt;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.header-meta strong { color: white; }
+.footer-note {
+  text-align: center;
+  color: #888;
+  font-size: 9pt;
+  margin-top: 24px;
+  font-style: italic;
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+<h1 id="legalshield-v01">LegalShield 統合設計レポート v0.1</h1>
+<p><strong>日付</strong>: 2026 年 5 月 25 日（議論ログ）
+<strong>目的</strong>: 1 日の議論を<strong>論理整理用の素材</strong>として一覧化
+<strong>読者</strong>: 起案者 / 共同研究者 / 助言者 / 申請書執筆チーム</p>
+<hr />
+<h2 id="_1">⚡ エグゼクティブ・サマリー</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>結論</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>何を作るか</td>
+<td>困境を抱える人が「<strong>今、誰に、何を、どう伝えるか</strong>」を 6 問で答える、加重付き法律分流プラットフォーム</td>
+</tr>
+<tr>
+<td>どう作るか</td>
+<td>既存 OSS（PostGIS + MapLibre + Ollama + PSI）+ ドメイン専門家のキュレート知識</td>
+</tr>
+<tr>
+<td>誰の役か</td>
+<td>あなた = <strong>包丁屋（プラットフォーム供給者）</strong>、料理人 = CALL4 / NPO / 弁護士 / 当事者</td>
+</tr>
+<tr>
+<td>収入構造</td>
+<td><strong>政府委託 60-70%</strong> + 研究助成 15-20% + 公益契約 10-15% + 任意寄付 5-10%</td>
+</tr>
+<tr>
+<td>規模感</td>
+<td>Year 1: ¥4-6M / Year 3: ¥58M / Year 5: ¥80-150M（楽観だが不可能ではない）</td>
+</tr>
+<tr>
+<td>技術核</td>
+<td>iPhone Neural Engine + WebLLM でオンデバイス SLM = サーバ GPU コスト ¥0</td>
+</tr>
+<tr>
+<td>法的核</td>
+<td>弁護士法 72 条境界の遵守（情報提供のみ、個別助言なし）</td>
+</tr>
+<tr>
+<td>倫理核</td>
+<td>5 段同意 ladder、緊急時 bypass + 事後同意、自殺予防は「呼出までしかしない」</td>
+</tr>
+<tr>
+<td>政治核</td>
+<td>「<strong>官民協働 + 黙ったまま証拠提供</strong>」モデル — あなたは表に出ず、CALL4・NPO に道具を渡す</td>
+</tr>
+<tr>
+<td>3 ヶ月で</td>
+<td>DB schema 完了 / 12 category seed / 5 routing 詳細 / 製品欠陥（自分の案件）が validate</td>
+</tr>
+<tr>
+<td>18 ヶ月で</td>
+<td>修論完成、MVP 公開、自治体パイロット 2 件、論文 2 本</td>
+</tr>
+<tr>
+<td>5 年で</td>
+<td>2-3 自治体 + 10-50 NPO + 数万 MAU + 国際協働開始（楽観シナリオ）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_2">議論の流れ</h2>
+<pre><code>17:43  GIS subsystem 動作確認 → 3 containers healthy / test 3 件のみ
+17:46  方針転換: 法テラス爬虫より先に「問題種類 → NPO/行政対応」DB
+17:49  Schema + 12 categories + 26 routing rules 投入完了
+17:56  weight 解説（Bayesian prior）
+18:01  入口設計: 緊急 vs 問診 vs 操作者 + 5 段同意 + 自殺・濫用境界
+18:11  GIS 地図技術 + 屋内測位（東京駅モデル）
+18:17  全シナリオ Lv0-Lv5 マトリクス + ギャップ分析
+18:24  SEO + 集客 + コスト試算
+18:32  6 軸 feasibility audit + OSS leverage + 証拠基盤
+18:39  収入は「政府委託」が主軸
+18:43  「官民協働 + アドボカシー」ハイブリッド
+18:47  「プラットフォーム供給者」モデルに収斂
+</code></pre>
+<hr />
+<h1 id="i">第 I 部 — システム現状</h1>
+<h2 id="1-1743">1. 稼働中のコンテナ（17:43 確認）</h2>
+<pre><code>legalshield_frontend   8092  Up 7h healthy
+legalshield_api        8090  Up 7h healthy  (FastAPI skeleton)
+legalshield_postgres   5434  Up 7h healthy  (PostGIS 15-3.3)
+</code></pre>
+<p>API は 5 endpoints 稼働中：<code>/health</code>, <code>/nearest-support</code>, <code>/risk-score</code>, <code>/incident-report</code>, <code>/region-stats/{prefecture_code}</code>, <code>/tiles/{z}/{x}/{y}.pbf</code></p>
+<h2 id="2-db">2. DB スキーマ全体像</h2>
+<h3 id="001_init_schemasql">既存（<code>001_init_schema.sql</code>）</h3>
+<ul>
+<li><code>support_org</code> - 法テラス + NPO + NGO + 弁護士会 統合</li>
+<li><code>prefecture</code> / <code>city</code> - N03 行政界（未投入）</li>
+<li><code>crime_grid</code> - 500m 格子 × 年月（未投入）</li>
+<li><code>incident_report</code> - 匿名インシデント（obfuscated_geom 100-300m random offset）</li>
+<li><code>ingest_run</code> - ETL ログ</li>
+</ul>
+<h3 id="002_intake_routing_schemasql">今日追加（<code>002_intake_routing_schema.sql</code>）</h3>
+<pre><code class="language-sql">problem_category    -- 12 件投入（カノニカル分類）
+category_routing    -- 26 件投入（5 categories の詳細）
+org_specialty       -- 0 件（特化度・有効性スコア）
+case_outcome        -- 0 件（匿名化転帰、ベイズ更新の真実源）
+intake_session      -- 0 件（問診セッション）
+v_org_for_category  -- ランキング用 VIEW
+</code></pre>
+<h3 id="1800">データ投入状況（18:00 時点）</h3>
+<table>
+<thead>
+<tr>
+<th>テーブル</th>
+<th>件数</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>problem_category</td>
+<td>12</td>
+<td>DV/stalking/sexual_violence/child_abuse/elder_abuse/school_bullying/workplace_harassment/labor_violation/foreign_worker/consumer_fraud/product_defect/admin_grievance</td>
+</tr>
+<tr>
+<td>category_routing</td>
+<td>26</td>
+<td>DV 7 / stalking 4 / product_defect 5 / foreign_worker 5 / admin_grievance 5</td>
+</tr>
+<tr>
+<td>support_org</td>
+<td>3</td>
+<td>テストのみ</td>
+</tr>
+<tr>
+<td>その他</td>
+<td>0</td>
+<td>crawl/運用待ち</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="ii">第 II 部 — 智能法律分流モデル</h1>
+<h2 id="3-12">3. 12 問題カテゴリ</h2>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>重大度</th>
+<th>緊急電話</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dv</td>
+<td>critical</td>
+<td>#8008</td>
+<td>配偶者・パートナー暴力</td>
+</tr>
+<tr>
+<td>stalking</td>
+<td>critical</td>
+<td>110</td>
+<td>ストーカー被害</td>
+</tr>
+<tr>
+<td>sexual_violence</td>
+<td>critical</td>
+<td>#8891</td>
+<td>性犯罪・性暴力</td>
+</tr>
+<tr>
+<td>child_abuse</td>
+<td>critical</td>
+<td>189</td>
+<td>児童虐待</td>
+</tr>
+<tr>
+<td>elder_abuse</td>
+<td>high</td>
+<td>地域包括</td>
+<td>高齢者虐待</td>
+</tr>
+<tr>
+<td>school_bullying</td>
+<td>high</td>
+<td>0120-0-78310</td>
+<td>いじめ・スクールハラスメント</td>
+</tr>
+<tr>
+<td>workplace_harassment</td>
+<td>high</td>
+<td>0570-919-471</td>
+<td>パワハラ・セクハラ・マタハラ</td>
+</tr>
+<tr>
+<td>labor_violation</td>
+<td>high</td>
+<td>0120-811-610</td>
+<td>賃金未払い・不当解雇</td>
+</tr>
+<tr>
+<td>foreign_worker</td>
+<td>high</td>
+<td>0570-011000</td>
+<td>外国人労働者の権利侵害</td>
+</tr>
+<tr>
+<td>consumer_fraud</td>
+<td>medium</td>
+<td>188</td>
+<td>消費者被害・契約トラブル</td>
+</tr>
+<tr>
+<td>product_defect</td>
+<td>high</td>
+<td>188</td>
+<td>製品欠陥・PL 被害（<strong>あなたの案件</strong>）</td>
+</tr>
+<tr>
+<td>admin_grievance</td>
+<td>high</td>
+<td>0570-003-110</td>
+<td>行政手続きの不利益（<strong>妻の現場</strong>）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-tier-5">4. tier 推奨フロー（5 段階）</h2>
+<pre><code>tier 1: 緊急ホットライン（電話一本、24h）
+tier 2: 公的相談窓口（配暴セ、消費生活セ、労基署、児相）
+tier 3: 専門 NPO（シェルター、支援団体）
+tier 4: 法的対応（弁護士会、法テラス、ADR）
+tier 5: 司法手続（家裁、簡裁、地裁、公共訴訟）
+</code></pre>
+<p>各ルートに：weight / trigger_condition / what_to_say_ja / documents_needed_ja / expected_outcome_ja / next_tier_if_ja を付与。</p>
+<h2 id="5-weight-prior">5. weight = ベイズ prior</h2>
+<pre><code>最終 score =
+    weight (curated baseline)
+  × specialty_score (該機関の特化度 0-1)
+  × effectiveness_score (観測ベース成功率 0-1)
+  × 距離 decay (e^(-distance_km / 30))
+  × 言語 match (1.0 or 0.5)
+  × 費用 match (free=1.2, paid=0.8)
+  × 24h 緊急加成 (1.3 if critical+24h)
+  × trigger 命中加成 (+0.2 if condition met)
+  × 同様ケース類似度（embedding cosine）
+</code></pre>
+<ul>
+<li>weight = prior（人間知識）</li>
+<li>effectiveness_score = likelihood（観測）</li>
+<li>最終 score = posterior</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>weight</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.00</td>
+<td>tier 内最強</td>
+</tr>
+<tr>
+<td>0.90-0.99</td>
+<td>強く推奨</td>
+</tr>
+<tr>
+<td>0.70-0.89</td>
+<td>並列の選択肢</td>
+</tr>
+<tr>
+<td>0.50-0.69</td>
+<td>条件付き</td>
+</tr>
+<tr>
+<td>&lt;0.50</td>
+<td>特殊事情のみ</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-validate">6. 製品欠陥（あなたの実案件）の validate</h2>
+<pre><code>tier 1 → 消費生活センター 188            weight=1.00, always
+tier 2 → NITE / 消費者庁                 weight=0.85, if_safety_risk     ← Mapry 命中
+tier 3 → 弁護士会 PL 法                  weight=0.85, if_money_lost_high ← Mapry 命中
+tier 4 → 弁護士会 仲裁センター（ADR）   weight=0.75, always              ← 進行中
+tier 5 → CALL4 公共訴訟                  weight=0.65, if_collective       ← 6/1 週面談予定
+</code></pre>
+<p><strong>あなたの実体験が routing knowledge の正しさを実証</strong>。</p>
+<hr />
+<h1 id="iii">第 III 部 — 入口設計と倫理</h1>
+<h2 id="7-3">7. 3 つの入口モード</h2>
+<table>
+<thead>
+<tr>
+<th>モード</th>
+<th>対象</th>
+<th>UI</th>
+<th>進行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🔴 緊急</td>
+<td>命の危険切迫</td>
+<td>大ボタン 1 個「今すぐ電話」</td>
+<td>5 秒</td>
+</tr>
+<tr>
+<td>🟡 ガイド</td>
+<td>混乱・困惑</td>
+<td>対話型問診 6-7 問</td>
+<td>3-5 分</td>
+</tr>
+<tr>
+<td>🟢 セルフ</td>
+<td>操作者本人</td>
+<td>category 直選 + 構造化</td>
+<td>30 秒</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-6">8. ガイドモード 6 問</h2>
+<ol>
+<li>すぐに身の安全が脅かされていますか？ → はい → 緊急に昇格</li>
+<li>困りごとを最も近いカテゴリで（人間関係 / 仕事 / 製品 / 行政 / その他）</li>
+<li>いつ頃から（今日 / 数日 / 数週間 / 数ヶ月以上）</li>
+<li>自由記述（任意、書かなくても OK）</li>
+<li>これまで相談したことは？（警察 / 弁護士 / NPO / 家族 / なし）</li>
+<li>今、何が一番欲しい？（情報 / 話を聞いて / 一緒に動いて / 法的解決）</li>
+</ol>
+<h2 id="9-5-ladder">9. 5 段同意 Ladder</h2>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>何をする</th>
+<th>何を取る</th>
+<th>デフォルト</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>情報閲覧</td>
+<td>何も</td>
+<td>自動</td>
+</tr>
+<tr>
+<td>1</td>
+<td>オンデバイス問診</td>
+<td>端末内のみ</td>
+<td>アプリ起動で同意</td>
+</tr>
+<tr>
+<td>2</td>
+<td>位置情報「市レベル」共有</td>
+<td>都道府県・市町村</td>
+<td>明示同意</td>
+</tr>
+<tr>
+<td>3</td>
+<td>推薦先 NPO/行政との連携</td>
+<td>redacted text + city + category</td>
+<td>明示（連携先ごと）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>匿名化ベクトル研究貢献</td>
+<td>embedding（原文不保存）</td>
+<td>別画面 opt-in</td>
+</tr>
+<tr>
+<td>5</td>
+<td>転帰追跡</td>
+<td>結果 + feedback</td>
+<td>別画面 opt-in</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bypass">緊急時の同意 bypass</h3>
+<ul>
+<li>個人情報保護法 18 条 1 項 2 号「人の生命、身体又は財産の保護」</li>
+<li>監査ログ全件記録、事後同意必須</li>
+</ul>
+<h2 id="10-tier-4">10. 研究データ寄与（Tier 4）の合規</h2>
+<pre><code>ユーザー入力 → 端末側 PII redaction（人名・住所・電話・SNS ID マスク）
+            → sentence-transformers 384 次元 embedding
+            → 原文は端末から削除（vector のみアップロード）
+            → S3 (encrypted, KMS) → 高知大学 IRB 承認 corpus
+            → 30 日以内なら撤回可、超過後は anonymized data（GDPR 4(1) 不適合）
+</code></pre>
+<h2 id="11-id">11. 顔・声・ID</h2>
+<table>
+<thead>
+<tr>
+<th>種別</th>
+<th>既定</th>
+<th>動作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写真の顔</td>
+<td>端末側自動ぼかし</td>
+<td>Vision Framework</td>
+</tr>
+<tr>
+<td>音声</td>
+<td>端末側文字起こし → 音声破棄</td>
+<td>Whisper local</td>
+</tr>
+<tr>
+<td>身分証</td>
+<td>読まない</td>
+<td>必要なら端末暗号化のみ</td>
+</tr>
+<tr>
+<td>加害者の顔</td>
+<td>保存可、共有制限</td>
+<td>Evidence Vault SHA-256</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12">12. 命の危険・自殺の境界線</h2>
+<pre><code>Lv1 受動的支援（自動）: 警告 UI + ホットライン表示
+Lv2 接続提案（同意）: 「位置を最寄りの精神保健福祉センターに繋げる？」
+Lv3 強制介入の境界:
+  ❌ プラットフォームから警察自動通報なし
+  ❌ 救急車手配は本人 or 第三者の手動
+  ✅ 例外: 児童虐待 + 命の危険 → 児虐法 6 条通報努力義務
+     ただし「努力義務」、最終判断は人間
+</code></pre>
+<p><strong>核心 doctrine</strong>：プラットフォームは「呼び出し」までしかしない、最終決定は人間。</p>
+<h2 id="13">13. 濫用防止：コスト非対称性</h2>
+<ul>
+<li>❌ マイナンバー要求 → 真の被害者排除</li>
+<li>❌ 厳格審査 → 心が折れる</li>
+<li>✅ 6 問の入力時間 → spam bot は嫌う、本物は丁寧に書く</li>
+<li>✅ 同一加害者重複 → 追加質問で連名告訴 vs ヘイト識別</li>
+<li>✅ crime_grid 統計 triangulate</li>
+<li>✅ NPO パートナーの人間レビュー（flag のみ、99% 自動 / 1% 人間）</li>
+<li>✅ ML 異常検出は「拒否」でなく「flag」</li>
+</ul>
+<p><strong>原則：拒否しない、観察する</strong>。</p>
+<h2 id="14">14. 境界線図（最重要）</h2>
+<pre><code>事象              │Platform│ NPO │ 行政 │ 警察 │ 医療 │
+═══════════════════════════════════════════════════════
+情報提供          │ ★★★  │     │      │      │      │
+カテゴリ分類      │ ★★★  │     │      │      │      │
+証拠保全（端末）  │ ★★★  │     │      │      │      │
+寄り添い         │       │ ★★★ │     │      │      │
+シェルター入居    │       │ ★★★ │ ★   │      │      │
+保護命令申立      │       │ ★   │ ★★★ │     │      │
+児童一時保護      │       │     │ ★★★ │     │      │
+緊急逮捕         │       │     │      │ ★★★ │     │
+保護命令発令      │       │     │      │      │ ★★★ (家裁) │
+精神保健入院      │       │     │ ★    │      │ ★★★ │
+身体的緊急医療    │       │     │      │      │ ★★★ │
+公共訴訟・社会化  │       │ ★★★ │     │      │      │
+研究蓄積         │ ★★★  │ ★   │      │      │      │
+</code></pre>
+<h3 id="4-doctrine">4 つの doctrine</h3>
+<ol>
+<li>プラットフォームは権限を持たない</li>
+<li>「呼び出し」と「情報提供」のみ</li>
+<li>最終決定は常に人間</li>
+<li>連携先の多様性が重要（一刀切回避）</li>
+</ol>
+<hr />
+<h1 id="iv">第 IV 部 — 全シナリオマトリクス</h1>
+<h2 id="15-6">15. 緊急度 6 段階</h2>
+<pre><code>Lv0  命の危険切迫       秒〜分     殺人未遂・自殺・拉致
+Lv1  重大被害・避難     時間       DV 直後・性犯罪 72h
+Lv2  24h 以内対応       24h       通報後手続き・口座凍結
+Lv3  落ち着いて相談     数日〜週   ハラスメント・LGBTQ
+Lv4  民事紛争・長期     月〜年     離婚・PL 訴訟・労働審判
+Lv5  政策・社会変革     年単位     公共訴訟・連名告訴
+</code></pre>
+<h2 id="16-lv0">16. Lv0（命の危険切迫）</h2>
+<table>
+<thead>
+<tr>
+<th>シナリオ</th>
+<th>入口</th>
+<th>tier 1</th>
+<th>平台</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>殺人未遂進行中</td>
+<td>🔴</td>
+<td>110</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>DV 殺意攻撃中</td>
+<td>🔴</td>
+<td>110 + 「DV」</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>性的暴行進行中</td>
+<td>🔴</td>
+<td>110 + 「性犯罪」</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>監禁・拉致中</td>
+<td>🔴 サイレント</td>
+<td>110 サイレント発信</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>自殺企図実行中</td>
+<td>🔴</td>
+<td>119 + よりそい</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>無理心中の予兆</td>
+<td>🟡/🟢</td>
+<td>189 + 110</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>重大医療緊急</td>
+<td>🔴</td>
+<td>119</td>
+<td>🟠</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lv0 共通</strong>：ロック画面緊急ボタン、自動 GPS、3 秒長押しサイレント、自動録音（端末内）。</p>
+<h2 id="17-lv1">17. Lv1（重大被害・避難要）</h2>
+<table>
+<thead>
+<tr>
+<th>シナリオ</th>
+<th>tier 1</th>
+<th>平台</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DV 暴力後の避難</td>
+<td>配暴セ + シェルター</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>ストーカー追跡中</td>
+<td>警察生活安全課 + 配暴セ</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>性犯罪直後 72h</td>
+<td>#8891 + 警察 + 産婦人科</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>児童虐待一時保護</td>
+<td>189 児相 + 警察</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>技能実習生逃亡</td>
+<td>FRESC + 移住連 + 労基署</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>過労死リスク</td>
+<td>労基署 + 119</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>リベンジポルノ拡散</td>
+<td>警察 + 削除 + セーフライン</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>暴力団脅迫</td>
+<td>暴力追放センター + 警察</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<h2 id="18-lv2-324h">18. Lv2-3（24h ~ 数週間）</h2>
+<table>
+<thead>
+<tr>
+<th>シナリオ</th>
+<th>平台</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通報後シェルター入居</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>児童虐待通報（教師）</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>詐欺被害（口座凍結）</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>不正アクセス検知</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>いじめ（自殺リスク）</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>高齢者虐待発見</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>ハラスメント職場</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>LGBTQ 差別</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>名誉毀損 SNS</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>自殺念慮（予防）</td>
+<td>🟠</td>
+</tr>
+</tbody>
+</table>
+<h2 id="19-lv4">19. Lv4（民事紛争）</h2>
+<table>
+<thead>
+<tr>
+<th>シナリオ</th>
+<th>平台</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>離婚調停・訴訟</td>
+<td>✅ DV</td>
+</tr>
+<tr>
+<td><strong>製品欠陥 PL（あなたの案件）</strong></td>
+<td>✅ ★</td>
+</tr>
+<tr>
+<td>不動産トラブル</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>雇用訴訟</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>医療過誤</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>交通事故民事</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>相続紛争</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>知的財産侵害</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>中小 vs 大企業</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><strong>フリーランス（仲裁案件）</strong></td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h2 id="20-lv4">20. Lv4 行政</h2>
+<table>
+<thead>
+<tr>
+<th>シナリオ</th>
+<th>平台</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>児相過剰介入で家族分離（妻の現場）</strong></td>
+<td>✅ ★</td>
+</tr>
+<tr>
+<td>生活保護打切り</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>在留資格不許可</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>公務員ハラスメント</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>警察の不適切対応</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>学校体罰</td>
+<td>🟡</td>
+</tr>
+</tbody>
+</table>
+<h2 id="21-lv5">21. Lv5（政策・社会変革）</h2>
+<table>
+<thead>
+<tr>
+<th>シナリオ</th>
+<th>平台</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>連名告訴（PSI）</td>
+<td>🟠 設計済</td>
+</tr>
+<tr>
+<td>公共訴訟提起（CALL4 連携）</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>政策提言</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>メディア社会化</td>
+<td>🟠</td>
+</tr>
+<tr>
+<td>学術研究（修論）</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h2 id="22">22. 平台対応力マトリクス</h2>
+<pre><code>                    Lv0  Lv1  Lv2  Lv3  Lv4  Lv5
+─────────────────────────────────────────────
+入口モード         🟠   🟠   🟡   ✅   ✅   🟡
+カテゴリ分類       ✅   ✅   ✅   ✅   ✅   ✅
+routing 知識       🟠   ✅   🟡   🟡   ✅   ✅
+緊急ボタン         🟠   🟠   ❌   ❌   ❌   ❌
+LLM intake         ❌   ❌   ❌   ❌   ❌   ❌
+GIS 表示           ✅   ✅   ✅   ✅   ✅   ✅
+証拠保全 (Vault)   🟠   🟠   🟠   🟠   ✅   ✅
+多言語             ❌   ❌   ❌   ❌   ❌   ❌
+転帰追跡           ❌   ❌   ❌   ❌   ❌   ❌
+連名 (PSI)         —    —    —    —    🟠   🟠
+研究 corpus        ❌   ❌   ❌   ❌   ❌   ❌
+─────────────────────────────────────────────
+カバー率推定       20%  35%  40%  55%  65%  50%
+</code></pre>
+<h2 id="23">23. ギャップ分析</h2>
+<h3 id="p0">P0（命の責任）</h3>
+<ol>
+<li>緊急モード UI（🔴 ボタン、サイレント、位置自動共有 + 事後同意）</li>
+<li>残り 7 categories の routing 詳細（特に sexual_violence、child_abuse）</li>
+<li>24h 対応窓口の正確データ</li>
+</ol>
+<h3 id="p1">P1（カバレッジ拡張）</h3>
+<ol start="4">
+<li>LLM intake（Ollama + Llama 3.1 8B）</li>
+<li>配偶者暴力相談支援センター 全国 280 件 crawler</li>
+<li>児童相談所 230 件 + 消費生活センター 800 件 crawler</li>
+</ol>
+<h3 id="p2">P2（差別化機能）</h3>
+<ol start="7">
+<li>BLE Beacon パートナー NPO（到着確認 + 本人確認バイパス）</li>
+<li>PSI 連名告訴（同加害者の暗号マッチング）</li>
+<li>Evidence Vault iOS 統合</li>
+<li>多言語 5 言語（en/zh/ko/vi/pt）</li>
+</ol>
+<h3 id="p3">P3（研究・スケール）</h3>
+<ol start="11">
+<li>case_outcome 追跡 UI</li>
+<li>研究 corpus opt-in + IRB 連携</li>
+<li>CALL4 連携 API</li>
+<li>障壁レポート自動生成</li>
+</ol>
+<hr />
+<h1 id="v">第 V 部 — 技術選定</h1>
+<h2 id="24-gis">24. GIS スタック</h2>
+<pre><code>iOS Native (MapKit) ← 緊急モード
+Web (MapLibre GL JS) ← 通常
+   ↓
+pg_tileserv / martin → /tiles/{z}/{x}/{y}.pbf
+   ↓
+PostGIS
+
+ベース：国土地理院（GSI）標準・淡色・衛星（無料・公式）
+       https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>選択肢</th>
+<th>評価</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MapLibre GL JS</td>
+<td>OSS、GPU 加速、ベクトル、3D。Mapbox の OSS フォーク。<strong>推奨</strong></td>
+</tr>
+<tr>
+<td>Leaflet</td>
+<td>軽量。Phase 1 でこのまま OK</td>
+</tr>
+<tr>
+<td>deck.gl</td>
+<td>heatmap、3D 柱。研究デモ用</td>
+</tr>
+<tr>
+<td>MapKit iOS</td>
+<td>iOS 緊急、Apple Indoor Maps 連携</td>
+</tr>
+<tr>
+<td>国土地理院 vector</td>
+<td>無料・商用可・公式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="obfuscate-schema">プライバシー obfuscate（既存 schema）</h3>
+<pre><code>incident_report:
+  geom            (real, server-only, never returned)
+  obfuscated_geom (polygon, 100-300m random offset)  ← API はこっちのみ
+</code></pre>
+<h2 id="25-6">25. 屋内測位 6 技術</h2>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>精度</th>
+<th>コスト</th>
+<th>iOS</th>
+<th>LegalShield 適性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPS + A-GPS</td>
+<td>屋外 5-10m</td>
+<td>¥0</td>
+<td>✅</td>
+<td>Phase 1</td>
+</tr>
+<tr>
+<td>Wi-Fi 測位</td>
+<td>屋内 5-15m</td>
+<td>¥0</td>
+<td>✅ 自動</td>
+<td>Phase 2</td>
+</tr>
+<tr>
+<td>BLE Beacon</td>
+<td>1-3m</td>
+<td>¥500-2K/個</td>
+<td>✅</td>
+<td><strong>Phase 2 NPO 玄関</strong> ★</td>
+</tr>
+<tr>
+<td>PDR</td>
+<td>drift 3-5%</td>
+<td>¥0</td>
+<td>✅</td>
+<td>Phase 3</td>
+</tr>
+<tr>
+<td>ARKit VIO</td>
+<td>&lt;1m 短距離</td>
+<td>¥0</td>
+<td>✅</td>
+<td>Phase 4</td>
+</tr>
+<tr>
+<td>UWB</td>
+<td>10cm</td>
+<td>¥3K+/anchor</td>
+<td>✅ iPhone 11+</td>
+<td>Phase 5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="navi">東京駅 navi の構成</h3>
+<pre><code>JR-AUTO Wi-Fi 数百 AP → BSSID + RSSI fingerprint（主測位）
+BLE Beacon 数百個 → UUID + RSSI（補強）
+PDR → 歩行ステップ × 推定歩幅 × heading（隙間補間）
+気圧計 → 12 Pa/階で階判定
+IMDF → 屋内ベクター地図
+→ Sensor Fusion: Kalman / Particle Filter
+</code></pre>
+<p>東京駅は Apple Indoor Maps 正式登録済 = JR 東日本が IMDF 提供。</p>
+<h3 id="legalshield">LegalShield 現実的実装</h3>
+<pre><code>Phase 1 (今):     屋外 GPS + 住所入力フォールバック  → 95% カバー
+Phase 2 (3 月):   Wi-Fi 自動推定                    → +3%
+Phase 3 (6 月):   BLE Beacon @ パートナー NPO       → +1% でも価値最大 ★
+Phase 4 (12 月):  気圧計 + ARKit 階・経路誘導
+Phase 5 (24 月):  UWB + 5G                         → 様子見
+</code></pre>
+<p><strong>現実認識</strong>：利用シーンの 95% は自宅・病院・職場・路上。屋内測位完璧不要。差別化は Phase 3 BLE × 信頼到着確認。</p>
+<hr />
+<h1 id="vi">第 VI 部 — ビジネス・テクニカル戦略</h1>
+<h2 id="26-6">26. ペルソナ 6 階層</h2>
+<pre><code>Lv1 被害者本人 (B2C)         無料・匿名・モバイル主
+Lv2 二次被害者 (B2C)         無料
+Lv3 支援者 (B2B, NPO)        無料 + 寄付/有料機能
+Lv4 専門職 (B2B)             ¥1,000-3,000/月 任意寄付
+Lv5 行政 (B2G)              公益契約・カスタム
+Lv6 研究・教育 (B2A)         無料 academic
+</code></pre>
+<p>楽観的人数予測（Year 5）：合計 73,000、月間 active 13,000、寄付 ¥1.95M/月。
+→ 後の feasibility audit で再校正：Year 5 で 1-3 万 MAU が現実的。</p>
+<h2 id="27-seo-12">27. SEO 12 本コア記事</h2>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>キーワード</th>
+<th>推定月間検索</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/help/dv</td>
+<td>DV 相談 無料</td>
+<td>18,000</td>
+</tr>
+<tr>
+<td>/help/stalker</td>
+<td>ストーカー 通報</td>
+<td>12,000</td>
+</tr>
+<tr>
+<td>/help/sexual-violence</td>
+<td>性犯罪 相談</td>
+<td>8,000</td>
+</tr>
+<tr>
+<td>/help/child-abuse</td>
+<td>児童虐待 通報</td>
+<td>22,000</td>
+</tr>
+<tr>
+<td>/help/workplace-harassment</td>
+<td>パワハラ 相談</td>
+<td>33,000</td>
+</tr>
+<tr>
+<td>/help/labor-violation</td>
+<td>残業代 未払い</td>
+<td>40,000</td>
+</tr>
+<tr>
+<td>/help/consumer-fraud</td>
+<td>詐欺 被害 相談</td>
+<td>27,000</td>
+</tr>
+<tr>
+<td>/help/product-defect</td>
+<td>製品 欠陥 賠償</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>/help/foreign-worker</td>
+<td>外国人 労働 相談（5 言語）</td>
+<td>8,000</td>
+</tr>
+<tr>
+<td>/help/admin-grievance</td>
+<td>行政 不服 審査</td>
+<td>4,000</td>
+</tr>
+<tr>
+<td>/help/bullying</td>
+<td>いじめ 相談 子供</td>
+<td>14,000</td>
+</tr>
+<tr>
+<td>/help/elder-abuse</td>
+<td>高齢者 虐待 通報</td>
+<td>6,000</td>
+</tr>
+</tbody>
+</table>
+<p>合計推定月間流入 197,000 → 10% CTR → 月間 20,000 訪問。</p>
+<h2 id="28-5">28. 5 段アクセス階層</h2>
+<pre><code>Tier 0  即使用 (PWA, no signup)         legalshield.jp 直アクセス
+Tier 1  個人アカウント (magic link)      案件継続 / Evidence Vault
+Tier 2  寄付者 (¥500-3K/月 任意)         稼働継続 / 詳細レポート
+Tier 3  NPO 法人パートナー (無料)        マルチユーザー / CRM / GDrive
+Tier 4  行政・自治体 (公益契約)          専用テナント / 監査ログ / LGWAN-ASP
+Tier 5  研究・OSS セルフホスト (無料)    docker compose + AI Agent デプロイ
+</code></pre>
+<h2 id="29-10-mau">29. コスト分析（10 万 MAU）</h2>
+<pre><code>A. LLM なし
+   EC2 + RDS + S3 + CDN + ALB → $130/月 ≈ ¥20K/月 = ¥240K/年
+
+B. + Bedrock LLM
+   + 10K intake/月 × $0.00075 = $7.5/月 → 誤差レベル
+
+C. + オンデバイス SLM (iPhone Neural Engine)
+   追加コスト = $0 ★（最強戦略）
+
+D. EC2 GPU SLM
+   $530/月 → 高すぎる、避ける
+</code></pre>
+<p>スケール曲線：</p>
+<pre><code>1 万人:     ¥10K/月    (¥120K/年)
+10 万人:    ¥20K/月    (¥240K/年)
+100 万人:   ¥100K/月   (¥1.2M/年)
+1000 万人:  ¥1M/月     (本気の SRE 必要)
+</code></pre>
+<h2 id="30">30. 統合機能</h2>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>スキャナ・FAX 直結</td>
+<td>複合機 → email → AWS Textract → Llama 自動分類</td>
+</tr>
+<tr>
+<td>Google Drive / OneDrive</td>
+<td>OAuth → 新規ファイル検知 → PII redaction → 案件統合</td>
+</tr>
+<tr>
+<td>GitHub セルフデプロイ</td>
+<td>docker compose + Windsurf/Claude agent で 1-click</td>
+</tr>
+<tr>
+<td>kintone / Salesforce</td>
+<td>既存 CRM 双方向同期（NPO 半数が kintone）</td>
+</tr>
+<tr>
+<td>LINE Bot</td>
+<td>入口 1 つ、ハードル最低</td>
+</tr>
+<tr>
+<td>マイナンバーカード</td>
+<td><strong>使わない</strong>（本人確認バイパスが核心）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="31">31. データセット公開</h2>
+<pre><code>https://huggingface.co/datasets/legalshield-jp/
+├── support_orgs_2026.parquet
+├── routing_knowledge_v0.1.json  (curated 26 → 拡張)
+├── anonymized_intake_corpus/    (research opt-in 集約)
+└── barrier_reports_v0.1/        (制度障壁の質的データ)
+
+License: CC-BY 4.0
+Citation: 「LegalShield-jp Open Dataset v0.1, Liu et al. 2026」
+</code></pre>
+<hr />
+<h1 id="vii-6">第 VII 部 — 6 軸可行性監査</h1>
+<h2 id="32">32. 技術 ★★★★☆ 高</h2>
+<p>90% は既存 OSS のグルーコード。新規研究要素 = PSI 連名 + 多言語法律 NLP の 2 点のみ。</p>
+<h2 id="33">33. 経費 ★★★☆☆ 中</h2>
+<p>18 ヶ月最小予算 ≈ ¥1.7M（人件費は修士のため計上せず）。
+助成金採択率 15-20% → <strong>不採択確率 70-85%、Plan B 必須</strong>。</p>
+<h2 id="34">34. 政治 ★★☆☆☆ 中下</h2>
+<p>最大リスク：<strong>弁護士法 72 条</strong>（非弁行為）
+- 一般情報 = OK
+- 個別助言 = NG
+- AI が「あなたはこうすべき」 = グレー</p>
+<p>→ 必須：「これは法律情報、特定事案の法的助言ではない」明示。
+→ 谷口律師との初回面談の核心議題。</p>
+<h2 id="35">35. 経済 ★★☆☆☆ 中下</h2>
+<pre><code>弁護士ドットコム 2024:    ¥7.3B（上場、相談+顧問）
+CALL4 (NPO):             ¥30-50M/年
+法テラス:                 ¥39.7B/年（国家予算）
+</code></pre>
+<p>寄付モデル単独では：
+- ¥3-10M/年で 0.5 FTE
+- ¥30-50M/年で 3-5 FTE
+- ¥100M/年で本格運営（5-10 年かかる）</p>
+<p><strong>しかし政府委託を加えれば構造が変わる（後述）</strong>。</p>
+<h2 id="36">36. 法律 ★★★☆☆ 中</h2>
+<table>
+<thead>
+<tr>
+<th>法律</th>
+<th>リスク</th>
+<th>対応</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>弁護士法 72 条</td>
+<td>非弁</td>
+<td>一般情報のみ明示</td>
+</tr>
+<tr>
+<td>個人情報保護法</td>
+<td>大量データ</td>
+<td>DPO 任命、PIA、Privacy by Design</td>
+</tr>
+<tr>
+<td>通信の秘密</td>
+<td>メッセージング</td>
+<td>機能を実装しない</td>
+</tr>
+<tr>
+<td>児虐法 6 条</td>
+<td>通報義務</td>
+<td>人間判断 doctrine</td>
+</tr>
+<tr>
+<td>DV 法 6 条 2 項</td>
+<td>通報努力義務</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>不正アクセス禁止法</td>
+<td>証拠保全</td>
+<td>自分の端末・データのみ</td>
+</tr>
+<tr>
+<td>AI 規制（2026 春予定）</td>
+<td>ハイリスク AI</td>
+<td>透明性レポート公開</td>
+</tr>
+<tr>
+<td>GDPR</td>
+<td>EU 利用者</td>
+<td>DPA 公開、Right to Erasure</td>
+</tr>
+</tbody>
+</table>
+<h2 id="37">37. 人性 ★★☆☆☆ 中下（最難関）</h2>
+<table>
+<thead>
+<tr>
+<th>障壁</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「人に頼ること=恥」文化</td>
+<td>「自分で何とか」「家族に迷惑」</td>
+</tr>
+<tr>
+<td>「<strong>唐突</strong>な対人接触の忌避」</td>
+<td>突然 NPO に救援要請 = 失礼</td>
+</tr>
+<tr>
+<td>デジタル不信</td>
+<td>高齢・地方の抵抗</td>
+</tr>
+<tr>
+<td>DV「離れられない」心理</td>
+<td>経済依存・子・世間体</td>
+</tr>
+<tr>
+<td>二次被害コスト</td>
+<td>SNS 炎上・職場差別</td>
+</tr>
+<tr>
+<td>「自治体に頼る=負け」</td>
+<td>スティグマ</td>
+</tr>
+<tr>
+<td>多文化共生の浅さ</td>
+<td>外国人支援薄い</td>
+</tr>
+<tr>
+<td>専門用語の壁</td>
+<td>親権・保全処分・ADR 不明</td>
+</tr>
+</tbody>
+</table>
+<h3 id="npo">「唐突 NPO 接続」の問題（あなたの指摘）</h3>
+<p>❌ 従来モデル：助けてボタン → NPO 通知 → NPO が連絡 → 引く
+✅ 改良モデル：情報閲覧 → 準備（スクリプト・書類リスト・地図）→ <strong>被害者が能動的に電話</strong></p>
+<p>→ 「<strong>準備支援</strong>」モデル：プラットフォームは訓練・予習を提供、接触は被害者主導。</p>
+<hr />
+<h1 id="viii-roadmap18">第 VIII 部 — 開発研究 Roadmap（18 ヶ月）</h1>
+<pre><code>Month 1-2 学術基盤
+  - 文献レビュー（後述 evidence base）
+  - IRB 申請（高知大学）
+  - 鈴木教授指導開始
+  - 修論テーマ確定
+  - ガバナンス・倫理 framework v0.1 commit
+
+Month 3-4 技術 MVP
+  - 12 categories 全 routing 知識 seed
+  - 4 つの主要 crawler（配暴セ・消費生活セ・児相・労基署）
+  - Web 問診 6 問 (PWA)
+  - rule-based 推奨エンジン（LLM なし）
+  - Leaflet GIS 公開
+
+Month 5-6 法律パイロット
+  - 谷口律師面談（6 月第 1 週）
+  - ADR 仲裁第 1 回期日（あなたの案件）
+  - 弁護士法 72 条境界の確定
+  - プラポリ / 利用規約完成
+  - 法律監修体制 1 名確保
+
+Month 7-9 ユーザーテスト
+  - 保健師パイロット（妻の病院）n=3
+  - DV シェルター 1 箇所 n=10 ケース
+  - 第二東京弁護士会 仲裁セで利用 n=1（あなた）
+
+Month 10-12 拡張
+  - オンデバイス SLM 実装（Llama 3.2 1B/3B）
+  - 多言語 5 言語
+  - iOS app TestFlight 配布
+  - 修論中間発表
+
+Month 13-15 学会発表
+  - 日本法社会学会
+  - 日本社会情報学会
+  - IEEE Security &amp; Privacy 投稿（PSI）
+  - FAccT 2027 投稿（AI ethics）
+
+Month 16-18 修論完成・展開
+  - 修論審査
+  - Hugging Face データセット公開
+  - NPO 法人化検討（オプション）
+</code></pre>
+<hr />
+<h1 id="ix-oss">第 IX 部 — 証拠と OSS</h1>
+<h2 id="38">38. 日本国内統計根拠</h2>
+<table>
+<thead>
+<tr>
+<th>出典</th>
+<th>データ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内閣府男女共同参画局</td>
+<td>男女間における暴力に関する調査（3 年）</td>
+</tr>
+<tr>
+<td>警察庁</td>
+<td>ストーカー事案・配偶者暴力対応状況</td>
+</tr>
+<tr>
+<td>国民生活センター</td>
+<td>PIO-NET 統計</td>
+</tr>
+<tr>
+<td>厚労省</td>
+<td>外国人技能実習生労災</td>
+</tr>
+<tr>
+<td>法務省</td>
+<td>犯罪白書、犯罪被害者白書</td>
+</tr>
+<tr>
+<td>日弁連</td>
+<td>司法アクセス白書、弁護士白書</td>
+</tr>
+<tr>
+<td>こども家庭庁</td>
+<td>児童相談所対応件数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="39-benchmark">39. 国際 benchmark</h2>
+<table>
+<thead>
+<tr>
+<th>出典</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>World Justice Project</td>
+<td>Rule of Law Index 2024（日本 14 位）</td>
+</tr>
+<tr>
+<td>OECD</td>
+<td>Equal Access to Justice for Inclusive Growth (2019)</td>
+</tr>
+<tr>
+<td>UN SDG 16</td>
+<td>Access to Justice for All</td>
+</tr>
+<tr>
+<td>LSC (US)</td>
+<td>Justice Gap Report 2022（92% 低所得層届かず）</td>
+</tr>
+<tr>
+<td>Hadfield</td>
+<td>Rules for a Flat World (2017)</td>
+</tr>
+<tr>
+<td>Susskind</td>
+<td>Online Courts and the Future of Justice (2019)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="40-ai-triage">40. AI Triage 研究</h2>
+<table>
+<thead>
+<tr>
+<th>論文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bauer &amp; Wright (2023) "AI-augmented crisis text platforms" Nature Digital Medicine</td>
+</tr>
+<tr>
+<td>Pisani et al. (2022) "ML for suicide risk" Lancet Psychiatry</td>
+</tr>
+<tr>
+<td>Walsh et al. (2017) "Predicting Risk of Suicide Attempts"</td>
+</tr>
+<tr>
+<td>Pestian et al. (2019) "Suicide Note Classification"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="41">41. プライバシー暗号</h2>
+<table>
+<thead>
+<tr>
+<th>論文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pinkas, Schneider, Zohner (2014) "Faster Private Set Intersection"</td>
+</tr>
+<tr>
+<td>Apple (2021) "CSAM Detection Technical Summary"</td>
+</tr>
+<tr>
+<td>Kissner &amp; Song (2005) "Privacy-Preserving Set Operations"</td>
+</tr>
+<tr>
+<td>Ion et al. (2020) "On Deploying Secure Computing" Google</td>
+</tr>
+<tr>
+<td>Signal Foundation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="42-ai">42. 法と AI</h2>
+<table>
+<thead>
+<tr>
+<th>論文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bommasani et al. (2021) "Foundation Models" Stanford</td>
+</tr>
+<tr>
+<td>Engstrom et al. (2020) "Government by Algorithm"</td>
+</tr>
+<tr>
+<td>Chesterman (2021) "We the Robots?" Cambridge UP</td>
+</tr>
+<tr>
+<td>EU AI Act (2024)</td>
+</tr>
+<tr>
+<td>中央大法学部「リーガルテックの実装と法的課題」</td>
+</tr>
+</tbody>
+</table>
+<h2 id="43-oss-leverage">43. OSS leverage マップ</h2>
+<h3 id="gis-mapping">GIS / Mapping</h3>
+<ul>
+<li>MapLibre GL JS (BSD-3) / Leaflet (BSD-2) / pg_tileserv (Apache-2.0) / Martin (MIT)</li>
+<li>PostGIS (GPL-2) / Uber H3 (Apache-2.0)</li>
+<li>国土地理院タイル / OpenStreetMap (ODbL)</li>
+</ul>
+<h3 id="nlp-llm">NLP / LLM</h3>
+<ul>
+<li>Ollama / llama.cpp / MLX (Apple) / WebLLM (TVM)</li>
+<li>sentence-transformers / LangChain / LlamaIndex</li>
+<li>spaCy + GiNZA / MeCab / Sudachi</li>
+<li>NLLB-200 (Meta, 200 言語) / Whisper / LexNLP</li>
+</ul>
+<h3 id="_3">プライバシー暗号</h3>
+<ul>
+<li>OpenMined PySyft / Microsoft SEAL / TFHE-rs (Zama) / Concrete (Zama)</li>
+<li>libsodium / Signal Protocol / Tink (Google) / age</li>
+</ul>
+<h3 id="_4">証拠保全</h3>
+<ul>
+<li>OpenTimestamps / Sigstore / Cosign</li>
+<li>ExifTool / Autopsy / Internet Archive Wayback</li>
+<li>age + git-annex</li>
+</ul>
+<h3 id="ocr">OCR</h3>
+<ul>
+<li>Tesseract / PaddleOCR / EasyOCR</li>
+<li>Apache Tika / pypdf / pdfplumber</li>
+<li>Apple Vision Framework</li>
+</ul>
+<h3 id="app-framework">App framework</h3>
+<ul>
+<li>Next.js / SvelteKit / Capacitor / Tauri</li>
+<li>FastAPI（現使用）/ PWA + Workbox</li>
+</ul>
+<h3 id="github">参考 GitHub プロジェクト</h3>
+<ul>
+<li>openmined/PySyft - プライバシー保存 ML</li>
+<li>signalapp/libsignal - E2E プロトコル</li>
+<li>freedomofpress/securedrop - 内部告発者保護</li>
+<li>ushahidi/platform - 危機マッピング、Kenya 25 万 user</li>
+<li>MapStore/MapStore2 - 多レイヤー GIS</li>
+<li>codeforjapan/welcome-tokyo - 自治体協働事例</li>
+</ul>
+<hr />
+<h1 id="x">第 X 部 — 収入戦略（政府委託主軸）</h1>
+<h2 id="44">44. 収入ポートフォリオ修正版</h2>
+<pre><code>🏛️ 公的事業委託 (政府発注)      60-70%  ★主軸
+🎓 研究助成金 (RISTEX, トヨタ)   15-20%
+🤝 公益契約 (自治体ライセンス)    10-15%
+💝 寄付 (任意、Lv4 専門職)        5-10%
+</code></pre>
+<h2 id="45">45. 中央省庁・国機関の発注</h2>
+<table>
+<thead>
+<tr>
+<th>発注元</th>
+<th>事業</th>
+<th>規模</th>
+<th>適合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内閣府男女共同参画局</td>
+<td>DV 被害者支援多言語化</td>
+<td>¥10-30M</td>
+<td>★★★★★</td>
+</tr>
+<tr>
+<td>内閣府</td>
+<td>デジタル田園都市交付金（自治体経由）</td>
+<td>¥10-50M/件</td>
+<td>★★★★</td>
+</tr>
+<tr>
+<td><strong>こども家庭庁</strong></td>
+<td><strong>SNS 相談事業委託</strong></td>
+<td>¥50-200M/年</td>
+<td>★★★★★（最大）</td>
+</tr>
+<tr>
+<td>こども家庭庁</td>
+<td>児童虐待 ICT 化モデル</td>
+<td>¥20-50M</td>
+<td>★★★★</td>
+</tr>
+<tr>
+<td>厚労省</td>
+<td>自殺対策強化事業</td>
+<td>¥38B/年 全体</td>
+<td>★★★★</td>
+</tr>
+<tr>
+<td>厚労省</td>
+<td>いじめ・自殺対策 SNS</td>
+<td>¥10-50M/件</td>
+<td>★★★★</td>
+</tr>
+<tr>
+<td><strong>法務省</strong></td>
+<td><strong>司法ソーシャルワーク モデル</strong></td>
+<td>¥10-20M</td>
+<td>★★★★★</td>
+</tr>
+<tr>
+<td>法務省</td>
+<td>人権相談多言語化</td>
+<td>¥5-15M</td>
+<td>★★★★</td>
+</tr>
+<tr>
+<td>消費者庁</td>
+<td>消費生活相談 AI 化</td>
+<td>¥10-20M</td>
+<td>★★★</td>
+</tr>
+<tr>
+<td>出入国在留管理庁</td>
+<td>外国人共生センター ICT</td>
+<td>¥10-30M</td>
+<td>★★★★</td>
+</tr>
+<tr>
+<td>デジタル庁</td>
+<td>デジタル臨時行政調査</td>
+<td>不定</td>
+<td>★★★</td>
+</tr>
+<tr>
+<td>法テラス</td>
+<td>多言語相談業務委託</td>
+<td>¥10-50M</td>
+<td>★★★★</td>
+</tr>
+<tr>
+<td>JICA</td>
+<td>海外司法アクセス支援</td>
+<td>¥30-100M</td>
+<td>★★★（中長期）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="46">46. 都道府県・自治体</h2>
+<table>
+<thead>
+<tr>
+<th>自治体</th>
+<th>事業</th>
+<th>規模</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>東京都</td>
+<td>DV / 多言語 / 性犯罪ワンストップ</td>
+<td>¥10-50M、複数</td>
+</tr>
+<tr>
+<td>大阪府</td>
+<td>DV / 外国人共生</td>
+<td>¥10-30M</td>
+</tr>
+<tr>
+<td>愛知県</td>
+<td>多文化共生</td>
+<td>¥10-30M</td>
+</tr>
+<tr>
+<td>京都府</td>
+<td>学生 SOS / LGBTQ</td>
+<td>¥5-20M</td>
+</tr>
+<tr>
+<td><strong>高知県（地元）</strong></td>
+<td>中山間地域司法 / 自殺対策</td>
+<td>¥5-20M ★</td>
+</tr>
+<tr>
+<td>千葉県（妻の現場）</td>
+<td>DV / 子供 SOS</td>
+<td>¥5-20M</td>
+</tr>
+<tr>
+<td>政令市 20 市</td>
+<td>各市 DV 計画</td>
+<td>¥3-15M/件</td>
+</tr>
+<tr>
+<td>特別区 23 区</td>
+<td>個別事業</td>
+<td>¥3-10M/件</td>
+</tr>
+</tbody>
+</table>
+<p>→ 47 都道府県 + 20 政令市 + 23 区 + 中核市 ≈ 150 自治体が毎年類似事業を発注。</p>
+<h2 id="47-5">47. 5 年現実収入シナリオ（修正版）</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>修正前（助成金のみ）</th>
+<th>修正後（委託 + 助成金）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>¥1.5M</td>
+<td><strong>¥4.5-6.5M</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>¥3M</td>
+<td><strong>¥21-28M</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>¥3-5M</td>
+<td><strong>¥58M</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>¥10M</td>
+<td><strong>¥80-150M</strong></td>
+</tr>
+</tbody>
+</table>
+<p>→ 「5 年で事業成立」 → 「<strong>Year 2 末で 2-3 FTE 雇用可能</strong>」に修正。
+→ 修論執筆中の Year 1 も大学経由委託 + RISTEX で食える。</p>
+<h2 id="48-entry">48. 委託 entry の障壁と回避策</h2>
+<table>
+<thead>
+<tr>
+<th>障壁</th>
+<th>回避策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入札参加資格</td>
+<td>A 等級不要、B-D 等級で即取得可</td>
+</tr>
+<tr>
+<td>実績要件</td>
+<td><strong>共同提案</strong>で大手の実績を借りる</td>
+</tr>
+<tr>
+<td>連帯保証</td>
+<td>信用金庫・全国保証協会経由</td>
+</tr>
+<tr>
+<td>大手 SIer 競合</td>
+<td>OSS + AI + 多言語で技術差別化</td>
+</tr>
+<tr>
+<td>コネ</td>
+<td>鈴木教授・谷口律師・台湾人脈経由</td>
+</tr>
+<tr>
+<td>資金繰り</td>
+<td>概算払い制度、つなぎ融資</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">回避策の具体パターン</h3>
+<ol>
+<li><strong>大学経由</strong>：高知大学受託（PI: 鈴木）→ 受託研究員として参画</li>
+<li><strong>共同提案</strong>：TIS / NEC / 中堅 SIer と共同応札、技術担当</li>
+<li><strong>NPO 連合</strong>：DV シェルター連盟 + JANIC + LegalShield 共同</li>
+<li><strong>指定管理者制度</strong>：自治体の DV センター 5 年契約</li>
+</ol>
+<h2 id="49-12">49. 直近 12 ヶ月の入札スケジュール（実務）</h2>
+<table>
+<thead>
+<tr>
+<th>時期</th>
+<th>案件</th>
+<th>推定額</th>
+<th>戦略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-04</td>
+<td>こども家庭庁 SNS 相談</td>
+<td>¥50M+</td>
+<td>大手と共同提案</td>
+</tr>
+<tr>
+<td>2026-05</td>
+<td>高知県 DV 計画関連</td>
+<td>¥5-15M</td>
+<td>大学経由</td>
+</tr>
+<tr>
+<td>2026-06</td>
+<td>デジタル田園都市交付金 自治体</td>
+<td>¥10-50M</td>
+<td>千葉県松戸市等</td>
+</tr>
+<tr>
+<td>2026-09</td>
+<td>内閣府 多言語相談</td>
+<td>¥10-30M</td>
+<td>NPO 連合経由</td>
+</tr>
+<tr>
+<td>2026-10</td>
+<td>法務省 司法ソーシャル</td>
+<td>¥10-20M</td>
+<td>谷口律師経由</td>
+</tr>
+<tr>
+<td>2026-11</td>
+<td>厚労省 自殺対策強化交付金</td>
+<td>¥10-30M/自治体</td>
+<td>高知県経由</td>
+</tr>
+<tr>
+<td>2027-01</td>
+<td>出入国在留管理庁 FRESC</td>
+<td>¥10-30M</td>
+<td>多言語強み</td>
+</tr>
+<tr>
+<td>2027-03</td>
+<td>RISTEX SOLVE 2027</td>
+<td>¥1.5M+</td>
+<td>助成金、保険</td>
+</tr>
+</tbody>
+</table>
+<p>→ 8 件中 1-2 件採択でも年商 ¥10-30M。</p>
+<h2 id="50">50. 海外参考事例</h2>
+<table>
+<thead>
+<tr>
+<th>国</th>
+<th>プロジェクト</th>
+<th>形態</th>
+<th>規模</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🇹🇼</td>
+<td>PDIS（公共數位創新空間）</td>
+<td>政府内 + 委託</td>
+<td>年 ¥数億</td>
+</tr>
+<tr>
+<td>🇹🇼</td>
+<td>g0v 零時政府</td>
+<td>NPO + 政府協働</td>
+<td>年 ¥数千万</td>
+</tr>
+<tr>
+<td>🇪🇪</td>
+<td>e-Estonia X-Road</td>
+<td>政府 + 民間連合</td>
+<td>年 €数億</td>
+</tr>
+<tr>
+<td>🇬🇧</td>
+<td>GovTech Catalyst</td>
+<td>スタートアップ向け発注</td>
+<td>£20M/プログラム</td>
+</tr>
+<tr>
+<td>🇺🇸</td>
+<td>18F / USDS</td>
+<td>政府内 + 委託</td>
+<td>年 $40-60M</td>
+</tr>
+<tr>
+<td>🇮🇱</td>
+<td>Yad Sarah</td>
+<td>NPO 公的契約</td>
+<td>年 ¥約 30 億</td>
+</tr>
+</tbody>
+</table>
+<p>→ 「両方やる」が世界標準、日本だけ「受託 OR 批判」二択文化が強い。</p>
+<hr />
+<h1 id="xi">第 XI 部 — 立ち位置</h1>
+<h2 id="51">51. プラットフォーム供給者モデル（最終形）</h2>
+<pre><code>┌──────────────────────────────────────────────────┐
+│  LegalShield = 中立的インフラ供給者                │
+│  (一般社団 or 株式会社、政府委託も受ける)          │
+│                                                    │
+│  あなたの顔: 技術者・研究者・基盤提供者            │
+│  「私たちは道具を作る、使い方は使う人が決める」    │
+└──────────────────────────────────────────────────┘
+              │
+              │ &quot;Powered by LegalShield&quot;
+              ▼
+┌──────────────────────────────────────────────────┐
+│  プラットフォームを使う独立アクターたち            │
+├──────────────────────────────────────────────────┤
+│  CALL4         → 公共訴訟（LegalShield データ使用） │
+│  DV NPO        → シェルター運営（SaaS 利用）        │
+│  弁護士        → 案件準備（証拠基盤利用）           │
+│  ジャーナリスト → 調査報道（匿名データ参照）        │
+│  研究者        → 学術論文（コーパス利用）           │
+│  被害当事者    → 自助（直接利用）                   │
+│  議員秘書      → 政策資料（オープンデータ参照）     │
+│  自治体監察官  → 統計分析（API 利用）               │
+└──────────────────────────────────────────────────┘
+              │
+              ▼
+       彼らが「打つ」
+       あなたは黙って良い道具を作り続ける
+</code></pre>
+<h2 id="52">52. 同モデルの先輩</h2>
+<table>
+<thead>
+<tr>
+<th>組織</th>
+<th>道具</th>
+<th>「打つ」のは誰</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Signal Foundation</td>
+<td>E2E メッセージ</td>
+<td>ジャーナリスト・反体制派</td>
+</tr>
+<tr>
+<td>Tor Project</td>
+<td>匿名通信</td>
+<td>NGO・告発者</td>
+</tr>
+<tr>
+<td>OpenStreetMap</td>
+<td>地理データ</td>
+<td>災害支援・NPO</td>
+</tr>
+<tr>
+<td>Wikimedia Foundation</td>
+<td>Wiki</td>
+<td>編集者</td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>コードホスト</td>
+<td>開発者・OSS</td>
+</tr>
+<tr>
+<td>Internet Archive</td>
+<td>アーカイブ</td>
+<td>歴史家・訴訟</td>
+</tr>
+</tbody>
+</table>
+<p>→ 道具提供者は中立、利用者が政治化する。「<strong>包丁屋は包丁を売る、料理人が料理を作る</strong>」モデル。</p>
+<h2 id="53-vs">53. 顔を出す場面 vs 出さない場面</h2>
+<h3 id="_6">✅ 出す</h3>
+<ul>
+<li>技術カンファレンス（エンジニア・OSS メンテナー）</li>
+<li>学術学会（研究者・修論）</li>
+<li>大学講演（技術解説）</li>
+<li>自治体への提案・営業（ベンダー代表）</li>
+<li>メディア取材（<strong>技術</strong>面）</li>
+<li>専門家証人（<strong>技術</strong>面）</li>
+<li>国際会議（PDIS 等、日本 civic tech 代表）</li>
+</ul>
+<h3 id="_7">❌ 出さない（他の人に渡す）</h3>
+<ul>
+<li>政府批判記者会見 → NPO・被害当事者</li>
+<li>公共訴訟原告 → CALL4 + 当事者</li>
+<li>デモ・運動 → 既存運動団体</li>
+<li>政治家ロビイング → 議員秘書・専門家団体</li>
+<li>TV ワイドショー → 出ない（最大の罠）</li>
+<li>Twitter/X 政府批判 → 最小限</li>
+</ul>
+<h2 id="54">54. 「裏で」する仕事</h2>
+<pre><code>1. 障壁レポート公開（誰でも引用可、あなた個人は前に出ない）
+2. 匿名化データ提供（ジャーナリスト記事化・研究者論文化・弁護士訴状）
+3. 連名告発インフラ（PSI 技術提供、出すかは被害者連合判断）
+4. 政策資料の作成支援（議員・NPO に技術的バックグラウンド）
+5. メディアへの「証拠の問い合わせ先」（取材は他の人が受ける）
+</code></pre>
+<h2 id="55">55. 中立性維持の仕組み</h2>
+<pre><code>理事会（年 4 回、議事録公開）
+  ├── あなた（代表）
+  ├── 鈴木保志教授（学術）
+  ├── 谷口律師（法律 / もし入ってくれれば）
+  ├── 当事者代表 1 名（匿名可、任期 2 年）
+  ├── DV NPO 代表 1 名
+  └── 自治体経験者 1 名（退職者）
+
+技術監査委員会（年 1 回、報告公開）
+  → アルゴリズム・データの中立性確認
+
+利益相反方針（公開）
+  → 特定政党・特定企業との結託排除
+  → 政府との契約は透明性報告書で開示
+
+データガバナンス憲章（公開）
+  → いかなる政府・企業も全件データへのアクセスは持たない
+  → 研究目的の集計データのみ提供
+</code></pre>
+<h2 id="56-6-1">56. 谷口律師面談（6 月第 1 週）の提案</h2>
+<pre><code>「私は法律的に打つ役ではありません。
+ ですが、打つ方々のための『証拠基盤と接続性』を作ります。
+ 谷口先生方が公共訴訟するとき、
+ 構造化された証拠・統計・連名告発インフラを
+ オープンに提供したい。
+ 既存の CALL4 のミッションと**競合しない、補完する**。」
+</code></pre>
+<p>→ 谷口さんから見て「ライバル」ではなく「便利な道具を提供してくれる中立的な技術者」。
+→ 関係が圧倒的に楽。</p>
+<hr />
+<h1 id="xii">第 XII 部 — 結論と次のアクション</h1>
+<h2 id="57-3">57. 3 つの現実シナリオ</h2>
+<pre><code>シナリオ A（最良 15%）: 助成金 2 件採択 + 委託 2 件
+  → 18 ヶ月で MVP + NPO 5 法人 + 学術論文 2 本
+  → 修論 + 起業基盤
+  → 5 年後: NPO 法人 + 100 法人連携 + 1-3 万 MAU
+
+シナリオ B（標準 60%）: 助成金 1 件 + 委託 1 件 or 部分採択
+  → 18 ヶ月で MVP + パイロット 2 法人 + 修論
+  → 5 年後: 副業継続 + 学術発表多数 + 数万 MAU
+
+シナリオ C（悲観 25%）: 助成金不採択、委託も不調
+  → 18 ヶ月で修論完成、商業化なし
+  → OSS 公開、海外研究者引用
+  → あなたの被害は解決（ADR 結果次第）
+  → 「やった経験」が次の機会の基盤
+</code></pre>
+<p><strong>いずれのシナリオでも</strong>：
+- ✅ 修論完成
+- ✅ あなた個人の ADR 紛争解決経験
+- ✅ OSS / データセット公開
+- ✅ 日台産学ネットワーク構築</p>
+<h2 id="58">58. 次のアクション（優先順）</h2>
+<h3 id="1">直近 1 週間</h3>
+<ol>
+<li>✅ DB schema + 12 categories + 26 routing seed（完了）</li>
+<li>⏸️ 残り 7 categories の routing 詳細（特に sexual_violence、child_abuse — 命）</li>
+<li>⏸️ 配偶者暴力相談支援センター crawler</li>
+<li>⏸️ 緊急モード UI ワイヤーフレーム</li>
+</ol>
+<h3 id="1_1">直近 1 ヶ月</h3>
+<ol start="5">
+<li>谷口律師面談（6 月第 1 週）— <strong>このレポート + Pillar 構造図 + 弁護士法 72 条議論</strong></li>
+<li>ADR 仲裁第 1 回期日（あなたの製品欠陥案件）</li>
+<li>鈴木保志教授指導開始</li>
+<li>IRB 申請準備</li>
+<li>RISTEX SOLVE 2026 申請書ドラフト</li>
+<li>SEO 12 本コア記事の最初の 3 本（DV / 製品欠陥 / admin_grievance）</li>
+</ol>
+<h3 id="3">直近 3 ヶ月</h3>
+<ol start="11">
+<li>Web 問診 6 問 PWA</li>
+<li>rule-based 推奨エンジン（LLM なし）</li>
+<li>4 つの主要 crawler（配暴セ・消費生活セ・児相・労基署）</li>
+<li>パートナー 1-2 法人パイロット</li>
+<li>こども家庭庁 SNS 相談事業（2026-04 公示予定）の提案書ドラフト</li>
+</ol>
+<hr />
+<h1 id="a-db-12-problem_category">付録 A — DB スキーマ（投入済 12 problem_category）</h1>
+<pre><code class="language-sql">INSERT INTO legalshield.problem_category VALUES
+  ('dv',                  '配偶者・パートナー暴力（DV）',     critical, '#8008',           {gender,partner,urgent},  10),
+  ('stalking',            'ストーカー被害',                   critical, '110',             {gender,partner,urgent},  20),
+  ('sexual_violence',     '性犯罪・性暴力',                   critical, '#8891',           {gender,urgent},          30),
+  ('child_abuse',         '児童虐待',                         critical, '189',             {child,urgent},           40),
+  ('elder_abuse',         '高齢者虐待',                       high,     '地域包括支援セ',  {elder},                  50),
+  ('school_bullying',     'いじめ・スクールハラスメント',     high,     '0120-0-78310',    {child,education},        60),
+  ('workplace_harassment','職場ハラスメント',                 high,     '0570-919-471',    {workplace,labor},        70),
+  ('labor_violation',     '労働基準法違反・賃金未払い',       high,     '0120-811-610',    {workplace,labor},        80),
+  ('foreign_worker',      '外国人労働者の権利侵害',           high,     '0570-011000',     {workplace,foreign},      90),
+  ('consumer_fraud',      '消費者被害・契約トラブル',         medium,   '188',             {consumer},              100),
+  ('product_defect',      '製品欠陥・PL 被害',                high,     '188',             {consumer,tech},         110),
+  ('admin_grievance',     '行政手続きの不利益',               high,     '0570-003-110',    {admin,family},          120);
+</code></pre>
+<hr />
+<h1 id="b">付録 B — 議論ログのトピック索引</h1>
+<table>
+<thead>
+<tr>
+<th>時刻</th>
+<th>トピック</th>
+<th>本書セクション</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>17:43</td>
+<td>システム現状チェック</td>
+<td>1, 2</td>
+</tr>
+<tr>
+<td>17:46</td>
+<td>方針転換：問題種類 → NPO/行政</td>
+<td>3, 4</td>
+</tr>
+<tr>
+<td>17:49</td>
+<td>DB schema + seed 投入</td>
+<td>2-3, 5</td>
+</tr>
+<tr>
+<td>17:56</td>
+<td>weight = ベイズ prior 解説</td>
+<td>5</td>
+</tr>
+<tr>
+<td>18:01</td>
+<td>入口設計 + 5 段同意 + 自殺境界 + 濫用防止 + 境界線図</td>
+<td>7-14</td>
+</tr>
+<tr>
+<td>18:11</td>
+<td>GIS スタック + 屋内測位 6 技術</td>
+<td>24-25</td>
+</tr>
+<tr>
+<td>18:17</td>
+<td>Lv0-Lv5 全シナリオマトリクス + ギャップ分析</td>
+<td>15-23</td>
+</tr>
+<tr>
+<td>18:24</td>
+<td>SEO + 5 段アクセス + コスト + 統合 + データセット</td>
+<td>27-31</td>
+</tr>
+<tr>
+<td>18:32</td>
+<td>6 軸 feasibility audit + 18 ヶ月 roadmap + 証拠基盤 + OSS leverage</td>
+<td>32-43</td>
+</tr>
+<tr>
+<td>18:39</td>
+<td>政府委託主軸の収入構造</td>
+<td>44-50</td>
+</tr>
+<tr>
+<td>18:43</td>
+<td>官民協働 + アドボカシー hybrid（後に修正）</td>
+<td>（初版）</td>
+</tr>
+<tr>
+<td>18:47</td>
+<td>プラットフォーム供給者モデルに収斂</td>
+<td>51-56</td>
+</tr>
+<tr>
+<td>18:50</td>
+<td>本レポート</td>
+<td>全体</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="c-1">付録 C — 鈴木保志教授・谷口太規律師への 1 ページ要約</h1>
+<p><strong>プロジェクト名</strong>：LegalShield — 困境分流プラットフォーム</p>
+<p><strong>何を作る</strong>：困境を抱える人が「<strong>今、誰に、何を、どう伝えるか</strong>」を 6 問で答える、加重付き法律分流プラットフォーム</p>
+<p><strong>設計思想</strong>：
+1. <strong>包丁屋になる</strong>（料理人にはならない）
+2. プラットフォームは「呼出までしかしない」、最終決定は人間
+3. 5 段同意 ladder + 緊急時 bypass + 事後同意
+4. 弁護士法 72 条境界の遵守（情報提供のみ）
+5. オンデバイス SLM（プライバシー + コスト爆発回避）
+6. 政府委託 + 研究助成 + 公益契約のハイブリッド収入</p>
+<p><strong>ユニーク差分</strong>：
+- 製品欠陥被害当事者が ADR 進行中（<strong>自分の体験を schema で validate</strong>）
+- 妻＝保健師の現場視点
+- 台湾人配偶者の外国人視点
+- 大学院 + 修論として論理化、撤回不能</p>
+<p><strong>18 ヶ月のマイルストーン</strong>：MVP 公開、自治体パイロット 2 件、論文 2 本、修論完成</p>
+<p><strong>本日決定したこと</strong>（2026-05-25）：
+- 問題種類カテゴリ 12 + 加重 routing 26 ルートの DB 投入完了
+- プラットフォーム供給者モデル採用（advocacy は他者に委ねる）
+- 収入主軸を政府委託に確定（助成金は補助）</p>
+<p>— Generated 2026-05-25 by 起案者 + Cascade —</p>
+<div class="footer-note">— Generated by LegalShield Document Pipeline / 2026-05-25_consolidated_design_v0.1.md —</div>
+</div>
+</body>
+</html>

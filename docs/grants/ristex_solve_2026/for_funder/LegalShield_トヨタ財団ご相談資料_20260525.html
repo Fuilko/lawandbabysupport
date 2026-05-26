@@ -1,0 +1,577 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<title>LegalShield トヨタ財団ご相談資料</title>
+<style>
+@page { size: A4; margin: 18mm 14mm 18mm 14mm; }
+* { box-sizing: border-box; }
+body { font-family: 'Yu Gothic UI', '游ゴシック', 'Meiryo', 'Hiragino Sans', sans-serif;
+       color: #1a1a1a; line-height: 1.65; font-size: 10.5pt; max-width: 100%; margin: 0; padding: 0 }
+h1 { font-size: 18pt; color: #0a3a73; border-bottom: 3px solid #0a3a73; padding-bottom: 6px; margin-top: 22pt }
+h2 { font-size: 14pt; color: #0a3a73; border-left: 5px solid #0a3a73; padding-left: 10px; margin-top: 20pt }
+h3 { font-size: 12pt; color: #2a4a73; margin-top: 14pt }
+h4 { font-size: 11pt; color: #2a4a73 }
+p, li { font-size: 10.5pt; text-align: justify }
+table { border-collapse: collapse; width: 100%; margin: 8pt 0; page-break-inside: avoid; font-size: 9.5pt }
+th, td { border: 1px solid #aab2c0; padding: 5pt 7pt; vertical-align: top }
+th { background: #e8eef7; color: #0a3a73; font-weight: 600 }
+code, pre { font-family: 'Cascadia Mono', Consolas, monospace; font-size: 9.5pt; background: #f4f6fa; padding: 2px 4px; border-radius: 3px }
+pre { padding: 8pt 10pt; overflow-x: auto; page-break-inside: avoid }
+blockquote { border-left: 4px solid #0a3a73; background: #f4f6fa; padding: 6pt 12pt; margin: 8pt 0; color: #2a4a73 }
+hr { border: 0; border-top: 1px dashed #aab2c0; margin: 14pt 0 }
+ul, ol { padding-left: 22pt }
+li > p { margin: 2pt 0 }
+strong { color: #0a3a73 }
+</style></head><body><h1 id="legalshield">LegalShield プロジェクト 助成相談ブリーフィング</h1>
+<h2 id="2026-5-25">公益財団法人トヨタ財団 面談用（2026 年 5 月 25 日）</h2>
+<p><strong>提出者</strong>：劉 建志（リュウ ケンシ）<br />
+<strong>所属</strong>：高知大学大学院 農林海洋科学専攻 森林工学研究室 修士課程<br />
+<strong>連絡先</strong>：kenji@hiiforest.com ／ 080-8475-2122<br />
+<strong>GitHub</strong>：<a href="https://github.com/Fuilko/lawandbabysupport">https://github.com/Fuilko/lawandbabysupport</a><br />
+<strong>最新コミット</strong>：2026-05-25 同期完了</p>
+<hr />
+<h2 id="0-1-90">第 0 章　お持ちする 1 ページサマリー（最初の 90 秒用）</h2>
+<blockquote>
+<p><strong>LegalShield は、地方在住・外国籍・経済的に余裕のない方々の「自己防衛・証拠保全・法律情報アクセス」を、AI と暗号学的ネットワークで支える MIT/Apache 2.0 完全オープンソースの社会基盤プロジェクトです。</strong><br />
+既存の司法支援制度（弁護士会・法テラス・トラブル110番等）と<strong>競合するのではなく補完する</strong>「制度の隙間を埋める市民技術（シビックテック）」として設計しています。<br />
+開発者本人がある製品紛争のご相談を 10 件以上の専門家に重ねるなかで気づいた「地方在住・外国籍当事者が直面する司法アクセスのギャップ」を、技術と公益ネットワークで埋める社会実装研究です。当該紛争は第二東京弁護士会仲裁センターにて令和 8 年（仲）第 129 号として正式受理されており、<strong>システムが現場で機能するかを検証する実証フィールド</strong>となっています。</p>
+</blockquote>
+<hr />
+<h2 id="1">第 1 章　ご面談の目的</h2>
+<p>本日のご面談では、以下の 3 点についてトヨタ財団様のご見解を賜りたく存じます。</p>
+<ol>
+<li>
+<p><strong>助成プログラム選定のご相談</strong><br />
+   ─ 国内助成プログラム／研究助成プログラム／特定課題（例：「先端技術と共創する未来」）のうち、本プロジェクトに最も適合する枠についてご教示いただけないか。</p>
+</li>
+<li>
+<p><strong>申請書類の方向性についてのご意見</strong><br />
+   ─ 採択傾向、評価軸（社会的インパクトと技術革新性の比重等）、過去の類似採択案件の有無。</p>
+</li>
+<li>
+<p><strong>共同実施体制への助言</strong><br />
+   ─ 大学（高知大学）／NPO（フリーランス・トラブル 110 番／つくろい東京ファンド等）／弁護士団体（第二東京弁護士会仲裁センター／CALL4 等）の組合せが、トヨタ財団様の助成スキームと相性が良いか。</p>
+</li>
+</ol>
+<hr />
+<h2 id="2">第 2 章　プロジェクト概要</h2>
+<h3 id="21">2.1　ワンセンテンス</h3>
+<blockquote>
+<p><strong>データ駆動型・暗号学的協調検知による「個人がアクセスできる司法」を実装する OSS 社会インフラ。</strong></p>
+</blockquote>
+<h3 id="22">2.2　解決する社会課題</h3>
+<table>
+<thead>
+<tr>
+<th>課題</th>
+<th>現状の壁</th>
+<th>LegalShield のアプローチ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DV／ストーカー被害者の証拠保全</td>
+<td>警察相談前の証拠喪失・改ざんリスク</td>
+<td>端末側 SHA-256 ハッシュチェーン + タイムスタンプ</td>
+</tr>
+<tr>
+<td>外国籍被害者の言語・制度障壁</td>
+<td>日本語法律用語の理解、書類起案不能</td>
+<td>オンデバイス多言語 LLM／自動書面起案</td>
+</tr>
+<tr>
+<td>フリーランス／代理店被害</td>
+<td>単独立証困難、加害者の組織性が見えない</td>
+<td>暗号学的私的集合交差（PSI）で「同じ加害者・別の被害者」と安全に出会う</td>
+</tr>
+<tr>
+<td>地方在住者の弁護士アクセス</td>
+<td>高知・離島等で専門家不在、出張費負担過大</td>
+<td>iPhone 上で完結する自己防衛 + 連名告訴接続</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-30">2.3　技術アーキテクチャ（30 秒版）</h3>
+<ul>
+<li><strong>フロントエンド</strong>：iOS Native (SwiftUI, iOS 17+) — 34 Swift ファイル実装済</li>
+<li><strong>バックエンド</strong>：FastAPI + DuckDB + LanceDB（ベクトル検索）— 公開 GIS API 別途構築中</li>
+<li><strong>AI</strong>：sentence-transformers 多言語埋め込み + 端末上 SLM/LLM (Ollama Llama 3)</li>
+<li><strong>暗号</strong>：PSI（Private Set Intersection）/ Bloom Filter による被害ハッシュ照合</li>
+<li><strong>OSS</strong>：MIT/Apache 2.0、完全公開（GitHub 上で全コード閲覧可能）</li>
+</ul>
+<hr />
+<h2 id="3">第 3 章　本日までの実装進捗</h2>
+<h3 id="31-ios-7">3.1　iOS プロトタイプ（実装済モジュール 7 件）</h3>
+<table>
+<thead>
+<tr>
+<th>モジュール</th>
+<th>機能</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Evidence Vault</td>
+<td>SHA-256 ハッシュチェーン付き証拠保管</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>Anti-Surveillance</td>
+<td>反偵察ツール（Bluetooth 追跡デバイス検出 等）</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>Anomaly Detection</td>
+<td>心拍異常・位置異常検出</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>防誘導取証 Copilot</td>
+<td>リアルタイム法的助言</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>Administrative Law Module</td>
+<td>行政法サポート（DV 防止法等）</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>Audit Log</td>
+<td>全アクション改ざん不可ログ</td>
+<td>✅ 実装済</td>
+</tr>
+<tr>
+<td>法律文書ジェネレーター</td>
+<td>訴状・準備書面・陳述書テンプレ起案</td>
+<td>✅ 実装済</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-rag">3.2　RAG（検索拡張生成）コーパス</h3>
+<table>
+<thead>
+<tr>
+<th>データソース</th>
+<th>件数</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CALL4 公共訴訟事例 全件</td>
+<td>76 件（1,447,928 字）</td>
+<td>公共訴訟の戦略・論述パターン</td>
+</tr>
+<tr>
+<td>裁判所公式書式</td>
+<td>166 件 PDF/DOCX</td>
+<td>民訴・調停・少額・労働の正式テンプレ</td>
+</tr>
+<tr>
+<td>判例データ（既存）</td>
+<td>ドローン・契約不適合・瑕疵担保 etc.</td>
+<td>民法判例 RAG</td>
+</tr>
+<tr>
+<td>法令データ（既存）</td>
+<td>日本法・台湾法</td>
+<td>DV／ストーキング／個人情報保護</td>
+</tr>
+<tr>
+<td><strong>計</strong></td>
+<td><strong>3,837 chunks（384 次元ベクトル）</strong></td>
+<td>全文検索・RAG 統合済</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33">3.3　社会実装・連携実績</h3>
+<table>
+<thead>
+<tr>
+<th>案件</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mapry M4-0 ドローン品質欠陥事件 仲裁手続</td>
+<td>第二東京弁護士会仲裁センター受理（令和 8 年（仲）第 129 号）</td>
+</tr>
+<tr>
+<td>フリーランス・トラブル110番（厚労省委託）</td>
+<td>連携継続中</td>
+</tr>
+<tr>
+<td>6/30〜7/9 第 1 回期日（仲裁）</td>
+<td>準備書面（第 1）ドラフト完成済</td>
+</tr>
+<tr>
+<td>高知大学指導教授（鈴木保志先生）面談</td>
+<td>完了（2026-05-24）— RISTEX 推薦体制協議中</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34">3.4　「自分の事件で動かす」ドッグフーディング実証</h3>
+<p>開発者本人が当事者の Mapry 事件において、LegalShield のフォレンジック機能を用いて：</p>
+<ul>
+<li>61 GB ext4 ファイルシステム鏡像から SHA-256 chain of custody 付きで証拠抽出</li>
+<li>1,061 個の証拠ファイルを ハッシュ manifest 化</li>
+<li>70 件以上の under-voltage 事件、12 種 PreArm 失敗、176 件 git commit 履歴等を機械的解析</li>
+<li>飛行軌跡 GPS 10,410 サンプルを高精度再構築し、「無人機が操縦者頭上を 730 サンプル（2.4 分）通過、最高 154 m から落下した場合 15,180 J ＝ 拳銃弾 30 発相当」を物理計算で立証</li>
+</ul>
+<p>これは「<strong>実証実験案件</strong>」として、トヨタ財団様への申請書類においても<strong>研究の実施可能性証明</strong>として提示可能です。</p>
+<hr />
+<h2 id="4">第 4 章　他財団・助成への並行応募状況</h2>
+<table>
+<thead>
+<tr>
+<th>機関／プログラム</th>
+<th>締切</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JST RISTEX SOLVE 2026</td>
+<td>2026-06-03（水）正午</td>
+<td>提案書最終化中</td>
+</tr>
+<tr>
+<td><strong>公益財団法人トヨタ財団 国内助成プログラム</strong></td>
+<td>（ご相談中）</td>
+<td><strong>本日ご相談</strong></td>
+</tr>
+<tr>
+<td>日本財団（社会変革推進助成）</td>
+<td>検討中</td>
+<td>未応募</td>
+</tr>
+<tr>
+<td>Mozilla MOSS／Sloan Foundation（OSS 助成）</td>
+<td>通年</td>
+<td>海外向け補強</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5">第 5 章　共同実施体制（案）</h2>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>候補機関</th>
+<th>関与レベル</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>代表機関</strong></td>
+<td>高知大学（鈴木保志研究室）</td>
+<td>学術指導・データ管理</td>
+</tr>
+<tr>
+<td><strong>共同実施機関</strong></td>
+<td>フリーランス・トラブル110番（厚労省委託 NPO）</td>
+<td>現場連携・ニーズ提供</td>
+</tr>
+<tr>
+<td><strong>法務連携</strong></td>
+<td>第二東京弁護士会 仲裁センター／CALL4</td>
+<td>司法接続・公共訴訟</td>
+</tr>
+<tr>
+<td><strong>国際協力</strong></td>
+<td>台湾現代婦女基金会／NNEDV（米国 NPO）</td>
+<td>DV/性暴力被害者支援</td>
+</tr>
+<tr>
+<td><strong>技術検証</strong></td>
+<td>TeamT5（台湾サイバーセキュリティ）</td>
+<td>暗号実装監査</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6">第 6 章　申請の骨子（仮）</h2>
+<h3 id="61">6.1　研究テーマ案</h3>
+<blockquote>
+<p><strong>「データ駆動型・本人訴訟支援システムによる SDGs 5・10・16 目標達成 ─<br />
+地方在住・外国籍・経済的弱者の司法アクセス権保障に関する社会実装研究」</strong></p>
+</blockquote>
+<h3 id="62-sdgs">6.2　ターゲット SDGs</h3>
+<table>
+<thead>
+<tr>
+<th>SDGs</th>
+<th>課題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>5（ジェンダー平等）</strong></td>
+<td>DV／ストーキング被害者支援</td>
+</tr>
+<tr>
+<td><strong>10（不平等の是正）</strong></td>
+<td>経済的弱者・外国籍被害者の司法アクセス</td>
+</tr>
+<tr>
+<td><strong>16（平和と公正）</strong></td>
+<td>制度的レイシズム・暴力的支配構造からの解放</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63">6.3　予算規模（仮、財団様の助成枠に柔軟に合わせます）</h3>
+<ul>
+<li>開発・運用：300〜500 万円／年</li>
+<li>法務・倫理審査：50 万円</li>
+<li>普及啓発・実証：100 万円</li>
+<li>期間：1〜2 年</li>
+</ul>
+<p>（参考）他財団への並行応募では総額 800 万円（24 ヶ月）規模で構想中ですが、<strong>トヨタ財団様の推薦枠（国内助成プログラム等）に応じて柔軟に調整する用意がございます</strong>。</p>
+<h3 id="64-kpi">6.4　成果指標（KPI 案）</h3>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>目標値（2 年）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iOS アプリ実装機能数</td>
+<td>7 → 15 モジュール</td>
+</tr>
+<tr>
+<td>RAG コーパス</td>
+<td>3,837 → 20,000 chunks</td>
+</tr>
+<tr>
+<td>実証実験参加被害者数</td>
+<td>0 → 100 名（匿名化済）</td>
+</tr>
+<tr>
+<td>連名告訴・公共訴訟接続事例</td>
+<td>0 → 3 件</td>
+</tr>
+<tr>
+<td>OSS GitHub Star 数</td>
+<td>0 → 500</td>
+</tr>
+<tr>
+<td>学術発表</td>
+<td>1 件以上（査読付き）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7">第 7 章　トヨタ財団様にぜひお伺いしたい質問（こちらから提示する論点）</h2>
+<h3 id="71">7.1　助成プログラム選定について</h3>
+<ol>
+<li><strong>本プロジェクトに最適なトヨタ財団の助成枠</strong>はどれか？  </li>
+<li>国内助成プログラム（社会課題解決）</li>
+<li>研究助成プログラム</li>
+<li>特定課題（「先端技術と共創する未来」等）</li>
+<li>
+<p>国際助成プログラム（台湾連携を含む）</p>
+</li>
+<li>
+<p><strong>複数プログラムへの並行応募</strong>は可能か？JST RISTEX との二重応募・採択ルールは？</p>
+</li>
+<li>
+<p><strong>2025-2026 年度の重点テーマ</strong>で、本プロジェクトとシナジーがあるものは？</p>
+</li>
+</ol>
+<h3 id="72">7.2　申請書類について</h3>
+<ol>
+<li>
+<p><strong>採択された類似案件</strong>は過去にあるか？（例：シビックテック × 司法アクセス × OSS の交差点）</p>
+</li>
+<li>
+<p><strong>採択基準で最も重視される軸</strong>は何か？（社会的インパクト／技術革新性／実施体制／持続可能性／オープン性）</p>
+</li>
+<li>
+<p><strong>「修士課程学生が代表者」となる申請</strong>は実例があるか？ 申請者として不利になるか？</p>
+</li>
+<li>
+<p><strong>共同申請者の構成</strong>として、大学・NPO・弁護士会・海外団体の混合は望ましいか、それとも国内中心が好まれるか？</p>
+</li>
+</ol>
+<h3 id="73">7.3　評価・倫理について</h3>
+<ol>
+<li>
+<p><strong>個人情報・支援対象者情報を扱う研究</strong>として、トヨタ財団様が求める倫理審査・データ保護基準は？</p>
+</li>
+<li>
+<p><strong>OSS 公開</strong>を前提とすることは、財団様のスキームと適合するか？（成果物の知財・公開ポリシー）</p>
+</li>
+<li>
+<p><strong>研究代表者本人が、関連する民事仲裁事件の当事者でもある</strong>ことについて、利益相反の整理を行いたく存じます。<br />
+    なお、当方の方針として、<strong>本助成金は個人の係争費用には 1 円も流用いたしません</strong>。予算は全額、高知大学の管理下において、(a) 法律 AI（Ollama／LanceDB）のローカル実装、(b) 地方の支援対象者データの匿名化研究、(c) 学術論文の執筆、(d) OSS 公開のための運用、にのみ充当いたします。Mapry 案件は、システムが現場で正常に機能するかを検証する<strong>純粋なパイロット実証データ（Dogfooding）</strong>として位置づけております。</p>
+</li>
+</ol>
+<h3 id="74">7.4　協働・推薦について</h3>
+<ol>
+<li>
+<p>トヨタ財団様の <strong>過去の助成事例ネットワーク</strong> で、本プロジェクトとの連携が考えられる先輩プロジェクトは？</p>
+</li>
+<li>
+<p><strong>採択後の中間報告・年次報告</strong>の負担は実務的にどの程度か？（修士 1 年生としての並行可能性）</p>
+</li>
+<li>
+<p><strong>不採択でも継続的に応募可能か</strong>？（次年度以降）</p>
+</li>
+</ol>
+<hr />
+<h2 id="8-github">第 8 章　補足資料（GitHub から取得可能）</h2>
+<p>すべて <a href="https://github.com/Fuilko/lawandbabysupport">https://github.com/Fuilko/lawandbabysupport</a> 上で公開。</p>
+<table>
+<thead>
+<tr>
+<th>資料</th>
+<th>パス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>プロジェクト紹介書（A4 3 頁）</td>
+<td><code>docs/grants/ristex_solve_2026/outreach/pdf/LegalShield_紹介書_20260522.pdf</code></td>
+</tr>
+<tr>
+<td>鈴木保志教授 面談報告書（前回）</td>
+<td><code>docs/grants/ristex_solve_2026/for_advisor/02_meeting_report_20260524.pdf</code></td>
+</tr>
+<tr>
+<td>完全外部アウトリーチパック</td>
+<td><code>docs/grants/ristex_solve_2026/outreach/CONSOLIDATED_OUTREACH_PACK.md</code></td>
+</tr>
+<tr>
+<td>Mapry 案件公開可能部分</td>
+<td><code>legalshield/case_studies/mapry_M4_0/README.md</code></td>
+</tr>
+<tr>
+<td>iOS プロジェクト</td>
+<td><code>ios/LegalShield/</code></td>
+</tr>
+<tr>
+<td>RAG 検索 CLI</td>
+<td><code>legalshield/backend/litigation_rag.py</code></td>
+</tr>
+<tr>
+<td>公開 GIS API（実装中）</td>
+<td><code>gis/services/legalshield-api/</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9">第 9 章　実証実験フィールド（参考情報）</h2>
+<blockquote>
+<p>本プロジェクトの実証フィールドとして、開発者本人が当事者となっているある製品紛争（第二東京弁護士会仲裁センター 令和 8 年（仲）第 129 号として現在受理・進行中）を活用しております。<br />
+個別の事案そのものを目的とするのではなく、その過程で痛感した「<strong>専門家にアクセスする経済的・地理的ハードル</strong>」「<strong>証拠保全の技術的ハードル</strong>」が、地方在住の方や外国籍の方々が共通して直面する<strong>構造的な制度の隙間</strong>であることを発見した、社会観察の出発点として位置づけております。</p>
+</blockquote>
+<p><strong>初回ミーティングにおいては個別事案の詳細には深入りせず、社会実装の方法論・公益性に焦点を絞ってご相談させて頂きたく存じます。</strong> ご関心を頂いた場合のみ、別途資料として共有いたします。</p>
+<hr />
+<h2 id="10">第 10 章　お時間を頂戴することへの謝意</h2>
+<p>トヨタ財団様が長年にわたり、<strong>「社会の根源的課題に挑む個人・小規模団体」</strong> に対する寛容で実質的な助成文化を築いてこられたことに、心より敬意を表します。</p>
+<p>LegalShield は、誰かを攻撃したり、既存の制度に対抗するものではありません。<br />
+<strong>「地方・外国籍・経済的に余裕のない方々が、既存の素晴らしい制度（弁護士会・法テラス・トラブル110番等）にもっと到達しやすくなる」</strong>ための、技術と公益ネットワークによる<strong>橋渡しの社会基盤</strong>を構築するための試みです。</p>
+<p>本日は、共に社会の隙間を埋めるパートナーシップを築く可能性について、率直にお話できれば幸いです。<br />
+財団様のご助言は、研究の社会実装を志す私にとって何物にも代えがたい指針となります。</p>
+<p>何卒よろしくお願いいたします。</p>
+<hr />
+<p>劉　建志（リュウ ケンシ）<br />
+所属：高知大学大学院 農林海洋科学専攻 森林工学研究室 修士課程<br />
+運営主体（事業会社）：<strong>光伊フォレスト 合同会社</strong>（高知県）<br />
+2026 年 5 月 25 日</p>
+<hr />
+<h1 id="a3045">【付録 A】会議当日の進行イメージ（30〜45 分）</h1>
+<table>
+<thead>
+<tr>
+<th>時間</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0〜2 分</td>
+<td>自己紹介・所属・連絡先</td>
+</tr>
+<tr>
+<td>2〜5 分</td>
+<td>第 0 章「90 秒サマリー」を口頭で提示</td>
+</tr>
+<tr>
+<td>5〜15 分</td>
+<td>第 2〜3 章 — プロジェクト概要・実装進捗（必要に応じ iPhone で実演）</td>
+</tr>
+<tr>
+<td>15〜25 分</td>
+<td>第 7 章の質問 1〜7（プログラム選定・申請書類）</td>
+</tr>
+<tr>
+<td>25〜35 分</td>
+<td>第 7 章の質問 8〜13（評価・倫理・協働）</td>
+</tr>
+<tr>
+<td>35〜40 分</td>
+<td>財団様からの率直なフィードバック・追加質問への対応</td>
+</tr>
+<tr>
+<td>40〜45 分</td>
+<td>次のステップ確認（推薦書類、追加面談、書類提出時期）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="b">【付録 B】聞き取れたら必ずメモすべき情報</h1>
+<p>会議終了後の整理用チェックリスト。</p>
+<ul>
+<li>[ ] 推奨される助成プログラム名と申請枠</li>
+<li>[ ] 直近の採択発表時期・締切</li>
+<li>[ ] 申請書類の必須項目（特に「共同申請者」「予算根拠」「成果物の取扱」）</li>
+<li>[ ] 推薦・紹介者の必要性</li>
+<li>[ ] 利益相反の整理が必要か</li>
+<li>[ ] OSS／知財ポリシー</li>
+<li>[ ] 中間報告フォーマット</li>
+<li>[ ] 過去の類似採択案件名（参考として）</li>
+<li>[ ] 次回フォローアップの方法（メール／面談／書面）</li>
+<li>[ ] 担当者名と直接連絡先</li>
+</ul>
+<hr />
+<h1 id="c">【付録 C】口頭対談で気をつけるポイント（自分用メモ）</h1>
+<h2 id="c-1">C-1. 言葉づかいの基調</h2>
+<ul>
+<li>「<strong>対抗・戦う・告発</strong>」系の言葉は避ける（プロジェクトは「補完」「橋渡し」「制度の隙間を埋める」）</li>
+<li>「<strong>Mapry 社の悪事</strong>」のような他者批判の語気は使わない（あくまで<strong>構造的な制度の隙間の発見</strong>として語る）</li>
+<li>「シビックテック」「制度の隙間を埋める」「SDGs 目標の達成」「市民の自助・共助」「パートナーシップ」を主軸の語彙にする</li>
+</ul>
+<h2 id="c-2-coi">C-2. 利益相反（COI）への先制説明</h2>
+<ul>
+<li>助成金は<strong>個人の係争費用には 1 円も使わない</strong></li>
+<li>全額、高知大学管理下で、(a) AI 実装、(b) 匿名化研究、(c) 学術論文、(d) OSS 運用 のみに充当</li>
+<li>Mapry 案件は<strong>実証フィールド・Dogfooding データ</strong>としてのみ位置づけ</li>
+</ul>
+<h2 id="c-3">C-3. 質問されたら明確に答える項目</h2>
+<ul>
+<li><strong>JST RISTEX との関係</strong> → 「並行応募」「重複ではない」「相互補完」</li>
+<li><strong>OSS の意味</strong> → 「商業化目的ではない」「公益のため」「学術コミュニティへの還元」</li>
+<li><strong>事業主体</strong> → 「<strong>光伊フォレスト合同会社</strong>」（株式会社ではない）</li>
+<li><strong>予算規模</strong> → 「財団様の推薦枠に<strong>柔軟に合わせます</strong>」（300〜500 万円／年〜800 万円／24ヶ月、いずれも応相談）</li>
+<li><strong>修士課程の立場</strong> → 不安は見せず、産学連携の<strong>コンソーシアム（高知大学 + NPO + 弁護士会 + 台湾 TeamT5）</strong>として説明</li>
+</ul>
+<h2 id="c-4">C-4. 「パートナー探しに来た」という姿勢を貫く</h2>
+<ul>
+<li>今日は<strong>「ご支援を要求」しに来たのではなく、「ご相談・お知恵拝借」</strong>に来ている</li>
+<li>財団様の過去の助成ネットワークとの将来的な接続可能性についても、こちらから関心を示す</li>
+<li>受け身ではなく、<strong>「共に社会の隙間を埋める共同制作者」</strong>として臨む</li>
+</ul>
+<h2 id="c-5">C-5. 産学研黄金三角の説明（聞かれたとき用）</h2>
+<ul>
+<li><strong>学術</strong>：高知大学・鈴木保志教授の指導体制</li>
+<li><strong>技術</strong>：台湾サイバーセキュリティ大手 <strong>TeamT5</strong> による暗号実装監査</li>
+<li><strong>現場</strong>：厚労省委託 NPO（フリーランス・トラブル110番）からの一次ニーズ</li>
+<li><strong>国際</strong>：台湾現代婦女基金会・米国 NNEDV との連携可能性</li>
+<li>→ <strong>「単独の修士生」ではなく、「台日産学資源の橋渡しを担うプロジェクト総合コーディネーター」</strong> として紹介</li>
+</ul>
+<hr />
+<p><strong>Good luck. お会いの後にメモを送ってください、報告書 v2 を起こします。</strong></p></body></html>
