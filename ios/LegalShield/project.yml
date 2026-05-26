@@ -16,15 +16,21 @@ targets:
         SWIFT_VERSION: "5.9"
         TARGETED_DEVICE_FAMILY: "1,2"  # iPhone, iPad
         SUPPORTS_MACCATALYST: NO
+        # 自動簽名（Apple ID で Personal Team が自動取得される）
+        # DEVELOPMENT_TEAM は Xcode の Signing & Capabilities タブで設定する
+        # （Apple Developer Program 有料登録後に Team ID を project.yml に固定可）
+        CODE_SIGN_STYLE: Automatic
       configs:
+        # Debug: 実機開発用（Personal Team 簽名で 7 日間有効、Apple Developer 加入で 1 年）
         Debug:
-          CODE_SIGN_IDENTITY: ""
-          CODE_SIGNING_REQUIRED: NO
-          CODE_SIGNING_ALLOWED: NO
+          CODE_SIGN_IDENTITY: "Apple Development"
+          CODE_SIGNING_REQUIRED: YES
+          CODE_SIGNING_ALLOWED: YES
+        # Release: TestFlight / App Store 配布用
         Release:
-          CODE_SIGN_IDENTITY: ""
-          CODE_SIGNING_REQUIRED: NO
-          CODE_SIGNING_ALLOWED: NO
+          CODE_SIGN_IDENTITY: "Apple Development"
+          CODE_SIGNING_REQUIRED: YES
+          CODE_SIGNING_ALLOWED: YES
     info:
       path: LegalShield/Info.plist
       properties:
