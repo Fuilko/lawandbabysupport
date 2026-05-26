@@ -1,0 +1,29 @@
+# Voice Corpus Builder & Whisper LoRA Trainer
+
+# ─── 共通 ───
+PyYAML>=6.0
+numpy>=1.26
+
+# ─── DL & 前処理 ───
+yt-dlp>=2024.10.7
+silero-vad>=5.1
+torch>=2.4              # Windows GPU は cu124 wheel
+torchaudio>=2.4
+soundfile>=0.12
+librosa>=0.10
+
+# ─── Whisper inference (pseudo-label / eval) ───
+openai-whisper>=20240930
+
+# ─── HuggingFace 訓練 ───
+transformers>=4.45
+datasets>=3.0
+accelerate>=1.0
+peft>=0.13              # LoRA
+evaluate>=0.4
+jiwer>=3.0              # WER/CER
+tensorboard>=2.18
+
+# ─── オプション：CoreML 変換 (iOS 配布) ───
+# coremltools>=8.0
+# whisperkittools  # WhisperKit 形式へ変換するツール

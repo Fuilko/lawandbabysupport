@@ -1,0 +1,210 @@
+# 緊急時被害者音声 ASR 訓練用シード・クエリ
+# yt-dlp の `ytsearch<N>:<query>` 形式で使用
+#
+# 設計意図：被害者が驚慌・泣・耳語・断片的に話す状況の音響特徴量を学習
+# 各カテゴリの目標時間 = total_target_hours の比率に従う
+
+total_target_hours: 1000
+
+categories:
+  # ──────────────────────────────────────
+  # 日本語コア (65%)
+  # ──────────────────────────────────────
+  - id: jp_documentary_victim
+    weight: 0.20
+    lang: ja
+    description: NHK・民放の児童虐待・DV ドキュメンタリー（被害者証言）
+    queries:
+      - "児童虐待 被害者 証言 ドキュメンタリー"
+      - "DV 被害者 体験談 NHK"
+      - "性被害 サバイバー 証言"
+      - "いじめ 被害者 告白"
+      - "ハラスメント 被害証言"
+      - "虐待 サバイバー インタビュー"
+    max_per_query: 30
+
+  - id: jp_press_conference_emotional
+    weight: 0.10
+    lang: ja
+    description: 涙ながらの記者会見、被害者家族、犯罪被害者
+    queries:
+      - "被害者家族 記者会見 涙"
+      - "犯罪被害者 会見"
+      - "事件 遺族 会見"
+      - "謝罪会見 涙"
+      - "失踪 家族 訴え"
+    max_per_query: 30
+
+  - id: jp_emergency_call
+    weight: 0.08
+    lang: ja
+    description: 110番・119番の公開録音、緊急通報
+    queries:
+      - "110番 通報 録音 公開"
+      - "119番 救急 緊急通報"
+      - "災害 救助要請 音声"
+      - "事件 通報音声 公開"
+    max_per_query: 20
+
+  - id: jp_asmr_whisper
+    weight: 0.10
+    lang: ja
+    description: 耳語・気息音・小声 (被害者の小声に音響的に類似)
+    queries:
+      - "ASMR 囁き 日本語"
+      - "ASMR ささやき声"
+      - "ASMR 耳元 日本語"
+      - "ウィスパーボイス 日本語"
+      - "小声 朗読"
+    max_per_query: 30
+
+  - id: jp_disaster_panic
+    weight: 0.07
+    lang: ja
+    description: 災害時のパニック発話（驚慌失措）
+    queries:
+      - "東日本大震災 被災者 音声"
+      - "津波 避難 録音"
+      - "地震 緊急放送 反応"
+      - "災害 救助 音声記録"
+    max_per_query: 20
+
+  - id: jp_court_testimony
+    weight: 0.05
+    lang: ja
+    description: 法廷証言・公開審判
+    queries:
+      - "公判 被害者 意見陳述"
+      - "裁判員裁判 証言"
+      - "民事裁判 公開審理"
+    max_per_query: 15
+
+  - id: jp_child_natural_speech
+    weight: 0.05
+    lang: ja
+    description: 児童の自然発話（虐待被害者は子供が多いため）
+    queries:
+      - "子供 インタビュー ドキュメンタリー"
+      - "幼児 喋り方"
+      - "幼稚園児 発話"
+    max_per_query: 20
+
+  # ──────────────────────────────────────
+  # 多言語（在留外国人比率）35%
+  # ──────────────────────────────────────
+  - id: zh_emotional_distress
+    weight: 0.09  # 中国 25.6% × 0.35 ≒ 0.09
+    lang: zh
+    description: 中国語の感情的発話・被害者証言
+    queries:
+      - "家暴 受害者 采访 中文"
+      - "虐待儿童 受害者 故事"
+      - "中文 ASMR 耳语"
+      - "受害者 哭诉"
+    max_per_query: 25
+
+  - id: vi_emotional
+    weight: 0.065  # ベトナム 18.7% × 0.35
+    lang: vi
+    description: ベトナム語感情発話
+    queries:
+      - "phỏng vấn nạn nhân"
+      - "bạo lực gia đình tiếng Việt"
+      - "tâm sự nạn nhân"
+      - "Vietnamese ASMR whisper"
+    max_per_query: 20
+
+  - id: ko_emotional
+    weight: 0.045  # 韓国 12.8% × 0.35
+    lang: ko
+    description: 韓国語感情発話
+    queries:
+      - "피해자 인터뷰"
+      - "가정폭력 피해자"
+      - "한국어 ASMR 속삭임"
+    max_per_query: 20
+
+  - id: tl_en_emotional
+    weight: 0.035  # フィリピン 10% × 0.35
+    lang: tl
+    description: タガログ語・フィリピン英語
+    queries:
+      - "Filipino abuse survivor interview"
+      - "Tagalog testimony victim"
+      - "OFW interview emotional"
+    max_per_query: 15
+
+  - id: pt_emotional
+    weight: 0.024  # ブラジル 6.7% × 0.35
+    lang: pt
+    description: ポルトガル語（ブラジル）
+    queries:
+      - "vítima entrevista português"
+      - "violência doméstica Brasil testemunho"
+      - "Portuguese ASMR sussurro"
+    max_per_query: 15
+
+  - id: ne_emotional
+    weight: 0.020  # ネパール 5.5% × 0.35
+    lang: ne
+    description: ネパール語
+    queries:
+      - "Nepali victim interview"
+      - "नेपाली पीडित"
+    max_per_query: 10
+
+  - id: id_emotional
+    weight: 0.016  # インドネシア 4.7% × 0.35
+    lang: id
+    description: インドネシア語
+    queries:
+      - "wawancara korban Indonesia"
+      - "kekerasan rumah tangga Indonesia"
+    max_per_query: 10
+
+  - id: my_emotional
+    weight: 0.009  # ミャンマー 2.5% × 0.35
+    lang: my
+    description: ビルマ語
+    queries:
+      - "Myanmar victim interview"
+      - "Burmese testimony"
+    max_per_query: 8
+
+  - id: en_distress
+    weight: 0.024  # 米国 + その他英語圏 ≒ 7%
+    lang: en
+    description: 英語の distress / 911 calls
+    queries:
+      - "911 call recording released"
+      - "domestic violence survivor interview"
+      - "child abuse survivor testimony"
+      - "English ASMR whisper"
+      - "panic phone call recording"
+    max_per_query: 25
+
+# ──────────────────────────────────────
+# AudioSet 補完（非言語イベント学習用）
+# YouTube 経由でなく、AudioSet の YouTube ID リストを使う
+# ──────────────────────────────────────
+audioset_labels:
+  - {label: "Crying, sobbing", weight: 0.04, target_clips: 2000}
+  - {label: "Whimper", weight: 0.02, target_clips: 1000}
+  - {label: "Wail, moan", weight: 0.02, target_clips: 800}
+  - {label: "Heavy breathing", weight: 0.02, target_clips: 800}
+  - {label: "Sigh", weight: 0.01, target_clips: 500}
+  - {label: "Whispering", weight: 0.03, target_clips: 1500}
+  - {label: "Screaming", weight: 0.02, target_clips: 800}
+  - {label: "Gasp", weight: 0.01, target_clips: 500}
+
+# ──────────────────────────────────────
+# フィルタ（品質確保）
+# ──────────────────────────────────────
+filters:
+  min_duration_sec: 30
+  max_duration_sec: 1800
+  min_view_count: 100        # spam 排除
+  exclude_music: true        # 音楽のみの動画排除
+  exclude_live: false         # ライブはあえて含む（自然発話）
+  language_detect: true       # ダウンロード後 lang ID
+  loudness_normalize_lufs: -23
