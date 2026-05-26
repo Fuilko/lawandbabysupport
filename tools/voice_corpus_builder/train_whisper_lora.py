@@ -120,7 +120,34 @@ def main() -> None:
     parser.add_argument("--weight_lang_other", type=float, default=0.35)
     parser.add_argument("--eval_split_ratio", type=float, default=0.05)
     parser.add_argument("--seed", type=int, default=42)
+    # ─── Phase 2 用 audio augmentation（デフォルト OFF）───
+    parser.add_argument("--use_augmentation", action="store_true",
+                        help="環境ノイズ・残響を訓練時に重畳（Phase 1 では非推奨）")
+    parser.add_argument("--musan_dir", default=None,
+                        help="MUSAN コーパスのディレクトリ")
+    parser.add_argument("--rir_dir", default=None,
+                        help="OpenSLR RIRS_NOISES のディレクトリ")
+    parser.add_argument("--aug_p_apply", type=float, default=0.5,
+                        help="augmentation 適用確率（0.5 = 半分）")
     args = parser.parse_args()
+
+    # Augmentation pipeline 構築（OFF なら no-op）
+    aug_pipeline = None
+    if args.use_augmentation:
+        from audio_augmentation import build_augmentation_pipeline
+        aug_pipeline = build_augmentation_pipeline(
+            enable_noise=bool(args.musan_dir),
+            enable_rir=bool(args.rir_dir),
+            enable_phone_band=False,    # eval で必要と判った時に True
+            enable_volume=True,
+            musan_dir=args.musan_dir,
+            rir_dir=args.rir_dir,
+            p_apply=args.aug_p_apply,
+            seed=args.seed,
+        )
+        log.info("audio augmentation: ENABLED")
+    else:
+        log.info("audio augmentation: disabled (Phase 1)")
 
     import torch
     from transformers import (
@@ -169,8 +196,12 @@ def main() -> None:
     # 4. Preprocess
     def preprocess(batch):
         audio = batch["audio"]
+        array = audio["array"]
+        # Phase 2 augmentation hook（None なら何もしない）
+        if aug_pipeline is not None:
+            array = aug_pipeline(array, audio["sampling_rate"])
         inputs = processor.feature_extractor(
-            audio["array"],
+            array,
             sampling_rate=audio["sampling_rate"],
             return_tensors="pt",
         )
