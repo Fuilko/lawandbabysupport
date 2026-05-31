@@ -38,6 +38,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
+from . import harness
+
 logger = logging.getLogger("legalshield.api")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 
@@ -52,6 +54,12 @@ OLLAMA_URL = os.environ.get("LEGALSHIELD_OLLAMA_URL", "http://127.0.0.1:11434")
 EMBED_MODEL_NAME = os.environ.get("LEGALSHIELD_EMBED_MODEL", "intfloat/multilingual-e5-small")
 DEFAULT_LLM = os.environ.get("LEGALSHIELD_DEFAULT_LLM", "gemma3:27b")
 DEFAULT_K = 8
+
+# L7 監査ログ（SHA-256 chain）の保存先
+AUDIT_LOG_PATH = Path(os.environ.get(
+    "LEGALSHIELD_AUDIT_LOG",
+    str(Path(__file__).resolve().parents[1] / "lancedb" / "harness_audit.jsonl"),
+))
 
 # LanceDB tables（環境によって存在しないものもあるため、起動時に確認）
 PRECEDENTS_TABLE = "precedents"
@@ -145,6 +153,15 @@ class OllamaGenerateRequest(BaseModel):
     system: Optional[str] = None
     stream: bool = False
     options: Optional[dict[str, Any]] = None
+
+class AnswerRequest(BaseModel):
+    """L1-L7 anti-hallucination harness を通した grounded 回答。"""
+    question: str = Field(..., min_length=2, max_length=2000)
+    top_k: int = Field(DEFAULT_K, ge=1, le=20)
+    model: Optional[str] = None
+    judge_model: Optional[str] = None  # 指定時は独立 LLM で cross-check（L5）
+    use_statutes: bool = True
+    audit: bool = True
 
 # ----------------------------------------------------------------------------
 # /health
@@ -364,6 +381,116 @@ def rag_partners(req: PartnersRequest) -> dict[str, Any]:
             d["_kind"] = kind
             results.append(d)
     return {"count": len(results), "results": results[: req.limit]}
+
+# ----------------------------------------------------------------------------
+# /rag/answer — L1-L7 anti-hallucination harness（幻覚防止の本命）
+# ----------------------------------------------------------------------------
+
+def _row_text(row) -> str:
+    return str(row.get("text", row.get("content", "")))
+
+def _make_precedent_retriever() -> Optional[harness.RetrieveFn]:
+    db = get_lance_db()
+    if PRECEDENTS_TABLE not in db.table_names():
+        return None
+    table = db.open_table(PRECEDENTS_TABLE)
+
+    def _retrieve(question: str, k: int) -> list[harness.Source]:
+        qvec = embed_query(question)
+        rows = table.search(qvec).limit(k * 3).to_pandas()
+        out: list[harness.Source] = []
+        seen: set[str] = set()
+        for _, row in rows.iterrows():
+            case_id = str(row.get("lawsuit_id", row.get("case_number", row.name)))
+            if case_id in seen:
+                continue
+            seen.add(case_id)
+            cn = str(row.get("case_number", "") or "")
+            court = str(row.get("court_name", "") or "")
+            out.append(harness.Source(
+                id="", kind="precedent", text=_row_text(row),
+                score=float(row.get("_distance", 0.0) or 0.0),
+                trust="high", provenance="precedent_db",
+                citation=(cn or court or "判例"),
+                metadata={"case_number": cn, "court": court},
+            ))
+            if len(out) >= k:
+                break
+        return out
+    return _retrieve
+
+def _make_statute_retriever() -> Optional[harness.RetrieveFn]:
+    db = get_lance_db()
+    if STATUTES_TABLE not in db.table_names():
+        return None
+    table = db.open_table(STATUTES_TABLE)
+
+    def _retrieve(question: str, k: int) -> list[harness.Source]:
+        qvec = embed_query(question)
+        rows = table.search(qvec).limit(k).to_pandas()
+        out: list[harness.Source] = []
+        for _, row in rows.iterrows():
+            title = str(row.get("title", row.get("law_name", "")) or "")
+            article = str(row.get("article", row.get("article_number", "")) or "")
+            label = (f"{title}{article}").strip() or "法令"
+            out.append(harness.Source(
+                id="", kind="statute", text=_row_text(row),
+                score=float(row.get("_distance", 0.0) or 0.0),
+                trust="high", provenance="statute_db",
+                citation=label,
+                metadata={"title": title, "article": article},
+            ))
+        return out
+    return _retrieve
+
+def _make_ollama_chat(model_name: str) -> harness.LlmChat:
+    def _chat(system: str, user: str, temperature: float) -> str:
+        r = requests.post(
+            f"{OLLAMA_URL}/api/chat",
+            json={
+                "model": model_name,
+                "messages": [
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user},
+                ],
+                "stream": False,
+                "options": {"temperature": temperature, "num_ctx": 8192},
+            },
+            timeout=180,
+        )
+        r.raise_for_status()
+        return r.json().get("message", {}).get("content", "") or ""
+    return _chat
+
+@app.post("/rag/answer")
+def rag_answer(req: AnswerRequest) -> dict[str, Any]:
+    """検索ゲートを構造的に強制した grounded 回答（幻覚防止 harness）。
+
+    iOS / 外部 agent は通常の法律 QA でこのエンドポイントを使うこと。
+    生の /api/generate（無検索）を法律質問に使うと幻覚するため非推奨。
+    """
+    try:
+        get_lance_db()
+    except Exception as e:
+        raise HTTPException(503, f"LanceDB unavailable: {e}")
+
+    model_name = req.model or DEFAULT_LLM
+    precedent_fn = _make_precedent_retriever()
+    statute_fn = _make_statute_retriever() if req.use_statutes else None
+    llm_chat = _make_ollama_chat(model_name)
+    judge_chat = _make_ollama_chat(req.judge_model) if req.judge_model else None
+
+    result = harness.run_harness(
+        req.question,
+        retrieve_precedents=precedent_fn,
+        retrieve_statutes=statute_fn,
+        llm_chat=llm_chat,
+        judge_chat=judge_chat,
+        top_k=req.top_k,
+        audit_path=AUDIT_LOG_PATH if req.audit else None,
+    )
+    result["model_used"] = model_name
+    return result
 
 # ----------------------------------------------------------------------------
 # /api/generate — Ollama proxy（CloudOllamaProvider.swift 互換）

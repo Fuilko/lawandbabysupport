@@ -15,6 +15,12 @@ class LLMService: ObservableObject {
     @Published var isProcessing: Bool = false
     @Published var lastResponse: String = ""
     @Published var lastError: String?
+
+    /// 直近の grounded 回答（検索ゲート通過・出典付き）。透明性 UI が参照する。
+    @Published var lastHarnessAnswer: HarnessAnswer?
+
+    /// Anti-Hallucination Harness クライアント（/rag/answer を呼ぶ）
+    private let harnessService = LegalHarnessService()
     
     // MARK: - 配置
     
@@ -35,6 +41,13 @@ class LLMService: ObservableObject {
     // MARK: - 公開方法
     
     /// 一般法務 QA (雲端 API)
+    ///
+    /// **検索ゲート強制（Anti-Hallucination Harness）**：
+    /// まずバックエンド `/rag/answer` を呼び、法令・判例 DB を検索した上で
+    /// 出典付きの grounded 回答を取得する。これにより「DB を参照せず幻覚で
+    /// 答える」問題を構造的に防止する。
+    /// harness が利用不可（バックエンド停止等）の場合のみ、従来の生 LLM 呼出に
+    /// フォールバックし、その旨を明示する。
     func legalQA(
         question: String,
         context: String? = nil,
@@ -42,26 +55,107 @@ class LLMService: ObservableObject {
     ) async throws -> String {
         isProcessing = true
         defer { isProcessing = false }
-        
-        let systemPrompt = """
-        你是一名資深的日本與台灣法律研究助理。請根據以下原則回答：
-        
-        1. 僅基於事實與法條，不臆測
-        2. 區分「確定法律」與「實務傾向」
-        3. 提供具體法條號與判例參考
-        4. 最後必須加上：「本回答僅供參考，具體法律行動請諮詢執業律師」
-        """
-        
-        var userPrompt = question
+
+        let combinedQuestion: String
         if let ctx = context {
-            userPrompt = "【案情背景】\n\(ctx)\n\n【問題】\n\(question)"
+            combinedQuestion = "【案情背景】\n\(ctx)\n\n【問題】\n\(question)"
+        } else {
+            combinedQuestion = question
         }
-        
-        return try await callOllamaAPI(
-            model: model.rawValue,
-            system: systemPrompt,
-            user: userPrompt
+
+        // 1) 検索ゲート（grounded）を最優先
+        do {
+            let harness = try await groundedLegalQA(question: combinedQuestion)
+            return Self.renderHarnessAnswer(harness)
+        } catch {
+            // 2) フォールバック：従来の生 LLM（出典なし）。幻覚リスクを明示。
+            await MainActor.run {
+                AuditLogService.shared.record(
+                    actor: .ai,
+                    action: .aiPromptDispatched,
+                    detail: "検索ゲート(/rag/answer)が利用不可のため生LLMへフォールバック",
+                    contextNotes: "error=\(error)"
+                )
+            }
+            let systemPrompt = """
+            你是一名資深的日本與台灣法律研究助理。請根據以下原則回答：
+
+            1. 僅基於事實與法條，不臆測
+            2. 區分「確定法律」與「實務傾向」
+            3. 提供具體法條號與判例參考
+            4. 最後必須加上：「本回答僅供參考，具體法律行動請諮詢執業律師」
+            """
+            let raw = try await callOllamaAPI(
+                model: model.rawValue,
+                system: systemPrompt,
+                user: combinedQuestion
+            )
+            return "⚠️ 法令・判例DBへの接続不可のため、未検証（幻覚の可能性あり）の回答です。\n\n" + raw
+        }
+    }
+
+    /// grounded 法務 QA — 構造化レスポンス（出典・信頼度・弁護士必須フラグ付き）。
+    /// 透明性 UI（HarnessAnswerView）はこれを直接描画する。
+    @discardableResult
+    func groundedLegalQA(
+        question: String,
+        topK: Int = 6,
+        useJudge: Bool = false
+    ) async throws -> HarnessAnswer {
+        let (endpoint, model) = await MainActor.run {
+            (LLMSettings.shared.ollamaEndpoint, LLMSettings.shared.ollamaModelId)
+        }
+
+        await MainActor.run {
+            AuditLogService.shared.record(
+                actor: .ai,
+                action: .aiPromptDispatched,
+                detail: "検索ゲート(/rag/answer)へ送信: \(String(question.prefix(80)))",
+                contextNotes: "endpoint=\(endpoint) model=\(model)"
+            )
+        }
+
+        let config = LegalHarnessService.Config(
+            baseEndpoint: endpoint,
+            model: model,
+            judgeModel: useJudge ? model : nil,
+            topK: topK,
+            useStatutes: true
         )
+        let result = try await harnessService.answer(question: question, config: config)
+
+        await MainActor.run {
+            self.lastHarnessAnswer = result
+            AuditLogService.shared.record(
+                actor: .ai,
+                action: .aiResponseReceived,
+                detail: "grounded回答 受信: confidence=\(result.confidence) sources=\(result.sources.count) ungrounded=\(result.verification.ungroundedClaims.count)",
+                contextNotes: "lawyer_required=\(result.lawyerRequired) refused=\(result.refused)"
+            )
+        }
+        return result
+    }
+
+    /// HarnessAnswer を従来の String API 互換テキストに整形（出典・信頼度を末尾付与）。
+    static func renderHarnessAnswer(_ h: HarnessAnswer) -> String {
+        var out = h.answer
+        if !h.sources.isEmpty {
+            out += "\n\n──────────\n【根拠】"
+            for s in h.sources {
+                out += "\n[\(s.id)] \(s.kindLabel)：\(s.citation)"
+            }
+        }
+        out += "\n\n【信頼度】\(h.confidenceBars)/5"
+        if h.hasUngrounded {
+            out += "\n⚠️ 一部の主張は提示根拠で裏付けできませんでした（要確認）。"
+        }
+        if h.lawyerRequired {
+            out += "\n⚠️ この件は弁護士への相談を推奨します。"
+        }
+        if let w = h.irreversibleActionWarning {
+            out += "\n🚨 \(w)"
+        }
+        return out
     }
     
     /// 證據分析報告生成 (結構化數據輸入)
