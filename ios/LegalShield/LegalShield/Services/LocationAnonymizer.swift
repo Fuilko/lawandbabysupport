@@ -194,6 +194,14 @@ public struct AnonymizedLocation: Codable, Equatable {
     public let hexIndex: String
     public let offsetRadiusM: Double
     public let virtualCity: Bool
+
+    public static func == (lhs: AnonymizedLocation, rhs: AnonymizedLocation) -> Bool {
+        lhs.displayCoordinate.latitude == rhs.displayCoordinate.latitude &&
+        lhs.displayCoordinate.longitude == rhs.displayCoordinate.longitude &&
+        lhs.hexIndex == rhs.hexIndex &&
+        lhs.offsetRadiusM == rhs.offsetRadiusM &&
+        lhs.virtualCity == rhs.virtualCity
+    }
 }
 
 public struct HexAggregate {
@@ -204,20 +212,8 @@ public struct HexAggregate {
 }
 
 // MARK: - CLLocationCoordinate2D Codable
-
-extension CLLocationCoordinate2D: Codable {
-    public func encode(to encoder: Encoder) throws {
-        var c = encoder.unkeyedContainer()
-        try c.encode(longitude)   // GeoJSON 順
-        try c.encode(latitude)
-    }
-    public init(from decoder: Decoder) throws {
-        var c = try decoder.unkeyedContainer()
-        let lon = try c.decode(Double.self)
-        let lat = try c.decode(Double.self)
-        self.init(latitude: lat, longitude: lon)
-    }
-}
+// 注: iOS 18+/26 SDK が CLLocationCoordinate2D に Codable を標準提供するため、
+// 独自準拠は削除（重複準拠エラー回避）。
 
 // MARK: - Seeded RNG（決定論テスト用）
 

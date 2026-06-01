@@ -74,11 +74,11 @@ public final class VoiceTriageService: NSObject, ObservableObject {
     // MARK: - Init
 
     public init(
-        transcriber: WhisperKitTranscriber = WhisperKitTranscriber(),
-        triageLLM: MLXOnDeviceProvider = MLXOnDeviceProvider()
+        transcriber: WhisperKitTranscriber? = nil,
+        triageLLM: MLXOnDeviceProvider? = nil
     ) {
-        self.transcriber = transcriber
-        self.triageLLM = triageLLM
+        self.transcriber = transcriber ?? WhisperKitTranscriber()
+        self.triageLLM = triageLLM ?? MLXOnDeviceProvider()
         super.init()
     }
 

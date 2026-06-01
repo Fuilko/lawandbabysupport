@@ -113,13 +113,13 @@ public final class WhisperKitTranscriber: ObservableObject {
             translatedToEnglish: translateToEnglish,
             segments: segments.map { seg in
                 TranscriptionSegment(
-                    start: seg.start,
-                    end: seg.end,
+                    start: Double(seg.start),
+                    end: Double(seg.end),
                     text: seg.text
                 )
             },
             modelName: modelName,
-            durationSec: segments.last?.end ?? 0
+            durationSec: Double(segments.last?.end ?? 0)
         )
         lastResult = result
         return result

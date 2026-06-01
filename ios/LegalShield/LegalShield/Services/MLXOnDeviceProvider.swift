@@ -88,7 +88,6 @@ public final class MLXOnDeviceProvider: LLMProvider {
             m.append(.user(userText))
             return m
         }()
-        let chat = Chat(messages: messages)
 
         let parameters = GenerateParameters(
             temperature: Float(prompt.temperature),
@@ -96,7 +95,7 @@ public final class MLXOnDeviceProvider: LLMProvider {
         )
 
         let result = try await container.perform { ctx in
-            let input = try await ctx.processor.prepare(input: .init(chat: chat))
+            let input = try await ctx.processor.prepare(input: .init(chat: messages))
             return try MLXLMCommon.generate(
                 input: input,
                 parameters: parameters,
@@ -110,7 +109,7 @@ public final class MLXOnDeviceProvider: LLMProvider {
         return LLMResponse(
             text: result.output,
             modelId: modelId,
-            promptTokens: result.promptTokens,
+            promptTokens: result.promptTokens.count,
             completionTokens: result.tokens.count,
             latencyMs: latency,
             providerMetadata: [

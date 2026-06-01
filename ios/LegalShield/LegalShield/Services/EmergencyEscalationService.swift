@@ -524,7 +524,8 @@ enum AutoReportThreshold: String, Codable {
     }
 }
 
-// MARK: - CLLocationCoordinate2D Codable 擴充
+// MARK: - CLLocationCoordinate2D Codable
+// 注: モジュール内で唯一の Codable 準拠（LocationAnonymizer 側の重複定義は削除済み）。
 
 extension CLLocationCoordinate2D: Codable {
     public init(from decoder: Decoder) throws {
@@ -533,13 +534,13 @@ extension CLLocationCoordinate2D: Codable {
         let lon = try container.decode(Double.self, forKey: .longitude)
         self.init(latitude: lat, longitude: lon)
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(latitude, forKey: .latitude)
         try container.encode(longitude, forKey: .longitude)
     }
-    
+
     private enum CodingKeys: String, CodingKey {
         case latitude
         case longitude

@@ -187,16 +187,16 @@ final class ExportService {
 
 // MARK: - Models
 
-enum AnonymizationLevel: String, Codable {
+public enum AnonymizationLevel: String, Codable {
     case none           // 本人 → 弁護士
     case partial        // 弁護士 → 共同研究者（GPS マスクなど）
     case full           // 研究データ集計用（個人特定不可レベル）
 
-    var maskGPS: Bool { self != .none }
-    var maskDeviceId: Bool { self == .full }
+    public var maskGPS: Bool { self != .none }
+    public var maskDeviceId: Bool { self == .full }
     /// `partial` 以上で被害者氏名・住所等のテキストもマスク（PortableDB 用）
-    var maskName: Bool { self == .full }
-    var maskLocation: Bool { self == .full }
+    public var maskName: Bool { self == .full }
+    public var maskLocation: Bool { self == .full }
 }
 
 struct EmergencyPackage {
