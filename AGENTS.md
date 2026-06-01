@@ -26,9 +26,12 @@
 | 1 | **`AGENTS.md`**（本書） | エージェント入口・行動規範・索引 |
 | 2 | **`ARCHITECTURE.md`** | システム主架構（iOS / backend / GIS / RAG）の唯一の真実 |
 | 3 | **`PROGRESS.md`** | 最新開発進捗ログ（時系列・追記式） |
-| 4 | `docs/AGENT_SKILL_BOUND_DESIGN.md` | 幻覚防止 / 能力境界の設計指針 |
-| 5 | `legalshield/backend/harness.py` | 反幻覚ハーネス L1〜L7 実装（接地の中核） |
-| 6 | `README.md` | プロジェクト概要（三言語） |
+| 4 | **`DEPLOYMENT_TOPOLOGY.md`** | 環境・同期マトリクス・DB配布・5ロール銜接（統合マスター）|
+| 5 | `docs/strategy/2026-05-31_edge_training_and_role_architecture.md` | エッジ訓練(RTX4080)・5ロール・障害分離の中核設計 |
+| 6 | `docs/AGENT_SKILL_BOUND_DESIGN.md` | 幻覚防止 / 能力境界の設計指針 |
+| 7 | `legalshield/backend/harness.py` | 反幻覚ハーネス L1〜L7 実装（接地の中核） |
+| 8 | `DEPLOYMENT_GUIDE.md` / `docs/setup/AGENT_HANDOFF.md` | 環境再構築 / 協力者ハンドオフ |
+| 9 | `README.md` | プロジェクト概要（三言語） |
 
 > **重要**: 上記より新しい情報は常に `PROGRESS.md` の最上部にある。
 > 過去のチャット要約や記憶より、**リポジトリ内のこれらのファイルを正とする**。
@@ -96,6 +99,8 @@ L7 Audit Log                  — SHA-256 chain
 lawandbabysupport/
 ├── AGENTS.md              ← 本書（エージェント入口）
 ├── ARCHITECTURE.md        ← 主架構の唯一の真実
+├── DEPLOYMENT_TOPOLOGY.md ← 環境/同期/DB配布/5ロール（統合マスター）
+├── DEPLOYMENT_GUIDE.md    ← 環境再構築の詳細手順
 ├── PROGRESS.md            ← 最新進捗ログ（追記式）
 ├── README.md              ← 概要（三言語）
 ├── ios/LegalShield/       ← iOS アプリ（SwiftUI + MLX on-device LLM + WhisperKit）
