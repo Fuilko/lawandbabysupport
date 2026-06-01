@@ -6,6 +6,14 @@
 
 ---
 
+## 2026-06-02 (4) — コードベース棚卸し SYSTEM_OVERVIEW.md（劉 + Cascade）
+
+**何を**: `SYSTEM_OVERVIEW.md` を新設。使用言語統計・資料夾構造・現有機能（iOS 30+ Services / backend 27 モジュール / crawlers / gis）・現有DB（LanceDB/PostGIS/judb/taxonomy）・主機&APP 開発総流程・HARNESS L1-L7 を1枚に棚卸し。AGENTS.md 索引に追加。ハンドブック PDF にも章追加。
+
+**影響範囲**: ドキュメントのみ。
+
+---
+
 ## 2026-06-02 (3) — 製品形態・UI同期・開発順序を明文化（劉 + Cascade）
 
 **何を**: `DEPLOYMENT_TOPOLOGY.md` に §7b 製品形態 / §7c 同一DB・個別UI・同期・開発順序を追記。

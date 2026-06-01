@@ -27,6 +27,7 @@
 | 2 | **`ARCHITECTURE.md`** | システム主架構（iOS / backend / GIS / RAG）の唯一の真実 |
 | 3 | **`PROGRESS.md`** | 最新開発進捗ログ（時系列・追記式） |
 | 4 | **`DEPLOYMENT_TOPOLOGY.md`** | 環境・同期マトリクス・DB配布・5ロール銜接（統合マスター）|
+| 4b | **`SYSTEM_OVERVIEW.md`** | 現有機能・資料夾構造・使用言語・DB・開発総流程・HARNESS（棚卸し）|
 | 5 | `docs/strategy/2026-05-31_edge_training_and_role_architecture.md` | エッジ訓練(RTX4080)・5ロール・障害分離の中核設計 |
 | 6 | `docs/AGENT_SKILL_BOUND_DESIGN.md` | 幻覚防止 / 能力境界の設計指針 |
 | 7 | `legalshield/backend/harness.py` | 反幻覚ハーネス L1〜L7 実装（接地の中核） |
