@@ -27,7 +27,8 @@
 |---|---|---|---|---|---|
 | **①** | **SylvaNexus / HiiForest** | `D:\DSylvaNexus_Workspace\SylvaNexus_Platform` | `Fuilko/SaaSDocker` | `research` | live (https://hiiforest.com) |
 | **②** | **LegalShield + PocketMidwife** | `D:\projects\LegalShield` | `Fuilko/lawandbabysupport` | `main` | active dev |
-| **③** | **HII Forensics** | `D:\projects\flylog_analysis` | (private, local only) | — | active case (Mapry M4-0 ADR ongoing — **DO NOT publicize**) |
+| **③a** | **HII Forensics — Toolkit** | `D:\projects\hii-forensics-toolkit` | `Fuilko/hii-forensics-toolkit` (private) | `main` | skeleton (docs only, source code TBD) |
+| **③b** | **HII Forensics — Cases** | `D:\projects\flylog_analysis` | (LOCAL ONLY, NEVER push) | — | active case (Mapry M4-0 ADR ongoing — **DO NOT publicize**) |
 
 ### Domain summary
 
