@@ -1,0 +1,53 @@
+# pgvector 本地開発スタック（Phase B 用）
+# Phase A の LanceDB は変更せず、これは並列に立てて ETL 後 A/B 比較する。
+#
+# 起動: docker compose -f infra/docker-compose.pgvector.yml up -d
+# 停止: docker compose -f infra/docker-compose.pgvector.yml down
+# 接続: psql -h localhost -p 5435 -U legalshield -d legalshield
+#
+# 注意: 本機 8000 port は webodm が占有しているため、backend は別途 8001 で起動する
+#       (api.py の起動コマンドで --port 8001 を指定)。
+#
+# Port 設計（既存コンテナと衝突回避）:
+#   5432  既存 db (Docker ネットワーク内)
+#   5433  sylvanexus_postgres (host) — HiiForest 共用
+#   5434  legalshield_postgres (host) — GIS PostGIS（incident_report 等 14 表）
+#   5435  legalshield_pgvector_dev (host) — ★ これが本ファイル
+#   8000  webodm (host)
+#   8001  legalshield-backend (host) — 起動先候補
+#   8090  legalshield_api (host) — GIS API
+#   8092  legalshield_frontend (host) — GIS frontend
+
+services:
+  pgvector:
+    image: pgvector/pgvector:pg16
+    container_name: legalshield_pgvector_dev
+    restart: unless-stopped
+    shm_size: 2gb  # HNSW 大量データ索引構築には > 1GB 必要
+    environment:
+      POSTGRES_DB: legalshield
+      POSTGRES_USER: legalshield
+      POSTGRES_PASSWORD: legalshield_dev
+      # 大量 INSERT のチューニング
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+    ports:
+      - "5435:5432"  # 5434 は GIS 用 legalshield_postgres(postgis) が使用中
+    volumes:
+      - pgvector_data:/var/lib/postgresql/data
+      - ./pgvector_init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+    command: >
+      postgres
+      -c shared_buffers=512MB
+      -c work_mem=64MB
+      -c maintenance_work_mem=1GB
+      -c max_wal_size=4GB
+      -c effective_cache_size=2GB
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U legalshield -d legalshield"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgvector_data:
+    name: legalshield_pgvector_data

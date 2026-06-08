@@ -6,6 +6,79 @@
 
 ---
 
+## 2026-06-09 — pgvector 移行 Phase B 着手 + データ実態の真相報告（劉 + Devin）
+
+**何を**:
+1. **接地データの真相を文書化**（重要）:
+   - AGENTS.md / ARCHITECTURE.md は「法令 623,000 件 + 判例 724,443 件 (vectorized)」と記載していたが、
+     LanceDB 実体を点検した結果、**判例は 724,443 件で正しい**が、**法令テーブル `elaws_v2` は 100 行のみ、
+     かつ内容は "Test Law" / "sample text 0/1/2" のダミー**。実用法令 ingest は未実行。
+   - 実体: precedents=724,443 / litigation=3,837 / elaws_v2=100 (dummy)。embed dim=384 (multilingual-e5-small)。
+   - **harness L2 が法令を返さない原因は 2 つ**: (a) 上記 dummy しか無い、(b) `api.py` の `STATUTES_TABLE` 既定値が
+     "statutes" だが実テーブル名は "elaws_v2"（恒常 mismatch、harness で常に statute 検索が None）。
+
+2. **`api.py` の table 名 bug 修正**:
+   - `PRECEDENTS_TABLE` / `STATUTES_TABLE` / `LITIGATION_TABLE` を env 上書き可に変更。
+   - `STATUTES_TABLE` の既定値を `"statutes"` → `"elaws_v2"`（実体に合わせる）。
+
+3. **pgvector スタックを Phase B として並列に立ち上げ**（既存 LanceDB は破壊しない、A/B 比較想定）:
+   - `infra/docker-compose.pgvector.yml` 新規（pgvector/pgvector:pg16, host port **5435**）。
+     既存 5432=db / 5433=sylvanexus_postgres / 5434=legalshield_postgres(GIS) と完全分離。
+   - `infra/pgvector_init.sql` で precedents/statutes/litigation/etl_progress テーブル + pg_trgm を作成。
+     HNSW 索引は ETL 完了後に CREATE する（INSERT 性能のため後付け）。
+   - 起動確認: `vector 0.8.2`, `pg_trgm 1.6`。
+
+4. **LanceDB → pgvector ETL 実装**:
+   - `scripts/lance_to_pgvector.py`（pyarrow scanner + COPY FROM STDIN + 再開可能 etl_progress + 進捗ログ）。
+   - 既知の障害修正: COPY 入力に NUL バイト (`\x00`) が含まれると PG が拒否 → `_escape_copy()` で除去。
+   - 計測: COPY スループット ~3,000 rows/s（実測）。precedents 全量で 4 分前後の見込み。
+   - elaws_v2 (100) / litigation (3,837) は本日完了。precedents (724,443) は本日中に完了予定。
+
+5. **backend retrieve バックエンド抽象化**:
+   - `legalshield/backend/pgvector_retrieve.py` 新規（cosine `<=>`、psycopg_pool 利用、harness.Source 互換）。
+   - `api.py` に `LEGALSHIELD_RETRIEVE_BACKEND=lance|pg|auto` env flag を追加。
+     - `lance` (既定): 従来路径 (後方互換)
+     - `pg`: pgvector 強制（健康でなければ 503）
+     - `auto`: pg 健康なら pg、ダメなら lance に fallback
+   - `_select_retrievers()` で /rag/answer 内で透過に切替。harness L1-L7 はバックエンド非依存。
+   - レスポンスに `retrieve_backend` を付加（観測用）。
+
+6. **HNSW 索引方針**:
+   - ETL 完了後 `python scripts/lance_to_pgvector.py --build-index` で `vector_cosine_ops, m=16, ef_construction=64`。
+   - 線上 INSERT 可能なため運用時の追加 ingest を阻害しない。
+
+**なぜ**:
+- HiiForest infra ハンドオフを経て、Mac 帰任前に「基礎を正しく」の方針に切替。
+- 将来の metadata + JOIN クエリ（taxonomy filter / NPO routing / 領域別検索）に SQL ネイティブの pgvector が有利。
+- LanceDB はファイルベースで運用案件少なく、HNSW 索引再構築時にクエリが degrade する弱点あり。
+- ただし即時切替はリスクなので「並列稼働 + env flag + A/B」で段階移行する。
+
+**影響範囲**:
+- backend code: `legalshield/backend/api.py`（retrieve dispatch + table 名 bug fix）+ `pgvector_retrieve.py`（新規）。
+- infra: `infra/docker-compose.pgvector.yml`, `infra/pgvector_init.sql`（新規）。
+- tooling: `scripts/lance_to_pgvector.py`（新規）。
+- データ: pgvector に precedents 全量 + statutes(dummy 100) + litigation(3,837) を投入予定。LanceDB は無変更。
+- iOS / harness 仕様は不変。env flag のみで挙動変更。
+
+**E2E 検証手順（本セッション末）**:
+```
+docker compose -f infra/docker-compose.pgvector.yml up -d
+python scripts/lance_to_pgvector.py --all
+python scripts/lance_to_pgvector.py --build-index
+$env:LEGALSHIELD_RETRIEVE_BACKEND="pg"; uvicorn legalshield.backend.api:app --port 8001
+curl -X POST http://localhost:8001/rag/answer -H 'Content-Type: application/json' \
+  -d '{"question":"パワハラで退職を強要された場合の対処は？","top_k":6}'
+# 期待: result.retrieve_backend == "pg" / sources != [] / harness L1-L7 全層通過
+```
+
+**次の一手**:
+- 法令本物 ingest（elaws v2）を RTX4080 で実行 → AGENTS.md の「623k 法令」を実体化。
+- A/B 比較: 同一 question で lance vs pg の recall を比較する評価スクリプト。
+- ETL を EC2 に持って行く（HiiForest infra ハンドオフ通り）: pgvector を EC2 に再構築 → `pg_dump` or 再 ETL。
+- Q-Map frontend を実 API 接続 + emoji を SVG (chibi) marker に置換。
+
+---
+
 ## 2026-06-02 (4) — コードベース棚卸し SYSTEM_OVERVIEW.md（劉 + Cascade）
 
 **何を**: `SYSTEM_OVERVIEW.md` を新設。使用言語統計・資料夾構造・現有機能（iOS 30+ Services / backend 27 モジュール / crawlers / gis）・現有DB（LanceDB/PostGIS/judb/taxonomy）・主機&APP 開発総流程・HARNESS L1-L7 を1枚に棚卸し。AGENTS.md 索引に追加。ハンドブック PDF にも章追加。

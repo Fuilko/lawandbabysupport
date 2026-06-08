@@ -62,8 +62,9 @@ AUDIT_LOG_PATH = Path(os.environ.get(
 ))
 
 # LanceDB tables（環境によって存在しないものもあるため、起動時に確認）
-PRECEDENTS_TABLE = "precedents"
-STATUTES_TABLE = "statutes"  # elaws_embed_v2 等で作成想定
+PRECEDENTS_TABLE = os.environ.get("LEGALSHIELD_PRECEDENTS_TABLE", "precedents")
+STATUTES_TABLE = os.environ.get("LEGALSHIELD_STATUTES_TABLE", "elaws_v2")  # 実体に合わせ修正（旧"statutes"は不存在）
+LITIGATION_TABLE = os.environ.get("LEGALSHIELD_LITIGATION_TABLE", "litigation")
 
 # ----------------------------------------------------------------------------
 # モデル lazy load（FastAPI 起動を高速化）
@@ -462,6 +463,40 @@ def _make_ollama_chat(model_name: str) -> harness.LlmChat:
         return r.json().get("message", {}).get("content", "") or ""
     return _chat
 
+RETRIEVE_BACKEND = os.environ.get("LEGALSHIELD_RETRIEVE_BACKEND", "lance").lower()
+# "lance" | "pg" | "auto"
+
+
+def _select_retrievers(use_statutes: bool):
+    """RETRIEVE_BACKEND に応じて (precedent_fn, statute_fn, backend_used) を返す。"""
+    backend = RETRIEVE_BACKEND
+    if backend in ("pg", "auto"):
+        try:
+            from . import pgvector_retrieve as pgr
+            health = pgr.health_check()
+            if health.get("ok") and health.get("precedents", 0) > 0:
+                p_fn = pgr.make_precedent_retriever(embed_query)
+                s_fn = pgr.make_statute_retriever(embed_query) if use_statutes else None
+                return p_fn, s_fn, "pg"
+            elif backend == "pg":
+                raise RuntimeError(f"pgvector unhealthy: {health}")
+        except HTTPException:
+            raise
+        except Exception as e:
+            if backend == "pg":
+                raise HTTPException(503, f"pgvector backend failed: {e}")
+            logger.warning("pg backend unavailable, falling back to lance: %s", e)
+    try:
+        get_lance_db()
+    except Exception as e:
+        raise HTTPException(503, f"LanceDB unavailable: {e}")
+    return (
+        _make_precedent_retriever(),
+        _make_statute_retriever() if use_statutes else None,
+        "lance",
+    )
+
+
 @app.post("/rag/answer")
 def rag_answer(req: AnswerRequest) -> dict[str, Any]:
     """検索ゲートを構造的に強制した grounded 回答（幻覚防止 harness）。
@@ -469,14 +504,8 @@ def rag_answer(req: AnswerRequest) -> dict[str, Any]:
     iOS / 外部 agent は通常の法律 QA でこのエンドポイントを使うこと。
     生の /api/generate（無検索）を法律質問に使うと幻覚するため非推奨。
     """
-    try:
-        get_lance_db()
-    except Exception as e:
-        raise HTTPException(503, f"LanceDB unavailable: {e}")
-
     model_name = req.model or DEFAULT_LLM
-    precedent_fn = _make_precedent_retriever()
-    statute_fn = _make_statute_retriever() if req.use_statutes else None
+    precedent_fn, statute_fn, backend_used = _select_retrievers(req.use_statutes)
     llm_chat = _make_ollama_chat(model_name)
     judge_chat = _make_ollama_chat(req.judge_model) if req.judge_model else None
 
@@ -490,6 +519,7 @@ def rag_answer(req: AnswerRequest) -> dict[str, Any]:
         audit_path=AUDIT_LOG_PATH if req.audit else None,
     )
     result["model_used"] = model_name
+    result["retrieve_backend"] = backend_used
     return result
 
 # ----------------------------------------------------------------------------
