@@ -6,6 +6,11 @@
 >
 > Repo: `Fuilko/lawandbabysupport` · Branch: `main` · Maintainer: 劉 建志 (LIU CHIEN CHIH)
 
+> 
+> **HIIFOREST 合同会社 portfolio context**: HIIFOREST 配下には ① SylvaNexus（林業 SaaS）② LegalShield（本書）③ HII Forensics（UAV 鑑定）の三事業がある。
+> **作業前にまず `PORTFOLIO.md`（本 repo 直下 / `D:\projects\PORTFOLIO.md`）を読み**、その後に本 AGENTS.md を読むこと。
+> クロス領域機能（林業 GIS / UAV log 解析等）は redirect、reimplement しないこと。
+
 ---
 
 ## 0. ミッション（絶対に逸脱しない）
