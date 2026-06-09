@@ -25,8 +25,9 @@
 
 | ID | Project | Path | GitHub | Branch | Status |
 |---|---|---|---|---|---|
-| **①** | **SylvaNexus / HiiForest** | `D:\DSylvaNexus_Workspace\SylvaNexus_Platform` | `Fuilko/SaaSDocker` | `research` | live (https://hiiforest.com) |
-| **②** | **LegalShield + PocketMidwife** | `D:\projects\LegalShield` | `Fuilko/lawandbabysupport` | `main` | active dev |
+| **①** | **SylvaNexus / HiiForest** | `D:\DSylvaNexus_Workspace\SylvaNexus_Platform` | `Fuilko/SaaSDocker` (private) | `research` | live (https://hiiforest.com) |
+| **②a** | **LegalShield + PocketMidwife** (technical OSS) | `D:\projects\LegalShield` | `Fuilko/lawandbabysupport` (**PUBLIC**) | `main` | active dev — NLnet target |
+| **②b** | **LegalShield Internal** (commercial / legal / personal) | `D:\projects\legalshield-internal` | `Fuilko/legalshield-internal` (private) | `main` | 🔴 **NEVER cloud-AI** — see its `AGENTS.md` |
 | **③a** | **HII Forensics — Toolkit** | `D:\projects\hii-forensics-toolkit` | `Fuilko/hii-forensics-toolkit` (private) | `main` | skeleton (docs only, source code TBD) |
 | **③b** | **HII Forensics — Cases** | `D:\projects\flylog_analysis` | (LOCAL ONLY, NEVER push) | — | active case (Mapry M4-0 ADR ongoing — **DO NOT publicize**) |
 
@@ -34,7 +35,11 @@
 
 - **①** 森林経営 SaaS — 衛星 + UAV SfM + iPhone LiDAR + GEDI/ETH Canopy Height
 - **②** 法律弱者・婦幼医療弱者 救援 — 623K 法令 + 724K 判例 RAG + L1–L7 anti-hallucination harness
+  - **②a** = OSS technical core (de-identified, NLnet-friendly)
+  - **②b** = commercial strategy + active legal cases (cloud-AI BANNED)
 - **③** UAV / 機械事故 第三者技術解析 — ext4 forensic + ROS2 / ArduPilot / MAVROS log → 多言語報告書
+  - **③a** = vendor-agnostic toolkit (private, no case data)
+  - **③b** = active case storage (LOCAL ONLY, never on git)
 
 ---
 
@@ -70,8 +75,8 @@
 1. **NEVER suggest merging codebases.** They share concepts, not code.
 2. **Read project-level `AGENTS.md` AFTER this file.** This file is portfolio context; project AGENTS.md is execution context.
 3. **Cross-domain feature requests** → redirect, don't reimplement:
-   - 「LLM 法律回答」 → ② `/rag/answer` (harness.py L1–L7)
-   - 「無人機 log 解析」 → ③ `flylog_analysis/` toolkit
+   - 「LLM 法律回答」 → ②a `/rag/answer` (harness.py L1–L7)
+   - 「無人機 log 解析」 → ③a `hii-forensics-toolkit`
    - 「林業 GIS 計算」 → ① `gis-service` endpoints
    - 「証拠去識別化」 → `open-evidence-privacy-toolkit`
 4. **Independent databases.** Each project has its own PostgreSQL instance. NEVER share connections.
@@ -79,6 +84,7 @@
 6. **Active forensic case (Mapry M4-0)**: MUST NOT be discussed publicly until ADR resolved. Capability descriptions on website MUST be anonymized.
 7. **Bus factor = 1.** Maintain documentation rigorously. Each project's `PROGRESS.md` (or equivalent) updated after meaningful changes.
 8. **Anti-hallucination is non-negotiable.** Any LLM-generated factual claim (legal, medical, scientific) MUST go through harness retrieval gate. No exceptions.
+9. **Cloud AI processing of ②b and ③b is FORBIDDEN.** See those repos' AGENTS.md. Use local Ollama or de-identification scripts only.
 
 ---
 
