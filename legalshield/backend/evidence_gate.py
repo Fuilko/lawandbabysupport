@@ -30,6 +30,84 @@ from typing import Optional
 
 logger = logging.getLogger("legalshield.evidence_gate")
 
+
+# ============================================================================
+# File Role / Priority Classification (v1.1, added 2026-06-09)
+# ============================================================================
+# 教訓: v1 で「全ファイル必読」設計したため、forensic raw data まで pending
+# 扱いになり、利用者から「raw data は forensic agent 専用」と指摘された。
+# 本 LegalShield agent は分析報告のみ読めばよく、raw data は別 agent の責務。
+
+class FileRole:
+    REPORT = "report"              # 分析報告 (.md/.pdf) → 必読
+    EVIDENCE_DOC = "evidence_doc"  # 契約・mail・内容証明 → 必読
+    META = "meta"                  # PORTFOLIO/README/manifest → 優先読
+    RAW_DATA = "raw_data"          # ext4 image / raw log → forensic agent 専用
+    VISUALIZATION = "visualization"  # 3D 画像 / HTML map → サンプル 1 件で OK
+    SCRIPT = "script"              # 分析 .py / .sh → 読不要 (出力 .md を読む)
+    UNKNOWN = "unknown"
+
+# パターンによる自動分類（pathlib glob 互換）
+ROLE_PATTERNS = {
+    FileRole.REPORT: [
+        "*REPORT*.md", "*REPORT*.pdf", "*ANALYSIS*.md", "*ANALYSIS*.pdf",
+        "*分析*.md", "*分析*.pdf", "*報告*.md", "*報告*.pdf", "*報告書*.pdf",
+        "DEEP_ANALYSIS*", "SAFETY_DEFECT*", "FORENSIC*", "BYPASS*",
+        "SUPPLEMENTARY*", "LEGAL_ACTION_PLAN*", "ACTION_PLAN*",
+        "MASTER_REPORT*", "ADMINISTRATIVE_STRATEGY*", "CRIMINAL_ANALYSIS*",
+        "EVIDENCE_INVENTORY*",
+    ],
+    FileRole.EVIDENCE_DOC: [
+        "*契約*.pdf", "*契約*.md", "*内容証明*.pdf", "*内容証明*.docx",
+        "*最終要求書*", "*陳述書*", "*通知*.pdf",
+        "*.eml", "Order*.pdf", "*Invoice*", "*訂購單*", "甲*号証*",
+        "辯護*", "弁護*",
+    ],
+    FileRole.META: [
+        "PORTFOLIO.md", "README.md", "AGENTS.md", "PROGRESS.md",
+        "MANIFEST*.txt", "SHA256_CHECKSUMS*.txt", "INDEX.md",
+        "manifest.json", "evidence_manifest.json",
+    ],
+    FileRole.RAW_DATA: [
+        "*.img", "*.bin", "*.bag", "*.dat",
+        "raw_extracts/*", "full_extraction*/*", "working_data/raw_*",
+        "*.kern.log", "*_lines.txt", "boot_markers.txt",
+        "syslog*", "*.tlog",
+    ],
+    FileRole.VISUALIZATION: [
+        "*trajectory*.png", "*trajectory*.html", "*map*.html",
+        "*timeline*.html", "*visualization*.png", "overlays/*",
+    ],
+    FileRole.SCRIPT: [
+        "*.py", "*.sh", "*.service", "*.yaml", "*.json", "*.cpp", "*.hpp",
+        "*.c", "*.h",
+    ],
+}
+
+
+def classify_role(relpath: str, size_bytes: int = 0) -> str:
+    """Heuristic auto-classification by filename + path patterns."""
+    from fnmatch import fnmatch
+    p = relpath.replace("\\", "/")
+    fname = p.rsplit("/", 1)[-1]
+    # raw_data check first (path prefix wins for large generated extracts)
+    for role in [FileRole.RAW_DATA, FileRole.VISUALIZATION, FileRole.META,
+                 FileRole.REPORT, FileRole.EVIDENCE_DOC, FileRole.SCRIPT]:
+        for pat in ROLE_PATTERNS[role]:
+            if "/" in pat:
+                if fnmatch(p, pat) or fnmatch(p, "**/" + pat):
+                    return role
+            else:
+                if fnmatch(fname, pat):
+                    return role
+    return FileRole.UNKNOWN
+
+
+def role_required_for_coverage(role: str) -> bool:
+    """Return True if this file MUST be read for the agent to claim coverage."""
+    return role in (FileRole.REPORT, FileRole.EVIDENCE_DOC, FileRole.META)
+
+
 # 構造化的に「テキスト抽出可能か」を判定する
 TEXT_NATIVE_EXTS = {".txt", ".md", ".json", ".csv", ".html", ".xml", ".eml"}
 PDF_EXTS = {".pdf"}
@@ -53,6 +131,7 @@ class EvidenceFile:
     read_by_agent: bool = False  # agent が中身を確認したか
     read_at: Optional[str] = None
     notes: str = ""
+    role: str = "unknown"  # v1.1: FileRole — coverage 計算用 priority
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -82,8 +161,29 @@ class EvidenceManifest:
         return sum(1 for f in self.files if f.read_by_agent)
 
     @property
+    def required_files(self) -> list:
+        """coverage 計算対象（report/evidence_doc/meta のみ）。"""
+        return [f for f in self.files if role_required_for_coverage(f.role)]
+
+    @property
+    def required_read(self) -> int:
+        return sum(1 for f in self.required_files if f.read_by_agent)
+
+    @property
+    def required_total(self) -> int:
+        return len(self.required_files)
+
+    @property
     def coverage(self) -> float:
-        """読了率（読了 / 全件）。"""
+        """**重要 (v1.1 訂正)**: required (report+evidence_doc+meta) のみで計算。
+        raw_data / script / visualization は別 agent 担当のため対象外。"""
+        if self.required_total == 0:
+            return 0.0
+        return self.required_read / self.required_total
+
+    @property
+    def coverage_all_files(self) -> float:
+        """全ファイルベースの読了率（参考、coverage の判定には使わない）。"""
         if self.total == 0:
             return 0.0
         return self.read_count / self.total
@@ -149,6 +249,7 @@ def index_evidence_folder(case_id: str, source_dir: Path) -> EvidenceManifest:
     for f in files:
         rel = str(f.relative_to(source_dir))
         kind, needs_ocr, needs_vision = _classify(f)
+        role = classify_role(rel, f.stat().st_size)
         ef = EvidenceFile(
             relpath=rel,
             size_bytes=f.stat().st_size,
@@ -157,7 +258,12 @@ def index_evidence_folder(case_id: str, source_dir: Path) -> EvidenceManifest:
             kind=kind,
             needs_ocr=needs_ocr,
             needs_vision=needs_vision,
+            role=role,
         )
+        # raw_data と script は自動 mark_read（agent 読不要）
+        if role in (FileRole.RAW_DATA, FileRole.SCRIPT):
+            ef.read_by_agent = True
+            ef.notes = f"auto-marked (role={role}, out of scope for LegalShield agent)"
         # PDF の text 抽出テスト
         if kind == "pdf_unknown":
             try:
@@ -258,22 +364,22 @@ def assert_ready_for_analysis(
             f"coverage {manifest.coverage:.0%} < required {min_coverage:.0%}"
             f" (read {manifest.read_count}/{manifest.total})"
         )
-    pending_ocr = manifest.pending_ocr
-    if pending_ocr:
-        unread_ocr = [f for f in pending_ocr if not f.read_by_agent]
-        if unread_ocr:
-            blockers.append(
-                f"{len(unread_ocr)} files require OCR but not yet processed: "
-                + ", ".join(f.relpath for f in unread_ocr[:5])
-                + (" ..." if len(unread_ocr) > 5 else "")
-            )
-    pending_vision = manifest.pending_vision
-    unread_vision = [f for f in pending_vision if not f.read_by_agent]
-    if unread_vision:
+    # v1.1: only block on required files (raw_data/script/visualization out of scope)
+    pending_ocr_req = [f for f in manifest.pending_ocr
+                       if not f.read_by_agent and role_required_for_coverage(f.role)]
+    if pending_ocr_req:
         blockers.append(
-            f"{len(unread_vision)} image/video files not read by agent: "
-            + ", ".join(f.relpath for f in unread_vision[:5])
-            + (" ..." if len(unread_vision) > 5 else "")
+            f"{len(pending_ocr_req)} required files need OCR: "
+            + ", ".join(f.relpath for f in pending_ocr_req[:5])
+            + (" ..." if len(pending_ocr_req) > 5 else "")
+        )
+    pending_vision_req = [f for f in manifest.pending_vision
+                          if not f.read_by_agent and role_required_for_coverage(f.role)]
+    if pending_vision_req:
+        blockers.append(
+            f"{len(pending_vision_req)} required image/video files not read: "
+            + ", ".join(f.relpath for f in pending_vision_req[:5])
+            + (" ..." if len(pending_vision_req) > 5 else "")
         )
 
     diag = {
@@ -297,16 +403,28 @@ def assert_ready_for_analysis(
 
 
 def coverage_banner(manifest: EvidenceManifest) -> str:
-    """分析報告の先頭に挿入する coverage 透明性 banner。"""
+    """分析報告の先頭に挿入する coverage 透明性 banner。
+
+    v1.1: required (report/evidence_doc/meta) と全体を区別して表示。
+    """
     cov = manifest.coverage * 100
-    pending_ocr = len([f for f in manifest.pending_ocr if not f.read_by_agent])
-    pending_vision = len([f for f in manifest.pending_vision if not f.read_by_agent])
+    cov_all = manifest.coverage_all_files * 100
+    pending_ocr = len([f for f in manifest.pending_ocr
+                       if not f.read_by_agent and role_required_for_coverage(f.role)])
+    pending_vision = len([f for f in manifest.pending_vision
+                          if not f.read_by_agent and role_required_for_coverage(f.role)])
+    # role breakdown
+    from collections import Counter
+    role_breakdown = Counter(f.role for f in manifest.files)
+    role_str = ", ".join(f"{k}={v}" for k, v in role_breakdown.most_common())
     return (
-        f"\n--- Evidence Coverage ---\n"
+        f"\n--- Evidence Coverage (v1.1 priority-aware) ---\n"
         f"Case: {manifest.case_id}\n"
-        f"Read: {manifest.read_count} / {manifest.total} ({cov:.1f}%)\n"
-        f"Pending OCR: {pending_ocr} files\n"
-        f"Pending Vision: {pending_vision} files\n"
+        f"Required read: {manifest.required_read} / {manifest.required_total} ({cov:.1f}%) ★ gate basis\n"
+        f"All files read: {manifest.read_count} / {manifest.total} ({cov_all:.1f}%) — reference\n"
+        f"Pending OCR (required only): {pending_ocr} files\n"
+        f"Pending Vision (required only): {pending_vision} files\n"
+        f"Role breakdown: {role_str}\n"
         f"Indexed at: {manifest.indexed_at}\n"
-        f"-------------------------\n"
+        f"------------------------------------------------\n"
     )

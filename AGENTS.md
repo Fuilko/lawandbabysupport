@@ -85,6 +85,30 @@ manifest = eg.load_manifest(Path("private/<case>/evidence_manifest.json"))
 eg.assert_ready_for_analysis(manifest, min_coverage=0.90)  # ←これが通らないと L1 に進めない
 ```
 
+**v1.1 改良 (2026-06-09): File Role / Priority 分類**
+
+evidence_gate v1.0 では「全ファイル必読」設計だったため、forensic raw data
+(ext4 image, raw GPS log, syslog 等) も「未読」扱いになり利用者から
+「raw data は forensic agent 専用、LegalShield agent は分析報告だけ読めばよい」
+と指摘された。v1.1 で `FileRole` 分類を導入:
+
+| Role | 例 | LegalShield agent の責務 |
+|---|---|---|
+| `REPORT` | DEEP_ANALYSIS.md, FORENSIC_REPORT.pdf, MASTER_REPORT.md | **必読** |
+| `EVIDENCE_DOC` | 契約書, 内容証明, .eml, 甲号証, 注文書 | **必読** |
+| `META` | PORTFOLIO.md, README.md, AGENTS.md, manifest.json | **必読** |
+| `RAW_DATA` | drone_ext4_backup.img, raw_extracts/*.txt, *.bag, *.tlog | **対象外**（forensic agent 専用） |
+| `VISUALIZATION` | trajectory_3D.png, flight_map.html, overlays/* | サンプル 1 件で OK |
+| `SCRIPT` | analyze_*.py, *.sh, *.cpp | 読不要（出力 .md を読む） |
+
+**coverage 計算は REPORT + EVIDENCE_DOC + META のみ**で行う。
+`classify_role(relpath)` がパターンマッチで自動分類、`RAW_DATA` / `SCRIPT` は
+auto-mark_read される（agent の確認不要）。
+
+**3 製品線が連動する案件**（例: ③b 飛行鑑識 + ②a 法律分析）では、
+③b に raw data + 鑑識報告を置き、②a の LegalShield agent は
+③b の **報告 .md / .pdf のみ** を読み込めばよい。
+
 **運用ルール**:
 1. 案件 dir に **`evidence_manifest.json`** を必ず作る（`eg.index_evidence_folder()`）
 2. agent が中身を実際に読んだら **`eg.mark_read()`** で記録する
