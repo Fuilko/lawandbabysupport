@@ -72,7 +72,9 @@ def main():
     import torch
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = SentenceTransformer("intfloat/multilingual-e5-small", device=device)
-    print(f"[init] device={device}  dim={model.get_sentence_embedding_dimension()}")
+    # 文字長制限（一部の超長 article が VRAM を食い潰す対策）
+    model.max_seq_length = 512
+    print(f"[init] device={device}  dim={model.get_embedding_dimension()}  max_seq=512")
 
     conn = psycopg.connect(PG_DSN, autocommit=False)
     copy_sql = sql.SQL(
@@ -88,16 +90,26 @@ def main():
         nonlocal total_chunks
         if not pending_local:
             return
-        texts = [p[3] for p in pending_local]
-        embeds = model.encode(
-            [f"passage: {t}" for t in texts],
-            normalize_embeddings=True,
-            batch_size=args.batch,
-            show_progress_bar=False,
-            convert_to_numpy=True,
-        )
+        # 大量チャンクをサブバッチで処理して VRAM 蓄積を防ぐ
+        sub_batch = args.batch
+        embeds_all = []
+        for i in range(0, len(pending_local), sub_batch):
+            sub = pending_local[i : i + sub_batch]
+            texts = [f"passage: {p[3]}" for p in sub]
+            with torch.inference_mode():  # autograd 無効化で VRAM 節約
+                embs = model.encode(
+                    texts,
+                    normalize_embeddings=True,
+                    batch_size=sub_batch,
+                    show_progress_bar=False,
+                    convert_to_numpy=True,
+                )
+            embeds_all.extend(embs)
+        # 蓄積した cache を解放
+        if device == "cuda":
+            torch.cuda.empty_cache()
         with conn.cursor().copy(copy_sql) as cp:
-            for (lid, lname, art, txt), v in zip(pending_local, embeds):
+            for (lid, lname, art, txt), v in zip(pending_local, embeds_all):
                 row = "\t".join([_esc(lid), _esc(lname), _esc(art), _esc(txt), _vec_lit(v)]) + "\n"
                 cp.write(row)
         conn.commit()

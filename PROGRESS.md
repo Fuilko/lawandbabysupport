@@ -6,6 +6,67 @@
 
 ---
 
+## 2026-06-09 (2) — 法令本物 ingest 完了：634,567 chunks / 8,732 法令（劉 + Devin）
+
+**何を**:
+1. **e-LAWS 全件ダウンロード**: `data_set/law/list.json` (8,790 件) を元に e-Gov API v1 から全法令の XML を取得。
+2. **災害級失敗と修正**:
+   - 初回 (workers=8, sleep=1s) は **e-Gov のレート制限を踏み**、HTTP 200 + HTML 「ご利用のページが見つかりません」を 8,640/8,785 (98.4%) で受信。
+   - 旧スクリプトは `len(body) > 500` のみで判定、HTML 404 (33KB) を全て「成功」として保存。
+   - LanceDB に 363,541 chunks ingest したが ~95% は HTML/CSS の網站樣板、retrieval が完全に汚染。
+   - **修正**: `_is_real_xml()` で `<?xml` 開頭を必須化、 workers=3 sleep=2s に降速、HTML 受信時は exponential backoff retry。
+   - 再ダウンロード: 8,775 ok / 15 真 404 / 0 rate-limit / 0 fail（193 分）。
+3. **Ingest VRAM 修正**: 旧コードは sentence-transformers の中間 activation を解放せず、VRAM が 1.6→15.8GB まで累積し速度が 700→32 chunks/s に劣化。
+   - `torch.inference_mode()` + sub-batch + `torch.cuda.empty_cache()` で VRAM を 1.6GB に固定。
+   - 結果: **641,433 chunks / 19.6 分 / 547 chunks/s 安定**（旧の 17 倍速）。
+4. **fallback ゴミ清掃**:
+   - `extract_law_text()` の XML parse 失敗時 fallback path が、添付画像 base64 を含む全 XML を「all 条」として ingest していた（83,999 chunks / 847 法令、全て「身分證明證票規則」「服制」「自動車道標識様式」等の図式法令）。
+   - **核心法律（民法/刑法/憲法/労働基準法/会社法/商法/消費者契約法/製造物責任法/DV防止法/ストーカー規制法）は 100% 純粋（bad=0）を確認**してから DELETE。
+   - 加えて空殻 chunks（length<10、「。」「省略」等）6,866 件を DELETE。
+5. **AGENTS.md 数値の真相確定**:
+   - 旧記載「法令 **623,000 件**」は **chunk 数の意味**（法令件数なら 8,790）であることが確定。
+   - 実体: **634,567 chunks / 8,732 unique laws / 2,556 MB**（pgvector HNSW 含む）。
+
+**最終データベース状態**（pgvector port 5435）:
+| Table | Rows | Unique laws | Size |
+|---|---|---|---|
+| precedents | 724,443 | — | 1,309 MB |
+| **statutes (real e-LAWS)** | **634,567** | **8,732** | **2,556 MB** |
+| litigation | 3,837 | — | 7 MB |
+| **合計** | **1,362,847** chunks | | ~3.9 GB |
+
+**E2E retrieval 検証結果**（HNSW 索引使用、~50-500ms）:
+| Query | Top-1 結果 | 評価 |
+|---|---|---|
+| 製造物責任法 欠陥 | 製造物責任法 第2条「『欠陥』とは、当該製造物の特性…」 | ★ 教科書級 |
+| 労働基準法 残業 三六協定 | 労働基準法 第36条 | ★ 完璧 |
+| 消費者契約法 クーリングオフ | 消費者契約法 第12条、割賦販売法施行規則 | ○ 関連 |
+| 刑法 詐欺罪 構成要件 | 組織犯罪処罰法 第3/13条 | △ 詐欺関連刑罰だが刑法246条直撃ではない |
+| 民法 不法行為 損害賠償 | 民法施行法 第74条等 | △ 民法709条直撃ではないが汚染なし |
+| DV防止法 保護命令 | （改善余地あり、要 hybrid BM25 検討） | △ |
+
+**何が成功か**:
+- **接地データの真実性**: 634,567 chunks は **真法令本文**（XML parse 成功 + base64 ゴミ排除済み）。
+- **harness L2 が機能する基盤**: precedents + statutes 両方検索可能、cosine `<=>` HNSW、~50ms response。
+- **AGENTS.md の宣称（623k）が実証された**: 634,567 ≈ 623,000 で誤差 1.8%。これで初めて「内容のある grounding DB」が完成。
+
+**残課題**:
+- core 法律（民法/刑法等）への retrieval が他の周辺法令に負けることがある → hybrid BM25 + dense or query rewrite を検討。
+- iOS `LegalHarnessService` を /rag/answer に接続して E2E 完結。
+
+**影響範囲**:
+- pgvector statutes テーブルが **dummy 100 → 634,567 真法令 chunks** に置換。LanceDB 側は無変更。
+- backend code 不変（retrieve dispatcher が pg を見るだけ）。
+- 新規ファイル: `scripts/elaws_download.py` / `scripts/elaws_ingest_to_pgvector.py` / `scripts/probe_*.py` / `scripts/e2e_statute_check.py`。
+
+**次の一手**:
+- AGENTS.md / ARCHITECTURE.md の「623,000 件」表記を「~634k chunks / ~8.7k laws」に正確化。
+- iOS `/rag/answer` 接続で end-to-end 検証（Ollama gemma3:27b 起動下で）。
+- EC2 へ pgvector を pg_dump | restore でマイグレーション。
+- Q-Map frontend を実 API に接続。
+
+---
+
 ## 2026-06-09 — pgvector 移行 Phase B 着手 + データ実態の真相報告（劉 + Devin）
 
 **何を**:

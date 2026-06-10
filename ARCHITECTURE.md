@@ -29,7 +29,7 @@
                         ▼                                  ▼
             ┌───────────────────────┐          ┌───────────────────────┐
             │ LanceDB + DuckDB       │          │ PostGIS                │
-            │ 国法 623,000 件        │          │ DV センター / 犯罪統計 │
+            │ 国法 634,567 chunks    │          │ DV センター / 犯罪統計 │
             │ 判例 724,443 件        │          │ 法テラス / 行政界(N03) │
             │ (vectorized)           │          │                        │
             └───────────────────────┘          └───────────────────────┘
@@ -136,8 +136,8 @@ GET  /api/v1/legalshield/tiles/{z}/{x}/{y}.pbf    — ベクタータイル
 
 | 種別 | 場所 | 用途 |
 |---|---|---|
-| 法令ベクトル | LanceDB（backend） | 国法 623,000 件 |
-| 判例ベクトル | LanceDB（backend） | 判例 724,443 件 |
+| 法令ベクトル | pgvector 5435 (statutes) | 国法 **634,567 chunks / 8,732 法令**（e-LAWS 全件、2026-06-09 確定）|
+| 判例ベクトル | pgvector 5435 (precedents) + LanceDB | 判例 **724,443 chunks** |
 | 判例 RAG コーパス | `docs/research/precedents/*.jsonl` | 瑕疵担保 / 契約不適合 / 詐欺 / PL / ドローン 等 |
 | 案件分類 | `data/case_taxonomy/taxonomy_v1.json` | 決定論的カテゴリ（iOS 同梱） |
 | GIS 公開データ | PostGIS（`gis/`） | DV センター / 犯罪統計 / 法テラス / 行政界 |
