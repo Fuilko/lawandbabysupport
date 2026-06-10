@@ -28,7 +28,8 @@
 
 | 順 | ファイル | 内容 |
 |---|---|---|
-| 1 | **`AGENTS.md`**（本書） | エージェント入口・行動規範・索引 |
+| 0 | **`D:\projects\PORTFOLIO.md`** | **Portfolio Index — 3 製品線（①SylvaNexus / ②LegalShield / ③HII Forensics）の正準入口。本書 AGENTS.md より先に読む。** mapry 案など実際の case data は ③b `D:\projects\flylog_analysis` にあり、本書 ②a の context だけでは分析不能。 |
+| 1 | **`AGENTS.md`**（本書） | エージェント入口・行動規範・索引（②a 範囲） |
 | 2 | **`ARCHITECTURE.md`** | システム主架構（iOS / backend / GIS / RAG）の唯一の真実 |
 | 3 | **`PROGRESS.md`** | 最新開発進捗ログ（時系列・追記式） |
 | 4 | **`DEPLOYMENT_TOPOLOGY.md`** | 環境・同期マトリクス・DB配布・5ロール銜接（統合マスター）|
