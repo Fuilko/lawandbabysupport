@@ -38,6 +38,21 @@ def _vec_literal(v: list[float]) -> str:
     return "[" + ",".join(f"{float(x):.7g}" for x in v) + "]"
 
 
+def _exec_with_hnsw_fallback(conn, sql: str, params: tuple, k: int):
+    """HNSW 索引で結果 < k なら sequential scan で fallback。
+    HNSW graph が ef_construction 不足等で hole がある場合の保険。"""
+    rows = list(conn.execute(sql, params))
+    if len(rows) >= k:
+        return rows
+    # fallback: seq scan は遅いが完璧な recall
+    try:
+        conn.execute("SET LOCAL enable_indexscan = off")
+        conn.execute("SET LOCAL enable_bitmapscan = off")
+    except Exception:
+        pass
+    return list(conn.execute(sql, params))
+
+
 def make_precedent_retriever(embed_query) -> harness.RetrieveFn:
     """precedents から cosine 距離で top-k 取得。lawsuit_id で dedupe。"""
     def _retrieve(question: str, k: int) -> list[harness.Source]:
@@ -54,7 +69,8 @@ def make_precedent_retriever(embed_query) -> harness.RetrieveFn:
         out: list[harness.Source] = []
         seen: set[str] = set()
         with _get_pool().connection() as conn:
-            cur = conn.execute(sql, (_vec_literal(qvec), _vec_literal(qvec), k * 3))
+            rows = _exec_with_hnsw_fallback(conn, sql, (_vec_literal(qvec), _vec_literal(qvec), k * 3), k)
+            cur = iter(rows)
             for row in cur:
                 lawsuit_id, case_number, case_name, court, trial, era, year, text, dist = row
                 key = lawsuit_id or case_number or case_name or text[:50]
@@ -89,7 +105,8 @@ def make_statute_retriever(embed_query) -> harness.RetrieveFn:
         """
         out: list[harness.Source] = []
         with _get_pool().connection() as conn:
-            cur = conn.execute(sql, (_vec_literal(qvec), _vec_literal(qvec), k))
+            rows = _exec_with_hnsw_fallback(conn, sql, (_vec_literal(qvec), _vec_literal(qvec), k), k)
+            cur = iter(rows)
             for row in cur:
                 law_id, law_name, article, text, dist = row
                 citation = f"{law_name or ''} 第{article}条" if article else (law_name or "法令")
