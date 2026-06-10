@@ -117,6 +117,9 @@ private/**/*.encrypted
 private/**/*.vault
 private/**/*.veracrypt
 
+# Generated PDF artifacts (reproducible from .md via pandoc + Chrome)
+docs/*.pdf
+docs/**/*.pdf
 # どこでも秘匿系
 **/*_PRIVATE.md
 **/*_CONFIDENTIAL.*
