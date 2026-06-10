@@ -6,6 +6,38 @@
 
 ---
 
+## 2026-06-09 (3) — 接地原則 §2.5 「利用者証拠優先原則」 + evidence_gate 導入（劉 + Devin）
+
+**何を**:
+- AGENTS.md §2.5 新原則「**利用者証拠優先原則**」を追加
+- `legalshield/backend/evidence_gate.py` (312 行) 新規実装
+  - `index_evidence_folder()` — 証拠フォルダ再帰列挙 + SHA256 + PDF text 抽出可否判定 (text vs scan)
+  - `EvidenceManifest` — 案件単位の証拠台帳
+  - `mark_read()` — agent が読了したファイルを記録
+  - `assert_ready_for_analysis()` — coverage < min_coverage または OCR/vision pending あれば `EvidenceGateError` を raise
+  - `coverage_banner()` — 分析報告先頭に挿入する透明性 metric
+
+**なぜ**:
+- 2026-06-09 mapry 案で重大な接地失敗が発生
+- 53 件の証拠資料のうち実際に読んでいたのは 9 件 (17%)
+- 残り 44 件には mapry 弁護士回信 1.6MB scan PDF、委任書、最終要求書、7 件の脅迫メール原文、18 件の証拠写真等が含まれていた
+- 既存ファイルの要約だけで「全面分析」を生成 → 訴訟当事者構造を含めて根本的に誤った報告書を作成
+- harness.py L1-L7 は法律 DB retrieval を必須化するが、**利用者証拠についての強制ゲートがなかった**
+- 個別 agent の注意力に頼らず、構造的に防ぐ仕組みが必要
+
+**影響範囲**:
+- backend code: `legalshield/backend/evidence_gate.py`（新規）
+- 規範 doc: `AGENTS.md` §2.5（新規）
+- 運用変更: 案件分析前に必ず `evidence_manifest.json` を作り、coverage >= 90% かつ OCR/vision pending = 0 にすることが必須
+
+**次の一手**:
+- harness.run_harness() に optional な evidence_gate.assert_ready_for_analysis() フックを追加（次セッション）
+- OCR pipeline 整備（tesseract or paddleocr 自動化、scan PDF を text に）
+- vision pipeline 整備（read tool or 専用 vision model で証拠写真を読む）
+- 既存 mapry 案について coverage 90% 達成（25 件 OCR + 21 件 vision を実行）
+
+---
+
 ## 2026-06-09 (2) — 法令本物 ingest 完了：634,567 chunks / 8,732 法令（劉 + Devin）
 
 **何を**:

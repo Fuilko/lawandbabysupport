@@ -73,6 +73,32 @@ L7 Audit Log                  — SHA-256 chain
 3. **Confirmation bias > Falsification** — 反証ステップ欠落（禁止）
 4. **Narrative coherence > Factual precision** — 流暢さを事実精度より優先（禁止）
 
+### 2.5 利用者証拠優先原則（2026-06-09 追加・**最重要**）
+
+**事案分析を行う前に、利用者が提供した証拠フォルダを完全に読み終えること。** 未読のファイルの中身を「推測」「要約信頼」で進めることは**致命的接地失敗**である。
+
+**強制ゲート**: `legalshield/backend/evidence_gate.py` を案件分析の前段（L0）として用いる。
+```python
+from legalshield.backend import evidence_gate as eg
+manifest = eg.load_manifest(Path("private/<case>/evidence_manifest.json"))
+eg.assert_ready_for_analysis(manifest, min_coverage=0.90)  # ←これが通らないと L1 に進めない
+```
+
+**運用ルール**:
+1. 案件 dir に **`evidence_manifest.json`** を必ず作る（`eg.index_evidence_folder()`）
+2. agent が中身を実際に読んだら **`eg.mark_read()`** で記録する
+3. 全分析報告の先頭に **`eg.coverage_banner()`** を挿入する（透明性 metric 必須表示）
+4. **coverage < 90% で分析を始めてはならない**（OCR・vision・別ツール援用してでも 90% を超えさせる）
+5. 「要約ファイル（json/md/chat ログ）を読んだから原本未読でも OK」は**禁止**。要約と原本に乖離がある可能性を前提に、原本を必ず確認する
+
+**この原則は 2026-06-09 mapry 案で：**
+- 53 件の証拠のうち実際に読んでいたのは 9 件（17%）だった
+- 残り 44 件には mapry 弁護士の回信（1.6MB scan PDF）、委任書、最終要求書、7 件の脅迫メール原文、18 件の証拠写真などが含まれていた
+- 既存ファイルの要約だけで「全面分析」を生成し、訴訟当事者構造（媒介代理店 vs 売買契約、買主は劉氏ではなく正昌）も含めて根本的に誤った報告書を作ってしまった
+- このような失敗を構造的に防ぐためにこの §2.5 と evidence_gate を導入する
+
+---
+
 ### 2.4 「知らない」を選べ
 出典が無い・確信が無い場合は、**編造せず「不明」「要弁護士確認」と回答する**こと。
 
